@@ -1,6 +1,13 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using System.Configuration;
 @{
     Layout = null;
+    var domain = HttpContext.Current.Request.Url.Host;
+    var host = "";
+    if (domain == "localhost")
+    {
+        host = ConfigurationManager.AppSettings["IPEx.Host.Local"];
+    }
 }
 
 <!DOCTYPE html>
@@ -15,19 +22,20 @@
     }
     <!-- Favicons -->
     <link rel="icon" href="~/Assets/IPEx/images/logo.svg" type="image/png">
-    <link rel="stylesheet" href="~/Assets/IPEx/css/bootstrap.min.css?version=@value">
-    <link rel="stylesheet" href="~/Assets/IPEx/css/normalize.css?version=@value">
-    <link rel="stylesheet" href="~/Assets/IPEx/css/style.css?version=@value">
-    <link rel="stylesheet" href="~/Assets/IPEx/css/index.css?version=@value">
+    <link rel="stylesheet" href="@host/css/IPEx/bootstrap.min.css?version=@value">
+    <link rel="stylesheet" href="@host/css/IPEx/normalize.css?version=@value">
+    <link rel="stylesheet" href="@host/css/IPEx/style.css?version=@value">
+    <link rel="stylesheet" href="@host/css/IPEx/index.css?version=@value">
 
-    <link rel="stylesheet" href="~/Assets/IPEx/css/owl.carousel.min.css?version=@value">
-    <link rel="stylesheet" href="~/Assets/IPEx/css/chart.min.css?version=@value">
+    <link rel="stylesheet" href="@host/css/IPEx/owl.carousel.min.css?version=@value">
+    <link rel="stylesheet" href="@host/css/IPEx/chart.min.css?version=@value">
     @RenderSection("Css", required: false)
     <title>@ViewBag.Title</title>
     <style>
         .pass-eye svg {
             cursor: pointer;
         }
+
         @@media (min-width: 320px) {
             .container-desktop .container-custom .form-group > div .input-validate small {
                 position: absolute;
@@ -36,15 +44,17 @@
             }
         }
     </style>
+
+
 </head>
 <body>
     @RenderBody()
-    <script src="~/Assets/IPEx/js/jquery-3.5.1.min.js?version=@value"></script>
-    <script src="~/Assets/IPEx/js/popper.min.js?version=@value"></script>
-    <script src="~/Assets/IPEx/js/bootstrap.min.js?version=@value"></script>
-    <script src="~/Assets/IPEx/js/all.min.js?version=@value"></script>
-    <script src="~/Assets/IPEx/js/gsap.min.js?version=@value"></script>
-    <script src="~/Assets/IPEx/js/chart.min.js?version=@value"></script>
+    <script src="@host/Scripts/IPEx/jquery-3.5.1.min.js?version=@value"></script>
+    <script src="@host/Scripts/IPEx/popper.min.js?version=@value"></script>
+    <script src="@host/Scripts/IPEx/bootstrap.min.js?version=@value"></script>
+    <script src="@host/Scripts/IPEx/all.min.js?version=@value"></script>
+    <script src="@host/Scripts/IPEx/gsap.min.js?version=@value"></script>
+    <script src="@host/Scripts/IPEx/chart.min.js?version=@value"></script>
 
     @RenderSection("Scripts", required: false)
     <script>

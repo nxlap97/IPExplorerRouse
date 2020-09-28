@@ -3,6 +3,11 @@
 @{
     Layout = "IPExMaster.cshtml";
     ViewBag.Title = "Register";
+    var user = Members.GetCurrentMember();
+    if (user != null)
+    {
+        Response.Redirect("/");
+    }
 }
 
 

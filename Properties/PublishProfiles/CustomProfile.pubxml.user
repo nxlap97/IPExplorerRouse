@@ -2152,10 +2152,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/08/2018 12:18:16</publishTime>
     </File>
     <File Include="bin/Rousesite-Umbraco.dll">
-      <publishTime>09/25/2020 20:12:39</publishTime>
+      <publishTime>09/28/2020 10:45:31</publishTime>
     </File>
     <File Include="bin/Rousesite-Umbraco.pdb">
-      <publishTime>09/25/2020 20:12:39</publishTime>
+      <publishTime>09/28/2020 10:45:31</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.CodeAnalysis.CSharp.resources.dll">
       <publishTime>08/27/2020 12:37:09</publishTime>
@@ -2688,6 +2688,39 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="css/fullpage.css">
       <publishTime>09/04/2020 10:36:34</publishTime>
     </File>
+    <File Include="css/IPEx/all.min.css">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/bootstrap.min.css">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/chart.min.css">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/index.css">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/index.css.map">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/index.scss">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/normalize.css">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/owl.carousel.min.css">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/style.css">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/style.css.map">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
+    <File Include="css/IPEx/style.scss">
+      <publishTime>09/28/2020 09:48:08</publishTime>
+    </File>
     <File Include="css/jInvertScroll.css">
       <publishTime>09/04/2020 10:36:34</publishTime>
     </File>
@@ -2831,6 +2864,30 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff2">
       <publishTime>09/04/2020 10:36:34</publishTime>
+    </File>
+    <File Include="fonts/IPEx/calibri/Calibri-Bold-Italic.ttf">
+      <publishTime>09/28/2020 09:52:50</publishTime>
+    </File>
+    <File Include="fonts/IPEx/calibri/Calibri-Bold.TTF">
+      <publishTime>09/28/2020 09:52:50</publishTime>
+    </File>
+    <File Include="fonts/IPEx/calibri/Calibri-Italic.ttf">
+      <publishTime>09/28/2020 09:52:50</publishTime>
+    </File>
+    <File Include="fonts/IPEx/calibri/Calibri-Light-Italic.ttf">
+      <publishTime>09/28/2020 09:52:50</publishTime>
+    </File>
+    <File Include="fonts/IPEx/calibri/Calibri-Light.ttf">
+      <publishTime>09/28/2020 09:52:50</publishTime>
+    </File>
+    <File Include="fonts/IPEx/calibri/Calibri-Regular.ttf">
+      <publishTime>09/28/2020 09:52:50</publishTime>
+    </File>
+    <File Include="fonts/IPEx/raleway/Raleway-Italic-VariableFont_wght.ttf">
+      <publishTime>09/28/2020 09:52:50</publishTime>
+    </File>
+    <File Include="fonts/IPEx/raleway/Raleway-Medium.ttf">
+      <publishTime>09/28/2020 09:52:50</publishTime>
     </File>
     <File Include="fonts/Raleway-Black.ttf">
       <publishTime>09/04/2020 10:36:34</publishTime>
@@ -3419,6 +3476,39 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/fullpage.js">
       <publishTime>09/04/2020 10:36:33</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/all.min.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/animation-box-ip-intellectual-asset.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/animation-box-ip.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/animation-box-old.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/bootstrap.min.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/chart.min.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/gsap.min.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/jquery-3.5.1.min.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/owl.carousel.min.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/popper.min.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
+    </File>
+    <File Include="Scripts/IPEx/tooltip.js">
+      <publishTime>09/28/2020 09:50:12</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.js">
       <publishTime>09/04/2020 10:36:33</publishTime>
@@ -13546,37 +13636,37 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2020 11:51:16</publishTime>
     </File>
     <File Include="Views/IPExActiveAccount.cshtml">
-      <publishTime>09/23/2020 15:20:43</publishTime>
+      <publishTime>09/28/2020 09:41:26</publishTime>
     </File>
     <File Include="Views/IPExAnalysis.cshtml">
       <publishTime>09/24/2020 13:28:26</publishTime>
     </File>
     <File Include="Views/IPExBusiness.cshtml">
-      <publishTime>09/25/2020 20:08:34</publishTime>
+      <publishTime>09/28/2020 10:18:33</publishTime>
     </File>
     <File Include="Views/IPExChangePassword.cshtml">
-      <publishTime>09/25/2020 17:42:55</publishTime>
+      <publishTime>09/28/2020 10:44:44</publishTime>
     </File>
     <File Include="Views/IPExCountry.cshtml">
       <publishTime>09/10/2020 16:41:00</publishTime>
     </File>
     <File Include="Views/IPExForgotPassword.cshtml">
-      <publishTime>09/24/2020 15:58:25</publishTime>
+      <publishTime>09/28/2020 10:45:01</publishTime>
     </File>
     <File Include="Views/IPExHomePages.cshtml">
       <publishTime>09/24/2020 17:54:52</publishTime>
     </File>
     <File Include="Views/IPExIntellectualAssets.cshtml">
-      <publishTime>09/25/2020 15:04:59</publishTime>
+      <publishTime>09/28/2020 10:28:02</publishTime>
     </File>
     <File Include="Views/IPExIntellectualProperty.cshtml">
-      <publishTime>09/25/2020 20:02:46</publishTime>
+      <publishTime>09/28/2020 10:14:04</publishTime>
     </File>
     <File Include="Views/IPExLogin.cshtml">
       <publishTime>09/24/2020 11:38:15</publishTime>
     </File>
     <File Include="Views/IPExMaster.cshtml">
-      <publishTime>09/25/2020 14:37:29</publishTime>
+      <publishTime>09/28/2020 10:09:44</publishTime>
     </File>
     <File Include="Views/IPExMyAccount.cshtml">
       <publishTime>09/25/2020 19:07:33</publishTime>
@@ -13585,7 +13675,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2020 15:50:30</publishTime>
     </File>
     <File Include="Views/IPExRegister.cshtml">
-      <publishTime>09/25/2020 17:19:02</publishTime>
+      <publishTime>09/28/2020 09:43:13</publishTime>
     </File>
     <File Include="Views/IPExRegistered.cshtml">
       <publishTime>09/24/2020 15:30:01</publishTime>
@@ -14266,7 +14356,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/04/2020 10:36:33</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/23/2020 09:29:27</publishTime>
+      <publishTime>09/28/2020 10:19:18</publishTime>
     </File>
     <File Include="webfonts/fa-brands-400.woff">
       <publishTime>09/04/2020 10:36:36</publishTime>

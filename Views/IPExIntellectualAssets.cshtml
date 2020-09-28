@@ -9,9 +9,16 @@
     var user = Members.GetCurrentMember();
     if (user == null)
     {
-        //Response.Redirect(Model.Value("IPSignInLink").ToString());
         Response.Redirect("/login");
     }
+    var domain = HttpContext.Current.Request.Url.Host;
+    var host = "";
+    if (domain == "localhost")
+    {
+        host = ConfigurationManager.AppSettings["IPEx.Host.Local"];
+    }
+
+
     var random = new Random(10000);
     var value = random.Next(int.MaxValue);
 
@@ -81,7 +88,7 @@
                             <div>
                                 <img width="50" src="~/Assets/IPEx/images/logo.svg">
                             </div>
-                            <div class="nametag">
+                            <div class="nametag" style="white-space:nowrap">
                                 <div>@Model.Value("IPEx_IAHeaderTitle")<span class="tag"></span></div>
                                 <div></div>
                             </div>
@@ -270,7 +277,7 @@
         });
     </script>
 
-    <script src="~/Assets/IPEx/js/animation-box-ip-intellectual-asset.js?version=@value"></script>
+    <script src="@host/Scripts/IPEx/animation-box-ip-intellectual-asset.js?version=@value"></script>
     <script>
         $(document).ready(function () {
             $('.animation-box--item').each(function (index, el) {

@@ -1,0 +1,542 @@
+.color-Allports {
+    color: #007f9c;
+}
+
+.color-Honey_Flower {
+    color: #5b2080;
+}
+
+.color-Deluge {
+    color: #7a58a1;
+}
+
+.color-Viridian {
+    color: #3c8d74;
+}
+
+.color-Salem {
+    color: #096e4a;
+}
+
+.btn {
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+    .btn:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+.btn-custom {
+    height: 50px;
+    border-radius: 5px;
+    padding: 17px 27px;
+    color: white;
+    font-family: "Raleway";
+    font-size: 14px;
+    line-height: 16px;
+}
+
+    .btn-custom.btn-custom-outline {
+        border: 1px solid #007f9c;
+        color: #007f9c;
+    }
+
+    .btn-custom.btn-Allports {
+        background-color: #007f9c;
+    }
+
+.btn-circle span:first-child {
+    height: 50px;
+    width: 50px;
+    border: 1px solid;
+    border-radius: 50%;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-family: "Raleway";
+    font-size: 18px;
+    line-height: 16px;
+}
+
+.form-control {
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    background-color: #2222221a;
+    -webkit-box-shadow: 0 0 25px #71b4c429;
+    box-shadow: 0 0 25px #71b4c429;
+}
+
+    .form-control::-webkit-input-placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        opacity: 1;
+        /* Firefox */
+    }
+
+    .form-control:-ms-input-placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        opacity: 1;
+        /* Firefox */
+    }
+
+    .form-control::-ms-input-placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        opacity: 1;
+        /* Firefox */
+    }
+
+    .form-control::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        opacity: 1;
+        /* Firefox */
+    }
+
+    .form-control:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: black;
+    }
+
+    .form-control::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: black;
+    }
+
+.form-control-range {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 1px;
+    background: black;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    margin: 10px 0;
+}
+
+    .form-control-range:hover {
+        opacity: 1;
+    }
+
+    .form-control-range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border: 0;
+        border-radius: 50%;
+        background: #007f9c;
+        cursor: pointer;
+    }
+
+    .form-control-range::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border: 0;
+        border-radius: 50%;
+        background: #007f9c;
+        cursor: pointer;
+    }
+
+input::-ms-clear,
+input::-ms-reveal {
+    display: none;
+}
+
+.collapsing {
+    -webkit-transition: none;
+    transition: none;
+    display: none;
+}
+
+.tooltip-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 0;
+    overflow: hidden;
+}
+
+.tooltip-box--content {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background: #ccc;
+    text-align: left;
+    padding: 15px 19px;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px grey;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #007f9c;
+    border-radius: 10px;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #007f9c;
+    }
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/Assets/IPEx/fonts/raleway/Raleway-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Calibri-Bold";
+    src: url("/Assets/IPEx/fonts/calibri/Calibri-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Calibri-Light";
+    src: url("/Assets/IPEx/fonts/calibri/Calibri-Light.ttf");
+}
+
+@media (min-width: 320px) {
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    .container-desktop .sidebar-right {
+        display: none;
+    }
+
+    .container-desktop .container-custom {
+        max-width: 375px;
+        margin: auto;
+        width: 100%;
+    }
+
+        .container-desktop .container-custom header {
+            padding: 50px 37px 30px;
+            background-color: #fffffff0;
+        }
+
+            .container-desktop .container-custom header > div .logo {
+                border-bottom: 1px solid;
+            }
+
+                .container-desktop .container-custom header > div .logo img {
+                    margin-right: 20px;
+                }
+
+                .container-desktop .container-custom header > div .logo .nametag > div:first-child {
+                    font-family: "Raleway";
+                    font-size: 15px;
+                    line-height: 18px;
+                }
+
+                .container-desktop .container-custom header > div .logo .nametag > div:last-child {
+                    font-family: "Calibri-Light";
+                    font-size: 15px;
+                    line-height: 21px;
+                }
+
+                .container-desktop .container-custom header > div .logo .progress {
+                    height: 4px;
+                    bottom: -4px;
+                    background-color: transparent;
+                }
+
+                    .container-desktop .container-custom header > div .logo .progress .progress-bar-custom {
+                        background-color: #007f9c;
+                    }
+
+        .container-desktop .container-custom wrapper {
+            width: 100%;
+            padding: 0 37px;
+        }
+
+        .container-desktop .container-custom .title {
+            font-family: "Raleway";
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+        }
+
+        .container-desktop .container-custom .description {
+            font-family: "Calibri-Light";
+            font-size: 14px;
+            line-height: 16px;
+            margin-bottom: 20px;
+        }
+
+        .container-desktop .container-custom .form-group > div label {
+            font-family: "Raleway";
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 18px;
+        }
+
+        .container-desktop .container-custom .form-group > div .input-validate {
+            position: relative;
+        }
+
+            .container-desktop .container-custom .form-group > div .input-validate input {
+                font-family: "Calibri-Light";
+                font-size: 14px;
+                line-height: 21px;
+            }
+
+            .container-desktop .container-custom .form-group > div .input-validate small {
+                position: absolute;
+                margin-top: -17px;
+            }
+
+        .container-desktop .container-custom .form-group > div .password {
+            position: relative;
+        }
+
+            .container-desktop .container-custom .form-group > div .password input {
+                padding-right: 40px;
+            }
+
+            .container-desktop .container-custom .form-group > div .password .pass-eye {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 50px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: end;
+                -ms-flex-pack: end;
+                justify-content: flex-end;
+            }
+
+                .container-desktop .container-custom .form-group > div .password .pass-eye svg {
+                    width: 16px;
+                    margin-right: 10px;
+                    height: 100%;
+                }
+
+        .container-desktop .container-custom .item {
+            border-radius: 20px;
+            border: 1px solid #007f9c;
+            height: 94px;
+            width: 94px;
+            margin-right: 10px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            font-family: "Calibri-Light";
+            font-size: 14px;
+            line-height: 16px;
+            cursor: pointer;
+        }
+
+            .container-desktop .container-custom .item.active {
+                background-color: #007f9c;
+                color: white;
+            }
+
+        .container-desktop .container-custom .accordion-desktop {
+            display: none;
+        }
+
+        .container-desktop .container-custom .accordion-mobile .card {
+            border: 0;
+            margin-bottom: 10px;
+        }
+
+            .container-desktop .container-custom .accordion-mobile .card .card-header {
+                background: transparent;
+                border: 1px solid #007f9c;
+                border-radius: 5px;
+                margin-bottom: 0;
+                padding: 0;
+                margin: 0 37px;
+                -webkit-transition: 0.2s;
+                transition: 0.2s;
+            }
+
+                .container-desktop .container-custom .accordion-mobile .card .card-header .btn-block {
+                    font-family: "Calibri-Light";
+                    font-size: 14px;
+                    line-height: 21px;
+                    padding: 7px 0;
+                    height: 40px;
+                }
+
+                .container-desktop .container-custom .accordion-mobile .card .card-header.active {
+                    background-color: #007f9c;
+                }
+
+                    .container-desktop .container-custom .accordion-mobile .card .card-header.active .btn-block {
+                        color: white;
+                    }
+
+            .container-desktop .container-custom .accordion-mobile .card .card-body {
+                padding: 10px 0 0 0;
+            }
+
+        .container-desktop .container-custom .card-body .list-accordion {
+            overflow: auto;
+            margin: 0 0 0 37px;
+            padding-right: 30px;
+        }
+
+        .container-desktop .container-custom .btn-group-footer {
+            margin: 50px 0;
+        }
+}
+
+@media (min-width: 480px) {
+    /* smartphones, Android phones, landscape iPhone */
+}
+
+@media (min-width: 600px) {
+    /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+
+@media (min-width: 801px) {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+
+@media (min-width: 1025px) {
+    /* big landscape tablets, laptops, and desktops */
+}
+
+@media (min-width: 1281px) {
+    /* hi-res laptops and desktops */
+}
+
+@media (min-width: 1366px) {
+    .container-desktop .sidebar-right {
+        display: block;
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+        background-color: #2222220d;
+        padding: 155px 95px 175px;
+    }
+
+        .container-desktop .sidebar-right .logo {
+            margin-bottom: 40px;
+        }
+
+        .container-desktop .sidebar-right .list-partner {
+            font-size: 18px;
+            line-height: 21px;
+        }
+
+            .container-desktop .sidebar-right .list-partner .list-group {
+                margin-top: 30px;
+            }
+
+                .container-desktop .sidebar-right .list-partner .list-group .list-group-item {
+                    border: 0;
+                    margin-bottom: 25px;
+                    padding: 0;
+                    background-color: transparent;
+                }
+
+                    .container-desktop .sidebar-right .list-partner .list-group .list-group-item:last-child {
+                        margin-bottom: 0;
+                        margin-top: 5px;
+                    }
+
+    .container-desktop .container-custom {
+        margin: unset;
+    }
+
+        .container-desktop .container-custom header {
+            max-width: 536px;
+            padding: 50px 0 30px;
+        }
+
+        .container-desktop .container-custom .accordion-desktop {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+            .container-desktop .container-custom .accordion-desktop .card-header {
+                background: transparent;
+                border: 1px solid #007f9c;
+                border-radius: 5px;
+                margin-bottom: 0;
+                padding: 0;
+                -webkit-transition: 0.2s;
+                transition: 0.2s;
+            }
+
+                .container-desktop .container-custom .accordion-desktop .card-header .btn-block {
+                    font-family: "Calibri-Light";
+                    font-size: 14px;
+                    line-height: 21px;
+                    padding: 7px 0;
+                    height: 40px;
+                }
+
+                .container-desktop .container-custom .accordion-desktop .card-header.active {
+                    background-color: #007f9c;
+                }
+
+                    .container-desktop .container-custom .accordion-desktop .card-header.active .btn-block {
+                        color: white;
+                    }
+
+            .container-desktop .container-custom .accordion-desktop .collapse {
+                overflow: auto;
+                width: 100%;
+            }
+
+                .container-desktop .container-custom .accordion-desktop .collapse .card-body {
+                    padding: 0;
+                }
+
+        .container-desktop .container-custom .accordion-mobile {
+            display: none;
+        }
+}
+/*# sourceMappingURL=style.css.map */

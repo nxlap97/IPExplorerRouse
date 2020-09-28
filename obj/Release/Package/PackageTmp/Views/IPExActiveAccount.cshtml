@@ -15,6 +15,7 @@
 @section Scripts{
     <script>
         var MESSAGE_TOKEN_IS_CORRECT = "Token is incorrect";
+        var MESSAGE_ACTIVE_SUCCESS = "Your account has been activated";
         function InitData() {
             var token = '@token';
             if (token == ""){
@@ -28,7 +29,7 @@
                  success: function (result) {
                      console.log(result);
                             if (result.status == 0)
-                                window.alert("Actived success");
+                                window.alert(MESSAGE_ACTIVE_SUCCESS);
 
                             if (result.status != 0)
                                     window.alert(MESSAGE_TOKEN_IS_CORRECT);
