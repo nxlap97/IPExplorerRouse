@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.AccessibilityStatement>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+}
+<div class="container support-content-wrap">
+    <h2 class="top-title"> @Model.Value("title")</h2>
+    <div class="content">
+        @Model.Value("content")
+    </div>
+			
+</div>

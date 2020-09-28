@@ -1,0 +1,139 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Ipex_langdingPages>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "IPExMaster.cshtml";
+    ViewBag.Title = "Welcome";
+    //var url = HttpContext.Current.Request.Url.AbsolutePath.Split('/');
+    var url = Model.Value("IPEx_homeBtnTermLink");
+    var user = Members.GetCurrentMember();
+    if (user != null)
+    {
+        url = "/my-account";
+    }
+
+}
+<div class="container-desktop">
+    <div class="d-flex">
+        <div class="sidebar-right">
+            <div class="logo">
+                <img width="100" src="~/Assets/IPEx/images/logo.svg">
+            </div>
+            <div class="list-partner text-center">
+                <div>@Model.Value("IPEx_homePoweredByTitle")</div>
+                <ul class="list-group list-group-vertical">
+                    <li class="list-group-item">
+                        <img class="img-fluid" width="117"
+                             src="~/Assets/IPEx/images/ip-rouse.png" />
+                    </li>
+                    <li class="list-group-item">
+                        <img class="img-fluid" width="111"
+                             src="~/Assets/IPEx/images/inngotDesktop.svg" />
+                    </li>
+                    <li class="list-group-item">
+                        <img class="img-fluid" width="182"
+                             src="~/Assets/IPEx/images/fsipDesktop.svg" />
+                    </li>
+                    <li class="list-group-item">
+                        <img class="img-fluid" width="210"
+                             src="~/Assets/IPEx/images/UKGovDesktop.svg" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-custom content-index">
+            <div class="d-flex flex-column align-items-center w-100">
+                <div class="language ml-auto">
+                    <i class="fas fa-language"></i>
+                    <span>English</span>
+                </div>
+                <wrapper>
+                    <div class="text-center w-100">
+                        <div class="logo">
+                            <img width="100" src="~/Assets/IPEx/images/logo.svg">
+                        </div>
+                        <div class="welcome">@Model.Value("IPEx_homeTitle")</div>
+                        <div class="sologan">
+                            @Model.Value("IPEx_homeContent")
+                        </div>
+                        <div class="action-index">
+                            <a class="btn btn-custom w-100 btn-Allports text-white w-100" href="@url"
+                               style="border-radius: 10px;">
+                                @Model.Value("iPEx_homeBtnTermTitle")
+                            </a>
+                            @if (user == null)
+                            {
+                                <a class="color-Allports" href="@Model.Value("IPEx_homeBtnLoginLink")">@Model.Value("iPEx_homeBtnLoginTitle")</a>
+                            }
+
+                        </div>
+                        <div class="list-partner">
+                            <div>@Model.Value("IPEx_homePoweredByTitle")</div>
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item">
+                                    <img class="img-fluid" width="55"
+                                         src="~/Assets/IPEx/images/ip-rouse.png" />
+                                </li>
+                                <li class="list-group-item">
+                                    <img class="img-fluid" width="67"
+                                         src="~/Assets/IPEx/images/ip-inngot.png" />
+                                </li>
+                                <li class="list-group-item">
+                                    <img class="img-fluid" width="42"
+                                         src="~/Assets/IPEx/images/ip-fsip.png" />
+                                </li>
+                                <li class="list-group-item">
+                                    <img class="img-fluid" width="102"
+                                         src="~/Assets/IPEx/images/UKGovMobile.svg" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-index">
+        <div class="contact-name">Contact Us</div>
+        <div class="contact-mail d-flex align-items-center"><i class="far fa-envelope mr-2"></i>ipexplorer@rouse.com</div>
+    </footer>
+</div>
+
+<a style="display:none" id="btn-update-user-default">
+
+</a>
+<a style="display:none" id="btn-sign-out">
+
+</a>
+@section Scripts{
+    <script>
+    $(document).ready(function () {
+
+        $('#btn-update-user-default').click(function (e) {
+            e.preventDefault();
+                  $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("InitDataAccountActive", "IPExplorer")',
+                    data: { },
+                      success: function (result) {
+                          console.log(result.message);
+                     },
+                    dataType: 'Json'
+                });
+        });
+
+        $('#btn-sign-out').click(function (e) {
+            e.preventDefault();
+                  $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Logout", "IPExplorer")',
+                    data: { },
+                      success: function (result) {
+                          console.log(result.message);
+                     },
+                    dataType: 'Json'
+                });
+            });
+        });
+    </script>
+}
+

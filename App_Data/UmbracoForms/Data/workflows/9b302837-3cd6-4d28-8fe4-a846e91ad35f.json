@@ -1,0 +1,17 @@
+{
+  "id": "9b302837-3cd6-4d28-8fe4-a846e91ad35f",
+  "name": "Send Data",
+  "form": "cd694e5d-6822-4760-922e-d4d1960e3043",
+  "active": true,
+  "includeSensitiveData": "False",
+  "workflowTypeId": "fd02c929-4e7d-4f90-b9fa-13d074a76688",
+  "executesOn": "Submitted",
+  "settings": {
+    "Url": "http://192.168.0.117/Umbraco/Api/SendEmail/SendEmail",
+    "Method": "POST",
+    "Fields": "[{\"alias\":\"cv\",\"value\":\"eaeab658-e018-45fa-b8b6-caaf27ea82dd\",\"staticValue\":\"\",\"$$hashKey\":\"object:472\"},{\"alias\":\"name\",\"value\":\"d5b61ae4-ba6e-4c37-fa5f-25cf41fb0107\",\"staticValue\":\"\",\"$$hashKey\":\"object:483\"},{\"alias\":\"country\",\"value\":\"b2a6021c-872d-4fa3-8480-e9e9b83087fc\",\"staticValue\":\"\",\"$$hashKey\":\"object:939\"},{\"alias\":\"JobTitle\",\"value\":\"534364d5-bbeb-44d7-a56c-64072af5cf59\",\"staticValue\":\"\",\"$$hashKey\":\"object:1309\"},{\"alias\":\"FirstName\",\"value\":\"b3b15caa-da7d-413a-c0b4-36e3d157045d\",\"staticValue\":\"\",\"$$hashKey\":\"object:1311\"},{\"alias\":\"LastName\",\"value\":\"d5b61ae4-ba6e-4c37-fa5f-25cf41fb0107\",\"staticValue\":\"\",\"$$hashKey\":\"object:1313\"},{\"alias\":\"Phone\",\"value\":\"35132a7f-ee1c-4951-8515-9184b0c7d3e5\",\"staticValue\":\"\",\"$$hashKey\":\"object:1315\"},{\"alias\":\"Email\",\"value\":\"2c707283-9567-4966-d4db-e5253366e04c\",\"staticValue\":\"\",\"$$hashKey\":\"object:1317\"},{\"alias\":\"LinkedIn\",\"value\":\"df9a2734-42c3-4999-f683-92c986df66f6\",\"staticValue\":\"\",\"$$hashKey\":\"object:1319\"},{\"alias\":\"Information\",\"value\":\"58600735-39c5-47a1-a4f2-9c0857659948\",\"staticValue\":\"\",\"$$hashKey\":\"object:1321\"}]",
+    "Username": "",
+    "Password": ""
+  },
+  "sortOrder": 0
+}

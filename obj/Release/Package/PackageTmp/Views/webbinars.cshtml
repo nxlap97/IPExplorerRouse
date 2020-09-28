@@ -1,0 +1,210 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Webinars>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	var Insight = Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"));
+	
+	var portfolioWebinar = Umbraco.Content(Guid.Parse("a32eea85-b7ff-464f-9598-69fb10df8ffc")).Descendants().OfTypes("news").OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(16);
+
+
+   var countItem = 1;
+   
+     String[] PortfolioService = new String[4]{"Patents and Designs","Copyright","Trade marks","Geographical-Indications"};
+	 String[] EnforcementService = new String[1]{"Enforcement"};
+	 String[] ConsultancyService = new String[2]{"IP Consultancy","Management Consultancy"};
+	 String[] LegalService = new String[4]{"Disputes","IP Commercial","MAD","Sports IP"};
+	 
+	 var getAll = Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"));
+	 
+	 var typesSearch ="Webinars".Trim();
+	 	
+     var PortfolioWebinars = getAll.Descendants().OfTypes("news")
+      .Where(x => x.Value<IPublishedContent>("newsTypes") != null)
+     .Where(x => x.Value<IPublishedContent>("newsTypes").Name.ToString().Trim() == typesSearch)
+     .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+     .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), PortfolioService))
+     .OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(16);
+    
+    var EnforcementWebinars = getAll.Descendants().OfTypes("news")
+     .Where(x => x.Value<IPublishedContent>("newsTypes") != null)
+     .Where(x => x.Value<IPublishedContent>("newsTypes").Name.ToString().Trim() == typesSearch)
+     .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+     .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), EnforcementService))
+     .OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(16);
+    
+     var ConsultancyWebinars = getAll.Descendants().OfTypes("news")
+      .Where(x => x.Value<IPublishedContent>("newsTypes") != null)
+     .Where(x => x.Value<IPublishedContent>("newsTypes").Name.ToString().Trim() == typesSearch)
+     .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+     .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), ConsultancyService))
+     .OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(16);
+    
+     var LegalWebinars = getAll.Descendants().OfTypes("news")
+     .Where(x => x.Value<IPublishedContent>("newsTypes") != null)
+     .Where(x => x.Value<IPublishedContent>("newsTypes").Name.ToString().Trim() == typesSearch)
+     .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+     .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), LegalService))
+     .OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(16);
+
+
+}
+
+   @functions {
+
+   
+            public bool CheckServices(IEnumerable<IPublishedContent> list, string[] keyWord)
+            {
+                foreach (var item in list)
+                {
+                    foreach (var key in keyWord) {
+                         if (item.Name.ToString() == key)
+                            {
+                                return true;
+                            }
+                    }
+
+                   
+
+                }
+
+                return false;
+            }
+
+    }
+
+@* the fun starts here *@
+
+    @Html.Partial("page/webinars/WebinarsTop",Insight) 
+
+    @{
+        var open ="<div class='item'>";
+        var close = "</div>";
+    }
+
+
+
+    
+    
+       <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section">
+				<div class="container">
+					<div class="section-content">
+						<div class="section-title">
+							<h3>Portfolio Webinar</h3>
+						</div>
+					        	@{
+						             countItem = 1;
+						         }
+						<div class="list-item slick-slider">
+						         	
+						           @foreach (var item in PortfolioWebinars) {
+						               var mod = (int)(countItem % 4);
+						               
+						              
+						               
+						               if (mod == 1) {
+						               @Html.Raw(open)
+						               }
+						               
+						                 @Html.Partial("page/webinars/Slider",item) 
+						                 
+						               
+						               if (mod == 0 ) {
+						               
+						                 @Html.Raw(close)
+						               }
+						               
+						               
+						               countItem++;
+				
+						           }
+						   </div>
+						        
+                        </div>
+     
+     					</div>
+				</div>	
+    </section>
+    
+     <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section">
+				<div class="container">
+					<div class="section-content">
+						<div class="section-title">
+							<h3>Enforcement & Brand Protection Webinar</h3>
+						</div>
+						
+                                  	@{
+						             countItem = 1;
+						         }
+						<div class="list-item slick-slider">
+						         	
+						           @foreach (var item in EnforcementWebinars) {
+						               var mod = (int)(countItem % 4);
+						               
+						              
+						               
+						               if (mod == 1) {
+						               @Html.Raw(open)
+						               }
+						               
+						                 @Html.Partial("page/webinars/Slider",item) 
+						                 
+						               
+						               if (mod == 0 ) {
+						               
+						                 @Html.Raw(close)
+						               }
+						               
+						               
+						               countItem++;
+				
+						           }
+						   </div>
+						        
+     
+     					</div>
+				</div>	
+    </section>
+    
+     <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section">
+				<div class="container">
+					<div class="section-content">
+						<div class="section-title">
+							<h3>Legal Case Webinar</h3>
+						</div>
+						
+                                  	@{
+						             countItem = 1;
+						         }
+						<div class="list-item slick-slider">
+						         	
+						           @foreach (var item in LegalWebinars) {
+						               var mod = (int)(countItem % 4);
+						               
+						              
+						               
+						               if (mod == 1) {
+						               @Html.Raw(open)
+						               }
+						               
+						                 @Html.Partial("page/webinars/Slider",item) 
+						                 
+						               
+						               if (mod == 0 ) {
+						               
+						                 @Html.Raw(close)
+						               }
+						               
+						               
+						               countItem++;
+				
+						           }
+						   </div>
+     
+     					</div>
+				</div>	
+    </section>

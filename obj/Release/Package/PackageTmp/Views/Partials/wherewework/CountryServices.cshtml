@@ -1,0 +1,338 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Web.Models
+@{
+      var servicesImage2Mobile = "";
+     if (Model.Value<IPublishedContent>("servicesImage2Mobile") != null ) {
+        servicesImage2Mobile = Model.Value<IPublishedContent>("servicesImage2Mobile").Url;
+    } 
+    
+    var servicesImage2MobileSub = "";
+     if (Model.Value<IPublishedContent>("servicesImage2MobileSub") != null ) {
+        servicesImage2MobileSub = Model.Value<IPublishedContent>("servicesImage2MobileSub").Url;
+    } 
+    
+    
+     var servicesImage1 = "";
+     if (Model.Value<IPublishedContent>("servicesImage1") != null ) {
+        servicesImage1 = Model.Value<IPublishedContent>("servicesImage1").Url;
+    } 
+    
+    
+     var servicesImage2 = "";
+     if (Model.Value<IPublishedContent>("servicesImage2") != null ) {
+        servicesImage2 = Model.Value<IPublishedContent>("servicesImage2").Url;
+    } 
+    
+    
+    
+     var servicesImage3 = "";
+     if (Model.Value<IPublishedContent>("servicesImage3") != null ) {
+        servicesImage3 = Model.Value<IPublishedContent>("servicesImage3").Url;
+    } 
+    
+    
+     var servicesImage4 = "";
+     if (Model.Value<IPublishedContent>("servicesImage4") != null ) {
+        servicesImage4 = Model.Value<IPublishedContent>("servicesImage4").Url;
+    } 
+    
+     var servicesImage5 = "";
+     if (Model.Value<IPublishedContent>("servicesImage5") != null ) {
+        servicesImage5= Model.Value<IPublishedContent>("servicesImage5").Url;
+    } 
+      var servicesImage6 = "";
+     if (Model.Value<IPublishedContent>("servicesImage6") != null ) {
+        servicesImage6= Model.Value<IPublishedContent>("servicesImage6").Url;
+    } 
+    
+    
+    var serviceList = Model.Value<IEnumerable<IPublishedElement>>("serviceList");
+    
+    List<Umbraco.Core.Models.PublishedContent.IPublishedElement> groupList = new List<Umbraco.Core.Models.PublishedContent.IPublishedElement>();
+    foreach ( var groupItem  in Model.Value<IEnumerable<IPublishedElement>>("serviceList") ) {
+        groupList.Add(groupItem);
+    }
+    
+    var groupCount = groupList.Count();
+    
+    
+}
+
+
+
+
+      
+ <section id="china-services" >
+      @if (!Request.Browser.IsMobileDevice)
+    {    
+
+ 
+ <!--Desktop Section-->
+ <div class="front scroll china-service-desktop-section" id="chinaServicesId" style="left: 0px;">
+                    <div class="services-control hide" id="china-services-controller">
+                        <button id="btnIPConsultingChina" class="btn  active">Consultancy</button>
+                        <button id="btnIPPortfoliosChina" class="btn ">Portfolio</button>
+                        <button id="btnEnforcementChina" class="btn ">Enforcement & <br /> Protection</button>
+                        <button id="btnIPLegalChina" class="btn">Legal</button>
+
+                    </div>
+                    
+                    <div class="image-item-services" status="0" id="item-image-1"> <img src="/media/service/services02.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-2"> <img src="/media/service/services03.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-3"> <img src="/media/service/services04.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-4"> <img src="/media/service/services05.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-5"> <img src="/media/service/services06.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-6"> <img src="/media/service/services07.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-7"> <img src="/media/service/services08.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-8"> <img src="/media/service/services09.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-9"> <img src="/media/service/services10.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-10"> <img src="/media/service/services12.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-11"> <img src="/media/service/services13.svg" ></div>
+                    <div class="image-item-services" status="0" id="item-image-12"> <img src="/media/service/services14.svg" ></div>
+                  
+                    
+                    
+                    <div class="page" id="ipImageSection1">
+                        <img src="@servicesImage1" alt="Alternate Text" />
+                    </div>
+                    @if (groupCount > 0) {
+                   <div class="description page" id="ipConsulting">
+                        <div class="service-content">
+                            <h2 class="services-group-title">@groupList[0].Value("groupServiceTitle")</h2>
+                            <div class="service-desription">
+                                 @groupList[0].Value("groupServiceDescription")
+                            </div>
+                                   
+                             <div class="row">
+                                 @foreach ( var svItem in groupList[0].Value<IEnumerable<IPublishedElement>>("serviceItem"))  {
+                                     <div class="col-md-6" >
+                                       <a href="@(svItem.Value<Link>("serviceUrl").Url)"> <h2  class="our-services-text" >@svItem.Value("serviceTitle")</h2></a>
+                                        <div class="service-desription">@svItem.Value("serviceDescription")</div>
+                                      </div>
+                                 }
+                            </div>
+                            
+                            
+                         
+                        </div>
+                    </div>
+                    }
+                    <div class="page" id="ipImageSection2">
+                        <img id="phone" src="@servicesImage2" alt="Alternate Text" />
+                        <img id="phone-border" src="@servicesImage3" alt="Alternate Text" />
+                    </div>
+
+                          @if (groupCount > 1) {
+                      <div class="documentation page" id="ipPortfolios">
+                        <div class="service-content col-md-12">
+                            <h2 class="services-group-title">
+                               @groupList[1].Value("groupServiceTitle")
+                            </h2>
+                           
+                           <div class="service-desription">
+                            @groupList[1].Value("groupServiceDescription")
+                           </div>
+                            <h2 class="our-services-text">Our Services:</h2>
+                            <div class="row">
+                                
+                                   @foreach ( var svItem in  groupList[1].Value<IEnumerable<IPublishedElement>>("serviceItem"))  {
+                                     <div class="col-md-6" >
+                                       <a href="@(svItem.Value<Link>("serviceUrl").Url)"> <h3 >@svItem.Value("serviceTitle")</h3></a>
+                                        <div class="service-desription">@svItem.Value("serviceDescription")</div>
+                                      </div>
+                                 }
+                                
+                         
+                            </div>
+
+                        </div>
+                    </div>
+                    }
+
+                    <div class="page" id="ipImageSection3">
+                        <img src="@servicesImage4" alt="Alternate Text" />
+                    </div>
+                       @if (groupCount >= 3) {
+                    <div class="options page" id="ipEnforcemen">
+                        <div class="service-content">
+                            <h2 class="services-group-title"><a href="@(groupList[2].Value<Link>("groupServiceUrl").Url)">Enforcement & <br /> Brand Protection</a></h2>
+                           
+                             <div class="service-desription"> @groupList[2].Value("groupServiceDescription")</div>
+
+                        </div>
+                    </div>
+                    }
+
+
+                    <div class="page" id="ipImageSection4">
+                        <img id="hand" src="@servicesImage5" alt="Alternate Text" />
+                        <img id="board" src="@servicesImage6" alt="Alternate Text" />
+                    </div>
+                    
+                    
+                     @if (groupCount >= 4) {
+                      <div class="download page" id="ipLegal">
+                        <div class="service-content">
+                            <h2 class="services-group-title">@groupList[3].Value("groupServiceTitle")</h2>
+                           <div class="service-desription">
+                                @groupList[3].Value("groupServiceDescription")
+                           </div>
+                            <h2 class="our-services-text">Our Services:</h2>
+                            <div class="row">
+                                   @foreach ( var svItem in  groupList[3].Value<IEnumerable<IPublishedElement>>("serviceItem"))  {
+                                     <div class="col-md-6" >
+                                       <a href="@(svItem.Value<Link>("serviceUrl").Url)"> <h3 >@svItem.Value("serviceTitle")</h3></a>
+                                        <div class="service-desription">@svItem.Value("serviceDescription")</div>
+                                      </div>
+                                 }
+                                 
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    
+                       @if (groupCount >= 5) {
+                      <div class="download page" id="ipLegal">
+                        <div class="service-content">
+                            <h2 class="services-group-title">@groupList[4].Value("groupServiceTitle")</h2>
+                           <div class="service-desription">
+                                @groupList[4].Value("groupServiceDescription")
+                           </div>
+                            <h2 class="our-services-text">Our Services:</h2>
+                            <div class="row">
+                                   @foreach ( var svItem in  groupList[4].Value<IEnumerable<IPublishedElement>>("serviceItem"))  {
+                                     <div class="col-md-6" >
+                                       <a href="@(svItem.Value<Link>("serviceUrl").Url)"> <h3 >@svItem.Value("serviceTitle")</h3></a>
+                                        <div class="service-desription">@svItem.Value("serviceDescription")</div>
+                                      </div>
+                                 }
+                                 
+                            </div>
+                        </div>
+                    </div>
+                    }
+    </div>
+                <!--End Desktop Section-->
+    } else {
+        <div class="service-mobile-section">
+    <div class="image-service-item service-top-image">
+        <img src="@servicesImage1" alt="Alternate Text">
+    </div>
+    <div>
+          @if (groupCount > 0) {
+        <div class="service-content">
+            <h2 class="services-group-title">@groupList[0].Value("groupServiceTitle")</h2>
+            <div class="service-desription">
+                 @groupList[0].Value("groupServiceDescription")
+            </div>
+
+            <h2 class="our-services-text">Our Services:</h2>
+            
+            @foreach ( var svItem in  groupList[0].Value<IEnumerable<IPublishedElement>>("serviceItem"))  {
+                                       <a href="@(svItem.Value<Link>("serviceUrl").Url)"> <h3 >@svItem.Value("serviceTitle")</h3></a>
+                                        <div class="service-desription">@svItem.Value("serviceDescription")</div>
+            }
+        </div>
+        }
+    </div>
+
+    <div class="image-service-item" id="phoneImageWrap">
+        <img id="subPhone" src="@servicesImage2MobileSub" alt="servicesImage2MobileSub">
+        <img id="mainPhone" src="@servicesImage2Mobile" alt="Alternate Text">
+
+    </div>
+
+    <div>
+          @if (groupCount > 1) {
+        <div class="service-content col-md-12">
+            <h2 class="services-group-title">
+                                   @groupList[1].Value("groupServiceTitle")
+                            </h2>
+            <div class="service-desription">
+                @groupList[1].Value("groupServiceDescription")
+            </div>
+            <h2 class="our-services-text">Our Services:</h2>
+            <div class="row">
+               
+               
+                                   @foreach ( var svItem in  groupList[1].Value<IEnumerable<IPublishedElement>>("serviceItem"))  {
+                                     <div class="col-md-6" >
+                                       <a href="@(svItem.Value<Link>("serviceUrl").Url)"> <h3 >@svItem.Value("serviceTitle")</h3></a>
+                                        <div class="service-desription">@svItem.Value("serviceDescription")</div>
+                                      </div>
+                                 }
+                                
+            </div>
+
+        </div>
+        }
+    </div>
+
+    <div class="image-service-item">
+        <img src="@servicesImage4" alt="Alternate Text">
+    </div>
+
+    <div class="options " id="">
+           @if (groupCount >= 3) {
+        <div class="service-content">
+            <h2 class="services-group-title"><a href="/services/enforcement/">Enforcement &amp; <br> Brand Protection</a></h2>
+            <div class="service-desription"> @groupList[2].Value("groupServiceDescription")</div>
+
+        </div>
+        }
+    </div>
+
+    <div class="image-service-item">
+         <img id="hand" src="@servicesImage5" alt="Alternate Text" />
+         <img id="board" src="@servicesImage6" alt="Alternate Text" />
+    </div>
+
+    <div>
+     @if (groupCount >= 4) {
+        <div class="service-content">
+            <h2 class="services-group-title">@groupList[3].Value("groupServiceTitle")</h2>
+            <div class="service-desription">
+               @groupList[3].Value("groupServiceDescription")
+            </div>
+            <h2 class="our-services-text">Our Services:</h2>
+            <div class="row">
+                @foreach ( var svItem in  groupList[3].Value<IEnumerable<IPublishedElement>>("serviceItem"))  {
+                                     <div class="col-md-6" >
+                                       <a href="@(svItem.Value<Link>("serviceUrl").Url)"> <h3 >@svItem.Value("serviceTitle")</h3></a>
+                                        <div class="service-desription">@svItem.Value("serviceDescription")</div>
+                                      </div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+    
+    
+    
+    @if (groupCount >= 5) {
+        <div class="service-content">
+            <h2 class="services-group-title">@groupList[4].Value("groupServiceTitle")</h2>
+            <div class="service-desription">
+               @groupList[4].Value("groupServiceDescription")
+            </div>
+            <h2 class="our-services-text">Our Services:</h2>
+            <div class="row">
+                @foreach ( var svItem in  groupList[4].Value<IEnumerable<IPublishedElement>>("serviceItem"))  {
+                                     <div class="col-md-6" >
+                                       <a href="@(svItem.Value<Link>("serviceUrl").Url)"> <h3 >@svItem.Value("serviceTitle")</h3></a>
+                                        <div class="service-desription">@svItem.Value("serviceDescription")</div>
+                                      </div>
+                }
+            </div>
+        </div>
+        }
+
+</div>
+    
+    }
+            
+                
+    </section>
+    
+    
+   

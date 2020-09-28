@@ -1,0 +1,73 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+    var itemImage ="";
+   
+            
+            
+             try {
+           if (Model.Value<IPublishedContent>("profileImage") != null) {
+                        if(Model.HasValue("profileImage")) {
+          
+                            if (Model.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImage") != null)
+                            {
+                                itemImage =  Model.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImage").ToString();
+                            } else
+                            {
+                                itemImage =  Model.Value<IPublishedContent>("profileImage").Url.ToString();
+                            }
+          }
+           } 
+        } catch (Exception e) {
+             itemImage = "";
+        }
+}
+
+  
+            <!-- A people item -->
+            <div class="col-md-6 col-lg-3 people-group">
+                <div class="people-item" style="background-image:url('')">
+                       <div class="profile-image">
+                          <img src="@itemImage">
+                       </div>
+                    <div class="people-information">
+                        <div class="box">
+                            <div class="top">
+                        <a href="@Model.Url"><h4 class="name">@Model.Value("profileName")</h4></a>
+                        <p class="position">@Model.Value("profilePositon")</p>
+                        </div>
+                               <div class="bottom">
+                        <span class="email">@Model.Value("profileEmail")</span> 
+                        <p class="phone">@Model.Value("profilePhone")</p>
+                        <div class="social-network">
+                                <ul >
+                                                @if (Model.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") != null) {
+                                                        foreach (var socialItem in Model.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") ) {
+                                                               
+                                                               <li><a href=" @socialItem.Value("socialNetworkUrl")"><i class="@socialItem.Value("socialNetworkIcon")"></i> </a></li>
+                                                        }
+                                                    }
+                                                                  @{var officeLocation = "";
+                                                                try {
+                                                                    officeLocation = Model.Value<IPublishedContent>("profileLocation").Name.ToString();
+                                                                } catch (Exception e) {
+                                                                
+                                                                   officeLocation  = "";
+                                                                
+                                                                }
+                                                                }
+                                                                
+                                                                  @if (officeLocation != "") {
+                                                                 <li><a href=""><i class="fas fa-map-marker"></i> @officeLocation</a></li>
+                                                                }
+                                    
+                                        </ul>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+  

@@ -1,0 +1,157 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.IPexUnregisteredCopyrights>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Rousesite_Umbraco.Utilities;
+@using System.Configuration;
+@{
+    Layout = "IPExMaster.cshtml";
+    var user = Members.GetCurrentMember();
+    if (user == null)
+    {
+        //Response.Redirect(Model.Value("IPSignInLink").ToString());
+        Response.Redirect("/login");
+    }
+
+    //var selectors = Umbraco.Content(Guid.Parse("fa8e43d8-1b2d-421c-bb5d-9fb07a7fbb34"))
+    //                        .ChildrenOfType(ConfigurationManager.AppSettings["IPEx.Data.Partial.Unregister.Selection"])
+    //                        .Where(x => x.IsVisible());
+
+
+
+    var selectors = Model.Value<IEnumerable<IPublishedElement>>("IPEx_URNode").ToList();
+
+    ViewBag.Title = "Unregister Copyrights";
+}
+
+<style>
+    .list-group-item-action {
+        border: 1px solid #007F9C;
+    }
+
+    .list-group-item.active {
+        border: 1px solid #007F9C;
+    }
+
+    @@media (min-width: 320px) {
+        .container-custom .description {
+            font-family: "Calibri-Light";
+            font-size: 14px;
+            line-height: 16px;
+            margin-bottom: 20px;
+            font-weight: 100;
+        }
+    }
+
+    .unregisteredCopyright-list .list-group-item-action {
+        border-radius: 10px;
+    }
+</style>
+<div class="container-desktop">
+    <div class="d-flex">
+        <div class="container-custom content-unregisteredCopyright">
+            <div class="d-flex flex-column align-items-center w-100">
+                <header class="sticky-top w-100">
+                    <div class="m-auto">
+                        <div class="d-flex align-items-end position-relative logo">
+                            <div>
+                                <img width="50" src="~/Assets/IPEx/images/logo.svg">
+                            </div>
+                            <div class="nametag">
+                                <div>@Model.Value("IPEx_URHeaderTitle")</div>
+                                <div></div>
+                            </div>
+                            <div class="progress position-absolute w-100">
+                                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 58%;"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <wrapper class="overflow-auto h-100">
+                    <div class="content">
+                        @Model.Value("IPEx_URContent")
+                        <div class="unregisteredCopyright-list">
+                            <div class="list-group">
+                                @foreach (var item in selectors)
+                                {
+                                    <a href="#" class="list-group-item list-group-item-action" data-id="@item.Key">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-0">@item.Value("IPEx_URSelectionTilte")</h5>
+                                        </div>
+                                        <p>
+                                            @item.Value("IPEx_URSelectionDescription")
+                                        </p>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between btn-group-footer">
+                            <a class="btn btn-custom btn-custom-outline" href="@Model.Value("IPEx_URPreviousLink")">@Model.Value("IPEx_URPreviousTitle")</a>
+                            <a class="btn btn-custom btn-Allports btn-save">@Model.Value("IPEx_URContinueTitle")</a>
+                        </div>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-index">
+        <div class="contact-name">Contact Us</div>
+        <div class="contact-mail d-flex align-items-center">
+            <i class="far fa-envelope mr-2"></i>ipexplorer@rouse.com
+        </div>
+    </footer>
+</div>
+
+@section Scripts{
+    <script>
+        var number_frefix = [];
+
+        function LoadData() {
+            number_frefix = jQuery.parseJSON('@(Html.Raw(user?.GetIdFromNestedContentAlias(ConfigurationManager.AppSettings["IPEx.Members.UR.SelectedValue"], ConfigurationManager.AppSettings["IPEx.Members.UR.SelectedValue.Value"])))');
+            console.log(number_frefix);
+            $('.list-group-item-action').each(function (index, value) {
+                var selector = $(this);
+                $.each(number_frefix, function (index1,value1) {
+                    if (selector.data('id') == value1.@Html.Raw(ConfigurationManager.AppSettings["IPEx.Members.UR.SelectedValue.Value"])) {
+                        selector.addClass('active');
+                    }
+                });
+
+            });
+        }
+        LoadData();
+        $(document).ready(function () {
+            $('.btn-save').click(function (e) {
+                e.preventDefault();
+                var postData = [];
+                $('.list-group-item-action').each(function (index, value) {
+                    if ($(this).hasClass('active')) {
+                        postData.push($(this).data('id'));
+                    }
+                });
+                 $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("URSaveData", "IPExplorer")',
+                    data: { dataJson: JSON.stringify(postData) },
+                    success: function (result) {
+                        if (result.status) {
+
+                            window.location.href = '@Model.Value("IPEx_URContinueLink")';
+                        }
+                    },
+                    dataType: "JSON"
+                });
+
+            });
+
+            $('.list-group-item-action').click(function (e) {
+                e.preventDefault();
+                if ($(this).hasClass('active'))
+                    $(this).removeClass('active')
+                else $(this).addClass('active');
+
+            });
+
+
+        });
+    </script>
+}

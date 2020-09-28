@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.TalkConsultant>
+    @using ContentModels = Umbraco.Web.PublishedModels;
+    @{
+    Layout = "master.cshtml";
+    }
+
+    <div class="container" id="talkconsultant-section">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="page-content">
+                    <h2 class="title">Have one of our experts guide you in one of many fields</h2>
+                     @Model.Value("talkConsultantContent")
+                </div>
+            </div>
+            <div class="col-md-6">
+                        
+        		<div class="text-box thank-you-banner hide">
+        		   <i id="closeThankyouBanner" class="close far fa-times-circle"></i>
+        		   <div class="wrap">
+                    <h3 class="title">Thank You!</h3>
+        	     	<p class="content">Someone will be contacting you shortly.</p>
+        		   </div>
+        			
+        		</div>
+                <div class="form-content talk-consultant-wrap">
+                       @Umbraco.RenderMacro("renderUmbracoForm", new {FormGuid="f7f28b2e-23e8-4584-acd2-e111dd99cf3c", FormTheme="rouse-talk-consultant", ExcludeScripts="0"})
+                     
+                      
+                </div>
+       
+		
+
+                
+            </div>
+        </div>
+    </div>

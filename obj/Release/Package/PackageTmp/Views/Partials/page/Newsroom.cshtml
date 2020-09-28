@@ -1,0 +1,130 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+	var newsRoom = Umbraco.Content(Guid.Parse("238166b3-7efc-49e1-ab2c-5f48d5206751"))
+    .Children()
+    .Where(x => x.Value<String>("newsCategory").Contains("News Room"))
+    .Take(3)
+    .Where(x => x.IsVisible());
+    var count = 0;
+    
+      var newsRoomsArray =  new  Umbraco.Core.Models.PublishedContent.IPublishedContent[5]  ;
+      var newsRoomsImageArray =  new  string [5]  ;
+      var itemNewsCount = 0;
+    
+       foreach (var itemNews  in  newsRoom) {
+          newsRoomsArray[itemNewsCount] = itemNews;
+          var itemImage = "";
+          if (itemNews.HasValue("newsImage")) {
+            itemImage =  itemNews.Value<IPublishedContent>("newsImage").Url;
+          }
+            newsRoomsImageArray[itemNewsCount] = itemImage;
+          itemNewsCount++;
+    }
+}
+
+
+  <section class="section-our-office container">
+        <h2 class="title title-section">Newsroom</h2>
+        @if (!Request.Browser.IsMobileDevice)
+        {
+               <div class="office-item">
+            <div class="row" id="newsroomId">
+                <div class="col-sm-12 col-md-6 office-left" style="background-image:url('@newsRoomsImageArray[0]')">
+                    <div class="item-content item-content-news">
+                        <div class="title">@newsRoomsArray[0].Value("newsTitle")</div>
+                        <div class="description">
+                        @newsRoomsArray[0].Value("newsContent")
+                        </div>
+                     
+                        <p class="author">@(newsRoomsArray[0].Value<IPublishedContent>("newsAuthor").Value("authorName"))</p>
+                        <a href="@newsRoomsArray[0].Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                          <p class="datetime">@newsRoomsArray[0].CreateDate.ToString("dd MMM yyyy", null)</p>
+                         <ul class="tags-list">
+                            @foreach (var tagFirst in newsRoomsArray[0].Value<string[]>("newsHashtag")) {
+                              <li>#@tagFirst.ToLower()</li>
+                            }
+                        </ul>
+                        
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 office-right">
+                    <div class="row">
+                        <div class="col-md-12 office-top" style="background-image:url('@newsRoomsImageArray[1]')">
+                            <div class="item-content item-content-news">
+                                <div class="title">@newsRoomsArray[1].Value("newsTitle")</div>
+                                <div class="description">
+                                       @newsRoomsArray[1].Value("newsContent")
+                                </div>
+                              
+                                <p class="author">@(newsRoomsArray[1].Value<IPublishedContent>("newsAuthor").Value("authorName"))</p>
+                                <a href="@newsRoomsArray[1].Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                                 <p class="datetime">@newsRoomsArray[0].CreateDate.ToString("dd MMM yyyy", null)</p>
+                               <ul class="tags-list">
+                                    @foreach (var tagFirst1 in newsRoomsArray[1].Value<string[]>("newsHashtag")) {
+                                      <li>#@tagFirst1.ToLower()</li>
+                                    }
+                                </ul>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-12 office-bottom" style="background-image:url('@newsRoomsImageArray[2]')">
+                            <div class="item-content item-content-news">
+                                <div class="title">@newsRoomsArray[2].Value("newsTitle")</div>
+                                <div class="description">
+                                     @newsRoomsArray[2].Value("newsContent")
+                                </div>
+                              
+                                <p class="author">@(newsRoomsArray[2].Value<IPublishedContent>("newsAuthor").Value("authorName"))</p>
+                                <a href="@newsRoomsArray[2].Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                                  <p class="datetime">@newsRoomsArray[0].CreateDate.ToString("dd MMM yyyy", null)</p>
+                                 <ul class="tags-list">
+                                        @foreach (var tagFirst2 in newsRoomsArray[2].Value<string[]>("newsHashtag")) {
+                                          <li>#@tagFirst2.ToLower()</li>
+                                        }
+                                </ul>
+                                
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        } else {
+ 
+           <div class="office-item">
+         <div  class="sliderSlickWrap" id="newsRoomId">
+       @foreach (var item  in  newsRoom) {
+       
+          var itemImage = "";
+          if (item.HasValue("newsImage")) {
+            itemImage =  item.Value<IPublishedContent>("newsImage").Url;
+          }
+          
+                <!-- A Item  -->
+                 <div class="col-md-12 office-bottom" style="background-image:url('@itemImage')">
+                            <div class="item-content item-content-news">
+                                <div class="title">@item.Value("newsTitle")</div>
+                                <div class="description">
+                                     @item.Value("newsContent")
+                                </div>
+                              
+                                <p class="author">@(item.Value<IPublishedContent>("newsAuthor").Value("authorName"))</p>
+                              
+                                 <p class="datetime">@item.CreateDate.ToString("dd MMM yyyy", null)</p>
+                                
+                                  <a href="@item.Url" class="readmore">READ MORE &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                                  
+                            </div>
+                        </div>
+    <!-- End Item -->
+    }
+    </div>
+      </div>
+        }
+
+
+    </section>

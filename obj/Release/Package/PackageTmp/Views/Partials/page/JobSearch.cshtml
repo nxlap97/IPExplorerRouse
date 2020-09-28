@@ -1,0 +1,64 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+var bannerImage = "";
+    if (Model.Value<IPublishedContent>
+    ("careersBannerImage") != null ) {
+    bannerImage = Model.Value<IPublishedContent>
+    ("careersBannerImage").Url;
+    }
+}
+ 
+<section class="people-page top-banner" style="background-image: url('@bannerImage');">
+        <div class="find-box">
+            <h3>Job Search</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="component">
+                            <div class="btn-group">
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">All Locations<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item"><a href="#">Item I</a></li>
+                                    <li class="dropdown-item"><a href="#">Item II</a></li>
+                                    <li class="dropdown-item"><a href="#">Item III</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="component">
+                            <div class="btn-group">
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">All Departments <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item"><a href="#">Item I</a></li>
+                                    <li class="dropdown-item"><a href="#">Item II</a></li>
+                                    <li class="dropdown-item"><a href="#">Item III</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="component">
+                            <div class="btn-group">
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">All Teams <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item"><a href="#">Item I</a></li>
+                                    <li class="dropdown-item"><a href="#">Item II</a></li>
+                                    <li class="dropdown-item"><a href="#">Item III</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="component">
+                            <button class="btn btn-info" id="btn-search-people">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>

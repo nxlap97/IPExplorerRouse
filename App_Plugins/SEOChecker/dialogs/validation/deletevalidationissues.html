@@ -1,0 +1,39 @@
+﻿<div class="umb-panel" ng-controller="seoChecker.DeleteValidationIssuesController" ng-cloak>
+  <umb-load-indicator ng-if="!loaded"></umb-load-indicator>
+  <form name="frm" ng-show="loaded" novalidate
+        val-form-manager>
+    <umb-editor-view>
+
+      <umb-editor-header name="model.pageName"
+                         name-locked="true"
+                         hide-icon="true"
+                         hide-description="true"
+                         hide-alias="true">
+      </umb-editor-header>
+
+      <umb-editor-container>
+        <div class="umb-expansion-panel">
+          <div class="umb-expansion-panel__content">
+            <p class="umb-abstract"><localize key="seoCheckerBulkActions_bulkActionDeleteConfirmMessage"></localize></p>
+
+            <umb-tabs-content view="true">
+              <umb-property data-element="property-{{model.tabs[0].alias}}" ng-repeat="property in model.tabs[0].properties track by property.alias" property="property">
+                <umb-property-editor model="property"></umb-property-editor>
+              </umb-property>
+
+            </umb-tabs-content>
+          </div>
+        </div>
+      </umb-editor-container>
+
+      <umb-editor-footer>
+        <umb-editor-footer-content-right>
+          <umb-confirm on-confirm="confirm"
+                       on-cancel="cancel">
+          </umb-confirm>
+        </umb-editor-footer-content-right>
+      </umb-editor-footer>
+
+    </umb-editor-view>
+  </form>
+</div>

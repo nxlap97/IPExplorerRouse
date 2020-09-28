@@ -1,0 +1,39 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+<header class="header-master header">
+    <div class="container">
+        <div class="header-top">
+
+            <div class="language col-md-1 offset-11">
+                <!--<img src="/Media/united-kingdom.svg" alt="">-->
+                <div class="language-dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown"> English <i class="fas fa-caret-down"></i> </a> 
+                    <span class="caret"></span></button>
+                    <!--<ul class="dropdown-menu">-->
+                    <!--    <li><a href="#">Hong Kong</a></li>-->
+                    <!--    <li><a href="#">VietNam</a></li>-->
+
+                    <!--</ul>-->
+                </div>
+            </div>
+
+        </div>
+      
+        <div class="row top-header">
+            <div id="logo" class="col-md-3 col-sm-6 col-6">
+                   <div id="touch-menu-trigger" data-toggle="collapse" data-target="#rouse-burger">
+                    <span id="bar-top" class="bar" ></span>
+                    <span id="bar-middle" class="bar"></span>
+                    <span id="bar-bottom" class="bar"></span>
+                </div>
+                <a href="/"><img src="/media/rp1gsuxy/logo-rouse-no-bg.png"></a>
+            </div>
+           
+             @Html.Partial("MainMenu")
+
+             @Html.Partial("Search")
+
+
+        </div>
+    </div>
+</header>
+        @Html.Partial("burgermenu")

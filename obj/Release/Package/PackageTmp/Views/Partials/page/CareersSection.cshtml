@@ -1,0 +1,50 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+ @{
+    
+    var newsNearYou = Umbraco.Content(Guid.Parse("238166b3-7efc-49e1-ab2c-5f48d5206751"))
+        .Children()
+        .Where(x => x.IsVisible())
+        .Where (x=> x.Value<String>("newsCategory") == "Latest IP").Take(4)
+        .OrderByDescending(x => x.CreateDate);
+   
+    }
+<section>
+<!-- a Group -->
+<div class="group-content">
+	<div class="title container">
+		<h3>Careers</h3>
+	</div>
+	<!-- A row Item -->
+    <div class="row">
+        
+	@foreach (var item in newsNearYou)
+	{
+	 var itemImage = "";
+	 if (item.HasValue("newsImage"))
+     {
+            itemImage = item.Value<IPublishedContent>("newsImage").Url;
+                                    
+     }
+    <!-- A Item  -->
+	<div class="col-md-6 item" style="background-image: url('@itemImage');">
+
+		<div class="item-content">
+			<div class="title">@item.Value("newsTitle")</div>
+			<div class="description">
+			@item.Value("newsContent")
+			</div>
+			<p class="time">@item.Value("newsTimeRead") minute read</p>
+			<p class="author">@item.Value("newsAuthor")</p>
+			<a href="" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+			<p class="datetime">9 June 2019</p>
+			<p class="hashtag">@item.Value("newsHashtag")</p>
+		</div>
+	</div>
+    <!-- End Item -->
+   }
+	</div>
+	<!-- End a row Item -->
+</div>
+<!-- End group -->
+
+</section>

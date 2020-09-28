@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Demo>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Umbraco.Web.Models;
+@{
+	Layout = "master.cshtml";
+	
+
+	 
+}
+
+
+
+
+<img src="@(Model.Value<IPublishedContent>("aaa").GetCropUrl("768"))" />
+
+
+<img src="@(Model.Value<IPublishedContent>("aaa").GetCropUrl("320"))" />
+

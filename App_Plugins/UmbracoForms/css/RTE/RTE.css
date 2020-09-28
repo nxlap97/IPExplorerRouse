@@ -1,0 +1,60 @@
+
+
+/**umb_name:Heading 1*/
+h1 {
+	font-size:32px;
+	font-weight: bold;
+	font-family: Calibri;
+}
+
+/**umb_name:Heading 2*/
+h2.Headers {
+	font-size:30px;
+	font-family: Calibri;
+	font-weight: bold;
+}
+
+/**umb_name:Heading 3*/
+h3 {
+	font-size:24px;
+	font-weight: bold;
+	font-family: Calibri;
+}
+
+/**umb_name:Heading 4*/
+h4 {
+	font-size:18.72px;
+	font-weight: bold;
+	font-family: Calibri;
+}
+
+/**umb_name:Heading 5*/
+h5 {
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Calibri;
+}
+
+/**umb_name:Titles*/
+.Titles {
+	font-size:22px;
+	font-family: Calibri;
+	font-weight: bold;
+}
+
+/**umb_name:Paragraphs*/
+.Paragraphs {
+	font-size:16px;
+	font-family: Calibri;
+}
+
+/**umb_name:Calibri 14px*/
+.Calibri-14px {
+	font-size:14px;
+	font-family: Calibri;
+}
+
+/**umb_name:Two Column*/
+ul.two-column {
+	column-count: 2 !important;
+}

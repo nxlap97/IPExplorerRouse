@@ -1,0 +1,50 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+ @{
+    
+    var newsNearYou = Umbraco.Content(Guid.Parse("238166b3-7efc-49e1-ab2c-5f48d5206751"))
+        .Children()
+        .Where(x => x.IsVisible())
+        .Where (x=> x.Value<String>("newsCategory") == "Success Stories").Take(2)
+         .OrderBy(x => x.Id);
+   
+    }
+<section id="china-success-stories-section">
+     <div class="title-section">
+            <h4>Success Stories</h4>
+               <a class="more" href="">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+            
+        </div>
+    <div  class="container" >
+	<!-- A row Item -->
+     <div class="row">
+
+         @foreach (var item in newsNearYou)
+         {
+         var itemImage = "";
+         if (item.HasValue("newsImage"))
+         {
+         itemImage = item.Value<IPublishedContent>
+             ("newsImage").Url;
+
+             }
+             <!-- A Item  -->
+             <div class="col-md-6 item" style="background-image: url('@itemImage');">
+
+                 <div class="item-content">
+                     <div class="title">@item.Value("newsTitle")</div>
+                     <div class="description">
+                         @item.Value("newsContent")
+                     </div>
+                     	<a href="@item.Url" class="readmore">READ FRED & WILMA’S STORY <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                 </div>
+             </div>
+             <!-- End Item -->
+             }
+            
+
+     </div>
+	<!-- End a row Item -->
+	</div>
+
+
+</section>

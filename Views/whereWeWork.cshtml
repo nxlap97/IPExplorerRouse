@@ -1,0 +1,59 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.WhereWeWork>
+@using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	var listWhereWeWork = Model.Value<IEnumerable<IPublishedElement>>("whereWeWorkPlace");
+	
+	   var whereWeWorkBackground = "";
+    if (Model.Value<IPublishedContent>("whereWeWorkBackground") != null ) {
+        whereWeWorkBackground = Model.Value<IPublishedContent>("whereWeWorkBackground").Url;
+    } 
+}
+<section class="section-banner-company" id="where-we-work-main" style="background-image:url('@whereWeWorkBackground')">
+	<div class="company-box row">
+		<div class="col-md-9 details">
+			<article class="company-content">
+				<h3 class="country">Where We Work</h3>
+				<div class="description">
+				    @Model.Value("whereWeWorkDescription")
+				</div>
+			
+		
+			      @foreach ( var subItem  in listWhereWeWork ) {
+                                    <ul class="group-country">
+                                        <li class="strong">@(subItem.Value("groupSubmenuTitle"))</li>
+                                          <div class="row">
+                                              @if (subItem.Value<IEnumerable<IPublishedElement>>("submenuItem").Count() > 1) {
+                                                 <div class="col-md-12 two-column">
+                                                  @foreach (var itemInGroup in subItem.Value<IEnumerable<IPublishedElement>>("submenuItem")) {
+                                                        <li><a href="@(itemInGroup.Value<IPublishedContent>("pageReference").Url)">@(itemInGroup.Value<String>("title"))</a></li>
+                                                
+                                                }
+                                                
+                                            </div>   
+                                              } else {
+                                               <div class="col-md-12">
+                                                  @foreach (var itemInGroup in subItem.Value<IEnumerable<IPublishedElement>>("submenuItem")) {
+                                                        <li>  <a href="@(itemInGroup.Value<IPublishedContent>("pageReference").Url)">@(itemInGroup.Value<IPublishedContent>("pageReference").Name)</a></li>
+                                                
+                                                }
+                                                
+                                            </div>   
+                                         }
+                                         
+                                         
+                                           
+                                           
+                                                
+                                    </ul>
+                }
+				  
+
+			
+			</article>
+		</div>	
+	
+	</div>
+	
+</section>

@@ -1,0 +1,69 @@
+.umbraco-forms-field-wrapper input {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 15px;
+}
+
+.umbraco-forms-fieldset legend {
+  font: 20px/28px Calibri Bold;
+  font-size: 20px !important;
+  margin-bottom: 21px;
+}
+
+.umbraco-forms-caption {
+  margin-bottom: 30px;
+}
+
+.umbraco-forms-form.applyjob form {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .umbraco-forms-caption {
+    font: 24px/28px Calibri Bold;
+    margin-bottom: 35px;
+  }
+
+  .umbraco-forms-fieldset legend {
+    font: 20px/28px Calibri Bold;
+    font-size: 20px !important;
+    margin-bottom: 21px;
+  }
+
+  .umbraco-forms-field-wrapper input {
+    margin-bottom: 20px;
+  }
+
+  .checkbox-wrap {
+    margin-right: 0px;
+  }
+
+  .checkbox-wrap:not(:first-child) {
+    margin-right: 0px;
+    margin-left: 30px;
+  }
+
+  .umbraco-forms-navigation {
+    margin-top: 63px;
+    margin-bottom: 130px;
+  }
+  .umbraco-forms-navigation input {
+    position: relative;
+  }
+}
+@media (max-width: 360px) {
+  .umbraco-forms-container .umbraco-forms-label {
+    font: 16px/19px Calibri Light;
+  }
+
+  .checkbox-wrap:not(:first-child) {
+    margin-right: 0px;
+    margin-left: 20px;
+  }
+
+  .umbraco-forms-form.applyjob input[type=submit] {
+    left: 10px;
+  }
+}
+
+/*# sourceMappingURL=umbraco-form.css.map */

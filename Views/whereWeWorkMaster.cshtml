@@ -1,0 +1,134 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Web.Models
+ @using System.Text.RegularExpressions;
+
+@{
+	Layout = null;
+	var domain = HttpContext.Current.Request.Url.Host;
+	 var host ="";
+	if (domain == "localhost") {
+	       host = "http://" + domain;
+	} else {
+	        host = "https://" + domain;
+	}
+    var seo = Model.Value("sEOChecker") as SEOChecker.MVC.MetaData;
+}
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K5RGSNM');</script>
+    <!-- End Google Tag Manager -->
+    
+        <meta charset="utf-8">
+        <title>Rouse - @Model.Name </title>
+        
+        @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Robots)){
+            <meta name="robots" content="@seo.Robots">
+        }
+        @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Title)){
+                <meta name="title" content="@seo.Title">
+        }
+        @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Description)){
+                <meta name="description" content="@seo.Description">
+        }
+
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon"  type="image/png" href="/media/alkhthku/favicon.ico">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.1/jquery.validate.unobtrusive.min.js"></script>
+         <link rel="stylesheet" type="text/css" href="https://kenwheeler.github.io/slick/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+        <link rel="stylesheet" href="../../css/fontawesome.all.css">
+        <link href="../../css/theme.css" rel="stylesheet">     
+        <link href="../../css/page_style.css" rel="stylesheet">
+      
+        <link rel="stylesheet" href="../../css/jInvertScroll.css">
+        <link rel="stylesheet" href="../../css/where-we-work.css">
+          <link href="../../css/responsive.css" rel="stylesheet">
+         
+       </head>
+  <body class="china-service-body">
+       <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5RGSNM"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        
+      @Html.Partial("header")
+
+      <!-- Content -->
+      <main class="home home-service">
+          <div class="wrap-home where-we-work-master">
+              @RenderBody()
+
+          </div>
+
+      </main>
+
+    
+
+    
+    <script type="text/javascript" src="../../scripts/jquery-v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery.jInvertScroll-chinaservice.js"></script>
+    <script src="../../scripts/app.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+            function checkPosition(idName) {
+                let element = document.getElementById(idName);
+                let position = element.getBoundingClientRect().left + window.scrollX
+              
+            }
+             function goto(url)
+                {
+                window.location=url;
+    
+                }
+              var windowWidth = $(window).width();  
+          if (windowWidth > 1024) {
+            (function ($) {
+                $.jInvertScroll(['.scroll'], {
+                    onScroll: function (percent) {
+                     
+                        if (percent > 0.5275) {
+                            $("#chinaServicesId").css("right","-7100px");
+                        }
+                        $(".services-control button").removeClass('active');
+                        if (percent > 0.1 && percent < 0.28) {
+                            $("#btnIPConsultingChina").addClass('active');
+                        } else if (percent > 0.29 && percent < 0.42) {
+                             $("#btnIPPortfoliosChina").addClass('active');
+                        } else if (percent > 0.43 && percent < 0.52){
+                             $("#btnEnforcementChina").addClass('active');
+                        } else if (percent > 0.53 && percent < 0.7 ) {
+                             $("#btnIPLegalChina").addClass('active');
+                        } else if (percent > 0.6) {
+                          
+                            // $("#chinaServicesId").css("left", "-8000px");
+                        }
+                }
+                });
+            }(jQuery));
+    
+            $('html, body').animate({ scrollTop: 0 }, 20);
+          }
+        });
+     
+       
+    </script>
+    @Html.Partial("CookiesBanner")
+  </body>
+</html>
+

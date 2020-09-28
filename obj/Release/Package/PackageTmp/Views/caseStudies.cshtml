@@ -1,0 +1,236 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.CaseStudies>
+@using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	
+	 var ipPortfolio = Model.Value<IEnumerable<IPublishedElement>>("ipPortfolio");
+	 
+	 var ipEnforcement = Model.Value<IEnumerable<IPublishedElement>>("ipEnforcement");
+	 
+	 var ipLegal  = Model.Value<IEnumerable<IPublishedElement>>("ipLegal");
+	 
+	 var showFeaturedCaseStudies = Model.Value<bool>("showFeaturedCaseStudies");
+	 
+	 var isActiveIpPortfolio = Model.Value<bool>("isActiveIpPortfolio");
+	 
+	 var isActiveEnforcement = Model.Value<bool>("isActiveRouseWebinars");
+	 
+	 var isActiveIpLagal = Model.Value<bool>("isActiveIpLagal");
+	 
+	 var Insight = Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"));
+	 
+	 String[] PortfolioService = new String[4]{"Patents and Designs","Copyright","Trade marks","Geographical-Indications"};
+	 String[] EnforcementService = new String[1]{"Enforcement"};
+	 String[] ConsultancyService = new String[2]{"IP Consultancy","Management Consultancy"};
+	 String[] LegalService = new String[4]{"Disputes","IP Commercial","MAD","Sports IP"};
+	 
+	 var getAll = Umbraco.Content(Guid.Parse("d0fdc23a-b575-4e8b-8af4-634635c644dd"));
+	 	
+     var PortfolioCaseStudies = getAll.Descendants().OfTypes("news","caseStudy")
+     .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+     .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), PortfolioService))
+     .OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(16);
+    
+    var EnforcementCaseStudies = getAll.Descendants().OfTypes("news","caseStudy")
+     .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+     .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), EnforcementService))
+     .OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(16);
+    
+     var ConsultancyCaseStudies = getAll.Descendants().OfTypes("news","caseStudy")
+     .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+     .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), ConsultancyService))
+     .OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(16);
+    
+     var LegalCaseStudies = getAll.Descendants().OfTypes("news","caseStudy")
+     .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+     .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), LegalService))
+     .OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(16);
+
+
+   
+            
+   var countItem = 1;
+
+        var open ="<div class='item'>";
+        var close = "</div>";
+
+	
+    }
+
+    @functions {
+
+   
+            public bool CheckServices(IEnumerable<IPublishedContent> list, string[] keyWord)
+            {
+                foreach (var item in list)
+                {
+                    foreach (var key in keyWord) {
+                         if (item.Name.ToString() == key)
+                            {
+                                return true;
+                            }
+                    }
+
+                   
+
+                }
+
+                return false;
+            }
+
+    }
+    @* the fun starts here *@
+
+      @if (showFeaturedCaseStudies) {
+    @Html.Partial("page/casestudies/CaseStudiesTop",Insight)
+    }
+    
+    @if (isActiveIpPortfolio) {
+    
+    if (!Request.Browser.IsMobileDevice)
+    {
+     if (PortfolioCaseStudies.Count() > 0) {
+              <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section">
+				<div class="container">
+					<div class="section-content">
+						<div class="section-title">
+							<h3>Portfolio Case Studies</h3>
+						@{
+						             countItem = 1;
+						         }
+						<div class="list-item slick-slider">
+						
+						         	
+						           @foreach (var item in PortfolioCaseStudies) {
+						               var mod = (int)(countItem % 4);
+						               
+						              
+						               
+						               if (mod == 1) {
+						               @Html.Raw(open)
+						               }
+						               
+						                 @Html.Partial("page/casestudies/Slider",item) 
+						                 
+						               
+						               if (mod == 0 ) {
+						               
+						                 @Html.Raw(close)
+						               }
+						               
+						               
+						               countItem++;
+				
+						           }
+						   </div>
+				</div>	
+    </section>
+     }
+   
+    
+    } else {
+    
+    
+    }
+   }
+   
+     @if (isActiveIpPortfolio) {
+    
+    if (!Request.Browser.IsMobileDevice)
+    {
+      if (EnforcementCaseStudies.Count() > 0) {
+     <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section">
+				<div class="container">
+					<div class="section-content">
+						<div class="section-title">
+							<h3>Enforcement & Brand Protection Case Studies</h3>
+						@{
+						             countItem = 1;
+						         }
+						<div class="list-item slick-slider">
+						         	
+						           @foreach (var item in EnforcementCaseStudies) {
+						               var mod = (int)(countItem % 4);
+						               
+						              
+						               
+						               if (mod == 1) {
+						               @Html.Raw(open)
+						               }
+						               
+						                 @Html.Partial("page/casestudies/Slider",item) 
+						                 
+						               
+						               if (mod == 0 ) {
+						               
+						                 @Html.Raw(close)
+						               }
+						               
+						               
+						               countItem++;
+				
+						           }
+						   </div>
+				</div>	
+    </section>
+    }
+    
+    } else {
+    
+    
+    }
+   }
+   
+     @if (isActiveIpPortfolio) {
+    
+    if (!Request.Browser.IsMobileDevice)
+    {
+      if (LegalCaseStudies.Count() > 0) {
+     <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section">
+				<div class="container">
+					<div class="section-content">
+						<div class="section-title">
+							<h3>Legal Case Studies</h3>
+							@{
+						             countItem = 1;
+						         }
+						<div class="list-item slick-slider">
+						         	
+						           @foreach (var item in LegalCaseStudies) {
+						               var mod = (int)(countItem % 4);
+						               
+						              
+						               
+						               if (mod == 1) {
+						               @Html.Raw(open)
+						               }
+						               
+						                 @Html.Partial("page/casestudies/Slider",item) 
+						                 
+						               
+						               if (mod == 0 ) {
+						               
+						                 @Html.Raw(close)
+						               }
+						               
+						               
+						               countItem++;
+				
+						           }
+						   </div>
+				</div>	
+    </section>
+    }
+    } else {
+    
+    
+    }
+   }
+   
+ @Html.Partial("how-can")
+ 

@@ -1,0 +1,96 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+<!--Question Slider-->
+@{
+    <!--Slide question-->
+   var listQuestionCount = 0;
+   var sliderImage = "";
+   var questionSliderCount = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").Count();
+   if (questionSliderCount > 0 ) {
+         var slider = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").First();
+         if (slider.Value<IPublishedContent>("questionSliderImage") != null ) {
+            sliderImage = slider.Value<IPublishedContent>("questionSliderImage").Url;
+         }
+          listQuestionCount =  slider.Value<IEnumerable<IPublishedElement>>("questionSliderItemGroup").Count();
+     
+        
+   }
+   
+    var questionSlider = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").First();
+  var listQuestion  = questionSlider.Value<IEnumerable<IPublishedElement>>("questionSliderItemGroup") ; 
+
+}
+
+ 
+    <section class="slider-section" id="question-slider">
+        <div id="questionCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+             @{
+               var countItemOption = 0;
+             }
+             @foreach (var item in listQuestion)
+            	{
+            	  if (countItemOption == 0) {
+                <li data-target="#questionCarousel" data-slide-to="@countItemOption" class="active"></li>
+                  } else {
+                   <li data-target="#questionCarousel" data-slide-to="@countItemOption" class=""></li>
+                  }
+                countItemOption++;
+                
+                }
+         
+            </ol>
+            <div class="carousel-inner">
+                @{
+               var countItem = 0;
+               	}
+               @foreach (var item in listQuestion)
+            	{
+            	    if (countItem == 0) {
+                <div class="carousel-item @countItem if active" style="background-image:url(' @if (sliderImage != null ) {  @sliderImage }')">
+                 <div class="top-question">
+                    <h2 class="question-title">Key concerns facing our clients:</h2>
+                </div>
+                    <article class="question-content">
+                        <div>
+                            <p>@item.Value("questionItemCategory")</p>
+                            <p>“@item.Value("questionItemContentTop")”</p>
+                            <p>@item.Value("questionItemContentBottom")</p>
+                        </div>
+                           <a class="more learnmore" href="">LEARN MORE  <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                    </article>
+                </div>
+                } else {
+                     <div class="carousel-item" style="background-image:url(' @if (sliderImage != null ) {  @sliderImage }')">
+                     <div class="top-question">
+                    <h2 class="question-title">Key concerns facing our clients:</h2>
+                </div>
+                    <article class="question-content">
+                        <div>
+                            <p>@item.Value("questionItemCategory")</p>
+                            <p>“@item.Value("questionItemContentTop")”</p>
+                            <p>@item.Value("questionItemContentBottom")</p>
+                        </div>
+                        <a class="more learnmore" href="">LEARN MORE  <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                    </article>
+                </div>
+                }
+
+                       countItem++;
+            	}
+            
+            </div>
+
+
+         <a class="carousel-control-prev" href="" data-target="#questionCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href=""  data-target="#questionCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+        
+
+  <!--End question slider-->

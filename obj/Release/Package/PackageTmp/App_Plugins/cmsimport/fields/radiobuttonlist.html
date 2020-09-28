@@ -1,0 +1,6 @@
+﻿<div ng-controller="cmsimport.radioButtonListController">
+  <div ng-repeat="item in model.value.items">
+    <label ng-if="item.selected"><input type="radio" ng-click="itemChanged(item)" name="{{model.alias}}" value="{{item.name}}" checked="true"/>{{item.value}} </label>
+    <label ng-if="!item.selected"><input type="radio" ng-click="itemChanged(item)" name="{{model.alias}}" value="{{item.name}}"/>{{item.value}} </label>
+  </div>
+</div>

@@ -1,0 +1,399 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using System.Text.RegularExpressions;
+@{
+
+        var serviceName = Model.Name.ToString();
+       
+        
+        var newsCaseStudies = Umbraco.Content(Guid.Parse("d0fdc23a-b575-4e8b-8af4-634635c644dd"))
+       .Descendants().OfTypes("news")
+       .Where(x => x.IsVisible())
+       .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+       .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), serviceName))
+       .OrderByDescending(x => x.CreateDate).Take(4);
+        
+        
+        var newsCaseStudiesArray =  new  Umbraco.Core.Models.PublishedContent.IPublishedContent[4]  ;
+        var newsCaseStudiesImageArray =  new  string [4]  ;
+        var itemStudiesCount = 0;
+    
+       foreach (var itemStudies  in  newsCaseStudies) {
+          newsCaseStudiesArray[itemStudiesCount] = itemStudies;
+          var itemImage = "";
+          if (itemStudies.HasValue("newsImage")) {
+            itemImage =  itemStudies.Value<IPublishedContent>("newsImage").Url;
+          }
+            newsCaseStudiesImageArray[itemStudiesCount] = itemImage;
+          itemStudiesCount++;
+    }
+    
+    	 var space = ", ";
+	 IEnumerable<IPublishedElement> authorList; 
+	  var countAuthor = 0; 
+	
+	               var title1 ="";
+                   var title2 ="";
+                   var title3 ="";
+                   
+                   var tempString1 = "";
+                   var tempString2 = "";
+                   var tempString3 = "";
+                   
+    		       var newsSummary1 = "";
+    		       var newsSummary2 = "";
+    		       var newsSummary3 = "";
+    		       try {
+    		       
+    		       title1 =  (newsCaseStudiesArray[0].Value("newsTitle").ToString().Length > 80) ? newsCaseStudiesArray[0].Value("newsTitle").ToString().Substring(0,80) : newsCaseStudiesArray[0].Value("newsTitle").ToString();
+    		       title2 =  (newsCaseStudiesArray[1].Value("newsTitle").ToString().Length > 80) ? newsCaseStudiesArray[1].Value("newsTitle").ToString().Substring(0,80) : newsCaseStudiesArray[1].Value("newsTitle").ToString();
+    		       title3 =  (newsCaseStudiesArray[2].Value("newsTitle").ToString().Length > 80) ? newsCaseStudiesArray[2].Value("newsTitle").ToString().Substring(0,80) : newsCaseStudiesArray[2].Value("newsTitle").ToString();
+    		   
+    		       tempString1 =  StripHTML(newsCaseStudiesArray[0].Value("newsSummary").ToString());
+    		       tempString2 =  StripHTML(newsCaseStudiesArray[1].Value("newsSummary").ToString());
+    		       tempString3 =  StripHTML(newsCaseStudiesArray[2].Value("newsSummary").ToString());
+    		       
+    		       newsSummary1 = (tempString1.ToString().Length > 120) ? tempString1.Substring(0,120) : tempString1;
+    		       newsSummary2 = (tempString2.ToString().Length > 120) ? tempString2.Substring(0,120) : tempString2;
+    		       newsSummary3 = (tempString3.ToString().Length > 120) ? tempString3.Substring(0,120) : tempString3;
+    		     
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		       
+    		       
+    		       
+    
+    }
+   
+
+    
+@functions {
+ public static string StripHTML(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
+        }
+
+ public bool CheckServices(IEnumerable<IPublishedContent> list, string keyWord)
+            {
+                foreach (var item in list)
+                {
+
+                    if (item.Name.ToString() == keyWord)
+                    {
+                        return true;
+                    }
+
+                }
+
+                return false;
+            }
+ public static int CountWord(string content)
+{
+    string pattern = "[^\\w]";
+  
+    string[] words = null;
+    int i = 0;
+    int count = 0;
+  
+    words = Regex.Split(content, pattern, RegexOptions.IgnoreCase);
+    for (i = words.GetLowerBound(0); i <= words.GetUpperBound(0); i++) {
+        if (words[i].ToString() == string.Empty) {
+         count = count - 1;
+        }
+           
+        count = count + 1;
+    }
+    
+    return count;
+    
+  
+}
+ public static int EstimateTimeToRead(int number)
+{
+    
+    int wordPerMin = 250; 
+    int result = number/wordPerMin;
+    
+    if (result == 0 ) {
+        return 1;
+    }
+    
+    if (result > 10) {
+        result = result - 3;
+    } 
+    
+    return result;
+    
+  
+}
+}
+
+
+    <section class="section-our-office container">
+        <div class="row">
+        <div class="title-section">
+            <h4>Case Studies</h4>
+            <!--<a class="more" href="/case-studies/">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>-->
+        </div>
+        </div>
+        <!--Desktop-->
+        
+@if (!Request.Browser.IsMobileDevice)
+{    
+      tempString1 =  StripHTML(newsCaseStudiesArray[0].Value("newsSummary").ToString());
+      newsSummary1 = (tempString1.ToString().Length > 120) ? tempString1.Substring(0,120)+"..." : tempString1;
+     
+     <div class="office-item" id="case-studies-wrap">
+            <div class="row">
+                <div class="col-md-6 office-left" style="background-image:url('@newsCaseStudiesImageArray[0]')">
+                   <!--Item content -->
+                         <div class="item-content item-content-news" >
+                        <div class="title"><a href="@newsCaseStudiesArray[0].Url">@title1</a></div>
+                        <div class="description">
+                         @newsSummary1
+                        </div>
+                        <p class="time">@EstimateTimeToRead(CountWord(newsCaseStudiesArray[0].Value("newsContent").ToString())) minutes read</p>
+                       
+                        <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = newsCaseStudiesArray[0].Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList ) {
+                      var urlImage = ""; 
+                      
+                       if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                         if (author != authorList.Last()) {
+                              @author.Value("profileName")@space
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                        <a href="@newsCaseStudiesArray[0].Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                        <p class="datetime">@newsCaseStudiesArray[0].CreateDate.ToString("dd MMM yyyy", null)</p>
+                        	<ul class="tags-list">
+                                                    @foreach (var tag in newsCaseStudiesArray[0].Value<string[]>("newsHashtag")) {
+                                                      <li>#@tag</li>
+                                                    }
+                                                  
+                                        </ul>
+                </div>
+                   <!--End Item content-->
+                </div>
+                
+                <!--Right content-->
+                <div class="col-md-6 office-right">
+                    <div class="row">
+                        @if (newsCaseStudiesArray[1] != null) {
+                           tempString2 =  StripHTML(newsCaseStudiesArray[1].Value("newsSummary").ToString());
+                           newsSummary2 = (tempString2.ToString().Length > 120) ? tempString2.Substring(0,120)+"..." : tempString2;
+                         <!--Top right-->
+                        <div class="col-md-12 office-top" style="background-image:url('@newsCaseStudiesImageArray[1]')">
+                            <!--Item content -->
+                                 <div class="item-content item-content-news" >
+                                <div class="title"><a href="@newsCaseStudiesArray[1].Url">@title2</a></div>
+                                <div class="description">
+                                       @newsSummary2
+                                       
+                                </div>
+                                <p class="time">@EstimateTimeToRead(CountWord(newsCaseStudiesArray[1].Value("newsContent").ToString())) minutes read</p>
+                                
+                        <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = newsCaseStudiesArray[1].Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList ) {
+                      var urlImage = ""; 
+                      
+                       if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                         if (author != authorList.Last()) {
+                              @author.Value("profileName")@space
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                                <a href="@newsCaseStudiesArray[1].Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                                <p class="datetime">@newsCaseStudiesArray[1].CreateDate.ToString("dd MMM yyyy", null)</p>
+                               	<ul class="tags-list">
+                                                    @foreach (var tag1 in newsCaseStudiesArray[1].Value<string[]>("newsHashtag")) {
+                                                      <li>#@tag1</li>
+                                                    }
+                                                  
+                                        </ul>
+                            </div>
+                   <!--End Item content-->
+                        </div>
+                        <!--End Top Right-->
+                        }
+                       
+                        
+                         @if (newsCaseStudiesArray[2] != null) {
+                             tempString3 =  StripHTML(newsCaseStudiesArray[2].Value("newsSummary").ToString());
+                           newsSummary3 = (tempString3.ToString().Length > 120) ? tempString3.Substring(0,120)+"..." : tempString3;
+                        <!--Bottom Right-->
+                        <div class="col-md-12 office-bottom" style="background-image:url('@newsCaseStudiesImageArray[2]')">
+                                <!--Item content -->
+                                     <div class="item-content item-content-news" >
+                                    <div class="title"><a href="@newsCaseStudiesArray[2].Url">@title3</a></div>
+                                    <div class="description">
+                                     @newsSummary3
+                                    </div>
+                                    <p class="time">@EstimateTimeToRead(CountWord(newsCaseStudiesArray[2].Value("newsContent").ToString())) minutes read</p>
+                                   
+                        <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = newsCaseStudiesArray[2].Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList ) {
+                      var urlImage = ""; 
+                      
+                       if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                         if (author != authorList.Last()) {
+                              @author.Value("profileName")@space
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                                    <a href="@newsCaseStudiesArray[2].Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                                    <p class="datetime">@newsCaseStudiesArray[2].CreateDate.ToString("dd MMM yyyy", null)</p>
+                                    	<ul class="tags-list">
+                                                    @foreach (var tag2 in newsCaseStudiesArray[2].Value<string[]>("newsHashtag")) {
+                                                      <li>#@tag2</li>
+                                                    }
+                                                  
+                                        </ul>
+                                </div>
+                                <!--End Item content-->
+                        </div>
+                        <!--End bottom Right-->
+                        }
+                    </div>
+                </div>
+                <!--End Right content section-->
+            </div>
+        </div>
+} else {
+
+  <div class="sliderSlickWrap">
+       @foreach (var item  in  newsCaseStudies) {
+       
+                   var title ="";
+                
+    		       var newsSummary = "";
+    		       try {
+    		       title =  (item.Value("newsTitle").ToString().Length > 80) ? item.Value("newsTitle").ToString().Substring(0,80) : item.Value("newsTitle").ToString();
+    		   
+    		       newsSummary =  (item.Value("newsSummary").ToString().Length > 120) ? item.Value("newsSummary").ToString().Substring(0,120) : item.Value("newsSummary").ToString();
+    		           
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		       
+       
+          var itemImage = "";
+          if (item.HasValue("newsImage")) {
+            itemImage =  item.Value<IPublishedContent>("newsImage").Url;
+          }
+          
+                <!-- A Item  -->
+	<div class="item item-news" style="background-image: url('@itemImage');">
+
+		<div class="item-content news-content-box">
+			<div class="title">@title</div>
+			<div class="description">
+			@newsSummary
+			</div>
+		
+			<p class="datetime">@item.CreateDate.ToString("dd MMM yyyy", null)</p>
+		
+			
+                        <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = item.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList ) {
+                      var urlImage = ""; 
+                      
+                       if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                         if (author != authorList.Last()) {
+                              @author.Value("profileName")@space
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+			<a href="@item.Url" class="readmore">READ MORE  &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		</div>
+	</div>
+    <!-- End Item -->
+     
+          
+          
+          
+         
+    }
+    </div>
+}
+        
+       
+
+    </section>
+

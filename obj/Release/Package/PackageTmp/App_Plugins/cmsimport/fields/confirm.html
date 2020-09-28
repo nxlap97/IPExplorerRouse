@@ -1,0 +1,78 @@
+﻿<div>
+  <div class="umb-group-panel__header">
+    <localize key="wizardstepConfirm_datasourceOptions">Data options</localize>
+  </div>
+  <div class="cmsimportConfirmOptionSpacer">
+    <div class="umb-group-panel__content cmsimportConfirmOption" ng-repeat="c in model.value.datasourceOptions">
+      <div class="control-group umb-control-group ">
+
+        <div class="umb-el-wrap ">
+
+          <label class="control-label ng-binding" title="pageTitle">
+            {{c.caption}}
+          </label>
+          <div class="controls" noDirtyCheck>
+            {{c.value}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="umb-group-panel__header">
+    <localize key="wizardstepConfirm_importOptions">Import options</localize>
+  </div>
+  <div class="cmsimportConfirmOptionSpacer">
+    <div class="umb-group-panel__content cmsimportConfirmOption" ng-repeat="c in model.value.importOptions">
+      <div class="control-group umb-control-group ">
+
+        <div class="umb-el-wrap ">
+
+          <label class="control-label ng-binding" title="pageTitle">
+            {{c.caption}}
+          </label>
+          <div class="controls" noDirtyCheck>
+            {{c.value}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-repeat="m in model.value.mappingOptions">
+    <div class="umb-group-panel__header">
+      {{m.mappingTitle}}
+    </div>
+    <div class="cmsimportConfirmOptionSpacer">
+      <div class="umb-group-panel__content cmsimportConfirmOption" ng-repeat="c in m.mapping">
+        <div class="control-group umb-control-group ">
+
+          <div class="umb-el-wrap ">
+
+            <label class="control-label ng-binding" title="pageTitle">
+              {{c.caption}}
+            </label>
+            <div class="controls" noDirtyCheck>
+              {{c.value}}
+              <div ng-if="c.additionalOptions">
+                <div class="cmsimportAdvancedSettingsConfirmTitle">Additional settings</div>
+                <div class="umb-group-panel__content cmsimportConfirmOption" ng-repeat="a in c.additionalOptions">
+                  <div class="control-group umb-control-group ">
+                    <div class="umb-el-wrap ">
+
+                      <label class="control-label ng-binding" title="pageTitle">
+                        {{a.caption}}
+                      </label>
+                      <div class="controls" noDirtyCheck>
+                        {{a.value}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

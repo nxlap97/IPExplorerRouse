@@ -1,0 +1,17 @@
+{
+  "id": "706a9b01-42f6-4ba0-b1d6-3dd05848600c",
+  "name": "Send template email to admin",
+  "form": "f7f28b2e-23e8-4584-acd2-e111dd99cf3c",
+  "active": true,
+  "includeSensitiveData": "Undefined",
+  "workflowTypeId": "17c61629-d984-4e86-b43b-a8407b3efea9",
+  "executesOn": "Submitted",
+  "settings": {
+    "Email": "kclaes@rouse.com",
+    "SenderEmail": "",
+    "Subject": "The Form '{form_name}' was submitted",
+    "RazorViewFilePath": "Forms/Emails/Example-Template.cshtml",
+    "Attachment": ""
+  },
+  "sortOrder": 1
+}

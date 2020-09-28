@@ -1,0 +1,78 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+	var ourTeams = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+    .Children()
+    .Where(x => x.IsVisible()).Take(4);
+      var ourTeamsArray =  new  Umbraco.Core.Models.PublishedContent.IPublishedContent[5]  ;
+      var itemTeamCount = 0;
+}
+
+    <section class="our-people-member" id="china-our-team-section">
+        <div class="title-section">
+             <h4>Our Team in China</h4>
+                <a class="more" href="">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+          
+        </div>
+        <div class="container">
+        <div class="row">
+        @foreach (var itemTeam  in  ourTeams) {
+           try {
+           if (itemTeam.Value<IPublishedContent>("profileImage") != null) {
+                        if(itemTeam.HasValue("profileImage")) {
+          
+                            if (itemTeam.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImage") != null)
+                            {
+                                itemImage =  itemTeam.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImage").ToString();
+                            } else
+                            {
+                                itemImage =  itemTeam.Value<IPublishedContent>("profileImage").Url.ToString();
+                            }
+          }
+           } 
+        } catch (Exception e) {
+             itemImage = "";
+        }
+            <!-- A people item -->
+            <div class="col-md-6 col-lg-3 people-group">
+                <div class="people-item" style="background-image:url('@itemImage')">
+                    <div class="people-information">
+                          <div class="box">
+                        <a href="@itemTeam.Url"><h4 class="name">@itemTeam.Value("profileName")</h4></a>
+                        <p class="position">@itemTeam.Value("profilePositon")</p>
+                        <span class="email">@itemTeam.Value("profileEmail")</span> 
+                        <p class="phone">@itemTeam.Value("profilePhone")</p>
+                        <div class="social-network">
+                        <ul >
+                                                @if (itemTeam.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") != null) {
+                                                        foreach (var socialItem in itemTeam.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") ) {
+                                                               
+                                                               <li><a href=" @socialItem.Value("socialNetworkUrl")"><i class="@socialItem.Value("socialNetworkIcon")"></i> </a></li>
+                                                        }
+                                                    }
+                                                                  @{var officeLocation = "";
+                                                                try {
+                                                                    officeLocation = itemTeam.Value<IPublishedContent>("profileLocation").Name.ToString();
+                                                                } catch (Exception e) {
+                                                                
+                                                                   officeLocation  = "";
+                                                                
+                                                                }
+                                                                }
+                                                                
+                                                                  @if (officeLocation != "") {
+                                                                 <li><a href=""><i class="fas fa-map-marker"></i> @officeLocation</a></li>
+                                                                }
+                                    
+                                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End people item -->
+                 itemTeamCount++;
+    }
+        </div>
+        </div>
+    </section>

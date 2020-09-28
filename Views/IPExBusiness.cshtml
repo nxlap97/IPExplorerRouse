@@ -1,0 +1,645 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.IPexBusiness>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Rousesite_Umbraco.Utilities;
+@using System.Configuration;
+@{
+
+    Layout = "IPExMaster.cshtml";
+    ViewBag.Title = "Business";
+}
+
+@{
+    var user = Members.GetCurrentMember();
+    if (user == null)
+    {
+        Response.Redirect("/login");
+    }
+
+    var sectors = Model.Value<IEnumerable<IPublishedElement>>(ConfigurationManager.AppSettings["IPEx.Business.Sector.Node"]).ToList();
+    var businessRoles = Model.Value<IEnumerable<IPublishedElement>>(ConfigurationManager.AppSettings["IPEx.Business.Role.Node"]);
+    var businessFundeds = Model.Value<IEnumerable<IPublishedElement>>(ConfigurationManager.AppSettings["IPEx.Business.Funded.Node"]);
+    var businessGender = Model.Value<IEnumerable<IPublishedElement>>(ConfigurationManager.AppSettings["IPEx.Business.Gender.Node"]);
+    var businessRegion = Model.Value<IEnumerable<IPublishedElement>>(ConfigurationManager.AppSettings["IPEx.Business.Region.Node"]);
+    var index = 0;
+    var lstUpperCase = new List<string>() { "Creative", "ConsumerGoods", "ConsumerServices", "IT", "Commercial_ProfessionalServices", "Health", "Industrials", "Materials", "Energy", "Transport", "RealEstate", "Utilities", "" };
+    var lstToLower = new List<string>() { "creative", "consumerGoods", "consumerServices", "it", "commercial_ProfessionalServices", "health", "industrials", "materials", "energy", "transport", "realEstate", "utilities", "" };
+
+    var totalItems = (int)Math.Ceiling((double)sectors.Count() / 2);
+}
+
+<style>
+    .selector {
+        background-color: #007f9c;
+        color: white;
+    }
+</style>
+
+<div class="container-desktop">
+    <div class="d-flex">
+        <div class="container-custom content-business">
+            <div class="d-flex flex-column align-items-center w-100">
+                <header class="sticky-top w-100">
+                    <div class="m-auto">
+                        <div class="d-flex align-items-end position-relative logo">
+                            <div>
+                                <img width="50" src="~/Assets/IPEx/images/logo.svg">
+                            </div>
+                            <div class="nametag">
+                                <div>@Model.Value("iPEx_BusinessHeaderTitle")</div>
+                                <div></div>
+                            </div>
+                            <div class="progress position-absolute w-100">
+                                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 20%;"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <wrapper class="overflow-auto p-0">
+                    <div class="content">
+                        <div class="title">@Model.Value("iPEx_BusinessTitle")</div>
+                        <form>
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="validationCustom02">@Model.Value("iPEx_BusinessNameTitle")</label>
+                                    <input type="text" class="form-control txt-name" id="validationCustom02" value=""
+                                           style="max-width: 302px;" placeholder="Business Name" required>
+                                </div>
+                            </div>
+                            <div class="form-group p-0 list-collapse-custom-desktop">
+                                <div class="">
+                                    <div class="">
+                                        <label for="">
+                                            @Model.Value("iPEx_BusinessSectorTitle")
+                                        </label>
+                            </div>
+                                    <div> @Model.Value("IPEx_businessSectorSubTitle")</div>
+
+                                        <div class="accordion accordion-desktop" id="accordionExample">
+                                            @for (int i = 0; i < totalItems; i += 1)
+                                            {
+                                                var sector_one = sectors[i * 2];
+                                                var sector_two = sectors[i * 2 + 1];
+                                                var subsectors_One = Umbraco.Content(sector_one.Key)
+                                                                  .ChildrenOfType(ConfigurationManager.AppSettings["IPEx.Business.SubSector"])
+                                                                  .Where(x => x.IsVisible()).ToList();
+                                                var subsectors_two = Umbraco.Content(sector_two.Key)
+                                                                 .ChildrenOfType(ConfigurationManager.AppSettings["IPEx.Business.SubSector"])
+                                                                 .Where(x => x.IsVisible()).ToList();
+                                                <div class="collapse-group d-flex flex-wrap w-100 align-items-start">
+                                                    <div class="d-flex m-auto">
+                                                        <div>
+                                                            <div class="card-header sector" data-collapse="@(lstUpperCase[i*2])" data-id="@sector_one.Key">
+                                                                <h2 class="mb-0">
+                                                                    <button class="btn btn-block collapsed" type="button">
+                                                                        @sector_one.Value("IPex_BusinessSelectionTitle")
+                                                                    </button>
+                                                                </h2>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="card-header sector" data-collapse="@(lstUpperCase[i*2 +1])" data-id="@sector_two.Key">
+                                                                <h2 class="mb-0">
+                                                                    <button class="btn btn-block collapsed" type="button">
+                                                                        @sector_two.Value("IPex_BusinessSelectionTitle")
+                                                                    </button>
+                                                                </h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="@(lstUpperCase[i*2])" class="collapse">
+                                                        <div class="card-body">
+                                                            <div class="list-accordion">
+                                                                @if (i == 0)
+                                                                {
+                                                                    var length = (int)Math.Ceiling((double)subsectors_One.Count() / 2);
+                                                                    <div class="d-inline-flex">
+                                                                        @for (int j = 0; j < length; j += 1)
+                                                                        {
+                                                                            var itemTop = subsectors_One[j];
+                                                                            <div class="item sub-sector" data-id="@itemTop.Key" data-sector="@sector_one.Key">
+                                                                                @itemTop.Value("IPEx_SubSelectionTitle")
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                    <div class="d-inline-flex">
+                                                                        @for (int j = length; j < subsectors_One.Count(); j += 1)
+                                                                        {
+                                                                            var itemTop = subsectors_One[j];
+                                                                            <div class="item sub-sector" data-id="@itemTop.Key" data-sector="@sector_one.Key">
+                                                                                @itemTop.Value("IPEx_SubSelectionTitle")
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="d-inline-flex">
+                                                                        @foreach (var item in subsectors_One)
+                                                                        {
+
+                                                                            <div class="item sub-sector" data-id="@item.Key" data-sector="@sector_one.Key">
+                                                                                @item.Value("IPEx_SubSelectionTitle")
+                                                                            </div>
+
+                                                                        }
+                                                                    </div>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="@(lstUpperCase[i*2+1])" class="collapse">
+                                                        <div class="card-body">
+                                                            <div class="list-accordion">
+                                                                <div class="d-inline-flex">
+                                                                    @for (int j = 0; j < subsectors_two.Count(); j += 1)
+                                                                    {
+                                                                        var itemTop = subsectors_two[j];
+                                                                        <div class="item sub-sector" data-id="@itemTop.Key" data-sector="@sector_two.Key">
+                                                                            @itemTop.Value("IPEx_SubSelectionTitle")
+                                                                        </div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="accordion accordion-mobile" id="accordionExample">
+                                            @foreach (var sector in sectors)
+                                            {
+                                                var subsectors = Umbraco.Content(sector.Key)
+                                                                  .ChildrenOfType(ConfigurationManager.AppSettings["IPEx.Business.SubSector"])
+                                                                  .Where(x => x.IsVisible()).ToList();
+
+                                                <div class="card">
+                                                    <div class="card-header sector" id="headingCreative" data-id="@sector.Key">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-block collapsed" type="button">
+                                                                @sector.Value("IPex_BusinessSelectionTitle")
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapse@(lstUpperCase[index])" class="collapse">
+                                                        <div class="card-body">
+                                                            <div class="list-accordion">
+
+                                                                @if (index == 0)
+                                                                {
+                                                                    var length = (int)Math.Ceiling((double)subsectors.Count() / 2);
+                                                                    <div class="d-inline-flex">
+                                                                        @for (int i = 0; i < length; i += 1)
+                                                                        {
+                                                                            var itemTop = subsectors[i];
+                                                                            <div class="d-inline-flex">
+                                                                                <div class="item sub-sector" data-id="@itemTop.Key" data-sector="@sector.Key">
+                                                                                    @itemTop.Value("IPEx_SubSelectionTitle")
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                    <div class="d-inline-flex">
+                                                                        @for (int i = length; i < subsectors.Count(); i += 1)
+                                                                        {
+                                                                            var itemTop = subsectors[i];
+                                                                            <div class="d-inline-flex">
+                                                                                <div class="item sub-sector" data-id="@itemTop.Key" data-sector="@sector.Key">
+                                                                                    @itemTop.Value("IPEx_SubSelectionTitle")
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="d-inline-flex">
+                                                                        @foreach (var item in subsectors)
+                                                                        {
+
+                                                                            <div class="item sub-sector" data-id="@item.Key" data-sector="@sector.Key">
+                                                                                @item.Value("IPEx_SubSelectionTitle")
+                                                                            </div>
+
+                                                                        }
+                                                                    </div>
+                                                                }
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                index += 1;
+                                            }
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="">@Model.Value("IPEx_businessRoleTitle")</label>
+                                    <div class="list-accordion">
+                                        <div class="d-inline-flex">
+                                            @foreach (var role in businessRoles)
+                                            {
+                                                <div class="item role" data-id="@role.Key">
+                                                    @role.Value("IPex_BusinessSelectionTitle")
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="">@Model.Value("IPEx_businessFundedTitle")</label>
+                                    <div class="list-accordion">
+                                        <div class="d-inline-flex">
+                                            @foreach (var funded in businessFundeds)
+                                            {
+
+                                                //style="padding: 5px;"
+                                                <div class="item funded" data-id="@funded.Key">
+                                                    @funded.Value("IPex_BusinessSelectionTitle")
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="">@Model.Value("IPEx_businessTradingYearTitle")</label>
+                                    <input type="range" class="form-control-range business-year" />
+                                    <span class="d-flex justify-content-between" style="margin-top: 15px;">
+                                        <div style="padding-left: 10px;">0</div>
+                                        <div style="padding-left: 5px;">5</div>
+                                        <div>10+</div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="" style="margin-bottom: 20px;">@Model.Value("IPEx_businessGenderTitle")</label>
+                                    <div class="list-accordion">
+                                        <div class="d-inline-flex">
+                                            @foreach (var gender in businessGender)
+                                            {
+                                                <div class="item gender" data-id="@gender.Key">
+                                                    @gender.Value("IPex_BusinessSelectionTitle")
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="">
+                                    <label for="" style="margin-bottom: 20px;">@Model.Value("IPEx_businessRegionTitle")</label>
+                                    <div class="list-accordion">
+                                        <div class="d-inline-flex">
+                                            @foreach (var region in businessRegion)
+                                            {
+                                                //style="padding: 20px;"
+                                                <div class="item region" data-id="@region.Key">
+                                                    @region.Value("IPex_BusinessSelectionTitle")
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between btn-group-footer">
+                                <a class="btn btn-custom btn-custom-outline" href="@Model.Value("IPEx_BusinessBtnPreviousLink")">@Model.Value("IPEx_BusinessBtnPreviousTitle")</a>
+                                <a class="btn btn-custom btn-Allports btn-continute" href="javascript:void(0)">@Model.Value("IPEx_BusinessBtnContinueTitle")</a>
+                            </div>
+                        </form>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-index">
+        <div class="contact-name">Contact Us</div>
+        <div class="contact-mail d-flex align-items-center">
+            <i class="far fa-envelope mr-2"></i>ipexplorer@rouse.com
+        </div>
+    </footer>
+</div>
+
+
+
+@section Scripts{
+    <script>
+
+        $(window).resize(function () {
+
+            initData();
+        });
+        initData = function () {
+             var userData = {
+                userName: '@(user?.Value("userName"))',
+                businessSector: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Sector"]))',
+                businessSubSector: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.SubSector"]))',
+                businessRole: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Role"]))',
+                businessFunded: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Funded"]))',
+                businessGender: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Gender"]))',
+                businessRegion: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Region"]))',
+                businessName: '@(user?.Value(ConfigurationManager.AppSettings["IPEx.Members.Business.Name"]))',
+                businessTradingYear: '@(user?.Value(ConfigurationManager.AppSettings["IPEx.Members.Business.TradingYear"]))'
+           };
+
+
+
+           //$('.business-year').css('background', `linear-gradient(to right, #007f9c 0%, #007f9c ${year}%, #fff ${100 - year}%, #fff 100%)`);
+            $(".accordion-mobile .sector").each(function(index) {
+                if ($(this).data('id') == userData.businessSector) {
+                             $(this).addClass('active');
+                             $(this).next().addClass('show');
+                    }
+
+            });
+
+            $(".accordion-mobile .sub-sector").each(function (index) {
+                if ($(this).data('id') == userData.businessSubSector) {
+                    $(this).addClass('selector');
+                }
+            });
+
+            setTimeout(function () {
+                $(".accordion-desktop .sector").each(function (index) {
+                    if ($(this).data('id') == userData.businessSector) {
+                        $('#' + $(this).attr('data-collapse')).css({ display: 'block' });
+                        $(this).addClass('active');
+                        $(this).parents().parents('.collapse-group').addClass('active');
+                    }
+
+                });
+                $(".accordion-desktop .sub-sector").each(function (index) {
+                    if ($(this).data('id') == userData.businessSubSector) {
+                        $(this).addClass('selector');
+                    }
+                });
+            }, 500);
+        }
+
+        initDataCommon =  function(){
+              var userData = {
+                userName: '@(user?.Value("userName"))',
+                businessSector: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Sector"]))',
+                businessSubSector: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.SubSector"]))',
+                businessRole: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Role"]))',
+                businessFunded: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Funded"]))',
+                businessGender: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Gender"]))',
+                businessRegion: '@(user?.GetIdFromContentPickerAlias(ConfigurationManager.AppSettings["IPEx.Members.Business.Region"]))',
+                businessName: '@(user?.Value(ConfigurationManager.AppSettings["IPEx.Members.Business.Name"]))',
+                businessTradingYear: '@(user?.Value(ConfigurationManager.AppSettings["IPEx.Members.Business.TradingYear"]))'
+            };
+            $('.txt-name').val(userData.businessName);
+            var year = parseInt(userData.businessTradingYear) * 10;
+            $('.business-year').val(year);
+
+            $(".role").each(function (index) {
+                if ($(this).data('id') == userData.businessRole) {
+                    $(this).addClass('selector');
+                }
+            });
+            $(".funded").each(function (index) {
+                if ($(this).data('id') == userData.businessFunded) {
+                    $(this).addClass('selector');
+                }
+            });
+            $(".gender").each(function (index) {
+                if ($(this).data('id') == userData.businessGender) {
+                    $(this).addClass('selector');
+                }
+            });
+            $(".region").each(function (index) {
+                if ($(this).data('id') == userData.businessRegion) {
+                    $(this).addClass('selector');
+                }
+            });
+        }
+
+
+        initData();
+        initDataCommon();
+
+        $(document).ready(function () {
+
+            $('.business-year').change(function () {
+                var du = $('.business-year').val() % 10;
+                var value = 0;
+                if (du > 0) {
+                    $('.business-year').val(((parseInt($('.business-year').val() / 10))+value) * 10);
+                }
+                else {
+                    $('.business-year').val(parseInt(($('.business-year').val() / 10)) * 10);
+                }
+            });
+
+            $('.sector').click(function () {
+                if ($(this).hasClass('active')) {
+                    $('.sub-sector').removeClass('selector');
+                } else {
+                    $('.sector').removeClass('active');
+                    $('.collapse').removeClass('show');
+                    $('.sub-sector').removeClass('selector');
+                }
+            });
+
+            $('.sub-sector').click(function () {
+                if ($(this).hasClass('selector')) {
+                    $(this).removeClass('selector');
+                } else {
+                    $('.sub-sector').removeClass('selector');
+                    $(this).addClass('selector');
+                }
+            });
+
+            $('.role').click(function () {
+                if ($(this).hasClass('selector')) {
+                    $(this).removeClass('selector');
+                } else {
+                    $('.role').removeClass('selector');
+                    $(this).addClass('selector');
+                }
+
+            });
+            $('.funded').click(function () {
+                if ($(this).hasClass('selector')) {
+                    $(this).removeClass('selector');
+                } else {
+                    $('.funded').removeClass('selector');
+                    $(this).addClass('selector');
+                }
+            });
+            $('.gender').click(function () {
+                if ($(this).hasClass('selector')) {
+                    $(this).removeClass('selector');
+                } else {
+                    $('.gender').removeClass('selector');
+                    $(this).addClass('selector');
+                }
+            });
+            $('.region').click(function () {
+                if ($(this).hasClass('selector')) {
+                    $(this).removeClass('selector');
+                } else {
+                    $('.region').removeClass('selector');
+                    $(this).addClass('selector');
+                }
+            });
+
+            $('.btn-continute').click(function (e) {
+                e.preventDefault();
+                var sector = "";
+                var subSector = "";
+                var roleId = "";
+                var fundedId = "";
+                var genderId = "";
+                var regionId = "";
+                var notHasSubSector = true;
+                if ($(window).width() < 1366) {
+                    $(".accordion-mobile .sector").each(function (index) {
+                        if ($(this).hasClass('active')) {
+                            sector = $(this).data('id');
+                        }
+                    });
+
+                    $(".accordion-mobile .sub-sector").each(function (index) {
+                        if ($(this).hasClass('selector'))
+                            subSector = $(this).data('id');
+
+                        if ($(this).attr('data-sector') == sector) {
+                            notHasSubSector = false;
+                        }
+                    });
+                }
+
+                if ($(window).width() >= 1366) {
+                    $(".accordion-desktop .sector").each(function (index) {
+                        if ($(this).hasClass('active')) {
+                            sector = $(this).data('id');
+                        }
+                    });
+
+                    $(".accordion-desktop .sub-sector").each(function (index) {
+                        if ($(this).hasClass('selector'))
+                            subSector = $(this).data('id');
+                        if ($(this).attr('data-sector') == sector) {
+                            notHasSubSector = false;
+                        }
+
+                    });
+                }
+
+
+
+                if (sector == "") {
+                    window.alert('Sector and sub sector is required');
+                    return;
+                }
+
+                if (subSector == "" && !notHasSubSector) {
+                    window.alert('Sector and sub sector is required');
+                    return;
+                }
+
+                $(".role").each(function (index) {
+                    if ($(this).hasClass('selector'))
+                        roleId = $(this).data('id');
+                });
+                $(".funded").each(function (index) {
+                    if ($(this).hasClass('selector'))
+                        fundedId = $(this).data('id');
+                });
+                $(".gender").each(function (index) {
+                    if ($(this).hasClass('selector'))
+                        genderId = $(this).data('id');
+                });
+                $(".region").each(function (index) {
+                    if ($(this).hasClass('selector'))
+                        regionId = $(this).data('id');
+                });
+
+                var year = parseInt(parseInt($('.business-year').val()) / 10);
+                var postData = {
+                    "@ConfigurationManager.AppSettings["IPEx.Members.Business.Name"]": $('.txt-name').val(),
+                    "@ConfigurationManager.AppSettings["IPEx.Members.Business.Sector"]": sector,
+                    "@ConfigurationManager.AppSettings["IPEx.Members.Business.SubSector"]": subSector,
+                    "@ConfigurationManager.AppSettings["IPEx.Members.Business.Role"]": roleId,
+                    "@ConfigurationManager.AppSettings["IPEx.Members.Business.Funded"]": fundedId,
+                    "@ConfigurationManager.AppSettings["IPEx.Members.Business.Gender"]": genderId,
+                    "@ConfigurationManager.AppSettings["IPEx.Members.Business.Region"]": regionId,
+                    "@ConfigurationManager.AppSettings["IPEx.Members.Business.TradingYear"]": year
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("BusinessSaveData", "IPExplorer")',
+                    data: { dataJson: JSON.stringify(postData) },
+                    success: function (result) {
+                        if (result.status)
+                            window.location.href = '@Model.Value("IPEx_BusinessBtnContiunueLink")';
+                    },
+                    dataType: "JSON"
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            resizeWindow()
+        })
+        $(window).resize(function () {
+            resizeWindow()
+        });
+        function resizeWindow() {
+            if ($(window).width() < 1366) {
+                $('.list-collapse-custom-desktop').find('.collapse').css({ "margin-left": 0 })
+            }
+            if ($(window).width() >= 1366) {
+                $('.card-header').removeClass('active')
+                $('.card-header').parents('.collapse-group').removeClass('active')
+                $('.card-header').parents('.collapse-group').children('.collapse').hide()
+                $('.list-collapse-custom-desktop').find('.collapse').css({ "margin-left": $('header .logo').offset().left })
+            }
+        }
+        $('.card-header').on('click', function () {
+            var $this = $(this)
+            if ($this.parents('.accordion').hasClass('accordion-desktop')) {
+                // desktop
+                if ($this.hasClass('active')) {
+                    $this.removeClass('active')
+                    $this.parents('.collapse-group').removeClass('active')
+                    $this.parents('.collapse-group').children('.collapse').hide()
+                } else {
+                    $this.addClass('active')
+                    $this.parents('.collapse-group').addClass('active')
+                    $('.card-header').not($this).removeClass('active')
+                }
+                $('.collapse-group.active').children('.collapse').each(function (index, item) {
+                    if ($this.attr("data-collapse") === $(item).attr("id")) {
+
+                        $(item).fadeIn(400)
+                    } else {
+                        $(item).hide()
+                    }
+                })
+            }
+            if ($this.parents('.accordion').hasClass('accordion-mobile')) {
+                // mobile
+                if ($this.hasClass('active')) {
+                    $this.removeClass('active')
+                    $this.parent('.card').children('.collapse').hide();
+                } else {
+                    $this.addClass('active')
+                    $('.card-header').not($this).removeClass('active')
+                    $('.card-header').not($this).parent('.card').children('.collapse').hide();
+                    $this.parent('.card').children('.collapse').fadeIn(400)
+                }
+            }
+        })
+    </script>
+}

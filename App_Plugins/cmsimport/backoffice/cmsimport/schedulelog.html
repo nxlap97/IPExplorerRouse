@@ -1,0 +1,69 @@
+﻿<div class="umb-panel" ng-controller="cmsimport.ScheduleLogController" ng-cloak>
+  <umb-load-indicator ng-if="!loaded"></umb-load-indicator>
+  <form name="frm" ng-show="loaded" novalidate
+        val-form-manager>
+    <umb-editor-view>
+
+      <umb-editor-header name="model.pageName"
+                         name-locked="true"
+                         hide-icon="true"
+                         hide-description="true"
+                         hide-alias="true">
+      </umb-editor-header>
+
+      <umb-editor-container>
+        <div class="umb-expansion-panel">
+          <div class="umb-expansion-panel__content">
+              <div ng-if="model.hasRecords">
+                <div class="umb-table">
+                  <div class="umb-table-head">
+                    <div class="umb-table-row">
+                      <div class="umb-table-cell">&nbsp;</div>
+                        <div class="umb-table-cell">
+                          <localize key="cmsimportScheduledTaskLog_overviewDate"></localize>
+                        </div>
+                        <div class="umb-table-cell">
+                          <localize key="cmsimportScheduledTaskLog_overviewDuration"></localize>
+                        </div>
+                        <div class="umb-table-cell">
+                          <localize key="cmsimportScheduledTaskLog_overviewSuccess"></localize>
+                        </div>
+                        <div class="umb-table-cell">
+                          <localize key="cmsimportScheduledTaskLog_overviewErrors"></localize>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="umb-table-body">
+                    <div class="umb-table-row" ng-repeat="entry in model.data">
+                      <div class="umb-table-cell">&nbsp;</div>
+                      <div class="umb-table-cell"> {{entry.executed}} </div>
+                      <div class="umb-table-cell"> {{entry.duration}} </div>
+                      <div class="umb-table-cell"> {{entry.status}}</div>
+                      <div class="umb-table-cell"> {{entry.errors}}</div>
+                    </div>
+                    <div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+              <umb-empty-state ng-if="model.hasRecords ===false "
+                               position="center">
+                <localize key="cmsimportScheduledTaskLog_overviewNoResult"></localize>
+              </umb-empty-state>
+          </div>
+        </div>
+      </umb-editor-container>
+
+      <umb-editor-footer>
+        <umb-editor-footer-content-right>
+          <a class="btn" ng-click="clearLog()"><localize key="cmsimportScheduledTaskLog_clearLog">Clear</localize></a>
+        </umb-editor-footer-content-right>
+      </umb-editor-footer>
+
+
+    </umb-editor-view>
+  </form>
+</div>

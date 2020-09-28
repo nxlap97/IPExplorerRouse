@@ -1,0 +1,199 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Products>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	  var bannerImage = "";
+    if (Model.Value<IPublishedContent>("productImageBanner") != null ) {
+        bannerImage = Model.Value<IPublishedContent>("productImageBanner").Url;
+    } 
+    
+    IPublishedContent ok  = Model.Value<IPublishedContent>("productImageBanner");
+    
+}
+ 
+ <section class="top-banner" id="top-banner-product" style="background-image:url('@bannerImage')">
+        <div class="content-box">
+            <h3 class="title">Nisl imperdiet diam</h3>
+            <p class="description">Etiam facilisis ligula nec velit posuere egestas. Nunc dictum lectus sem, vel dignissim purus luctus quis. Vestibulum et ligula suscipit, hendrerit erat a, ultricies velit. Praesent convallis in lorem nec blandit. Phasellus a porta tellus. Suspendisse sagittis metus enim. Sed molestie libero id sem pulvinar, quis euismod mauris suscipit.</p>
+            <a class="btn btn-primary" href="">Learn More</a>
+
+        </div>
+ </section>
+ 
+ <section class="container section-content-text" >
+     <div class="row">
+     <div class="section-break-title break-small">
+     	<h2 class="title">Rouse Tools</h2>	
+     </div>
+       
+            <div class="wrap-content-page">
+                 <div class="product-content-top">
+                     Pellentesque tincidunt tristique neque, eget venenatis enim gravida quis. Fusce at egestas libero. Cras convallis egestas ullamcorper. Suspendisse sed ultricies nisl, pharetra rutrum mauris. Vestibulum at massa dui. Morbi et purus velit. Etiam tristique, justo eu condimentum efficitur, purus velit facilisis sem, id fringilla tortor quam quis dolor. Praesent ultricies dignissim ex, at volutpat sapien ullamcorper rhoncus. Curabitur quam velit, ullamcorper ut congue eget, convallis et velit. Donec placerat, magna eu venenatis tempus, dui sapien aliquam libero, sit amet maximus erat massa quis nisi. Integer pharetra auctor arcu, non tincidunt dui fermentum ut. Nullam interdum sapien id mauris dapibus, a pharetra purus rhoncus. Nullam viverra iaculis tristique. Donec quis mauris ipsum. Nunc vehicula magna at erat tristique rutrum.
+                </div>
+            </div>
+    </div>
+</section>
+
+<section class="group-image-section container " id="product-tool-wrap">	
+	
+    <div class="contanier">
+	<div class="row">
+	 <!--Begin Item  -->
+	<div class="col-xs-12 col-md-6 col-lg-4 item item-news" style="background-image:url('/media/mquojz5u/detail.png')">
+	    
+		<div class="item-content item-content-news">
+		     <div class="product-logo"> 
+	           <img src="/media/oanjebmw/product-icon.png">
+	         </div>
+	    
+			<div class="title">Casely</div>
+			<div class="description">
+		    	Maecenas interdum lorem eleifend orci aliquam mollis. Aliquam non rhoncus magna. Suspendisse aliquet tincidunt enim, ut commodo elit feugiat et. Maecenas nec enim quis diam faucibus tristique. Nam fermentum, ipsum in suscipit pharetra, mi odio aliquet neque, non iaculis augue elit et libero. Phasellus tempor faucibus faucibus. Sed eu mauris sem. Etiam et varius felis. Donec et libero vitae mauris consectetur egestas. Fusce aliquet, augue non efficitur sodales, turpis nisl consectetur sem, at rutrum lectus libero quis elit. Suspendisse cursus laoreet sapien, in lobortis justo posuere vitae. Aliquam commodo posuere tellus in lacinia. Nullam ac eleifend odio. Donec aliquam semper tellus a condimentum.
+			</div>
+			
+			<a href="" class="readmore">LEARN MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		
+		</div>
+	</div>
+    <!-- End Item -->
+    
+     <!--Begin Item  -->
+	<div class="col-xs-12 col-md-6 col-lg-4 item item-news" style="background-image:url('/media/mquojz5u/detail.png')">
+		<div class="item-content item-content-news">
+		    <div class="product-logo"> 
+	           <img src="/media/oanjebmw/product-icon.png">
+	         </div>
+			<div class="title">Chorus</div>
+			<div class="description">
+		    	Maecenas interdum lorem eleifend orci aliquam mollis. Aliquam non rhoncus magna. Suspendisse aliquet tincidunt enim, ut commodo elit feugiat et. Maecenas nec enim quis diam faucibus tristique. Nam fermentum, ipsum in suscipit pharetra, mi odio aliquet neque, non iaculis augue elit et libero. Phasellus tempor faucibus faucibus. Sed eu mauris sem. Etiam et varius felis. Donec et libero vitae mauris consectetur egestas. Fusce aliquet, augue non efficitur sodales, turpis nisl consectetur sem, at rutrum lectus libero quis elit. Suspendisse cursus laoreet sapien, in lobortis justo posuere vitae. Aliquam commodo posuere tellus in lacinia. Nullam ac eleifend odio. Donec aliquam semper tellus a condimentum.
+			</div>
+			
+			<a href="" class="readmore">LEARN MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		
+		</div>
+	</div>
+    <!-- End Item -->
+    
+     <!--Begin Item  -->
+	<div class="col-xs-12 col-md-6 col-lg-4 item item-news" style="background-image:url('/media/mquojz5u/detail.png')">
+	   
+		<div class="item-content item-content-news">
+		    <div class="product-logo"> 
+	           <img src="/media/oanjebmw/product-icon.png">
+	         </div>
+			<div class="title">Ciela</div>
+			<div class="description">
+		    	Maecenas interdum lorem eleifend orci aliquam mollis. Aliquam non rhoncus magna. Suspendisse aliquet tincidunt enim, ut commodo elit feugiat et. Maecenas nec enim quis diam faucibus tristique. Nam fermentum, ipsum in suscipit pharetra, mi odio aliquet neque, non iaculis augue elit et libero. Phasellus tempor faucibus faucibus. Sed eu mauris sem. Etiam et varius felis. Donec et libero vitae mauris consectetur egestas. Fusce aliquet, augue non efficitur sodales, turpis nisl consectetur sem, at rutrum lectus libero quis elit. Suspendisse cursus laoreet sapien, in lobortis justo posuere vitae. Aliquam commodo posuere tellus in lacinia. Nullam ac eleifend odio. Donec aliquam semper tellus a condimentum.
+			</div>
+			
+			<a href="" class="readmore">LEARN MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		
+		</div>
+	</div>
+    <!-- End Item -->
+    
+     <!--Begin Item  -->
+	<div class="col-xs-12 col-md-6 col-lg-4 item item-news" style="background-image:url('/media/mquojz5u/detail.png')">
+		<div class="item-content item-content-news">
+		    <div class="product-logo"> 
+	           <img src="/media/oanjebmw/product-icon.png">
+	         </div>
+			<div class="title">IP Insights</div>
+			<div class="description">
+		    	Maecenas interdum lorem eleifend orci aliquam mollis. Aliquam non rhoncus magna. Suspendisse aliquet tincidunt enim, ut commodo elit feugiat et. Maecenas nec enim quis diam faucibus tristique. Nam fermentum, ipsum in suscipit pharetra, mi odio aliquet neque, non iaculis augue elit et libero. Phasellus tempor faucibus faucibus. Sed eu mauris sem. Etiam et varius felis. Donec et libero vitae mauris consectetur egestas. Fusce aliquet, augue non efficitur sodales, turpis nisl consectetur sem, at rutrum lectus libero quis elit. Suspendisse cursus laoreet sapien, in lobortis justo posuere vitae. Aliquam commodo posuere tellus in lacinia. Nullam ac eleifend odio. Donec aliquam semper tellus a condimentum.
+			</div>
+			
+			<a href="" class="readmore">LEARN MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		
+		</div>
+	</div>
+    <!-- End Item -->
+    
+     <!--Begin Item  -->
+	<div class="col-xs-12 col-md-6 col-lg-4 item item-news" style="background-image:url('/media/mquojz5u/detail.png')">
+		<div class="item-content item-content-news">
+		    <div class="product-logo"> 
+	           <img src="/media/oanjebmw/product-icon.png">
+	         </div>
+			<div class="title">Patempo</div>
+			<div class="description">
+		    	Maecenas interdum lorem eleifend orci aliquam mollis. Aliquam non rhoncus magna. Suspendisse aliquet tincidunt enim, ut commodo elit feugiat et. Maecenas nec enim quis diam faucibus tristique. Nam fermentum, ipsum in suscipit pharetra, mi odio aliquet neque, non iaculis augue elit et libero. Phasellus tempor faucibus faucibus. Sed eu mauris sem. Etiam et varius felis. Donec et libero vitae mauris consectetur egestas. Fusce aliquet, augue non efficitur sodales, turpis nisl consectetur sem, at rutrum lectus libero quis elit. Suspendisse cursus laoreet sapien, in lobortis justo posuere vitae. Aliquam commodo posuere tellus in lacinia. Nullam ac eleifend odio. Donec aliquam semper tellus a condimentum.
+			</div>
+			
+			<a href="" class="readmore">LEARN MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		
+		</div>
+	</div>
+    <!-- End Item -->
+</div>
+   
+	</div>	
+	
+</section>
+
+
+<section id="product-right-tool">
+    <div class="content">
+        <h3>Find the Right Tool for You</h3>
+        <div class="description container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>IP Owners</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis risus mi. Ut placerat quam lectus. Curabitur dictum velit non lacus ornare tempor. Nullam quis augue in leo aliquet malesuada sit amet eget eros. Sed laoreet posuere velit sit amet varius. Nulla eget purus non erat fringilla sodales vel a nulla. Cras sit amet tempus risus. Fusce dignissim blandit justo, eget elementum risus tristique a. Nunc fringilla lacus lacus, sit amet accumsan est pulvinar non. Praesent tristique enim lorem. Phasellus a auctor lacus. Proin vitae accumsan nunc.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Counsel</h4>
+                    <p>Duis mauris augue, efficitur eu arcu sit amet, posuere dignissim neque. Aenean enim sem, pharetra et magna sit amet, luctus aliquet nibh. Curabitur auctor leo et libero consectetur gravida. Morbi gravida et sem dictum varius. Proin eget viverra sem, non euismod est. Maecenas facilisis urna in lectus aliquet venenatis. Etiam et metus nec mauris condimentum vulputate. Aenean volutpat odio quis egestas tempus. Fusce tempor vulputate luctus. Pellentesque vulputate viverra ex eget elementum. Aliquam ut feugiat felis.</p>
+                </div>
+            </div>
+        </div>
+        <div class="learn-more"><a >Learn More</a> </div>
+    </div>
+</section>
+
+ <section class="container section-content-text  product-question-wrap" >
+     <div class="row">
+   
+     <div class="section-break-title break-small">
+     	<h2 class="title">Questions</h2>	
+     </div>
+     <div class="description container ">
+            <p class="top-description">We have answers to common questions regarding our tools.</p>
+            <div class="row">
+             
+                <div class="col-md-6">
+                    <h4>Efficitur suspendisse non?</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis risus mi. Ut placerat quam lectus. Curabitur dictum velit non lacus ornare tempor. Nullam quis augue in leo aliquet malesuada sit amet eget eros. Sed laoreet posuere velit sit amet varius. Nulla eget purus non erat fringilla sodales vel a nulla. Cras sit amet tempus risus. Fusce dignissim blandit justo, eget elementum risus tristique a. Nunc fringilla lacus lacus, sit amet accumsan est pulvinar non. Praesent tristique enim lorem. Phasellus a auctor lacus. Proin vitae accumsan nunc.
+                    </p>
+                    
+                     <h4>Curabitur nec?</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis risus mi. Ut placerat quam lectus. Curabitur dictum velit non lacus ornare tempor. Nullam quis augue in leo aliquet malesuada sit amet eget eros. Sed laoreet posuere velit sit amet varius. Nulla eget purus non erat fringilla sodales vel a nulla. Cras sit amet tempus risus. Fusce dignissim blandit justo, eget elementum risus tristique a. Nunc fringilla lacus lacus, sit amet accumsan est pulvinar non. Praesent tristique enim lorem. Phasellus a auctor lacus. Proin vitae accumsan nunc.
+                    </p>
+                    
+                </div>
+                <div class="col-md-6">
+                    <h4>Maximus sit vivamus?</h4>
+                    <p>Duis mauris augue, efficitur eu arcu sit amet, posuere dignissim neque. Aenean enim sem, pharetra et magna sit amet, luctus aliquet nibh. Curabitur auctor leo et libero consectetur gravida. Morbi gravida et sem dictum varius. Proin eget viverra sem, non euismod est. Maecenas facilisis urna in lectus aliquet venenatis. Etiam et metus nec mauris condimentum vulputate. Aenean volutpat odio quis egestas tempus. Fusce tempor vulputate luctus. Pellentesque vulputate viverra ex eget elementum. Aliquam ut feugiat felis.</p>
+                    <h4>Ultrices laoreet morbi?</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis risus mi. Ut placerat quam lectus. Curabitur dictum velit non lacus ornare tempor. Nullam quis augue in leo aliquet malesuada sit amet eget eros. Sed laoreet posuere velit sit amet varius. Nulla eget purus non erat fringilla sodales vel a nulla. Cras sit amet tempus risus. Fusce dignissim blandit justo, eget elementum risus tristique a. Nunc fringilla lacus lacus, sit amet accumsan est pulvinar non. Praesent tristique enim lorem. Phasellus a auctor lacus. Proin vitae accumsan nunc.
+                    </p>
+                </div>
+            </div>
+        </div>   
+        
+          <div class="learn-more"><a >See all FAQs</a> </div>
+                
+     </div>
+    
+</section>
+
+<div class="banner-howcan" id="product-banner-bottom">
+	<h4 class="title">Legal Tools at your fingertips</h4>
+	<p class="description"><a href=""> IP Tools, Litigation Analysis, and Brand Protection from Rouse</p>
+	 <div class="learn-more"><a >Learn More</a> </div>
+</div>

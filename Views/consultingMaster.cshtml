@@ -1,0 +1,67 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+	Layout = null;
+	var domain = HttpContext.Current.Request.Url.Host;
+	 var host ="";
+	if (domain == "sitetest.rouse.com") {
+	       host = "https://" + domain;
+	} else {
+	        host = "http://" + domain;
+	}
+  
+}
+
+@* the fun starts here *@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rouse - @Model.Name</title>
+    <meta name="description" content="">
+    <meta name="title" content="">
+    <meta name="author" content="Rouse">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Rouse">
+    <link rel="icon" type="image/png" href="../../media/favicon.ico">
+     <link rel="stylesheet" href="@host//css/bootstrap.min.css">
+    <script src="@host/scripts/jquery-2.2.4.min.js"></script>
+     <script src="@host/scripts/jquery.validate.min.js"></script>
+    <script src="@host/scripts/jquery.validate.unobtrusive.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="@host/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="@host/css/slick-theme.css"/>
+    <link rel="stylesheet" href="@host/css/fontawesome.all.css">
+    <link href="@host/css/theme.css" rel="stylesheet">
+    <link href="@host/css/page_style.css" rel="stylesheet">
+    <link href="@host/css/responsive.css" rel="stylesheet">
+
+
+</head>
+<body>
+   
+    @Html.Partial("consultingheader")
+
+    <!-- Content -->
+    <main class="home">
+        <div class="wrap-home">
+            @RenderBody()
+
+        </div>
+
+    </main>
+    <!-- Footer -->
+    @Html.Partial("consultingfooter")
+
+    <!-- Scripts -->
+   
+    <script type="text/javascript" src="@host/scripts/slick.js"></script>
+    <script src="@host/scripts/owl.carousel.js"></script>
+    <script src="@host/scripts/popper.min.js"></script>
+    <script src="@host/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="@host/scripts/jquery.jInvertScroll.js"></script>
+    <script src="@host/scripts/slider.js"></script>
+    <script src="@host/scripts/app.js"></script>
+</body>
+</html>

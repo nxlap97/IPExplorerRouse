@@ -1,0 +1,255 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using System.Text.RegularExpressions;
+@{
+   	 var imageNews = "";
+   	 var imageNewsMobile = "";
+	  try {
+                            if (Model.Value<IPublishedContent>("newsImage") != null)
+                            {
+
+                                if (Model.Value<IPublishedContent>("newsImage").GetCropUrl("InsightsItem") != null)
+                                {
+                                    imageNews = Model.Value<IPublishedContent>("newsImage").GetCropUrl("InsightsItem").ToString();
+                                }
+                                else
+                                {
+                                    imageNews = Model.Value<IPublishedContent>("newsImage").Url.ToString();
+                                }
+                                imageNewsMobile =  Model.Value<IPublishedContent>("newsImage").GetCropUrl(height: 400, width: 400);
+                            }
+
+                        } catch (Exception e)
+                        {
+                            imageNews = "";
+
+                        }
+      var alpha = "@";
+      	 var space = ", ";
+	 IEnumerable<IPublishedElement> authorList; 
+	  var countAuthor = 0; 
+	  
+	  var publishedDate = "";
+	    
+		    publishedDate= (Model.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) != "01 Jan 0001") ? Model.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) : Model.CreateDate.ToString("dd MMM yyyy", null);
+			
+}
+
+
+@functions {
+ public static int CountWord(string content)
+{
+    string pattern = "[^\\w]";
+  
+    string[] words = null;
+    int i = 0;
+    int count = 0;
+  
+    words = Regex.Split(content, pattern, RegexOptions.IgnoreCase);
+    for (i = words.GetLowerBound(0); i <= words.GetUpperBound(0); i++) {
+        if (words[i].ToString() == string.Empty) {
+         count = count - 1;
+        }
+           
+        count = count + 1;
+    }
+    
+    return count;
+    
+  
+}
+
+public static string StripHTML(string input)
+{
+   return Regex.Replace(input, "<.*?>", String.Empty);
+}
+
+
+ public static string EstimateTimeToRead(int number)
+{
+    
+    int wordPerMin = 250; 
+    int result = number/wordPerMin;
+    
+    if (result == 0 ) {
+        result =  1;
+    }
+    
+    if (result > 10) {
+        result = result - 3;
+    } 
+    
+    if (result > 1) {
+        return result + " minute read";
+    
+    } else {
+         return result + " minute read";
+    }
+}
+}
+
+    @if (!Request.Browser.IsMobileDevice)
+{
+  
+      <!-- A Item  -->
+	<div class="col-md-6 item" style="background-image: url('@imageNews');">
+
+		<div class="item-content">
+		     @{
+    		       var title ="";
+    		       var newsSummary = "";
+    		       var tempString = "";
+    		       try {
+    		           title =  (Model.Value("newsTitle").ToString().Length > 80) ? Model.Value("newsTitle").ToString().Substring(0,80) : Model.Value("newsTitle").ToString();
+    		           
+    		           tempString =  StripHTML(Model.Value("newsSummary").ToString());
+    		           
+    		           newsSummary =  (tempString.ToString().Length > 120) ? tempString.Substring(0,120) : tempString;
+    		           
+    		      
+    		      
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		      
+    		    }
+    		    
+				<div class="title"><a href="@Model.Url">@title</a></div>
+			   @if (Model.Value("newsSummary") != "" && Model.Value("newsSummary") != null && Model.Value("newsSummary").ToString().Length > 0){
+                    <div class="description">
+                          @newsSummary
+                    </div>
+                    }  
+			<p class="time"> @EstimateTimeToRead(CountWord(Model.Value("newsContent").ToString()))</p>
+		<p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = Model.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(3) ) {
+                      var urlImage = ""; 
+                      
+                       if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                         if (author != authorList.First()) {
+                             @space @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+			<a href="@Model.Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		 
+			<p class="datetime">@publishedDate</p>
+		<ul class="tags-list">
+                                                  
+                                                     @foreach (var tag in Model.Value<string[]>("newsHashtag").Take(4))
+                        {
+                            string[] words = tag.Split(' ');
+                            int number = words.Length;
+                            List<string> wordLast = new List<string>();
+                            for (int i = 0; i < number; i++)
+                            {
+                                string a = words[i].Substring(0, 1).ToUpper() + words[i].Substring(1) + "+";
+                                wordLast.Add(a);
+                            }
+                            string combindedString = string.Join(Environment.NewLine, wordLast);
+                            <li><a href="/insights?tag=@(combindedString.Remove(combindedString.Length-1,1))">#@tag.ToLower() </a></li>
+                        }
+                                        </ul>
+		</div>
+	</div>
+    <!-- End Item -->
+    
+  
+  
+  
+} else {
+     
+       <div class="item  news-item">
+            <!-- A Item  -->
+	<div class="item" style="background-image: url('@imageNewsMobile');">
+    @{
+    		       var title ="";
+    		       var newsSummary = "";
+    		       var tempString = "";
+    		       try {
+    		           title =  (Model.Value("newsTitle").ToString().Length > 80) ? Model.Value("newsTitle").ToString().Substring(0,80) : Model.Value("newsTitle").ToString();
+    		           
+    		           tempString =  StripHTML(Model.Value("newsSummary").ToString());
+    		           
+    		           newsSummary =  (tempString.ToString().Length > 120) ? tempString.Substring(0,120) : tempString;
+    		           
+    		      
+    		      
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		      
+    		    }
+		<div class="item-content">
+				<div class="title"><a href="@Model.Url">@title</a></div>
+		   @if (Model.Value("newsSummary") != "" && Model.Value("newsSummary") != null && Model.Value("newsSummary").ToString().Length > 0){
+                    <div class="description">
+                        @newsSummary
+                    </div>
+                    }  
+                    
+                    
+		    <p class="datetime">@publishedDate</p>
+		    	<p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = Model.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(3) ) {
+                      var urlImage = ""; 
+                      
+                       if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                         if (author != authorList.First()) {
+                             @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName") 
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+		
+			
+			<a href="@Model.Url" class="readmore">READ MORE &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		
+	
+		</div>
+	</div>
+    <!-- End Item -->
+      </div>
+     
+     
+     
+     
+}
+
+  

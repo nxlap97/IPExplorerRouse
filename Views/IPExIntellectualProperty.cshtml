@@ -1,0 +1,280 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.IPexIntellectualProperty>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Rousesite_Umbraco.Utilities;
+@using System.Configuration;
+@{
+    Layout = "IPExMaster.cshtml";
+    ViewBag.Title = "Intellectual Property";
+    var user = Members.GetCurrentMember();
+    if (user == null)
+    {
+        //Response.Redirect(Model.Value("IPSignInLink").ToString());
+        Response.Redirect("/login");
+    }
+    var random = new Random(10000);
+    var value = random.Next(int.MaxValue);
+
+
+    var selection = Model.Value<IEnumerable<IPublishedElement>>("IPEx_IPNode").ToList();
+
+    var patent = selection[0];
+    var trademark = selection[1];
+    var design = selection[2];
+    var copyRight = selection[3];
+}
+
+
+<div class="container-desktop">
+    <div class="d-flex">
+        <div class="container-custom content-ip ip">
+            <div class="d-flex flex-column align-items-center w-100">
+                <header class="sticky-top w-100">
+                    <div class="m-auto">
+                        <div class="d-flex align-items-end position-relative logo">
+                            <div>
+                                <img width="50" src="~/Assets/IPEx/images/logo.svg">
+                            </div>
+                            <div class="nametag">
+                                <div>@Model.Value("IPEx_IPHeaderTitle")</div>
+                                <div></div>
+                            </div>
+                            <div class="progress position-absolute w-100">
+                                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 38%;"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <wrapper class="overflow-auto h-100">
+                    <div class="content">
+                        @Model.Value("IPEx_IPContent")
+                        <div class="animation-box">
+                            <form class="needs-validation" action="" novalidate
+                                  style="display: none; padding: 60px 0 30px 0">
+                                <div class="form-group text-left">
+                                    <div class="">
+                                        <input type="text" class="form-control txt-prefix-number-1 txt-prefix-number" id="validationCustom02" value=""
+                                               placeholder="Prefix / Number" required>
+                                    </div>
+                                    <div class="">
+                                        <input type="text" class="form-control txt-prefix-number-2 txt-prefix-number" id="validationCustom03" value=""
+                                               placeholder="Prefix / Number" required>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-circle btn-addRow">
+                                        <span><i class="fas fa-plus"></i></span>
+                                        <span>Add Row</span>
+                                    </a>
+                                    <a class="btn btn-circle btn-save-prefix-number" href="javascript:void(0)">
+                                        <span><i class="fas fa-save"></i></span>
+                                        <span>Save</span>
+                                    </a>
+                                </div>
+                            </form>
+
+                            <div class="animation-box--item" data-id="@patent.Key"
+                                 style="background-color: #5B2080; top: 0px; left: 0px;">
+                                <div class="">
+                                    <span><i class="fas fa-lightbulb"></i></span>
+                                    <div class="name">@patent.Value("IPEx_IPSelectionTitle")</div>
+                                    <button data-tooltip="1"
+                                            class="btn rounded-circle animation-box--tooltip-icon d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="animation-box--item" data-id="@trademark.Key"
+                                 style="background-color: #7A58A1; top: 0px; left: 160px;">
+                                <div class="">
+                                    <span><i class="fas fa-trademark"></i></span>
+                                    <div class="name">@trademark.Value("IPEx_IPSelectionTitle")</div>
+                                    <button type="button" data-tooltip="2"
+                                            class="btn rounded-circle animation-box--tooltip-icon d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="animation-box--item" data-id="@design.Key"
+                                 style="background-color: #3C8D74; top: 161px; left: 0px;">
+                                <div class="">
+                                    <span><i class="fas fa-pencil-ruler"></i></span>
+                                    <div class="name">@design.Value("IPEx_IPSelectionTitle")</div>
+                                    <button type="button" data-tooltip="3"
+                                            class="btn rounded-circle animation-box--tooltip-icon d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="animation-box--item" data-id="@copyRight.Key"
+                                 style="background-color: #096E4A; top: 161px; left: 160px;">
+                                <div class="">
+                                    <span><i class="far fa-copyright"></i></span>
+                                    <div class="name">@copyRight.Value("IPEx_IPSelectionTitle")</div>
+                                    <button type="button" data-tooltip="4"
+                                            class="btn rounded-circle animation-box--tooltip-icon d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between btn-group-footer">
+                            <a class="btn btn-custom btn-custom-outline" href='@Model.Value("IPEx_IPBtnPreviousLink")'>@Model.Value("IPEx_IPBtnPreviousTitle")</a>
+                            <a class="btn btn-custom btn-Allports btn-save" href="@Model.Value("IPEx_IPBtnContinueLink")">@Model.Value("IPEx_IPBtnContinueTitle")</a>
+                        </div>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+        <div class="tooltip-box" data-tooltip="1">
+            <div class="tooltip-box--content">
+                @patent.Value("IPEx_IPSelectionNote")
+            </div>
+        </div>
+        <div class="tooltip-box" data-tooltip="2">
+            <div class="tooltip-box--content">
+                @trademark.Value("IPEx_IPSelectionNote")
+            </div>
+        </div>
+        <div class="tooltip-box" data-tooltip="3">
+            <div class="tooltip-box--content">
+                @design.Value("IPEx_IPSelectionNote")
+            </div>
+        </div>
+        <div class="tooltip-box" data-tooltip="4">
+            <div class="tooltip-box--content">
+                @copyRight.Value("IPEx_IPSelectionNote")
+            </div>
+        </div>
+    </div>
+    <footer class="footer-index">
+        <div class="contact-name">Contact Us</div>
+        <div class="contact-mail d-flex align-items-center">
+            <i class="far fa-envelope mr-2"></i>ipexplorer@rouse.com
+        </div>
+    </footer>
+</div>
+
+@section Scripts{
+
+    <script>
+        var _TEMPLATE = `<div class="prefix-number-add">
+                                            <input type="text" class="form-control txt-prefix-number" id="validationCustom02" value=""
+                                            placeholder='Prefix / Number' required>
+                                        </div>`;
+        var _ITEM_ADD_ = "";
+        var prefix_number = jQuery.parseJSON('@(Html.Raw(Members.GetCurrentMember()?.GetIdFromNestedContentAlias(ConfigurationManager.AppSettings["IPEx.Members.IP.PrefixNumber"], ConfigurationManager.AppSettings["IPEx.Members.IP.PrefixNumber.Selection"])))');
+        $(document).ready(function () {
+
+            $('.btn-save-prefix-number').click(function (e) {
+                e.preventDefault();
+                var postData = [];
+                var selector = {};
+                $('.animation-box--item').each(function (index) {
+                    if ($(this).hasClass('active')) {
+                        selector = $(this);
+                        $('.txt-prefix-number').each(function (index, value) {
+                            console.log($(this).val());
+                            if ($(this).val() != "" && $(this).val() != null) {
+                                var obj = {
+                                    '@ConfigurationManager.AppSettings["IPEx.Members.IP.PrefixNumber.Selection"]': selector.data('id'),
+                                    '@ConfigurationManager.AppSettings["IPEx.Members.IP.PrefixNumber.Value"]': $(this).val(),
+                                }
+                                postData.push(obj);
+                            }
+                        });
+                    }
+                });
+
+                if (postData.length == 0) {
+                    var obj = {
+                        '@ConfigurationManager.AppSettings["IPEx.Members.IP.PrefixNumber.Selection"]': selector.data('id')
+                     }
+                     postData.push(obj);
+                }
+
+                  $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("IPSaveData", "IPExplorer")',
+                    data: { dataJson: JSON.stringify(postData) },
+                    success: function (result) {
+                        if (result.status) {
+                            window.alert('Save data success');
+                            prefix_number = JSON.parse(result.data);
+                        }
+                    },
+                    dataType: "JSON"
+                });
+
+            });
+
+            $('.animation-box--item').click(function (e) {
+                $('.prefix-number-add').remove();
+                setTimeout(function () {
+                    var arrayNumber = [];
+                    $('.animation-box--item').each(function (index) {
+                        var selector = $(this);
+                        if (selector.hasClass('active')) {
+                            $.each(prefix_number, function (index, value) {
+                                if (value.@Html.Raw(ConfigurationManager.AppSettings["IPEx.Members.IP.PrefixNumber.Selection"]) == selector.data('id') && (value.@Html.Raw(ConfigurationManager.AppSettings["IPEx.Members.IP.PrefixNumber.Value"]) != '' || value.@Html.Raw(ConfigurationManager.AppSettings["IPEx.Members.IP.PrefixNumber.Value"]) != null)) {
+                                    arrayNumber.push(value.@Html.Raw(ConfigurationManager.AppSettings["IPEx.Members.IP.PrefixNumber.Value"]));
+                                }
+                            });
+                        }
+                    });
+                    if (arrayNumber.length <= 2) {
+                        $('.txt-prefix-number-1').val(arrayNumber.pop());
+                        $('.txt-prefix-number-2').val(arrayNumber.pop());
+                    } else {
+                        $('.txt-prefix-number-1').val(arrayNumber.pop());
+                        $('.txt-prefix-number-2').val(arrayNumber.pop());
+                        var index = 3;
+                        // draw input
+                        $.each(arrayNumber, function (index) {
+                            //var tmp = `<div class="prefix-number-add">
+                            //                <input type="text" class="form-control txt-prefix-number" id="validationCustom02" value="${arrayNumber.pop()}"
+                            //                placeholder='Number/Prefix' required>
+                            //            </div>`;
+                            //$('.form-container-prefix-number').append(tmp);
+                            addRowInput(arrayNumber.pop());
+                            //animation_box(100, true);
+                            index++;
+                        });
+                        //animationForm();
+                        ResetHeightForm();
+                    }
+
+
+                }, 500);
+
+            });
+
+
+            $('.btn-add-row').click(function (e) {
+                //animation_box(100, true);
+                e.preventDefault();
+                $('.form-container-prefix-number').append(_TEMPLATE);
+            });
+        });
+
+        function ConvertIdToGuid(id) {
+            return id.replace(/([0-z]{8})([0-z]{4})([0-z]{4})([0-z]{4})([0-z]{12})/, "$1-$2-$3-$4-$5");
+        }
+    </script>
+
+    <script src="~/Assets/IPEx/js/animation-box-ip.js?version=@value"></script>
+    <script>
+        $(document).ready(function () {
+            $('.animation-box--item').each(function (index, el) {
+                $(el).find('button.animation-box--tooltip-icon').css('color', $(el).css('background-color'))
+            })
+            $('.animation-box--item').on('click', function () {
+                $('.btn-circle').css('color', $(this).css('background-color'))
+            })
+            $('.btn-addRow').on('click', function (e) {
+                e.preventDefault();
+                addRowInput()
+            })
+        });
+    </script>
+}

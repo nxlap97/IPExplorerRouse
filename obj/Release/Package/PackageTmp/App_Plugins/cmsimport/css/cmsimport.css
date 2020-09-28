@@ -1,0 +1,163 @@
+﻿
+.ng-cloak {
+    display: none !important;
+}
+
+.cmsimportInfoLink {
+    text-decoration: underline;
+    color: #2e8aea;
+}
+
+    .cmsimportInfoLink:hover {
+        text-decoration: underline;
+        color: #2e8aea;
+    }
+
+.cmsimportDashboardRow {
+    clear: both;
+}
+
+.cmsimportDashboardColumn {
+    display: block;
+    float: left;
+    padding-right: 20px;
+    width: 23%;
+}
+
+    .cmsimportDashboardColumn .cmsimportDashboardBox {
+        background-color: #F2FCFC;
+        border-radius: 3px;
+        border: 2px solid transparent;
+        padding: 25px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        display: block;
+        color: #666;
+    }
+
+        .cmsimportDashboardColumn .cmsimportDashboardBox:hover {
+            border: 2px solid #00BEC1;
+            cursor: pointer;
+            transition: border-color 150ms ease-in-out;
+        }
+
+    .cmsimportDashboardColumn .cmsimportDashboardBoxTitle {
+        color: #00BEC1;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .cmsimportDashboardColumn .cmsimportDashboardBoxDescription {
+        text-align: center;
+        line-height: 1.4em;
+    }
+
+.cmsImportTemplateEditor {
+    min-height: 300px;
+}
+
+    .cmsImportTemplateEditor .ace_editor {
+        min-height: 300px;
+        height: 300px;
+    }
+
+.cmsimportmarginbottom30 {
+    margin-bottom: 30px;
+}
+
+.cmsimportpaddingtop20 {
+    padding-top: 20px;
+}
+
+.cmsimportRow {
+    vertical-align: top;
+}
+
+.cmsimportCaption {
+    float: left;
+    font-weight: bold;
+    width: 180px;
+}
+
+.cmsimportClear {
+    clear: both;
+}
+
+.cmimportField {
+    min-width: 500px;
+}
+
+.cmsimportHeaderRow {
+    clear: both;
+    height: 20px;
+    background: none repeat scroll 0 0 #F8F8F8;
+    padding-top: 10px;
+    border: 1px solid #D9D9D9;
+}
+
+
+.cmsimportDisplayControl {
+    float: left;
+    width: 100% !important;
+}
+
+.cmsimportControl {
+    float: left;
+    border-bottom: 1px solid #f6f6f7 !important;
+    width: 100% !important;
+}
+.cmsimportFilePickerButton {
+    padding-top: -5px;
+}
+.cmsimportMappingControlAdvancedSetting {
+    padding-top: 10px !important;
+    background-color: #f3f3f5;
+}
+
+.cmsimportAdvancedIcon {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.cmsimportAdvancedSettingsConfirmTitle {
+    margin: 10px 0 10px 0;
+    font-weight: bolder;
+}
+
+.cmsimportAdvancedSettings {
+    clear: both;
+    display: block;
+    margin: 15px 0 0 -180px;
+}
+
+    .cmsimportAdvancedSettings .umb-property-editor {
+        padding-bottom: 10px !important;
+    }
+
+.cmsimportConfirmOptionSpacer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.cmsimportConfirmOption {
+    padding: 0 0 0 20px !important;
+}
+
+.cmsimportdatasourcefilehide {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.cmsimportFileSelected {
+    font-size: 12px;
+    width: 500px !important;
+}
+/*fields*/
+.cmsimportSmallTextBox {
+    width: 220px;
+}

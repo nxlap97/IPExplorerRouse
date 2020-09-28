@@ -1,0 +1,397 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ServiceIndividual>
+@using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	 var bannerImage = "";
+	   var serviceName = Model.Name.ToString();
+	   var newsLatestIP = Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"))
+       .Descendants().OfTypes("news")
+       .Where(x => x.IsVisible())
+       .Where(x => x.Value<IEnumerable<IPublishedContent>>("newsServices") != null && x.Value<IEnumerable<IPublishedContent>>("newsServices").Count() > 0)
+       .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("newsServices"), serviceName))
+       .OrderByDescending(x => x.CreateDate).Take(4);
+       
+       
+        var peopleServices = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+       .Descendants().OfTypes("profileContent")
+       .Where(x => x.IsVisible())
+       .Where(x => x.Value<IEnumerable<IPublishedContent>>("services") != null && x.Value<IEnumerable<IPublishedContent>>("services").Count() > 0)
+       .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("services"), serviceName))
+       .OrderByDescending(x => x.CreateDate);
+       
+       var thirdPartyList = Model.Value<IEnumerable<IPublishedElement>>("thirdPartyList");
+       var ourGuidesList = Model.Value<IEnumerable<IPublishedElement>>("ourGuidesList");
+     var serviceOurTeam = Model.Value<IEnumerable<IPublishedElement>>("");
+    
+     try {
+          serviceOurTeam = Model.Value<IEnumerable<IPublishedElement>>("serviceOurTeam");
+            var serviceOurTeamArray = Model.Value<IEnumerable<IPublishedElement>>("serviceOurTeam").Select(x=>x.Key).ToArray();
+            var peopleAdd = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+            .Descendants();
+            switch (serviceOurTeamArray.Length)
+            {
+                case 1: peopleAdd = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+            .Descendants().OfTypes("profileContent").Where(x => x.Key != serviceOurTeamArray[0]).Where(x => x.Value<IEnumerable<IPublishedContent>>("services") != null && x.Value<IEnumerable<IPublishedContent>>("services").Count() > 0)
+       .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("services"), serviceName))
+       .OrderByDescending(x => x.CreateDate);
+                    break;
+                case 2:
+                    peopleAdd = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+            .Descendants().OfTypes("profileContent").Where(x => x.Key != serviceOurTeamArray[0] && x.Key != serviceOurTeamArray[1]).Where(x => x.Value<IEnumerable<IPublishedContent>>("services") != null && x.Value<IEnumerable<IPublishedContent>>("services").Count() > 0)
+       .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("services"), serviceName))
+       .OrderByDescending(x => x.CreateDate);
+                    break;
+                case 3:
+                    peopleAdd = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+           .Descendants().OfTypes("profileContent").Where(x => x.Key != serviceOurTeamArray[0] && x.Key != serviceOurTeamArray[1] && x.Key != serviceOurTeamArray[2]).Where(x => x.Value<IEnumerable<IPublishedContent>>("services") != null && x.Value<IEnumerable<IPublishedContent>>("services").Count() > 0)
+       .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("services"), serviceName))
+       .OrderByDescending(x => x.CreateDate);
+                    break;
+                case 4:
+                    peopleAdd = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+          .Descendants().OfTypes("profileContent").Where(x => x.Key != serviceOurTeamArray[0] && x.Key != serviceOurTeamArray[1] && x.Key != serviceOurTeamArray[2] && x.Key != serviceOurTeamArray[3]).Where(x => x.Value<IEnumerable<IPublishedContent>>("services") != null && x.Value<IEnumerable<IPublishedContent>>("services").Count() > 0)
+       .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("services"), serviceName))
+       .OrderByDescending(x => x.CreateDate);
+                    break;
+
+                default:
+                    break;
+            }
+        serviceOurTeam = Model.Value<IEnumerable<IPublishedElement>>
+     ("serviceOurTeam").Concat(peopleAdd).Where(x => x.Value<IEnumerable<IPublishedContent>>("services") != null && x.Value<IEnumerable<IPublishedContent>>("services").Count() > 0)
+       .Where(x => CheckServices(x.Value<IEnumerable<IPublishedContent>>("services"), serviceName)).ToList();
+    }
+    catch(Exception ex)
+    {
+        serviceOurTeam = null;
+    }
+       
+       var sectionCount = 0;
+  
+                        try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue("bannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("bannerImage").GetCropUrl("BannerDesktop") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").GetCropUrl("BannerDesktop").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue("bannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("bannerImage").GetCropUrl("BannerMobile") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").GetCropUrl("BannerMobile").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         bannerImage ="";
+                  
+                  }
+                
+            
+      
+          
+    
+    		 var topImage = "";
+    if (Model.Value<IPublishedContent>("sportsIPTopImage") != null ) {
+        topImage = Model.Value<IPublishedContent>("sportsIPTopImage").Url;
+    } 
+    
+      <!--Slide question-->
+   var listQuestionCount = 0;
+   var sliderImage = "";
+   var questionSliderCount = 0;
+   if ( Model.Value<IEnumerable<IPublishedElement>>("questionSlider") != null) {
+    questionSliderCount = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").Count();
+   }
+   
+   if (questionSliderCount > 0 ) {
+         var slider = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").First();
+         if (slider.Value<IPublishedContent>("questionSliderImage") != null ) {
+            sliderImage = slider.Value<IPublishedContent>("questionSliderImage").Url;
+         }
+          listQuestionCount =  slider.Value<IEnumerable<IPublishedElement>>("questionSliderItemGroup").Count();
+     
+        
+   }
+   
+   var serviceSectionList  = Model.Value<IEnumerable<IPublishedElement>>("serviceSection");
+   
+   
+}
+
+
+@functions {
+  public bool CheckServices(IEnumerable<IPublishedContent> list, string keyWord)
+            {
+                foreach (var item in list)
+                {
+
+                    if (item.Name.ToString() == keyWord)
+                    {
+                        return true;
+                    }
+
+                }
+
+                return false;
+            }
+}
+ <div class="mobile-controller-wrap">
+  @if (Request.Browser.IsMobileDevice) {
+                if (serviceSectionList.Count() > 0) {
+                  <ul id="serviceSectionController" class="mobile-version">
+                   <li class="on-this-page">On this page: </li>
+                   @foreach (var serviceitem in serviceSectionList) {
+                            if (serviceitem.Value("sectionTitle") != "" ) {
+                            var haveImage = (serviceitem.Value<IPublishedContent>("sectionImage") != null) ? "true" : "false";
+                            <li have-image="@haveImage" section-id="section-@sectionCount" >@serviceitem.Value("sectionTitle")</li>
+                          
+                            sectionCount++;
+                   }
+                   }
+                </ul>
+                }
+        	}
+</div>
+    <div id="serviceIndividual">
+        
+ 
+    <section class="top-banner" style="background-image:url('@bannerImage')">
+        
+        <div class="content-box content-box-right">
+                <h3 class="title">@Model.Value("bannerTitle")</h3>
+            <div class="description">@Model.Value("bannerContent")</div>
+            
+              @if (serviceSectionList.Count() > 0) {
+                if (!Request.Browser.IsMobileDevice)
+              {
+               <ul id="serviceSectionController">
+                   @foreach (var serviceitem in serviceSectionList) {
+                            if (serviceitem.Value("sectionTitle") != "" ) {
+                            var haveImage = (serviceitem.Value<IPublishedContent>("sectionImage") != null) ? "true" : "false";
+                            <li have-image="@haveImage" section-id="section-@sectionCount" >@serviceitem.Value("sectionTitle") <i class="fa fa-angle-double-down" aria-hidden="true"></i></li>
+                            sectionCount++;
+                   }
+                   }
+              </ul>
+              }
+              }
+            @if (!serviceName.ToLower().Contains("consultancy"))
+            {
+                <a class="btn btn-primary" href="../services/talk-consultant">Talk to Us</a>
+            }
+            else
+            {
+                <a class="btn btn-primary" href="../services/talk-consultant">Talk to a Consultant</a>
+            }
+
+        </div>
+    </section>
+    
+      @if (serviceSectionList.Count() > 0) {
+      
+        @Html.Partial("page/ServiceSection",Model)
+      }
+ 
+        
+    </div>       
+    
+  <!--Question Slider-->
+@if (listQuestionCount > 0 ) {
+       	 @Html.Partial("page/Question", Model)
+}
+  <!--End question slider-->
+@functions{
+    public string url(string urlold) {
+        string[] words = urlold.Split(' ');
+        int number = words.Length;
+        List<string>
+            wordLast = new List<string>
+                ();
+        for (int i = 0; i < number; i++)
+        {
+            string a = words[i].Substring(0, 1).ToUpper() + words[i].Substring(1) + "+";
+            wordLast.Add(a);
+        }
+        string combindedString = string.Join(Environment.NewLine, wordLast);
+        return combindedString.Remove(combindedString.Length - 1, 1);
+    }
+
+}
+
+@if (newsLatestIP.Count() > 0 ) {
+     <section class="new-from-rouse container">
+        <div class="row">
+        <div class="title-section">
+            <h4>Latest @Model.Name.ToString() Insights</h4>
+            <a class="more"  href="/insights?Service=@url(Model.Name.ToString())">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+        </div>
+        </div>
+                  
+          @if (!Request.Browser.IsMobileDevice)
+         {
+          <div class="row">
+            	@foreach (var item in newsLatestIP)
+            	{
+            	
+            	 @Html.Partial("page/InsightsNews",item)
+            	}
+        
+         </div>
+         } else {
+           <div class="sliderSlickWrap">
+         	@foreach (var item in newsLatestIP)
+        	{ 
+        		 @Html.Partial("page/InsightsNews",item)
+        	}
+
+          </div>
+
+         
+         
+         }
+           
+    </section>
+}
+ 
+    
+
+   
+
+@if (Model.Value<bool>("showOurGuidesSection")) {
+             @Html.Partial("page/OurGuides",Model)
+    }
+    
+
+@if (Model.Value<bool>("showCaseStudiesSection")) {
+       @Html.Partial("page/CaseStudiesNews",Model)
+}
+
+@if (Model.Value<bool>("showThirdPartySection")) {
+             @Html.Partial("page/ThirdParty",Model)
+    }
+    
+
+@if (peopleServices.Count() > 0 ) {
+     <section class="our-people-member container" id="our-team-section">
+        <div class="row">
+        <div class="title-section">
+            <h4>Our team</h4>
+        </div>
+        </div>
+                  
+          @if (!Request.Browser.IsMobileDevice)
+         { 
+   try{
+       if ( serviceOurTeam.Count() >4)
+            {
+                <div class="sliderSlickWrapPeople row">
+                    @foreach (var item in serviceOurTeam)
+                    {
+
+                        @Html.Partial("page/OurTeam", item)
+
+                    }
+
+                </div>
+            }
+              else if (serviceOurTeam.Count() <=4)
+            {
+                <div class=" row">
+                    @foreach (var item in serviceOurTeam)
+                    {
+
+                        @Html.Partial("page/OurTeam", item)
+
+                    }
+
+                </div>
+            }
+
+                else if (peopleServices.Count() > 4 && serviceOurTeam == null)
+            {
+                <div class="sliderSlickWrapPeople row">
+                    @foreach (var item in peopleServices)
+                    {
+
+                        @Html.Partial("page/OurTeam", item)
+
+                    }
+
+                </div>
+            }
+          else  {
+         <div class=" row">
+            	@foreach (var item in peopleServices)
+            	{
+            	
+            	 @Html.Partial("page/OurTeam",item)
+            	 
+            	}
+        
+         </div>
+         }
+         }
+        catch(Exception ex)
+     {
+     
+                     if (peopleServices.Count() <= 4)
+            {
+                <div  class=" row">
+                    @foreach (var item in peopleServices)
+                    {
+
+                        @Html.Partial("page/OurTeam", item)
+
+                    }
+
+                </div>
+            }
+            else
+            {
+                <div aaa class="sliderSlickWrapPeople row">
+                    @foreach (var item in peopleServices)
+                    {
+
+                        @Html.Partial("page/OurTeam", item)
+
+                    }
+
+                </div>
+            }
+       }
+       
+         } else {
+           <div class="sliderSlickWrap">
+         	@foreach (var item in peopleServices)
+        	{ 
+        		 @Html.Partial("page/OurTeam",item)
+        	}
+
+          </div>
+
+         
+         
+         }
+           
+    </section>
+}
+
+
+@Html.Partial("how-can")
+   
+   

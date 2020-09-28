@@ -1,0 +1,68 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	 var space = ", ";
+	 IEnumerable<IPublishedElement> authorList; 
+	  var countAuthor = 0; 
+	    var publishedDate = "";
+	  publishedDate= (Model.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) != "01 Jan 0001") ? Model.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) : Model.CreateDate.ToString("dd MMM yyyy", null);
+			
+}
+
+
+					
+							    
+								<div class="blog-item new-box-webinars" >
+							
+                                       <div class="content-box">
+                                            <p class="text-top"></p>
+                                           <div class="title"><a target="blank" href="@Model.Url">@Model.Value("newsTitle")</a></div>
+                                              @if (Model.Value("newsSummary") != "" && Model.Value("newsSummary") != null && Model.Value("newsSummary").ToString().Length > 0){
+                                            <div class="description">
+                                                  @Model.Value("newsSummary")
+                                            </div>
+                                            } 
+                                            <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = Model.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(3) ) {
+                      var urlImage = ""; 
+                      try {
+                          if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                      } catch (Exception e) {
+                            urlImage = ""; 
+                      }
+                   
+                         if (author != authorList.First()) {
+                            @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                                            <p class="watch-now"><a target="blank" href="@Model.Url">Watch Now</a></p>
+                                        </div>
+                                       
+                                        
+                                
+								</div>
+								
+									
+								
+									
+							
+					

@@ -1,0 +1,17 @@
+{
+  "id": "74d9d20f-9600-439c-8706-cae5db25b829",
+  "name": "Send Data",
+  "form": "5043a2ea-4fd0-4ee9-a8c1-605e3958af6a",
+  "active": true,
+  "includeSensitiveData": "False",
+  "workflowTypeId": "fd02c929-4e7d-4f90-b9fa-13d074a76688",
+  "executesOn": "Submitted",
+  "settings": {
+    "Url": "http://192.168.0.117/Umbraco/Api/SendEmail/SendEmailSubcribe",
+    "Method": "POST",
+    "Fields": "[{\"alias\":\"email\",\"value\":\"34c8a796-3697-427a-d435-5133207cf53e\",\"staticValue\":\"\",\"$$hashKey\":\"object:422\"}]",
+    "Username": "",
+    "Password": ""
+  },
+  "sortOrder": 0
+}

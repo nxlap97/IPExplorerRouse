@@ -1,0 +1,9 @@
+﻿@using ContentModels = Umbraco.Web.PublishedModels;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+  <div class="search" id="search-form">
+                <span  id="search-icon"> <i id="icon-open-search" class="fas fa-search"></i> <i id="icon-close-search" class="fas fa-times hide"></i> </span>
+                 <form   action="/search/" method="GET">
+               <input id="search-content" class="search-input hide" type="search" placeholder="Search" name="search-content">
+               </form>
+ </div>

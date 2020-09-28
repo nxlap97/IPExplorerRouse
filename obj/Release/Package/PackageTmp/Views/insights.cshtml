@@ -1,0 +1,202 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Insights>
+@using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+
+    
+       
+     var Webinars = Model.Value<IEnumerable<IPublishedElement>>("webinars");
+	 
+	 
+	 var blogNetwork = Model.Value<IEnumerable<IPublishedElement>>("blogNetwork");
+	 	 var publishedDate = Model.Value<IEnumerable<IPublishedElement>>("publishedDate");
+
+	 var newsFromRouse  = Umbraco.Content(Guid.Parse("08427bd0-2141-4af2-96f6-158adcccddf9"))
+     .Descendants().OfTypes("news")
+    .Where(x => x.IsVisible())    
+    .Where(x => x.HasValue("publishedDate"))
+    .OrderByDescending(d => d.Value<System.DateTime>("publishedDate")).Skip(1).Take(12); /* ticket 8528*/
+	
+	 var newsFromRouseMobile  = Umbraco.Content(Guid.Parse("08427bd0-2141-4af2-96f6-158adcccddf9"))
+     .Descendants().OfTypes("news")
+    .Where(x => x.IsVisible())    
+    .Where(x => x.HasValue("publishedDate"))
+    .OrderByDescending(d => d.Value<System.DateTime>("publishedDate")).Take(12); 
+/*
+ticket old
+ Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"))
+    .Descendants().OfTypes("news")
+    .Where(x => x.IsVisible()).Take(12); */
+	 var isActiveRouseBlogNetwork = Model.Value<bool>("isActiveRouseBlogNetwork");
+	 
+	 var isActiveRouseWebinars = Model.Value<bool>("isActiveRouseWebinars");
+	 
+	 var isActiveNewsFromRouse = Model.Value<bool>("isActiveNewsFromRouse");
+	 
+	 
+	 var industries =  Model.Value<IEnumerable<IPublishedElement>>("industries");
+	 var services =  Model.Value<IEnumerable<IPublishedElement>>("services");
+	 var types =  Model.Value<IEnumerable<IPublishedElement>>("types");
+	 var featuredTopics =  Model.Value<IEnumerable<IPublishedElement>>("featuredTopics");
+
+	  
+	var    countItem = 1;
+	   
+        var open ="<div class='item'>";
+        var close = "</div>";
+    }
+
+    @* the fun starts here *@
+    
+    
+        
+        
+    @Html.Partial("page/InsightsTop",Model)
+    
+    
+       
+    
+    @if (isActiveRouseBlogNetwork) {
+    
+    if (!Request.Browser.IsMobileDevice)
+    {
+     <section class="group-image-section container" id="insight-blog-network">	
+    <div class="row">
+	<div class="title-section">
+		<h4>New from the Rouse Blog Network</h4>
+		<a class="more" href="/insights/webinars/">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+	</div>
+	</div>
+	
+   	<div class="row">
+   	         @foreach (var blog in blogNetwork)
+                    {
+                    	
+                    	   @Html.Partial("page/InsightsRouseBlogNetwork",blog)
+        
+                     } 
+   	    
+   	    
+   		</div>	
+	</section>
+    } else {
+    	<div class="title-section">
+		<h4>Rouse Blog Network</h4>
+		<a class="more" href="/insights/webinars/">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+	</div>
+	 
+	
+    <div id="mobilde-news-blog-network" class="sliderSlickWrap ">
+              @foreach (var blog in blogNetwork)
+                    {
+                    	
+                    	   @Html.Partial("page/InsightsRouseBlogNetwork",blog)
+        
+                     }
+                     
+
+     </div> 
+    
+    }
+   }
+      @if (isActiveNewsFromRouse) {
+    
+    if (!Request.Browser.IsMobileDevice)
+    {
+    <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section"  id="recentNewsId">
+				<div class="container">
+					<div class="section-content">
+						<div class="section-title">
+							<h3>Latest Insights</h3>
+						@{
+						             countItem = 1;
+						         }
+						<div class="list-item slick-slider">
+						
+						         	
+						           @foreach (var item in newsFromRouse) {
+						               var mod = (int)(countItem % 3);
+						              
+						               
+						               if (mod == 1) {
+						               @Html.Raw(open)
+						               }
+						               
+						                 @Html.Partial("page/news/Slider",item) 
+						                 
+						               
+						               if (mod == 0 ) {
+						               
+						                 @Html.Raw(close)
+						               }
+						               
+						               
+						               countItem++;
+				
+						           }
+						   </div>
+				</div>	
+    </section>
+    } else {
+    	<div class="title-section">
+		<h4>Latest Insights</h4>
+		<a class="more" href="/insights/webinars/">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+	</div>
+	 
+	
+    <div id="mobilde-news-blog-network" class="sliderSlickWrap">
+              @foreach (var news in newsFromRouseMobile)
+                    {
+                    	
+                    	   @Html.Partial("page/InsightsRouseBlogNetwork",news)
+        
+                     }
+                     
+
+     </div> 
+    
+    }
+   }
+    
+    
+    
+    @if (isActiveRouseWebinars) {
+   
+   if (Webinars != null && Webinars.Count() > 0 ) {
+    if (!Request.Browser.IsMobileDevice)
+    {
+    <section class="new-from-rouse container" id="rouse-webinars">
+      <div class="row">
+        <div class="title-section">
+            <h4>Rouse Webinars</h4>
+            <a class="more" href="/insights/webinars/">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+        </div>
+        </div>
+      
+        	   @Html.Partial("page/RouseWebinars",Model)
+     
+ 
+        </section>
+    
+    } else {
+     <section class="new-from-rouse container" id="rouse-webinars">
+      <div class="row">
+        <div class="title-section">
+            <h4>Rouse Webinars</h4>
+            <a class="more" href="/insights/webinars/">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+        </div>
+        </div>
+       
+                    	
+                    	   @Html.Partial("page/RouseWebinars",Model)
+        
+            
+                   
+        </section>
+        
+    }
+    }
+    }
+ @Html.Partial("how-can")
+ 

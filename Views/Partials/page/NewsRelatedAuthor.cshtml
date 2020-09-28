@@ -1,0 +1,59 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+                var itemImage = "";
+            	 if (Model.HasValue("newsImage"))
+                 {
+                        itemImage = Model.Value<IPublishedContent>("newsImage").Url;
+                                                
+                 }
+
+}
+
+
+
+
+@if (!Request.Browser.IsMobileDevice)
+{
+   
+ 
+    	 <!-- A Item  -->
+	<div class="col-xs-12 col-md-6 col-lg-4 item item-news" style="background-image:url('@itemImage')">
+		<div class="item-content item-content-news">
+			<div class="title">@Model.Value("newsTitle")</div>
+			<div class="description">
+		    	@Model.Value("newsContent")
+			</div>
+			<p class="time">@Model.Value("newsTimeRead") minute read</p>
+			<p class="author"></p>
+			<a href="@Model.Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+			<p class="datetime">@Model.CreateDate.ToString("dd MMM yyyy", null)</p>
+			<ul class="tags-list">
+                        @foreach (var tag in Model.Value<string[]>("newsHashtag")) {
+                          <li>#@tag</li>
+                        }
+                      
+            </ul>
+		</div>
+	</div>
+    <!-- End Item -->
+    
+} else {
+       <!-- A Item  -->
+	<div class="item item-news" style="background-image: url('@itemImage');">
+		<div class="item-content news-content-box">
+		<div class="title">@Model.Value("newsTitle")</div>
+		<div class="description">
+		    	@Model.Value("newsContent")
+		</div>
+			<p class="datetime">@Model.CreateDate.ToString("dd MMM yyyy", null)</p>
+			<p class="author"></p>
+			<a href="@Model.Url" class="readmore">READ MORE &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		
+		
+		</div>
+	</div>
+    <!-- End Item -->
+}
+
+

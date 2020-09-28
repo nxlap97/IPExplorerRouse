@@ -1,0 +1,329 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Careers>
+    @using ContentModels = Umbraco.Web.PublishedModels;
+    @{
+    Layout = "master.cshtml";
+    var bannerImage = "";
+
+                        try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue("careersBannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("careersBannerImage").GetCropUrl("BannerDesktop") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("careersBannerImage").GetCropUrl("BannerDesktop").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("careersBannerImage").Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue("careersBannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("careersBannerImage").GetCropUrl("BannerMobile") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("careersBannerImage").GetCropUrl("BannerMobile").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("careersBannerImage").Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         bannerImage ="";
+                  
+                  }
+    
+    var imageSection1 = "";
+    if (Model.Value<IPublishedContent>
+    ("careersImage") != null ) {
+    imageSection1 = Model.Value<IPublishedContent>
+    ("careersImage").Url;
+    }
+    var locationList = Umbraco.Content(Guid.Parse("4a087704-5c73-48a8-bd63-7a257276804b"))
+                        .Children()
+                        .Where(x => x.IsVisible());
+    var departmentList = Umbraco.Content(Guid.Parse("9e4d5ad3-7310-4e56-b128-48a6d5ba7cba"))
+                        .Children()
+                        .Where(x => x.IsVisible());
+                        
+            
+    
+    var CTID = "a2bb4f7f-8df2-47fc-bebe-8e4f25b5eb75";
+    }
+     @functions {
+     public  string GetImageDesktop(string imageName)
+        {
+          var sectionImageNomal = "";
+      try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue(imageName)) {
+                  
+                                    if (Model.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop") != null)
+                                    {
+                                        sectionImageNomal =  Model.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop").ToString();
+                                    } else
+                                    {
+                                        sectionImageNomal =  Model.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue(imageName)) {
+                  
+                                    if (Model.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop") != null)
+                                    {
+                                        sectionImageNomal =  Model.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop").ToString();
+                                    } else
+                                    {
+                                        sectionImageNomal =  Model.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         sectionImageNomal ="";
+                  
+                  }
+            return sectionImageNomal;
+    
+        
+        }
+        
+         public  string GetImageLapTop(string imageName)
+        {
+          var sectionImageLaptop = "";
+      try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue(imageName)) {
+                  
+                                    if (Model.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop") != null)
+                                    {
+                                        sectionImageLaptop =  Model.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop").ToString();
+                                    } else
+                                    {
+                                        sectionImageLaptop =  Model.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue(imageName)) {
+                  
+                                    if (Model.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop") != null)
+                                    {
+                                        sectionImageLaptop =  Model.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop").ToString();
+                                    } else
+                                    {
+                                        sectionImageLaptop =  Model.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         sectionImageLaptop ="";
+                  
+                  }
+            return sectionImageLaptop;
+    
+        
+        }
+    }
+    
+    
+    @Model.Value("departmentsTagsList")
+     <div id="ctid" class="ctid" ctid="@CTID"> </div>
+    <section class="people-page top-banner" id="careerBannerId" style="background-image: url('@bannerImage');">
+      <h2 > Be <strong>  Different</strong></h2>
+     
+        <div class="find-box">
+            <h3>Job Search</h3>
+            <div class="container">
+                @if (!Request.Browser.IsMobileDevice)
+{
+                <div class="row">
+                   <div class="col-xs-12 col-md-12 col-lg-4">
+                       
+                       
+                        
+                        
+                              <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="jobCountry">
+                    <p  class="btn btn-default dropdown-toggle" location-id="1" data-flip="false" id="jobCountry-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations" >All Locations
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="jobCountry"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="jobCountry-menu">
+                                @foreach (IPublishedContent locationItem in locationList) 
+                                    {
+                                       <li location-id="@locationItem.Id" value="@locationItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@locationItem.Name.ToLower()</a></li>
+                                   
+                                }
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                    </div>
+                 
+                    <div class="col-md-12 col-lg-4">
+                      
+                        
+                          <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="jobDepartment">
+                    <p  class="btn btn-default dropdown-toggle"  data-flip="false" id="jobDepartment-menu" department-id="1" data-toggle="dropdown" value-default="all" value="all" text-default="All Departments" >All Departments
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="jobDepartment"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="jobDepartment-menu">
+                           
+                                @foreach (IPublishedContent departmentItem in departmentList) 
+                                    {
+                                       <li  value="@departmentItem.Name" department-id="@departmentItem.Id"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@departmentItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                  
+                    </div>
+                    
+            
+
+                    <div class="col-md-12 col-lg-3">
+                        <div class="component">
+                            <button class="btn btn-info btn-search-banner" id="btn-search-career">Search</button>
+                        </div>
+                    </div>
+                </div>
+                } else {
+                
+                
+                <div class="row">
+                   <div class="col-xs-12 col-md-12 col-lg-3">
+                 <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="jobCountry">
+                    <p  class="btn btn-default dropdown-toggle" data-flip="false" id="jobCountry-menu" location-id="1" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations" >All Locations
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="jobCountry"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="jobCountry-menu">
+                                @foreach (IPublishedContent locationItem in locationList) 
+                                    {
+                                       <li location-id="@locationItem.Id" value="@locationItem.Id"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@locationItem.Name.ToLower()</a></li>
+                                   
+                                }
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                  
+                        
+                    </div>
+                      <div class="col-md-12 col-lg-3">
+                        
+                          <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="jobDepartment">
+                    <p  class="btn btn-default dropdown-toggle" data-flip="false" id="jobDepartment-menu" department-id="1"  data-toggle="dropdown" value-default="all" value="all" text-default="All Departments" >All Departments
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="jobDepartment"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="jobDepartment-menu">
+                           
+                                @foreach (IPublishedContent departmentItem in departmentList) 
+                                    {
+                                       <li department-id="@departmentItem.Id" value="@departmentItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@departmentItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                  
+                    </div>
+                    
+                  
+                    <div class="col-md-12 col-lg-3">
+                        <div class="component">
+                            <button class="btn btn-info btn-search-banner" id="btn-search-career">Search</button>
+                        </div>
+                    </div>
+                </div>
+                
+                }
+                
+                
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+    <section class="container section-content-text wrap-section-lagre" id="people-top-section">
+        <div class="section-break-title break-small break-title-in-wrap beliefs-title-section" id="break-section-large">
+            <h2 class="title large-text">Beliefs</h2>
+        </div>
+        <div class="wrap-content-page">
+            <div class="content-center">
+                @Model.Value("careersBeliefs")
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!--section class="image-section careerImageSection"-->
+         <!--picture-->
+      <!--source media="(max-width:1366px)" srcset="@GetImageLapTop("careersImage")"-->
+      <!--source media="(max-width:768)" srcset="img_white_flower.jpg"-->
+      <!--img src="@GetImageDesktop("careersImage")"-->
+    <!--/picture-->
+       
+    <!--/section-->
+
+  
+    
+    <section class="container section-content-text" id="ourCultureSection" >
+    
+     <div class="section-break-title break-small break-title-in-wrap" id="ourCultureTitle">
+   	<h2 class="title">Our Culture</h2>	
+   </div>
+       <div class="wrap-content-page our-culture-content">
+             <div class="content-center">
+            @Model.Value("careersOurCulture")
+            </div>
+       </div>
+      
+ </section>
+ 
+ 
+     
+    <div class="section-break-title" id="meetSomePeopleTitle">
+        <h2 class="title">Meet Some of Our People</h2>
+    </div>
+
+    @Html.Partial("page/CareersOurTeam")
+    
+    
+    @if ( Model.Value<bool>("isOurOfficeActive")) { 
+           @Html.Partial("page/TourOurOffice")
+    }
+
+  
+
+    @Html.Partial("page/AvailablePositions")
+
+    @Html.Partial("page/QuestionsJoiningRouse")
+

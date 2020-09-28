@@ -1,0 +1,100 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Web.Models
+@{
+	var content11 = Umbraco.Content(Guid.Parse("870e1a4f-eafb-4c24-8381-53b3dc90b2e5"));
+	var listBurger = content11.Value<IEnumerable<IPublishedElement>>("burgerItem");
+	
+    var countItem = 0;   
+}
+
+@if (!Request.Browser.IsMobileDevice)
+{
+   
+<div id="rouse-burger" class="collapse">
+    <div class="container burger-content-container">
+        <div class="row">
+            <div class="col-md-2 col-lg-2 col-sm-3 col-3" id="wrap-burger-menu">
+                <ul class="nav nav-tabs" id="burger-menu">
+                     @foreach (var burgerItem in listBurger ) {
+                     var idItem = "bg"+countItem;
+                     if (countItem == 0 ){
+                            <li><a url="@(burgerItem.Value<Link>("itemUrl").Url.ToString())" url-string = "@(burgerItem.Value<Link>("itemUrl").Url.ToString().Replace("/", ""))" data-toggle="tab"  is-redirect="@burgerItem.Value("isRedirect").ToString()" href="#@idItem"> @burgerItem.Value("title")</a></li>
+                     }else {
+                         
+                          <li><a url="@(burgerItem.Value<Link>("itemUrl").Url.ToString())"  url-string = "@(burgerItem.Value<Link>("itemUrl").Url.ToString().Replace("/", ""))" is-redirect="@burgerItem.Value("isRedirect").ToString()" data-toggle="tab" href="#@idItem">@burgerItem.Value("title")</a></li>
+                     }
+                     countItem++;
+                    }
+                </ul>
+                
+              
+            </div>
+            
+            @{
+                var countItemTab = 0;
+            }
+            <div class="col-md-10 col-lg-10 col-sm-9 col-9" id="wrap-burger-content">
+                <div class="tab-content">
+                      @foreach (var burgerItemTab in listBurger ) {
+                           var idTab = "bg" + countItemTab;
+                           if (countItemTab == 0 ){
+                    <!-- Item tab conten -->
+                    <div id="@idTab" class="tab-pane fade in active">
+                        <div class="burger-title">
+                            <h1>@burgerItemTab.Value("title")</h1>
+                        </div>
+                        <div class="content">
+                           @burgerItemTab.Value("content")
+                        </div>
+                    </div>
+                   <!--End tab content-->
+                   } else {
+                     <!-- Item tab conten -->
+                    <div id="@idTab"  class="tab-pane fade">
+                        <div class="burger-title">
+                            <h1>@burgerItemTab.Value("title")</h1>
+                        </div>
+                        <div class="content">
+                            @burgerItemTab.Value("content")
+                        </div>
+                    </div>
+                   <!--End tab content-->
+                   }
+                   countItemTab++;
+                  }
+                   
+                    
+                </div>
+            </div>
+        </div>
+    </div>  
+
+</div>
+
+} else {
+      
+<div id="rouse-burger" class="collapse">
+    <div class="container burger-content-container">
+        <div class="row">
+            <div class="col-md-12 col-lg-2 mobileBuggerMenu" id="wrap-burger-menu">
+                <ul class="nav nav-tabs" id="burger-menu">
+                     @foreach (var burgerItem in listBurger ) {
+                        <li class="active"><a href="@(burgerItem.Value<Link>("itemUrl").Url)">@burgerItem.Value("title")</a></li>
+                   
+                    }
+                </ul>
+                
+              
+            </div>
+            
+            @{
+                var countItemTab = 0;
+            }
+            
+        </div>
+    </div>  
+
+</div>
+
+}
+

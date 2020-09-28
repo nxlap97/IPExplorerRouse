@@ -1,0 +1,56 @@
+
+
+/**umb_name:Heading 1*/
+h1 {
+	font-size:32px;
+	font-weight: bolder;
+}
+
+/**umb_name:Heading 2*/
+h2 {
+	font-size:24px;
+	font-weight: bolder;
+}
+
+/**umb_name:Heading 3*/
+h3 {
+	font-size:18.72px;
+	font-weight: bolder;
+}
+
+/**umb_name:Heading 4*/
+h4 {
+	font-size: 16px;
+	font-weight: bolder;
+}
+
+/**umb_name:Red*/
+.red {
+	color:red;
+}
+
+/**umb_name:Two Column*/
+ul.two-column {
+	column-count: 2 !important;
+}
+
+/**umb_name:None-List-Type*/
+ul {
+	list-style=type:none;
+}
+
+/**umb_name:Font Raleway*/
+.font-Raleway {
+	font-family: Raleway;
+}
+
+/**umb_name:Font Calibri*/
+.font-Calibri {
+	font-family:Calibri;
+}
+
+/**umb_name:Div Text Center*/
+div.textCenter {
+	width: 42.7%;
+	margin: auto;
+}

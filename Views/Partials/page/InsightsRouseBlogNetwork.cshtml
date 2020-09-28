@@ -1,0 +1,159 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using System.Text.RegularExpressions
+@{
+        var alpha = "@";
+        	
+	 var space = ", ";
+	 IEnumerable<IPublishedElement> authorList; 
+	  var countAuthor = 0; 
+    		       
+    		         var title ="";  
+    		      var newsSummary = "";
+    		         var tempString = "";
+    		       try {
+    		           title =  (Model.Value("newsTitle").ToString().Length > 80) ? Model.Value("newsTitle").ToString().Substring(0,80)+"..."  : Model.Value("newsTitle").ToString();
+    		             tempString =  StripHTML(Model.Value("newsSummary").ToString());
+    		           
+    		           newsSummary =  (tempString.ToString().Length > 120) ? tempString.Substring(0,120)+"..." : tempString;
+    		       } catch (Exception e) {
+    		              
+    		       }
+}
+@functions {
+     public static string StripHTML(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
+        }
+
+}
+@if (!Request.Browser.IsMobileDevice)
+{
+    var itemImage = "";
+          try {
+            	 if (Model.HasValue("newsImage"))
+                 {
+                        itemImage = Model.Value<IPublishedContent>("newsImage").Url;
+                                                
+                 }
+                 } catch (Exception e ) {
+                 itemImage = "";
+                 }
+    	 <!-- A Item  -->
+    	<div class="col-xs-12 col-md-12 col-lg-4 item item-news" style="background-image:url('@itemImage')">
+    		<div class="item-content item-content-news">
+    		<div class="title"><a href="@Model.Url">@title</a></div>
+    			<div class="description">
+    		    	@newsSummary
+    			</div>
+    			<p class="time">@Model.Value("newsTimeRead") minute read</p>
+    		
+    			   <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = Model.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList ) {
+                      var urlImage = ""; 
+                      
+                       if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                         if (author != authorList.First()) {
+                              @space @author.Value("profileName") 
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+    			<a href="@Model.Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+    			<p class="datetime">@Model.CreateDate.ToString("dd MMM yyyy", null)</p>
+    			<ul class="tags-list">
+                            @foreach (var tag in Model.Value<string[]>("newsHashtag")) {
+                              <li>#@tag.ToLower()</li>
+                            }
+                          
+                </ul>
+    		</div>
+    	</div>
+        <!-- End Item -->
+} else {
+
+            	 var itemImage = "";
+            	   try {
+            	 if (Model.HasValue("newsImage"))
+                 {
+                        itemImage = Model.Value<IPublishedContent>("newsImage").Url;
+                                                
+                 }
+                 } catch (Exception e) {
+                        itemImage = "";
+                 }
+            
+    
+        <!-- A Item  -->
+	<div class="col-md-6 item item-news item" style="background-image: url('@itemImage');">
+
+		<div class="item-content news-content-box">
+	<div class="title"><a href="@Model.Url">@title</a></div>
+			<div class="description">
+		    	@newsSummary
+			</div>
+			<p class="datetime">@Model.CreateDate.ToString("dd MMM yyyy", null)</p>
+		  <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = Model.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList ) {
+                     
+                         if (author != authorList.First()) {
+                              @space @author.Value("profileName") 
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+			
+			<a href="@Model.Url" class="readmore">READ MORE &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+		
+		
+		</div>
+	</div>
+    <!-- End Item -->
+    
+
+  
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+

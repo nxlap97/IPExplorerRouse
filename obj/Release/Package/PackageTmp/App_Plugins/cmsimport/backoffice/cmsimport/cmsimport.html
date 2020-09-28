@@ -1,0 +1,81 @@
+﻿<div ng-controller="cmsimport.dashboardController" ng-cloak>
+  <cmsimport-licenseinfo></cmsimport-licenseinfo>
+  <div ng-if="model.showLicenseDashboard" class="cmsimportDashboardRow">
+    <h3>Upload License</h3>
+    <p>
+      To unlock all the features such as importing related media, saving of definitions and structured imports you need a license.
+      To purchase a license, simply go to the <a href="https://soetemansoftware.nl/cmsimport" target="_blank" class="cmsimportInfoLink">our website</a> and you're up and running in minutes!<br />
+      If you've already purchased a license, you can install it by downloading it <a href="https://soetemansoftware.nl/myprofile" target="_blank" class="cmsimportInfoLink">from your profile</a> and upload it below, or add it manually to the /~bin/ folder of the Umbraco installation.
+    </p>
+    <p><input type="file" file-model="model.value" id="selectLicenseFile" /></p>
+    <p><br /><button class="btn btn-success" ng-click="upload()">Upload license</button></p>
+  </div>
+  <div class="cmsimportDashboardRow">
+    <h3>CMSImport online resources</h3>
+    <p>Have a question, want to give know every feature of the product, give feedback or report a bug. Use the resources below</p>
+    <div class="cmsimportDashboardColumn">
+      <a href="https://soetemansoftware.nl/cmsimport/documentation" target="_blank" class="cmsimportDashboardBox">
+
+        <div class="cmsimportDashboardBoxTitle">Documentation</div>
+
+        <div class="cmsimportDashboardBoxDescription">Download the CMSImport user manual and get to know all the features</div>
+
+      </a>
+    </div>
+
+    <div class="cmsimportDashboardColumn">
+      <a href="mailto:support@soetemansoftware.nl" class="cmsimportDashboardBox">
+
+        <div class="cmsimportDashboardBoxTitle">Need support?</div>
+
+        <div class="cmsimportDashboardBoxDescription">Just send us an email and we will get back to you.</div>
+
+      </a>
+    </div>
+    <div class="cmsimportDashboardColumn">
+      <a href="https://soetemansoftware.nl/cmsimport/release-notes" target="_blank" class="cmsimportDashboardBox">
+
+        <div class="cmsimportDashboardBoxTitle">Release notes</div>
+
+        <div class="cmsimportDashboardBoxDescription">Check the release notes to find out about the latest changes</div>
+
+      </a>
+    </div>
+  </div>
+  <div class="cmsimportDashboardRow">
+    <h3>Tutorials</h3>
+    <p>We've recorded several video's that shows you how CMSImport. <strong>These video's will be updated soon to the latest version</strong></p>
+    <div class="cmsimportDashboardColumn">
+      <a href="https://player.vimeo.com/video/270038894" target="_blank" class="cmsimportDashboardBox">
+        <div class="cmsimportDashboardBoxTitle">Import Content</div>
+        <div class="cmsimportDashboardBoxDescription">
+          <img src="https://i.vimeocdn.com/video/542313277.jpg?mw=500&mh=281" width="200" height="127" border="0" />
+        </div>
+      </a>
+    </div>
+    <div class="cmsimportDashboardColumn">
+      <a href="https://vimeo.com/104095023" target="_blank" class="cmsimportDashboardBox">
+        <div class="cmsimportDashboardBoxTitle">Import Members</div>
+        <div class="cmsimportDashboardBoxDescription">
+          <img src="https://i.vimeocdn.com/video/486534218.jpg?mw=500&mh=281" width="200" height="127" border="0" />
+        </div>
+      </a>
+    </div>
+    <div class="cmsimportDashboardColumn">
+      <a href="https://vimeo.com/168606841" target="_blank" class="cmsimportDashboardBox">
+        <div class="cmsimportDashboardBoxTitle">Import Wordpress content</div>
+        <div class="cmsimportDashboardBoxDescription">
+          <img src="https://i.vimeocdn.com/video/573135749.jpg?mw=500&mh=283" width="200" height="127" border="0" />
+        </div>
+      </a>
+    </div>
+    <div class="cmsimportDashboardColumn">
+      <a href="https://vimeo.com/144469882" target="_blank" class="cmsimportDashboardBox">
+        <div class="cmsimportDashboardBoxTitle">Import old Umbraco content</div>
+        <div class="cmsimportDashboardBoxDescription">
+          <img src="https://i.vimeocdn.com/video/542313218.jpg?mw=500&mh=281" width="200" height="127" border="0" />
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

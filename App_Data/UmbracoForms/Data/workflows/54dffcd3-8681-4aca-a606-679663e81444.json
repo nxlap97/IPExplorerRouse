@@ -1,0 +1,16 @@
+{
+  "id": "54dffcd3-8681-4aca-a606-679663e81444",
+  "name": "Send Data",
+  "form": "cd694e5d-6822-4760-922e-d4d1960e3043",
+  "active": true,
+  "workflowTypeId": "fd02c929-4e7d-4f90-b9fa-13d074a76688",
+  "executesOn": "Submitted",
+  "settings": {
+    "Url": "https://sitetest.rouse.com/Umbraco/Api/SendEmail/SendEmail",
+    "Method": "POST",
+    "Fields": "[{\"alias\":\"cv\",\"value\":\"d374068d-8cdc-4904-8ea5-aee6027289e7\",\"staticValue\":\"\",\"$$hashKey\":\"object:5081\"},{\"alias\":\"name\",\"value\":\"b3b15caa-da7d-413a-c0b4-36e3d157045d\",\"staticValue\":\"\",\"$$hashKey\":\"object:5091\"},{\"alias\":\"country\",\"value\":\"87a311d3-5aed-41f9-ddd5-b2efdf831f1c\",\"staticValue\":\"\",\"$$hashKey\":\"object:648\"},{\"alias\":\"JobTitle\",\"value\":\"53575b9c-be0e-4101-9c13-b7409260f6a7\",\"staticValue\":\"\",\"$$hashKey\":\"object:1198\"},{\"alias\":\"FirstName\",\"value\":\"b3b15caa-da7d-413a-c0b4-36e3d157045d\",\"staticValue\":\"\",\"$$hashKey\":\"object:1200\"},{\"alias\":\"LastName\",\"value\":\"d5b61ae4-ba6e-4c37-fa5f-25cf41fb0107\",\"staticValue\":\"\",\"$$hashKey\":\"object:1202\"},{\"alias\":\"Phone\",\"value\":\"35132a7f-ee1c-4951-8515-9184b0c7d3e5\",\"staticValue\":\"\",\"$$hashKey\":\"object:1204\"},{\"alias\":\"Email\",\"value\":\"2c707283-9567-4966-d4db-e5253366e04c\",\"staticValue\":\"\",\"$$hashKey\":\"object:1206\"},{\"alias\":\"LinkedIn\",\"value\":\"df9a2734-42c3-4999-f683-92c986df66f6\",\"staticValue\":\"\",\"$$hashKey\":\"object:1208\"},{\"alias\":\"Information\",\"value\":\"3ae7e946-58bd-4187-b884-e056a15b43b7\",\"staticValue\":\"\",\"$$hashKey\":\"object:1210\"}]",
+    "Username": "",
+    "Password": ""
+  },
+  "sortOrder": 0
+}

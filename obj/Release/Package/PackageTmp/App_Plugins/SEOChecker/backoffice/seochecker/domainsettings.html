@@ -1,0 +1,42 @@
+﻿<div class="seocheckerPage" ng-controller="seoChecker.domainSettingsController" ng-cloak>
+  <form name="frm" ng-model="model" ng-show="loaded" no-validate no-dirty-check val-form-manager>
+    <umb-editor-view>
+      <umb-editor-header name="model.pageName"
+                         name-locked="true"
+                         hide-icon="true"
+                         tabs="model.tabs"
+                         navigation="model.tabs"
+                         hide-description="true"
+                         on-select-navigation-item="changeTab"
+                         hide-alias="true">
+      </umb-editor-header>
+
+        <umb-editor-container>
+           
+            <div class="umb-expansion-panel">
+                <div class="umb-expansion-panel__content">
+                    <seochecker-licenseinfo></seochecker-licenseinfo>
+                    <div class="alert alert-error" ng-if="model.isInValid">
+                        <ul>
+                            <li ng-repeat="validationMessage in model.validationMessages">{{validationMessage}}</li>
+                        </ul>
+                    </div>
+                    <umb-tabs-content class="form-horizontal" view="true">
+                        <umb-property data-element="property-{{getActiveTab().alias}}" ng-repeat="property in getActiveTab().properties track by property.alias" property="property">
+                            <umb-property-editor model="property"></umb-property-editor>
+                        </umb-property>
+                    </umb-tabs-content>
+                </div>
+            </div>
+        </umb-editor-container>
+
+      <umb-editor-footer>
+        <umb-editor-footer-content-right>
+          <a class="btn btn-success" ng-click="save()"><localize key="buttons_save">Save</localize></a>
+        </umb-editor-footer-content-right>
+      </umb-editor-footer>
+
+    </umb-editor-view>
+
+  </form>
+</div>

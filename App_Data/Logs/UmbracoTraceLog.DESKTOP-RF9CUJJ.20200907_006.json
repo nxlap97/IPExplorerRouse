@@ -1,0 +1,1 @@
+{"@t":"2020-09-07T06:40:07.0398009Z","@mt":"{LogPrefix} Terminating {Immediate}","LogPrefix":"[ScheduledTasks] ","Immediate":"","SourceContext":"Umbraco.Web.Scheduling.BackgroundTaskRunner","ProcessId":16660,"ProcessName":"w3wp","ThreadId":76,"AppDomainId":2,"AppDomainAppId":"LMW3SVC2ROOT","MachineName":"DESKTOP-RF9CUJJ","Log4NetLevel":"INFO "}

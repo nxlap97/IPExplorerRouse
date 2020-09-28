@@ -1,0 +1,90 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+ @using Umbraco.Web.Models
+ @using System.Text.RegularExpressions;
+
+@{
+	Layout = null;
+	var domain = HttpContext.Current.Request.Url.Host;
+	 var host ="";
+	if (domain == "localhost") {
+	       host = "http://" + domain;
+	} else {
+	        host = "http://" + domain;
+	}
+   
+  var seo = Model.Value("sEOChecker") as SEOChecker.MVC.MetaData;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+     <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K5RGSNM');</script>
+    <!-- End Google Tag Manager -->
+    
+    <meta charset="utf-8">
+    <title>Rouse - @Model.Name</title>
+    
+    @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Robots)){
+	<meta name="robots" content="@seo.Robots">
+    }
+    @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Title)){
+	<meta name="title" content="@seo.Title">
+    }
+    @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Description)){
+	<meta name="description" content="@seo.Description">
+    }
+   
+    <!--meta name="author" content="Rouse"-->
+    <!--meta name="generator" content="Rouse"-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="@host/media/alkhthku/favicon.ico">
+    <link  rel="stylesheet" rel="preload" as="style"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" rel="preload" as="style"    href="https://kenwheeler.github.io/slick/slick/slick.css"/>
+    <link rel="stylesheet" rel="preload" as="style"  href="https://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="@host/css/fontawesome.all.css">
+    <link rel="stylesheet" href="@host/css/jInvertScroll.css">
+    <link href="@host/css/theme.css" rel="stylesheet">
+    <link  href="@host/css/page_style.css" rel="stylesheet">
+    <link href="@host/css/responsive.css" rel="stylesheet">
+    
+
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5RGSNM"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+    @Html.Partial("header")
+
+    <!-- Content -->
+    <main class="home">
+        <div class="wrap-home">
+            @RenderBody()
+
+        </div>
+
+    </main>
+    <!-- Footer -->
+    @Html.Partial("footer")
+
+    <!-- Scripts -->
+    <script rel="preload" as="script" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
+    <script rel="preload" as="script" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+    <script rel="preload" as="script" src="https://ajax.aspnetcdn.com/ajax/mvc/5.1/jquery.validate.unobtrusive.min.js"></script>
+    
+    <script rel="preload" as="script" type="text/javascript" src="https://rousecom.azureedge.net/rousecomstatic/scripts/slick.js"></script>
+    <script rel="preload" as="script" src="https://rousecom.azureedge.net/rousecomstatic/scripts/owl.carousel.js"></script>
+    <script rel="preload" as="script" src="@host/scripts/popper.min.js"></script>
+    <script rel="preload" as="script" src="@host/scripts/bootstrap.min.js"></script>
+    <script rel="preload" as="script" src="@host/scripts/jquery.jInvertScroll.js"></script>
+    <script rel="preload" as="script" src="@host/scripts/slider.js"></script>
+    <script rel="preload" as="script" src="@host/scripts/app.js"></script>
+</body>
+</html>

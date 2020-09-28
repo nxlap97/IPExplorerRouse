@@ -1,0 +1,81 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    @{
+        var random = new Random(10000);
+        var value = random.Next(int.MaxValue);
+    }
+    <!-- Favicons -->
+    <link rel="icon" href="~/Assets/IPEx/images/logo.svg" type="image/png">
+    <link rel="stylesheet" href="~/Assets/IPEx/css/bootstrap.min.css?version=@value">
+    <link rel="stylesheet" href="~/Assets/IPEx/css/normalize.css?version=@value">
+    <link rel="stylesheet" href="~/Assets/IPEx/css/style.css?version=@value">
+    <link rel="stylesheet" href="~/Assets/IPEx/css/index.css?version=@value">
+
+    <link rel="stylesheet" href="~/Assets/IPEx/css/owl.carousel.min.css?version=@value">
+    <link rel="stylesheet" href="~/Assets/IPEx/css/chart.min.css?version=@value">
+    @RenderSection("Css", required: false)
+    <title>@ViewBag.Title</title>
+    <style>
+        .pass-eye svg {
+            cursor: pointer;
+        }
+        @@media (min-width: 320px) {
+            .container-desktop .container-custom .form-group > div .input-validate small {
+                position: absolute;
+                margin-top: 2px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    @RenderBody()
+    <script src="~/Assets/IPEx/js/jquery-3.5.1.min.js?version=@value"></script>
+    <script src="~/Assets/IPEx/js/popper.min.js?version=@value"></script>
+    <script src="~/Assets/IPEx/js/bootstrap.min.js?version=@value"></script>
+    <script src="~/Assets/IPEx/js/all.min.js?version=@value"></script>
+    <script src="~/Assets/IPEx/js/gsap.min.js?version=@value"></script>
+    <script src="~/Assets/IPEx/js/chart.min.js?version=@value"></script>
+
+    @RenderSection("Scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.pass-eye', function (e) {
+                e.preventDefault();
+                if ($(this).children('svg').hasClass('fa-eye')) {
+                    $('.password input.txt-password').attr('type', 'password');
+                    $('.password input.txt-password' + $(this).data('id')).attr('type', 'password');
+                    $(this).children('svg').removeClass('fa-eye');
+                    $(this).children('svg').addClass('fa-eye-slash');
+                } else {
+                    $('.password input.txt-password').attr('type', 'text');
+                    $('.password input.txt-password' + $(this).data('id')).attr('type', 'text');
+                    $(this).children('svg').removeClass('fa-eye-slash');
+                    $(this).children('svg').addClass('fa-eye');
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.btn-collapsed', function () {
+                console.log($(this).attr("data-target"));
+            });
+        });
+
+    </script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,159 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.SportsIP>
+@using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	 var bannerImage = "";
+	 
+	   var newsLatestIP = Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"))
+       .Descendants().OfTypes("news")
+       .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.CreateDate).Take(4);
+  
+                        try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue("bannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerDesktop") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerDesktop").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue("bannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerMobile") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerMobile").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         bannerImage ="";
+                  
+                  }
+                
+            
+      
+          
+    
+    		 var topImage = "";
+    if (Model.Value<IPublishedContent>("sportsIPTopImage") != null ) {
+        topImage = Model.Value<IPublishedContent>("sportsIPTopImage").Url;
+    } 
+    
+      <!--Slide question-->
+   var listQuestionCount = 0;
+   var sliderImage = "";
+   var questionSliderCount = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").Count();
+   if (questionSliderCount > 0 ) {
+         var slider = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").First();
+         if (slider.Value<IPublishedContent>("questionSliderImage") != null ) {
+            sliderImage = slider.Value<IPublishedContent>("questionSliderImage").Url;
+         }
+          listQuestionCount =  slider.Value<IEnumerable<IPublishedElement>>("questionSliderItemGroup").Count();
+     
+        
+   }
+   
+}
+
+   
+ 
+
+    
+    <section class="top-banner" style="background-image:url('@bannerImage')">
+        
+        <div class="content-box content-box-right">
+            <h3 class="title">@Model.Value("sportsIPTopBannerTitle")</h3>
+            <div class="description">@Model.Value("sportsIPTopBannerContent")</div>
+            <a class="btn btn-primary" href="../../talkconsultant">Talk to a Consultant</a>
+
+        </div>
+    </section>
+    
+ 
+
+    <section class="container section-content-text  wrap-section-middle" id="aboutTopScroll">
+        <div class="section-break-title break-small" id="about-top-title">
+            <h2 class="title"> @Model.Value("sportsIPTopBannerTitle")</h2>
+        </div>
+        <div class="wrap-content-page">
+            <div class="content-center" id="page-top-content">
+              @Model.Value("sportsIPContent")
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                       <img id="about-image-top" src="@topImage">
+                  
+                </div>
+                <div class="col-md-6">
+                    <div class="section-break-title break-small" id="theRouseDifference">
+                        <h2 class="title"> @Model.Value("sportsIPRightTitle")</h2>
+                    </div>                  
+                    @Model.Value("sportsIPRightContent")
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<!--Question Slider-->
+@if (listQuestionCount > 0 ) {
+       	 @Html.Partial("page/Question", Model)
+}
+  <!--End question slider-->
+
+
+    
+  <section class="new-from-rouse container">
+        <div class="row">
+        <div class="title-section">
+            <h4>Latest @Model.Value("servicesTitle") Insights</h4>
+            <a class="more" href="/insights">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+        </div>
+        </div>
+                  
+          @if (!Request.Browser.IsMobileDevice)
+         {
+          <div class="row">
+            	@foreach (var item in newsLatestIP)
+            	{
+            	
+            	 @Html.Partial("page/InsightsNews",item)
+            	}
+        
+         </div>
+         } else {
+           <div class="sliderSlickWrap">
+         	@foreach (var item in newsLatestIP)
+        	{ 
+        		 @Html.Partial("page/InsightsNews",item)
+        	}
+
+          </div>
+
+         
+         
+         }
+           
+    </section>
+    
+
+@if (Model.Value<bool>("showCaseStudiesSection")) {
+@Html.Partial("page/CaseStudiesNews")
+}
+   
+
+@Html.Partial("page/OurTeam")
+
+@Html.Partial("how-can")

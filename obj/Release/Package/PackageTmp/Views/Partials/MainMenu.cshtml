@@ -1,0 +1,70 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    	var mainMenuContent = Umbraco.Content(Guid.Parse("05aa9dba-860c-4551-b441-893fd1bee0b5"));
+    	var listMainMenu = mainMenuContent.Value<IEnumerable<IPublishedElement>>("listMainMenu");
+}
+
+
+
+
+ <div class="col-md-10 d-none d-md-block main-menu">
+                <ul class="ul-menu">
+                @foreach ( var itemMain in listMainMenu ) {
+        
+                   if (itemMain.Value<IEnumerable<IPublishedElement>>("submenu") != null && itemMain.Value<IEnumerable<IPublishedElement>>("submenu").Count() > 0 ) {
+                        
+                        <li class="nav-item dropdown">
+                            @itemMain.Value("title")
+                                @{
+                                   
+                                   var titleItem = (itemMain.Value("title") != "") ?  itemMain.Value("title") : itemMain.Value<IPublishedContent>("pageReference").Name.ToString();
+                                }
+                                <a class="dropdown-hover" href="@(itemMain.Value<IPublishedContent>("pageReference").Url)" id="navbarDropdown">@titleItem</a>
+                                <div class="dropdown-content">
+                                   
+                         @foreach ( var subItem  in itemMain.Value<IEnumerable<IPublishedElement>>("submenu") ) {
+                                    <ul class="group-country">
+                                        <li class="strong">@(subItem.Value("groupSubmenuTitle"))</li>
+                                          <div class="list-item">
+                                              @if (subItem.Value<IEnumerable<IPublishedElement>>("submenuItem").Count() > 1) {
+                                                 <div class="sub-menu-group">
+                                                  @foreach (var itemInGroup in subItem.Value<IEnumerable<IPublishedElement>>("submenuItem")) {
+                                                   var titleSubItem = (itemInGroup.Value("title") != "") ?  itemInGroup.Value("title") : itemInGroup.Value<IPublishedContent>("pageReference").Name.ToString();
+                                                        <li><a href="@(itemInGroup.Value<IPublishedContent>("pageReference").Url)">@titleSubItem</a></li>
+                                                
+                                                }
+                                                
+                                            </div>   
+                                              } else {
+                                               <div class="sub-menu-group">
+                                                  @foreach (var itemInGroup in subItem.Value<IEnumerable<IPublishedElement>>("submenuItem")) {
+                                                   var titleSubItem = (itemInGroup.Value("title") != "") ?  itemInGroup.Value("title") : itemInGroup.Value<IPublishedContent>("pageReference").Name.ToString();
+                                                        <li>  <a href="@(itemInGroup.Value<IPublishedContent>("pageReference").Url)">@titleSubItem</a></li>
+                                                
+                                                }
+                                                
+                                            </div>   
+                                         }
+                                           
+                                           
+                                                
+                                    </ul>
+                                    }
+                                </div>
+                        </li>
+                   } else {
+                            
+                                   
+                                   var titleItem = (itemMain.Value("title") != "") ?  itemMain.Value("title") : itemMain.Value<IPublishedContent>("pageReference").Name.ToString();
+                                
+                              <li class="">
+                                <a href="@(itemMain.Value<IPublishedContent>("pageReference").Url)">
+                                    @titleItem
+                                </a>
+                        
+                              </li>
+                   }
+                   
+                   }
+                </ul>
+            </div>

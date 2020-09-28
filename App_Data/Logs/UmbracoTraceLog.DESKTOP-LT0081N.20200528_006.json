@@ -1,0 +1,1 @@
+{"@t":"2020-05-28T07:06:01.5500261Z","@mt":"{LogPrefix} Terminating {Immediate}","LogPrefix":"[KeepAlive] ","Immediate":"","SourceContext":"Umbraco.Web.Scheduling.BackgroundTaskRunner","ProcessId":1324,"ProcessName":"w3wp","ThreadId":72,"AppDomainId":6,"AppDomainAppId":"LMW3SVC1ROOT","MachineName":"DESKTOP-LT0081N","Log4NetLevel":"INFO "}

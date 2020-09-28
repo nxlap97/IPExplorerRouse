@@ -1,0 +1,185 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+ @{
+ 
+                	var departmentList = Umbraco.Content(Guid.Parse("9e4d5ad3-7310-4e56-b128-48a6d5ba7cba"))
+                    .Children()
+                    .Where(x => x.IsVisible());
+                    var allDepartmentCount = departmentList.Count();
+                    
+                    
+	var joblists = Umbraco.Content(Guid.Parse("a2bb4f7f-8df2-47fc-bebe-8e4f25b5eb75"))
+    .Children()
+    .Where(x => x.IsVisible());
+
+    var locationList = Umbraco.Content(Guid.Parse("4a087704-5c73-48a8-bd63-7a257276804b"))
+                        .Children()
+                        .Where(x => x.IsVisible());
+ 
+
+    var searchQuery = Request.QueryString["department"];
+    
+    var idDP = "" ;
+    if (Request.QueryString["dp"] != null) {
+     idDP = Request.QueryString["dp"];
+    } 
+  
+   
+   
+ 
+   
+
+}
+
+<div class="section-break-title section-break-mobile">
+	<h2 class="title strong-title-break big-title">Available Positions </h2>	
+</div>
+<section class="section-our-office container" id="available-positions-section">
+	<h2 class="title-text">We have open positions across the world</h2>
+
+	<div class="container">
+	  		    @if (!Request.Browser.IsMobileDevice)
+{
+	  
+	        <div class="location-group-control" >
+	        	<span class="strong list-title">Select Location</span>
+	
+            <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="job-location-select">
+                    <p  class="btn btn-default dropdown-toggle"  id="job-location-select-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations" >All Locations
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="job-location-select"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="job-location-select-menu">
+                           
+                                @foreach (IPublishedContent locationItem in locationList) 
+                                    {
+                                       <li location-id="@locationItem.Id" value="@locationItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@locationItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+	    </div>
+
+} else {
+	  <div class="row location-wrap-mobile">
+	        <div class="location-group-control" >
+	        	<span class="strong list-title">Select Location</span>
+	
+            <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="job-location-select">
+                    <p  class="btn btn-default dropdown-toggle"  id="job-location-select-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations" >All Locations
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="job-location-select"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="job-location-select-menu">
+                           
+                                @foreach (IPublishedContent locationItem in locationList) 
+                                    {
+                                       <li location-id="@locationItem.Id" value="@locationItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@locationItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+	    </div>
+	  </div>
+}
+	  
+		<div class="row">
+		    @if (!Request.Browser.IsMobileDevice)
+{
+    	<div class="col-md-12 col-lg-4">
+				<span class="list-title">Departments</span>
+				 <div class="department-wrap">
+			        	<ul class="departments-list"  id="departmentListDesktopId"  department-current = "all">
+					<li  id="0" >
+					    	<a class="department-item strong" department-id="1" department-name="all"  department-title="All Departments"   href="javascript:void(0)">All Departments (@allDepartmentCount)</a>
+					</li>
+                    	@foreach (var item in departmentList)
+                    	{
+                    		<li id="@item.Id">
+                    			<a class="department-item" department-id="@item.Id" department-name="@item.Name"  department-title="@item.Name"  href="javascript:void(0)">@item.Name</a>
+                    		</li>
+                    	}
+				</ul>
+			    </div>
+			
+			</div>
+} else {
+
+          <div class="location-group-control" >
+	        	<span class="strong list-title">Select Departments</span>
+	
+            <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="job-department-select">
+                    <p  class="btn btn-default dropdown-toggle"  id="job-department-select-menu" data-toggle="dropdown" department-id="1" value-default="all" value="all" text-default="All Departments" >All Departments
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="job-department-select"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="job-department-select-menu">
+                           
+                              	@foreach (var item in departmentList)
+                	{
+                	 
+                		<li department-id="@item.Id">
+                			<a class="department-item" department-id="@item.Id" department-name="@item.Name" department-title="@item.Name"  href="javascript:void(0)">@item.Name</a>
+                		</li>
+                	}
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+	    </div>
+                  
+                  
+  
+}
+		
+			<div class="col-md-12 col-lg-8 result-career-wrapper">
+			    <span  class="list-title" >Featured</span>
+			    @if (!Request.Browser.IsMobileDevice)
+                {
+                  <div class="featured-wrap" id="jobs-result" total-page="0" current-page="1">
+			     </div>
+			     <div class="pagination">
+                            <ul id="paginationList" curentPage = "1" >
+                             </ul>
+                         </div>
+			    
+         
+                } else {
+                <div class="jobs-result-all-mobile" id="jobs-result" total-page="0" current-page="1">
+			        	
+			      
+                    			
+			    </div>
+			    
+			   
+                }
+
+			</div>	
+		</div>
+	</div>
+
+   
+      
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+    let id = '@idDP';
+    if (id == "") {
+        id = 0;
+    } 
+    $(".departments-list li").removeClass("strong");
+    var departmentActive = $(".departments-list li[id='@idDP']").addClass("strong");
+})
+</script>

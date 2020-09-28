@@ -1,0 +1,537 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.WhereWeWorkMain>
+@using ContentModels = Umbraco.Web.PublishedModels;
+ @using System.Text.RegularExpressions;
+ @using System.Web;
+ @using Umbraco.Web.Models;
+  @using System.Web.Mvc;
+@{
+	Layout = "whereWeWorkMaster.cshtml";
+	
+    var countryName = Model.Value<string>("countryName");
+   
+      var backgroundImage = "";
+    if (Model.Value<IPublishedContent>("countryBackground") != null ) {
+        backgroundImage = Model.Value<IPublishedContent>("countryBackground").Url;
+    } 
+    	 var countryBackgroundSub = "";
+    if (Model.Value<IPublishedContent>("countryBackgroundSub") != null ) {
+        countryBackgroundSub = Model.Value<IPublishedContent>("countryBackgroundSub").Url;
+    } 
+    
+     	 var credentialsImage = "";
+    if (Model.Value<IPublishedContent>("credentialsImage") != null ) {
+        credentialsImage = Model.Value<IPublishedContent>
+    ("credentialsImage").Url;
+    }
+    
+        var countryLogo = "";
+    if (Model.Value<IPublishedContent>("countryLogo") != null ) {
+        countryLogo = Model.Value<IPublishedContent>("countryLogo").Url;
+    } 
+    
+    
+     var branchs = Model.Descendants();
+     
+     var overView = Model.Value("overview");
+      var overviewTitle = Model.Value("overviewTitle");
+     
+     var credentialsContent =  Model.Value("credentialsContent");
+        
+      var listMap = Model.Value<IEnumerable<IPublishedElement>>("mapLocation");
+      var countLocation = 0;
+      var locationTabId = "";
+      var countLocationTabContent = 0 ;
+                
+      var  showServicesContent = Model.Value<bool>("showServicesContent");
+                
+    
+    	 var successStoriesList = Model.Value<IEnumerable<IPublishedElement>>("successStoriesList");
+    	 
+    	 
+    	 
+    	 
+    	 
+       var ourTeamList = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+       .Descendants().OfTypes("profileContent")
+       .Where(x => x.IsVisible())
+       .Where(x => x.Value<IPublishedContent>("profileLocation") != null)
+       .Where(x => x.Value<IPublishedContent>("profileLocation").Ancestor().Name.ToLower().Trim().Contains(countryName.ToLower().Trim()))
+       .OrderByDescending(x => x.CreateDate);
+    	 
+    	 
+    	 
+    	 
+    	 var servicesContent = Model.Value<IEnumerable<IPublishedElement>>("servicesContent");
+    	  
+    	   string location = "";
+  
+    	 
+        var countBranch = 0;
+    }
+    
+    
+@functions {
+  public bool CheckServices(IEnumerable<IPublishedContent> list, string keyWord)
+            {
+                foreach (var item in list)
+                {
+
+                    if (item.Name.ToString() == keyWord)
+                    {
+                        return true;
+                    }
+
+                }
+
+                return false;
+            }
+            
+ 
+     
+
+}
+
+
+ @if (countryBackgroundSub != "") {
+     <section class="section-banner-company two-background" id="where-we-work-country" style="background:url('@backgroundImage') left/ 50.1% 101%  no-repeat ,url('@countryBackgroundSub') right/50% 101% no-repeat">
+
+    
+	<div class="company-box row">
+		<div class="col-md-9 details">
+			<article class="company-content">
+			   <div  class="country-top"> 
+			   <h2 class="country"> @Model.Value("countryName")</h2>
+			   @if (countryLogo != "" ) {
+			    <img src="@countryLogo">
+			   }
+			  
+			   </div>
+		       @Model.Value("countryContent")
+		         <div class="row">
+      
+            @foreach(var item in branchs)
+                {
+                
+                try {
+                if (item.Value<Link>("locationMapUrl") != null) {
+                location = item.Value<Link>("locationMapUrl").Url.ToString();
+                }
+                   
+              } catch (Exception e) {
+              
+                location = "";
+              }
+                      <div class="col-md-4 location-item-detail">
+                           @if (!Request.Browser.IsMobileDevice)
+                        {
+                          <h3> @item.Value("locationName") <span><i count-branch ="@countBranch" class="fas fa-map-marked-alt"></i></span></h3>     
+                           
+                         } else {
+                          <h3> @item.Value("locationName") <a target="_blank" href='@location' > <span><i count-branch ="@countBranch" class="fas fa-map-marked-alt"></i></span> </a> </h3>     
+                         
+                         }
+                            <div class="officeLocationAddress" location="@location">
+                               @if (!Request.Browser.IsMobileDevice)
+                        {    
+                             <p> @item.Value("locationAddressDetail")</p>
+                        } else {
+                         <p>  <a target="_blank" href='@location' >  @item.Value("locationAddressDetail") </a> </p>
+                        }
+                            </div>
+                            @if (@item.Value("locationPhone") != "") {
+                              <div class="phone">tel: <a href="tel:@item.Value("locationPhone")">@item.Value("locationPhone")</a></div>
+                            }
+                            
+                             @if (@item.Value("locationFax") != "") {
+                             <div class="fax">fax: <a href="mailto:@item.Value("locationFax")">@item.Value("locationFax")</a></div>
+                            }
+                            
+                             @if (@item.Value("locationEmail") != "") {
+                                  <div class="email">email: <a href="mailto:@item.Value("locationEmail")">@item.Value("locationEmail")</a></div>
+                            }
+                          
+                           
+                          
+                                        
+                        </div>
+                        countBranch++;
+                }
+                      
+                       
+                    </div>
+			</article>
+		</div>	
+		<div class="col-md-3 country-list">
+		  @Html.Partial("where-we-work-group-country")
+		</div>
+	</div>
+	
+</section>
+ } else {
+  <section class="section-banner-company one-background"  id="where-we-work-country" style="background:url('@backgroundImage') left/ 100% auto  no-repeat;background-size: auto;">
+
+
+	<div class="company-box row">
+		<div class="col-md-9 details">
+			<article class="company-content">
+			   <h2 class="country"> @Model.Value("countryName") </h2>
+		       @Model.Value("countryContent")
+		         <div class="row">
+      
+              @foreach(var item in branchs)
+                {
+                   
+                try {
+                if (item.Value<Link>("locationMapUrl") != null) {
+                location = item.Value<Link>("locationMapUrl").Url.ToString();
+                }
+                   
+              } catch (Exception e) {
+              
+                location = "";
+              }
+                      <div class="col-md-4 location-item-detail">
+                              @if (!Request.Browser.IsMobileDevice)
+                        {
+                          <h3> @item.Value("locationName") <span><i count-branch ="@countBranch" class="fas fa-map-marked-alt"></i></span></h3>     
+                           
+                         } else {
+                          <h3> @item.Value("locationName") <a target="_blank" href='@location' > <span><i  class="fas fa-map-marked-alt"></i></span> </a> </h3>     
+                         
+                         }
+                            <div class="officeLocationAddress" location="@location">
+                               @if (!Request.Browser.IsMobileDevice)
+                        {    
+                             <p> @item.Value("locationAddressDetail")</p>
+                        } else {
+                         <p>  <a target="_blank" href='@location' >  @item.Value("locationAddressDetail") </a> </p>
+                        }
+                            </div>
+                            @if (@item.Value("locationPhone") != "") {
+                              <div class="phone">tel: <a href="tel:@item.Value("locationPhone")">@item.Value("locationPhone")</a></div>
+                            }
+                            
+                             @if (@item.Value("locationFax") != "") {
+                             <div class="fax">fax: <a href="mailto:@item.Value("locationFax")">@item.Value("locationFax")</a></div>
+                            }
+                            
+                             @if (@item.Value("locationEmail") != "") {
+                                  <div class="email">email: <a href="mailto:@item.Value("locationEmail")">@item.Value("locationEmail")</a></div>
+                            }
+                          
+                           
+                          
+                                        
+                        </div>
+                           countBranch++;
+                }
+                      
+                       
+                    </div>
+			</article>
+		</div>	
+		<div class="col-md-3 country-list">
+		  @Html.Partial("where-we-work-group-country")
+		</div>
+	</div>
+	
+</section>
+ }
+ 
+ 
+ 
+
+    @if (overView.ToString().Length > 0 ) {
+    <section class="container section-content-text" id="china-overview">
+        @if (overviewTitle != "" ) {
+         <div class="section-break-title break-small" >
+            <h2 class="title">@overviewTitle</h2>
+        </div>
+        }
+       
+        <div class="wrap-content-page">
+            <div class="content-center ">
+                @Model.Value("overview")
+                </div>
+            </div>
+</section>
+    }
+    
+  
+    
+  
+    @if (showServicesContent) {
+    
+      <div class="container">
+        <div class="title-section" id="services-in-china-title">
+            <h4>Services In @countryName</h4>
+        </div>
+    </div>
+    
+       if (servicesContent != null ) {
+          foreach(var serviceContent in servicesContent)
+                {
+                  @Html.Partial("wherewework/CountryServices",serviceContent)
+                }
+       
+       }
+      
+    } else {
+        <style>
+            body { height:auto !important;}
+            #china-service-desktop-content section {
+                position: unset !important;
+            }
+            .china-services-credentials {
+                 position: unset !important;
+            }
+            #china-success-stories-section {
+                 position: unset !important;
+            }
+            #china-locations {
+                 position: unset !important;
+            }
+            .our-people-member {
+                 position: unset !important;
+            }
+            .banner-howcan{
+                 position: unset !important;
+            }
+            footer {
+                 position: unset !important;
+            }
+        </style>
+    
+    }
+    
+    
+    <!--China Service Desktop Section  -->
+    <div class="china-section-content china-service-desktop-content">
+      
+            
+        @if (credentialsContent.ToString().Length > 0 )  {
+        <section class="china-services-credentials">
+            <div class="container">
+            <div class="title-section">
+                <h4>Credentials</h4>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <img src="@credentialsImage" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="credentials-content">
+                        <h2 class="title">Our Credentials</h2>
+                        @Model.Value("credentialsContent")
+                    </div>
+                </div>
+
+            </div>
+          </div>
+        </section>
+        }
+
+
+     @if (successStoriesList != null ) {
+   <section id="china-success-stories-section">
+        <div class="container">
+     <div class="title-section">
+        
+            <h4>Case Studies</h4>
+               <a class="more" href="/../../case-studies/">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+            
+        </div>
+        </div>
+    <div  class="container" >
+	<!-- A row Item -->
+     <div class="row">
+         
+      @foreach (var story in successStoriesList)
+    {
+    @Html.Partial("page/SuccessStories",story)
+        
+     } 
+
+  
+     </div>
+	<!-- End a row Item -->
+	</div>
+
+
+</section>
+   	    
+       }
+  
+   	   
+
+       @if (ourTeamList != null  && ourTeamList.Count() > 0 ) {
+    <section class="our-people-member" id="china-our-team-section">
+         <div class="container">
+        <div class="title-section row">
+             <h4>Our Team in @countryName</h4>
+              
+          
+        </div>
+        </div>
+        <div class="container">
+            @if (!Request.Browser.IsMobileDevice)
+          
+{     
+  if  ( ourTeamList != null &&  ourTeamList.Count() >= 4) {
+            
+             <div class="sliderSlickWrapPeople row">
+            
+            
+                      
+              @foreach (var peopleItem in ourTeamList)
+                {
+                        @Html.Partial("page/OurTeam",peopleItem)
+                    
+                 } 
+        
+        
+             </div>
+     
+            } else {
+             
+             <div class="row">
+            
+            
+                      
+              @foreach (var peopleItem in ourTeamList)
+                {
+                        @Html.Partial("page/OurTeam",peopleItem)
+                    
+                 } 
+        
+        
+             </div>
+            
+            }
+       
+} else {
+  <div class="sliderSlickWrap">
+              
+      @foreach (var peopleItem in ourTeamList)
+        {
+                @Html.Partial("page/OurTeam",peopleItem)
+            
+         } 
+
+
+     </div>
+    
+}
+        </div>
+    </section>
+    
+      }
+
+          <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+        <script type="text/javascript" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
+        
+        
+        
+        
+        
+        
+  @if (listMap.Count() > 0 ) {
+   <!--China location-->
+      <section id="china-locations">
+           <div class="container">
+        <div class="title-section">
+            <h4>Our Location </h4>
+                <a class="more" href="">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+        </div>
+        </div>
+        <div class="row">           
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs location-control" role="tablist">
+                  @if (listMap != null) {
+                    foreach (var locationItem in listMap ) {
+                        locationTabId = "locationTab_" + countLocation;
+                           if (countLocation == 0 ) {
+                                  <li class="nav-item" count_id = "@countLocation">
+                                     <a class="nav-link active" data-toggle="tab" href="#@locationTabId">@locationItem.Value("locationName")</a>
+                                   </li>
+                           } else {
+                                   <li class="nav-item" count_id = "@countLocation" >
+                                     <a class="nav-link" data-toggle="tab" href="#@locationTabId">@locationItem.Value("locationName")</a>
+                                   </li>
+                           }
+                         
+                                                               
+                        countLocation++;                                    
+                    }
+                }
+              
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                @if (listMap != null) {
+                    foreach (var locationContentItem in listMap ) {
+                         locationTabId = "locationTab_" + countLocationTabContent;
+                           if (countLocationTabContent == 0 ) {
+                             <div id="@locationTabId" class="container tab-pane active">
+                            @if (locationContentItem.Value("locationMap") != null) {
+                               <div class="location-infor">
+                                    <h3>  @locationContentItem.Value("locationName")</h3>                             
+                                   <div class="description">  
+                                   @locationContentItem.Value("locationAddressDetail")
+                                   @locationContentItem.Value("locationContact")
+                                  </div>                    
+                                </div>	    
+                                }
+                                      @locationContentItem.Value("locationMap")
+                                </div>
+                            
+                            
+                           } else {
+                             <div id="@locationTabId" class="container tab-pane fade">
+                               @if (locationContentItem.Value("locationMap") != null) {
+                              <div class="location-infor">
+                                    <h3>  @locationContentItem.Value("locationName")</h3>                             
+                                   <div class="description">  
+                                   @locationContentItem.Value("locationAddressDetail")
+                                   @locationContentItem.Value("locationContact")
+                                  </div>                  
+                               </div>	  
+                               }
+                                      @locationContentItem.Value("locationMap")
+                                </div>
+                             
+                          
+                           }
+                         
+                                                               
+                        countLocationTabContent++;                                    
+                    }
+                }
+           
+            </div>
+        </div>    
+
+    </section>
+    <!--End china location-->
+    }
+   
+    </div>
+    <!--End China Service Desktop Section  -->
+    
+    
+     @if (showServicesContent) {
+
+
+    @Html.Partial("how-can")
+
+    @Html.Partial("footer")
+
+ } else {
+    @Html.Partial("how-can")
+
+    @Html.Partial("footer")
+ }

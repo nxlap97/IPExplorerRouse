@@ -1,0 +1,71 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.InvestorRelations>
+    @using ContentModels = Umbraco.Web.PublishedModels;
+    @{
+    Layout = "master.cshtml";
+    	  var bannerImage = "";
+    if (Model.Value<IPublishedContent>("investorRelationsBanner") != null ) {
+        bannerImage = Model.Value<IPublishedContent>("investorRelationsBanner").Url;
+    } 
+    }
+    
+    <section class="top-banner" id="investor-relations-banner" style="background-image:url('@bannerImage');">
+        <h2>News & Results</h2>
+    </section>
+
+    <div class="section-break-title container wrap-section-lagre invester-relation ">
+        <h2 class="title" id="title-news-result">Investor Relations</h2>
+    </div>
+   <div class="investor-wrap">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-12">
+                <article id="investor-content">
+                    <h2 class="title-section">Investor Updates</h2>
+                    <div class="wrap-content-page">
+                       @Model.Value("investorUpdates")
+                   </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+
+    @Html.Partial("page/Newsroom")
+
+
+    <section class="section-our-office container" id="financial-data-section">
+        <h2 class="title title-section" >Financial Data</h2>
+
+        <ul class="year-list">
+            <li>2019</li>
+            <li>2018</li>
+            <li>2017</li>
+            <li>2016</li>
+        </ul>
+        <div class="financial-data-content">
+           <div class="row"> 
+            <div class="col-md-6 offset-md-3">
+                 <p><strong>Q1</strong></p>
+                </div>
+            </div>
+            <div class="row">
+               
+                <div class="col-md-3">
+                    <p>Press Release</p>
+                    <p>Financial Statements</p>
+                    <p>10-Q</p>
+                </div>
+                
+                <div class="col-md-3">
+                    <p>Press Release</p>
+                    <p>Financial Statements</p>
+                    <p>10-Q</p>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+    </section>
+    </div>

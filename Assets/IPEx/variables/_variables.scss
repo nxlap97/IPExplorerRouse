@@ -1,0 +1,18 @@
+$Glacier: #71b4c4;
+$Boston_Blue: #429bb0;
+$Allports: #007f9c;
+$Honey_Flower: #5b2080;
+$Deluge: #7a58a1;
+$Viridian: #3c8d74;
+$Salem: #096e4a;
+@mixin clearfix() {
+    &::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+@mixin font($size, $lineheight) {
+    font-size: $size;
+    line-height: $lineheight;
+}

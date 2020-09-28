@@ -1,0 +1,271 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.People>
+    @using ContentModels = Umbraco.Web.PublishedModels;
+    @{
+        Layout = "master.cshtml";
+
+        var bannerImage = "";
+
+        try {
+            if (!Request.Browser.IsMobileDevice)
+            {
+                if(Model.HasValue("peopleBannerImage")) {
+
+                    if (Model.Value<IPublishedContent>("peopleBannerImage").GetCropUrl("BannerDesktop") != null)
+                    {
+                        bannerImage =  Model.Value<IPublishedContent>("peopleBannerImage").GetCropUrl("BannerDesktop").ToString();
+                    } else
+                    {
+                        bannerImage =  Model.Value<IPublishedContent>("peopleBannerImage").Url.ToString();
+                    }
+                }
+
+            } else {
+                if(Model.HasValue("peopleBannerImage")) {
+
+                    if (Model.Value<IPublishedContent>("peopleBannerImage").GetCropUrl("BannerMobile") != null)
+                    {
+                        bannerImage =  Model.Value<IPublishedContent>("peopleBannerImage").GetCropUrl("BannerMobile").ToString();
+                    } else
+                    {
+                        bannerImage =  Model.Value<IPublishedContent>("peopleBannerImage").Url.ToString();
+                    }
+                }
+            }
+        }
+        catch (Exception e) {
+            bannerImage ="";
+
+        }
+
+
+        var locationList = Model.Value<IPublishedContent>("peopleLocationList");
+
+        var departmentList = Model.Value<IPublishedContent>("peopleDepartmentList");
+
+        var firmList  =  Model.Value<IPublishedContent>("peopleFirmList");
+
+        var ipAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+        var namSearch = Request.QueryString["name"];
+        var departmentSearch = Request.QueryString["department"];
+        var locationSearch = Request.QueryString["location"];
+
+        var CTID = "2101fd88-9c70-4497-bdc9-fd8b97221dea";
+
+
+        var listWhereWeWork = Umbraco.Content(1246);
+
+
+    }
+    <style>
+        .dropdown-item{
+            padding:0rem!important;
+        }
+    </style>
+
+    <div id="ctid" class="ctid" ctid="@CTID"> </div>
+    <section class="people-page top-banner" style="background-image:url('@bannerImage')">
+        <div class="find-box">
+            <h3>Find Someone</h3>
+            <div class="container" >
+                @if (!Request.Browser.IsMobileDevice)
+{
+
+                <div class="wrap-controller">
+                  
+                        <div class="component">
+                            <input id="peopleName" name="peopleName" type="text" placeholder="Name">
+                        </div>
+                  
+                       
+                 <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="peopleLocation">
+                    <p  class="btn btn-default dropdown-toggle" data-flip="false"  id="peopleLocation-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations" >All Locations
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="peopleLocation"></i>
+                   <ul class="dropdown-menu" role="menu" aria-labelledby="peopleLocation-menu">
+       
+                       @foreach (IPublishedContent countTryItem in listWhereWeWork.Children)
+                       {
+                           <li class="dropdown-item disabled">@countTryItem.Name</li>
+                           foreach (var cityItem in countTryItem.Children)
+                           {
+                               <li style="margin-left:15px" id-item="@countTryItem.Id" location-id="@countTryItem.Id" value="@countTryItem.Name" role="presentation" class="dropdown-item">@cityItem.Name</li>
+                           }
+                       }
+                   
+
+                   </ul>
+                  </div>
+                  </div>
+                  
+                  
+
+                    <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="peopleFirm">
+                    <p  class="btn btn-default dropdown-toggle" data-flip="false"  id="peopleFirm-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Firm" >Firm
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="peopleFirm"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="peopleFirm-menu">
+                           
+                                @foreach (IPublishedContent firmItem in firmList.Children) 
+                                    {
+                                       <li id-item="@firmItem.Id" location-id="@firmItem.Id" value="@firmItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@firmItem.Name</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                  
+                 
+                      
+                    <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="peopleDepartment">
+                    <p  class="btn btn-default dropdown-toggle" data-flip="false"  id="peopleDepartment-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Services" >All Services
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="peopleDepartment"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="peopleDepartment-menu">
+                           
+                                @foreach (IPublishedContent departmentItem in departmentList.Children) 
+                                    {
+                                       <li  id-item="@departmentItem.Id" location-id="@departmentItem.Id" value="@departmentItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@departmentItem.Name</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                  
+                  
+                   
+                        <div class="component">
+                            <button class="btn btn-info btn-search-banner" id="btn-search-people">Search</button>
+                        </div>
+                    </div>
+
+            
+             } else {
+             
+              <div class="row">
+                  <div class="col-xs-12 col-md-12 col-lg-3">
+                        <div class="component">
+                            <input id="peopleName" name="peopleName" type="text" placeholder="Name">
+                        </div>
+                   </div>
+                           <div class="col-xs-12 col-md-12 col-lg-3">
+                    <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="peopleLocation">
+                    <p  class="btn btn-default dropdown-toggle"  data-flip="false"  id="peopleLocation-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations" >All Locations
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="peopleLocation"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="peopleLocation-menu">
+                           
+                                @foreach (IPublishedContent item in locationList.Children) 
+                                    {
+                                       <li location-id="@item.Id" value="@item.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@item.Name</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                   </div>
+                  
+                  
+                      <div class="col-xs-12 col-md-12 col-lg-3">
+                         <div class="component">
+                         <div class="dropdown filter-insight-dropdown" id="peopleFirm">
+                        <p  class="btn btn-default dropdown-toggle" data-flip="false"  id="peopleFirm-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Firm" >Firm
+                       
+                        </p>
+                       <i class="drop-icon clear-filter" target="peopleFirm"></i>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="peopleFirm-menu">
+                               
+                                    @foreach (IPublishedContent firmItem in firmList.Children) 
+                                        {
+                                           <li location-id="@firmItem.Id" value="@firmItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@firmItem.Name</a></li>
+                                       
+                                    }
+                                      
+                     
+                        </ul>
+                      </div>
+                      </div>
+                        </div>
+                      
+                   <div class="col-xs-12 col-md-12 col-lg-3">
+                  
+                             <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="peopleDepartment">
+                    <p  class="btn btn-default dropdown-toggle" data-flip="false"  id="peopleDepartment-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Departments" >All Departments
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="peopleDepartment"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="peopleDepartment-menu">
+                           
+                                @foreach (IPublishedContent departmentItem in departmentList.Children) 
+                                    {
+                                       <li location-id="@departmentItem.Id" value="@departmentItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@departmentItem.Name</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                    </div>
+                   <div class="col-xs-12 col-md-12 col-lg-3 search-wrap-button">
+                        <div class="component">
+                            <button class="btn btn-info" id="btn-search-people">Search</button>
+                        </div>
+                    </div>
+
+                </div>
+                
+             }   
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="container section-content-text wrap-section-lagre" id="people-top-section">
+        <div class="row">
+        <div class="section-break-title break-small people-break" id="break-section-large">
+            <h2 class="title large-text">People</h2>
+        </div>
+        </div>
+        <div class="wrap-content-page">
+            <div class="content-center content-infor-center">
+                @Model.Value("peopleTopContent")
+            </div>
+
+        </div>
+    </section>
+
+    @Html.Partial("page/peopleourteam",Model)
+    
+    @Html.Partial("how-can")
+
+<script>
+ 
+    function clearUrl() {
+                 var uri = window.location.toString();
+        if (uri.indexOf("?") > 0) {
+            var clean_uri = uri.substring(0, uri.indexOf("?"));
+            window.history.replaceState({}, document.title, clean_uri);
+        }
+    }
+</script>
+
+
+
+    

@@ -1,0 +1,189 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+	var ourTeams = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+    .Children()
+    .Where(x => x.IsVisible()).Take(8);
+      var ourTeamsArray =  new  Umbraco.Core.Models.PublishedContent.IPublishedContent[5]  ;
+      var itemTeamCount = 0;
+}
+
+
+
+    <section class="our-people-member container" id="our-team-section">
+              @if (!Request.Browser.IsMobileDevice)
+        {
+        <div class="row">
+        @foreach (var itemTeam  in  ourTeams) { 
+           var itemImage = "";
+           try {
+           if (itemTeam.Value<IPublishedContent>("profileImage") != null) {
+                        if(itemTeam.HasValue("profileImage")) {
+          
+                            if (itemTeam.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImage") != null)
+                            {
+                                itemImage =  itemTeam.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImage").ToString();
+                            } else
+                            {
+                                itemImage =  itemTeam.Value<IPublishedContent>("profileImage").Url.ToString();
+                            }
+          }
+           } 
+        } catch (Exception e) {
+             itemImage = "";
+        }
+           
+        
+         
+        
+            <!-- A people item -->
+            <div class="col-md-6 col-lg-3">
+                <div class="people-item" style="background-image:url('')">
+                    <div class="profile-image">
+                          <img  src="@itemImage">
+                    </div>
+                    <div class="people-information">
+                        <div class="box">
+                        <div class="top">
+                            <a href="@itemTeam.Url"><h4 class="name">@itemTeam.Value("profileName")</h4></a>
+                        <p class="position">@itemTeam.Value("profilePositon")</p>
+                             @{var officeLocation = "";
+                                                                try {
+                                                                    officeLocation = itemTeam.Value<IPublishedContent>("profileLocation").Name.ToString();
+                                                                } catch (Exception e) {
+                                                                
+                                                                   officeLocation  = "";
+                                                                
+                                                                }
+                                                                }
+                                                                
+                                                                  @if (officeLocation != "") {
+                                                                 <p><a href=""><i class="fas fa-map-marker"></i> @officeLocation</a></p>
+                                                                }
+                        </div>
+                        <div class="bottom">
+                              <p class="email">@itemTeam.Value("profileEmail")</p>
+                        <p class="phone">@itemTeam.Value("profilePhone")</p>
+                        <div class="social-network">
+                             <ul >
+                                             
+                                      @if (itemTeam.HasValue("linkedinURL") && itemTeam.Value("linkedinURL") != null)
+                                          {
+                                              
+
+                                                  <li><a href=" @itemTeam.Value("linkedinURL")"><i class="fab fa-linkedin-in"></i> </a></li>
+                                             
+                                          }
+                                                            
+                                    
+                                        </ul>
+                          </div>
+                        </div>
+                      
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End people item -->
+                 itemTeamCount++;
+    }
+        </div>
+    } else {
+    
+     <div class="sliderSlickWrap">
+        @foreach (var itemTeam  in  ourTeams) { 
+           var itemImage = "";
+           try {
+           if (itemTeam.Value<IPublishedContent>("profileImage") != null) {
+                        if(itemTeam.HasValue("profileImage")) {
+          
+                            if (itemTeam.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImage") != null)
+                            {
+                                itemImage =  itemTeam.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImage").ToString();
+                            } else
+                            {
+                                itemImage =  itemTeam.Value<IPublishedContent>("profileImage").Url.ToString();
+                            }
+          }
+           } 
+        } catch (Exception e) {
+             itemImage = "";
+        }
+           
+        
+         
+        
+            <!-- A people item -->
+            <div class="col-md-6 col-lg-3">
+                <div class="people-item" style="background-image:url('')">
+                    <div class="profile-image">
+                          <img  src="@itemImage">
+                    </div>
+                    <div class="people-information">
+                        <div class="box">
+                        <div class="top">
+                            <a href="@itemTeam.Url"><h4 class="name">@itemTeam.Value("profileName")</h4></a>
+                        <p class="position">@itemTeam.Value("profilePositon")</p>
+                             @{var officeLocation = "";
+                                                                try {
+                                                                    officeLocation = itemTeam.Value<IPublishedContent>("profileLocation").Name.ToString();
+                                                                } catch (Exception e) {
+                                                                
+                                                                   officeLocation  = "";
+                                                                
+                                                                }
+                                                                }
+                                                                
+                                                                  @if (officeLocation != "") {
+                                                                 <p><a href=""><i class="fas fa-map-marker"></i> @officeLocation</a></p>
+                                                                }
+                        </div>
+                        <div class="bottom">
+                              <p class="email">@itemTeam.Value("profileEmail")</p>
+                        <p class="phone">@itemTeam.Value("profilePhone")</p>
+                        <div class="social-network">
+                             <ul >
+                                                @if (itemTeam.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") != null) {
+                                                        foreach (var socialItem in itemTeam.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") ) {
+                                                               
+                                                               <li><a href=" @socialItem.Value("socialNetworkUrl")"><i class="@socialItem.Value("socialNetworkIcon")"></i> </a></li>
+                                                        }
+                                                    }
+                                   
+                                                            
+                                    
+                                        </ul>
+                          </div>
+                        </div>
+                      
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End people item -->
+            
+            
+                 itemTeamCount++;
+             }
+        </div>
+    
+    
+    
+    }
+        
+        
+        @if (!Request.Browser.IsMobileDevice)
+        {
+        <div class="end-section">
+        
+        </div>
+        } else {
+        <div class="load-more-list">
+              <a>Load More</a>
+        </div>
+        }
+        
+ 
+
+       
+    </section>

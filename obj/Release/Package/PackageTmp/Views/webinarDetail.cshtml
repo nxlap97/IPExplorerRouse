@@ -1,0 +1,333 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Webinar>
+    @using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using System.Web;
+@{
+     Layout = "master.cshtml";
+     var category =  Model.Value<IPublishedContent>("newsCategory");
+     var newsImage = "";
+     
+     var home = Umbraco.Content(Guid.Parse("89cda73a-5d7f-485d-ba47-8cf471e1678b"));
+     
+     var socialNetwork = home.Value<IEnumerable<IPublishedElement>>("socialNetwork");
+       try {
+                            if (Model.Value<IPublishedContent>("newsImage") != null)
+                            {
+
+                                if (Model.Value<IPublishedContent>("newsImage").GetCropUrl("BannerDesktop") != null)
+                                {
+                                    newsImage = Model.Value<IPublishedContent>("newsImage").GetCropUrl("BannerDesktop").ToString();
+                                }
+                                else
+                                {
+                                    newsImage = Model.Value<IPublishedContent>("newsImage").Url.ToString();
+                                }
+                            }
+
+                        } catch (Exception e)
+                        {
+                            newsImage = "";
+
+                        }
+     
+     var tags =  Model.Value<string[]>("newsHashtag");
+     
+     IEnumerable<IPublishedElement> authorList; 
+     var countAuthor = 0; 
+     
+     authorList  = Model.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+        if (authorList != null ) {
+            countAuthor =  authorList.Count();
+      }
+      
+    var newsType = "";
+    try {
+     newsType = Model.Value<IPublishedContent>("newsTypes").Name.ToString().Trim();
+      } catch (Exception e) {
+      newsType = "";
+      }
+      
+     var newsRelated =  Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"))
+       .Descendants().OfTypes("news")
+       .Where(x => x.Value<IPublishedContent>("newsTypes") != null)
+       .Where(x => x.Value<IPublishedContent>("newsTypes").Name.ToString().Trim() == newsType)
+       .OrderByDescending(x => x.CreateDate)
+       .Where(x => x.IsVisible()).Take(3);
+     
+        
+                        
+                        
+}
+    
+    <div class="news-banner-image" style="background-image: url('@newsImage')">
+ 
+          <div class="news-title">
+              @if ( Model.Value("newsTitle").ToString().Length > 80 ) {
+                  <h2>@Model.Value("newsTitle").ToString().Substring(0,80)</h2>  
+              } else {
+                 <h2>@Model.Value("newsTitle").ToString()</h2>  
+              }
+              
+              
+               <div class="top-news-detail-wrap">
+                <section class="section-infor" id="news-content-section">
+          
+                <div class="row">
+              
+                @if (countAuthor > 0 ) {
+                  foreach (IPublishedContent author in authorList ) {
+                  var urlImage = ""; 
+                  try {
+                  if ( author.Value<IPublishedContent>("profileImage").GetCropUrl("AuthorMedium") != null)
+                     {
+                            urlImage = author.Value<IPublishedContent>("profileImage").GetCropUrl("AuthorMedium").ToString();
+                                                    
+                     } else {
+                      urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                     }
+                  } catch (Exception e ) {
+                        urlImage = "";
+                  }
+                   
+                  
+               <!--Item author-->
+                <div class="col-md-6">
+                        <div class="news-top-infor">
+                        <img class="author-image" src="@urlImage" alt="">
+                        <div class="infor">
+                            <div class="author-name">@author.Value("profileName")</div>
+                            <p class="author-phone"> @author.Value("profilePhone")</p>
+                            <p class="author-email">@author.Value("profileEmail")</p>
+                                      @if (Request.Browser.IsMobileDevice)
+                                    {
+                               
+                                     <div class="social-network">
+                                            <ul>
+                                               @if (author.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") != null) {
+                                                        foreach (var socialItem in author.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") ) {
+                                                               
+                                                               <li><a href=" @socialItem.Value("socialNetworkUrl")"><i class="@socialItem.Value("socialNetworkIcon")"></i> </a></li>
+                                                        }
+                                                    }
+                                            </ul>
+                                        </div>
+                                        }
+                       
+                        </div>
+        
+                       </div>
+               </div>
+               <!--End item author-->
+          
+    
+                }
+            }
+                      
+             
+            
+            </div>
+         
+        </section>
+           </div>
+               
+            </div>
+        
+    </div>
+    <div class="container" id="id-news-detail">
+       <div class="row">
+          
+        </div>
+        <div class="row news-content-wrap">
+
+        <div class="news-content">
+            <div class="content">
+           
+            @if (Model.Value("newsSummary") != "" ) {
+             <div class="newsSummaryContent"> 
+               @if ( Model.Value("newsSummary").ToString().Length > 120 ) {
+                 @Html.Raw(Model.Value("newsSummary").ToString().Substring(0,120))
+              } else {
+                 @Model.Value("newsSummary")
+              }
+             </div>        
+            }
+           
+           
+            
+            
+            <div> @Model.Value("newsContent") </div>
+               
+                <div class="author-infor hide" id="author-sticky">
+                    <div class="progress progress-bar-vertical">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="height: 30%;">
+                          <span class="sr-only">30% Complete</span>
+                        </div>
+                    </div>
+                    <div class="wrap-author-detail">
+                    
+                        <div class="wrap-author-process">
+                            
+                @if (countAuthor > 0 ) {
+                  foreach (IPublishedContent author in authorList ) {
+                  var urlImage = "";
+                   try {
+                  if ( author.Value<IPublishedContent>("profileImage").GetCropUrl("AuthorSmall") != null)
+                     {
+                            urlImage = author.Value<IPublishedContent>("profileImage").GetCropUrl("AuthorSmall").ToString();
+                                                    
+                     } else {
+                      urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                     }
+                  } catch (Exception e ) {
+                        urlImage = "";
+                  }
+                   
+                  
+                            <!--Begin item-->
+                            <div class="item-author">
+                                 <img class="author-image" src="@urlImage" alt="" class="author-image">
+                                    <div class="author-name">@author.Value("profileName")</div>
+                                    <p class="author-phone"> @author.Value("profilePhone")</p>
+                                    <p class="author-email">@author.Value("profileEmail")</p>
+                                 
+                            </div>
+                            <!--End Item-->
+                         }
+                    }
+                            
+                        </div> 
+                       
+                        <div class="group-icon-control">
+                             <i class="fas fa-share-alt" id="btnShareSocial"></i>
+                            <div class="social-list hide">
+                                 @if ( socialNetwork != null && socialNetwork.Count() > 0 ) {
+                                         foreach (var socialItem in socialNetwork ) {
+                                          <a class="linkedin" href="@socialItem.Value("socialNetworkUrl")" target="_blank"><i class="@socialItem.Value("socialNetworkIcon")"></i></a>
+                          
+                            
+                            }
+                            }
+                            </div>
+                        </div>
+                
+                    </div>
+                   
+                </div>
+ 
+  
+                <div  id="news-tags">
+                    <h2>TAGS</h2>
+                    <ul>
+                          @foreach(var tag in tags){
+                            
+                                <li><a href="/insights?tag=@(Server.UrlEncode(tag))">@tag</a></li>
+                            }
+                    </ul>
+                </div>
+            </div>
+
+         </div>
+        </div>
+        <div class="row" id="authorBottomWrap">
+                          
+        @if (countAuthor > 0 ) {
+                  foreach (IPublishedContent author in authorList ) {
+                  var urlImage = ""; 
+                  try {
+                  if ( author.Value<IPublishedContent>("profileImage").GetCropUrl("AuthorBig") != null)
+                     {
+                            urlImage = author.Value<IPublishedContent>("profileImage").GetCropUrl("AuthorBig").ToString();
+                                                    
+                     } else {
+                      urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                     }
+                  } catch (Exception e ) {
+                        urlImage = "";
+                  }
+                            <!--Author detail Item-->
+                           
+                            <div class="col-md-12 author-detail">
+                                <div class="wrap-author-detail">
+                                    <div>
+                                         <img class="author-image" src="@urlImage" alt="">
+                                             
+                                 
+                                    </div>
+                                    
+                                    <div class="detail">
+                                        <div class="author-name"><a class="people-name black" href="@author.Url">@author.Value("profileName")</a> </div>
+                                         <p class="author-phone">@author.Value("profilePhone")</p>
+                                         <p class="author-email">@author.Value("profileEmail")</p>
+                                        <div class="author-description">
+                                            @author.Value("profilePositon")
+                                        </div>
+                                    
+                                     <div class="social-network">
+                                            <ul>
+                                               @if (author.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") != null) {
+                                                        foreach (var socialItem in author.Value<IEnumerable<IPublishedElement>>("profileSocialNetwork") ) {
+                                                               
+                                                               <li><a href=" @socialItem.Value("socialNetworkUrl")"><i class="@socialItem.Value("socialNetworkIcon")"></i> </a></li>
+                                                        }
+                                                    }
+                                            </ul>
+                                        </div>
+                                        
+                                     
+                                  
+                                   
+                                </div>
+                               
+                               
+                            </div>
+                            
+                             
+                                
+                                        
+                                        
+                            </div>
+                            
+                            <!--End Author detail Item-->
+        }
+    }
+        
+      
+    </div>
+    </div>
+    
+    
+   @if (!Request.Browser.IsMobileDevice)
+{
+if (newsRelated.Count() > 0 ) {
+<section class="group-image-section related-articles-section ">	
+     <div class="container">
+         	<div class="row">
+	<div class="title-section">
+		<h4>Related Articles</h4>
+		<a class="more" href="/insights">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+	</div>
+		</div>
+   	<div class="row">
+	     @foreach (var news in newsRelated ) {
+       @Html.Partial("page/NewsRelated",news)
+    }
+    
+	</div>	
+	</section>
+}
+
+	} else {
+ <section class="group-image-section related-articles-section ">	
+  
+	<div class="title-section">
+		<h4>Related Articles</h4>
+		<a class="more" href="/insights">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+	</div>
+	
+    	<div id="mobile-news-related-articles">
+	         @foreach (var news in newsRelated ) {
+       @Html.Partial("page/NewsRelated",news)
+    }
+	</div>	
+	</section>
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2f071b82-64ea-4272-a4e5-04ad2644e6f2",
+  "name": "aaaaa",
+  "form": "05078743-8f73-417a-a62e-e9c3e1cee441",
+  "active": true,
+  "workflowTypeId": "e96badd7-05be-4978-b8d9-b3d733de70a5",
+  "executesOn": "Submitted",
+  "settings": {
+    "Email": "phulong95@gmail.com",
+    "SenderEmail": "tester.arrowicode@gmail.com",
+    "Subject": "aaaa",
+    "Message": "aaaaaa",
+    "Attachment": "True"
+  },
+  "sortOrder": 0
+}

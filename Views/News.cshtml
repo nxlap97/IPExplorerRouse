@@ -1,0 +1,247 @@
+﻿@using ContentModels = Umbraco.Web.PublishedModels;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using System.Text.RegularExpressions
+@{
+	Layout = "master.cshtml";
+
+}
+
+@{
+	 var space = ", ";
+	 IEnumerable<IPublishedElement> authorList; 
+	 
+    var pageSize = 10;
+    var searchQuery = Request.QueryString["tag"];
+    var page = Convert.ToDouble(Request.QueryString["page"]);
+    long resultCount = 0;
+    var results = Umbraco.ContentQuery.Search("", string.Empty);
+
+
+    if (!string.IsNullOrWhiteSpace(searchQuery))
+    {   
+       
+        results = Umbraco.ContentQuery.Search(searchQuery, string.Empty).Where(x => x.Content.ToString() =="Umbraco.Web.PublishedModels.News").OrderByDescending(x => x.Content.CreateDate).Take(4);
+        resultCount = results != null && results.Any() ? results.Count() : 0;
+       
+    }
+
+    var totalPages = (int)Math.Ceiling((double)resultCount / (double)pageSize);
+    if (page > totalPages)
+    {
+        page = totalPages;
+    }
+    else if (page < 1)
+    {
+        page = 1;
+    }
+      
+    var contentDescrition  = "";
+    var countItem = 1;
+     var open ="<div class='item'>";
+        var close = "</div>";
+}
+
+@functions {
+ public static int CountWord(string content)
+{
+    string pattern = "[^\\w]";
+  
+    string[] words = null;
+    int i = 0;
+    int count = 0;
+  
+    words = Regex.Split(content, pattern, RegexOptions.IgnoreCase);
+    for (i = words.GetLowerBound(0); i <= words.GetUpperBound(0); i++) {
+        if (words[i].ToString() == string.Empty) {
+         count = count - 1;
+        }
+           
+        count = count + 1;
+    }
+    
+    return count;
+    
+  
+}
+public static string EstimateTimeToRead(int number)
+{
+    
+    int wordPerMin = 250; 
+    int result = number/wordPerMin;
+    
+    if (result == 0 ) {
+        result =  1;
+    }
+    
+    if (result > 10) {
+        result = result - 3;
+    } 
+    
+    if (result > 1) {
+        return result + " minute read";
+    
+    } else {
+         return result + " minute read";
+    }
+}
+}
+	
+	
+	
+<div class="container">
+				<div id="search-results-page">
+					<nav>
+					
+                @if(totalPages > 1){
+					 <ul class="pagination">
+                          @if(page > 1)
+                            {
+                               <li class="page-item  ">
+            						    <a class="page-link" href="?search-content=@searchQuery&page=@(page-1)" tabindex="-1" >« </a>
+            					</li>
+                              
+                            }
+                              @for (int p = 1; p < totalPages + 1; p++)
+                                {
+                                
+                                    <li class="page-item @(p == page ? "active" : string.Empty)">
+                                        <a class="page-link" href="?search-content=@searchQuery&page=@p">@p</a>
+                                        
+                                    </li>
+                                }
+						 
+						      @if (page < totalPages)
+                                {
+                                    <li class="page-item" ><a class="page-link" href="?search-content=@searchQuery&page=@(page+1)">»</a></li>
+                                }
+					  	</ul>
+				
+				}
+					</nav>
+                   
+                     <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section" id="recentNewsId">
+            				<div class="container">
+            					<div class="section-content">
+            						<div class="section-title">
+            							<h3>Articles tagged as @searchQuery</h3>
+            				            	@{
+            						             countItem = 1;
+            						         }
+            					 	<div class="list-item slick-slider">
+            						
+            						         	
+            						           @foreach (var item in results.Skip(((int)page - 1) * pageSize).Take(pageSize)) {
+            						               var mod = (int)(countItem % 3);
+            						                 var countAuthor = 0; 
+            						               	  var publishedDate = "";
+	  publishedDate= (item.Content.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) != "01 Jan 0001") ? item.Content.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) : item.Content.CreateDate.ToString("dd MMM yyyy", null);
+			
+            						               var imageNews ="";
+            						                try {
+                            if (item.Content.Value<IPublishedContent>("newsImage") != null)
+                            {
+
+                                if (item.Content.Value<IPublishedContent>("newsImage").GetCropUrl("InsightsItem") != null)
+                                {
+                                    imageNews = item.Content.Value<IPublishedContent>("newsImage").GetCropUrl("InsightsItem").ToString();
+                                }
+                                else
+                                {
+                                    imageNews = item.Content.Value<IPublishedContent>("newsImage").Url.ToString();
+                                }
+                            }
+
+                        } catch (Exception e)
+                        {
+                            imageNews = "";
+
+                        }
+            						               
+            						               if (mod == 1) {
+            						               @Html.Raw(open)
+            						               
+            	   var title ="";
+    		       var newsSummary = "";
+    		       try {
+    		           title =  (item.Value("newsTitle").ToString().Length > 80) ? item.Value("newsTitle").ToString().Substring(0,80) : item.Value("newsTitle").ToString();
+    		           newsSummary =  (item.Value("newsSummary").ToString().Length > 120) ? item.Value("newsSummary").ToString().Substring(0,120) : item.Value("newsSummary").ToString();
+    		       } catch (Exception e) {
+    		              
+    		       }
+            		 }
+            						               
+            						                 <!-- A Item  -->
+    	<div class="col-xs-12 col-md-12 col-lg-4 item item-news" style="background-image:url('@imageNews')">
+    		<div class="item-content item-content-news">
+    			<div class="title"><a href="@item.Content.Url">@title</a></div>
+    			  @if (item.Content.Value("newsSummary") != "" && item.Content.Value("newsSummary") != null && item.Content.Value("newsSummary").ToString().Length > 0){
+                                            <div class="description">
+                                                  @newsSummary
+                                            </div>
+                                            } 
+    			<p class="time">@EstimateTimeToRead(CountWord(item.Content.Value("newsContent").ToString()))</p>
+    		
+    			  <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = item.Content.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(2) ) {
+                      var urlImage = ""; 
+                      try {
+                          if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                      } catch (Exception e) {
+                            urlImage = ""; 
+                      }
+                   
+                         if (author != authorList.First()) {
+                            @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                
+    			<a href="@item.Content.Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+    			<p class="datetime">@publishedDate</p>
+    			<ul class="tags-list">
+                            @foreach (var tag in item.Content.Value<string[]>("newsHashtag").Take(3)) {
+                              <li>#@tag.ToLower()</li>
+                            }
+                          
+                </ul>
+    		</div>
+    	</div>
+        <!-- End Item -->
+            						                 
+            						               
+            						               if (mod == 0 ) {
+            						               
+            						                 @Html.Raw(close)
+            						               }
+            						               
+            						               
+            						               countItem++;
+            				
+            						           }
+            						   </div>
+            				</div>	
+                    </section>
+						
+			
+			
+			
+

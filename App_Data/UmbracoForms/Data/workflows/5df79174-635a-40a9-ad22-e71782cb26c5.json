@@ -1,0 +1,16 @@
+{
+  "id": "5df79174-635a-40a9-ad22-e71782cb26c5",
+  "name": "Send template email to admin@gmail.com",
+  "form": "cd694e5d-6822-4760-922e-d4d1960e3043",
+  "active": true,
+  "workflowTypeId": "17c61629-d984-4e86-b43b-a8407b3efea9",
+  "executesOn": "Submitted",
+  "settings": {
+    "Email": "admin@gmail.com",
+    "SenderEmail": "",
+    "Subject": "The Form '{form_name}' was submitted",
+    "RazorViewFilePath": "Forms/Emails/Example-Template.cshtml",
+    "Attachment": ""
+  },
+  "sortOrder": 1
+}

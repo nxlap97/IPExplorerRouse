@@ -1,0 +1,289 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.IPexIntellectualAssets>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Rousesite_Umbraco.Utilities;
+@using System.Configuration;
+@{
+    Layout = "IPExMaster.cshtml";
+    ViewBag.Title = "Intellectual Assets";
+
+    var user = Members.GetCurrentMember();
+    if (user == null)
+    {
+        //Response.Redirect(Model.Value("IPSignInLink").ToString());
+        Response.Redirect("/login");
+    }
+    var random = new Random(10000);
+    var value = random.Next(int.MaxValue);
+
+    var selection = Model.Value<IEnumerable<IPublishedElement>>("IPEx_IANode").ToList();
+
+    var contract = selection[0];
+    var resource = selection[1];
+    var relationShip = selection[2];
+    var recommendation = selection[3];
+
+    var contracts = Umbraco.Content(contract.Key)
+                            .ChildrenOfType(ConfigurationManager.AppSettings["IPEx.Data.Partial.IA.SubSelection"])
+                            .Where(x => x.IsVisible());
+
+    var resources = Umbraco.Content(resource.Key)
+                            .ChildrenOfType(ConfigurationManager.AppSettings["IPEx.Data.Partial.IA.SubSelection"])
+                            .Where(x => x.IsVisible());
+
+
+    var relationShips = Umbraco.Content(relationShip.Key)
+                                .ChildrenOfType(ConfigurationManager.AppSettings["IPEx.Data.Partial.IA.SubSelection"])
+                                .Where(x => x.IsVisible());
+
+
+    var recommendations = Umbraco.Content(recommendation.Key)
+                                .ChildrenOfType(ConfigurationManager.AppSettings["IPEx.Data.Partial.IA.SubSelection"])
+                                .Where(x => x.IsVisible());
+}
+
+<style>
+    .list-group-item-action {
+        border: 1px solid #007F9C;
+    }
+
+    .list-group-item.active {
+        border: 1px solid #007F9C;
+    }
+
+    @@media (min-width: 320px) {
+        .container-custom .description {
+            font-family: "Calibri-Light";
+            font-size: 14px;
+            line-height: 16px;
+            margin-bottom: 20px;
+            font-weight: 100;
+        }
+
+        .content-ip .animation-box--item > div .name {
+            font-family: "Raleway";
+            font-size: 14px;
+            line-height: 16px;
+            word-break: break-word;
+        }
+    }
+
+    .ipIntellectualAssets-list .list-group-item-action {
+        border-radius: 10px;
+    }
+</style>
+<div class="container-desktop">
+    <div class="d-flex">
+        <div class="container-custom content-ip IntellectualAssets">
+            <div class="d-flex flex-column align-items-center w-100">
+                <header class="sticky-top w-100">
+                    <div class="m-auto">
+                        <div class="d-flex align-items-end position-relative logo">
+                            <div>
+                                <img width="50" src="~/Assets/IPEx/images/logo.svg">
+                            </div>
+                            <div class="nametag">
+                                <div>@Model.Value("IPEx_IAHeaderTitle")<span class="tag"></span></div>
+                                <div></div>
+                            </div>
+                            <div class="progress position-absolute w-100">
+                                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 80%;"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <wrapper class="overflow-auto h-100">
+                    <div class="content">
+                        @Model.Value("IPEx_IAContent")
+                        <div class="animation-box">
+                            <form class="needs-validation" action="" novalidate
+                                  style="display: none; padding: 70px 0 30px 0">
+                                <div class="ipIntellectualAssets-list Contracts" data-id="@contract.Key">
+                                    <div class="list-group">
+                                        @foreach (var prop in contracts)
+                                        {
+                                            <a href="#" class="list-group-item list-group-item-action" data-id="@prop.Key">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">@prop.Name</h5>
+                                                </div>
+                                                <p>
+                                                    @prop.Value("IPEx_IASubSelectionDescription")
+                                                </p>
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="ipIntellectualAssets-list Resources" data-id="@resource.Key">
+                                    <div class="list-group">
+                                        @foreach (var prop in resources)
+                                        {
+                                            <a href="#" class="list-group-item list-group-item-action" data-id="@prop.Key">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">@prop.Name</h5>
+                                                </div>
+                                                <p>
+                                                    @prop.Value("IPEx_IASubSelectionDescription")
+                                                </p>
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="ipIntellectualAssets-list Relationships" data-id="@relationShip.Key">
+                                    <div class="list-group">
+                                        @foreach (var prop in relationShips)
+                                        {
+                                            <a href="#" class="list-group-item list-group-item-action" data-id="@prop.Key">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">@prop.Name</h5>
+                                                </div>
+                                                <p>
+                                                    @prop.Value("IPEx_IASubSelectionDescription")
+                                                </p>
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="ipIntellectualAssets-list Recommendations Recom-mendations" data-id="@recommendation.Key">
+                                    <div class="list-group">
+                                        @foreach (var prop in recommendations)
+                                        {
+                                            <a href="#" class="list-group-item list-group-item-action" data-id="@prop.Key">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">@prop.Name</h5>
+                                                </div>
+                                                <p>
+                                                    @prop.Value("IPEx_IASubSelectionDescription")
+                                                </p>
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="action-ipIntellectualAssets">
+                                    <a class="btn btn-circle justify-content-end btn-save-data" href="">
+                                        <span><i class="fas fa-save"></i></span>
+                                        <span>Save</span>
+                                    </a>
+                                </div>
+                            </form>
+                            <div class="animation-box--item"
+                                 style="background-color: #5B2080; top: 0px; left: 0px;">
+                                <div class="">
+                                    <span><i class="fas fa-scroll"></i></span>
+                                    <div class="name">@contract.Value("IPex_BusinessSelectionTitle")</div>
+                                </div>
+                            </div>
+                            <div class="animation-box--item"
+                                 style="background-color: #7A58A1; top: 0px; left: 160px;">
+                                <div class="">
+                                    <span><i class="fas fa-tree"></i></span>
+                                    <div class="name">@resource.Value("IPex_BusinessSelectionTitle")</div>
+                                </div>
+                            </div>
+                            <div class="animation-box--item"
+                                 style="background-color: #3C8D74; top: 161px; left: 0px;">
+                                <div class="">
+                                    <span><i class="fas fa-heart"></i></span>
+                                    <div class="name">@relationShip.Value("IPex_BusinessSelectionTitle")</div>
+                                </div>
+                            </div>
+                            <div class="animation-box--item"
+                                 style="background-color: #096E4A; top: 161px; left: 160px;">
+                                <div class="">
+                                    <span><i class="far fa-handshake"></i></span>
+                                    <div class="name">@recommendation.Value("IPex_BusinessSelectionTitle")</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between btn-group-footer">
+                            <a class="btn btn-custom btn-custom-outline" href="@Model.Value("IPEx_IAPreviousLink")">@Model.Value("IPEx_IAPreviousTitle")</a>
+                            <a class="btn btn-custom btn-Allports" href="@Model.Value("IPEx_IAContinueLink")">@Model.Value("IPEx_IAContinueTitle")</a>
+                        </div>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-index">
+        <div class="contact-name">Contact Us</div>
+        <div class="contact-mail d-flex align-items-center">
+            <i class="far fa-envelope mr-2"></i>ipexplorer@rouse.com
+        </div>
+    </footer>
+</div>
+
+
+@section Scripts{
+
+    <script>
+        var array = jQuery.parseJSON('@(Html.Raw(user?.GetIdFromNestedContentAlias(ConfigurationManager.AppSettings["IPEx.Members.IA.SelectedValue"], ConfigurationManager.AppSettings["IPEx.Members.IA.SelectedValue.Selection"], ConfigurationManager.AppSettings["IPEx.Members.IA.SelectedValue.SubSelection"])))');
+        $(document).ready(function () {
+            $('.btn-save-data').click(function (e) {
+                e.preventDefault();
+                var postData = [];
+                $('.ipIntellectualAssets-list').each(function () {
+                    if ($(this).hasClass('active')) {
+                        var selector = $(this);
+                        $(this).find('.active').each(function (index, value) {
+                            var obj = {
+                                "@ConfigurationManager.AppSettings["IPEx.Members.IA.SelectedValue.SubSelection"]": $(this).data('id'),
+                                "@ConfigurationManager.AppSettings["IPEx.Members.IA.SelectedValue.Selection"]": selector.data('id'),
+                            }
+                            postData.push(obj);
+                        });
+
+                    }
+                });
+
+                 $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("IASaveData", "IPExplorer")',
+                    data: { dataJson: JSON.stringify(postData) },
+                     success: function (result) {
+                         if (result.status) {
+                             array = JSON.parse(result.data);
+                             window.alert('save data success');
+                         }
+                    },
+                    dataType: "JSON"
+                });
+
+            });
+
+            $('.animation-box--item').click(function () {
+
+                setTimeout(function () {
+                    $('.ipIntellectualAssets-list').each(function () {
+                        if ($(this).hasClass('active')) {
+                            $(this).find('.list-group-item').each(function (index, value) {
+                                var selector = $(this);
+                                $.each(array, function (index, value) {
+                                    if (value.@Html.Raw(ConfigurationManager.AppSettings["IPEx.Members.IA.SelectedValue.SubSelection"]) == selector.data('id')) {
+                                        selector.addClass('active');
+                                    }
+                                });
+                            });
+                        }
+                    });
+                }, 500);
+
+            });
+        });
+    </script>
+
+    <script src="~/Assets/IPEx/js/animation-box-ip-intellectual-asset.js?version=@value"></script>
+    <script>
+        $(document).ready(function () {
+            $('.animation-box--item').each(function (index, el) {
+                $(el).find('button.question').css('color', $(el).css('background-color'))
+            })
+            $('.animation-box--item').on('click', function () {
+                $('.btn-circle').css('color', $(this).css('background-color'))
+            })
+            $('.ipIntellectualAssets-list a').on('click', function (e) {
+                e.preventDefault()
+                $(this).toggleClass('active')
+            })
+        });
+    </script>
+
+}

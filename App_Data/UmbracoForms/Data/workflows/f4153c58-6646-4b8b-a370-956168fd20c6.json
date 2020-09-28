@@ -1,0 +1,17 @@
+{
+  "id": "f4153c58-6646-4b8b-a370-956168fd20c6",
+  "name": "Send Email",
+  "form": "05078743-8f73-417a-a62e-e9c3e1cee441",
+  "active": false,
+  "includeSensitiveData": "Undefined",
+  "workflowTypeId": "17c61629-d984-4e86-b43b-a8407b3efea9",
+  "executesOn": "Submitted",
+  "settings": {
+    "Email": "phulong95@gmail.com,lho@nlstech.net",
+    "SenderEmail": "phulong9517@gmail.com",
+    "Subject": "sssssssssssssssss",
+    "RazorViewFilePath": "Forms/Emails/demo.cshtml",
+    "Attachment": "True"
+  },
+  "sortOrder": 1
+}

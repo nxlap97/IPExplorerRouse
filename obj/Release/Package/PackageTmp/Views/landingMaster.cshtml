@@ -1,0 +1,80 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.landingPage>
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = null;
+	var seo = Model.Value("sEOChecker") as SEOChecker.MVC.MetaData;
+}
+
+@* the fun starts here *@
+
+<!DOCTYPE html>
+<html>
+    <head>
+         <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K5RGSNM');</script>
+        <!-- End Google Tag Manager -->
+        
+        <meta charset="utf-8">
+        <title>Rouse - Home</title>
+        
+        @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Robots)){
+            <meta name="robots" content="@seo.Robots">
+        }
+        @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Title)){
+                <meta name="title" content="@seo.Title">
+        }
+        @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Description)){
+                <meta name="description" content="@seo.Description">
+        }
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon"  type="image/png" href="/media/alkhthku/favicon.ico">
+        <link   rel="stylesheet" rel="preload" as="style"   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  >
+        <link   rel="stylesheet" rel="preload" as="style" href="css/fontawesome.all.css" >
+        <link   rel="stylesheet" rel="preload" as="style"  href="css/fullpage.css"  >
+        <link   rel="stylesheet" type="text/css"  href="css/theme.css"  >
+        <link   rel="stylesheet" type="text/css"  href="css/page_style.css"  >         
+        <link   rel="stylesheet" rel="preload" as="style"  href="css/landing-style.css"  >
+        <link  rel="stylesheet" type="text/css"   href="css/responsive.css">    
+        <link rel="preload" href="/fonts/calibri-regular.woff" as="font" crossorigin="anonymous" />
+        <link rel="preload" href="/fonts/Calibri-Bold.woff" as="font" crossorigin="anonymous" />
+        <link rel="preload" href="/fonts/Calibri-Light.woff" as="font" crossorigin="anonymous" />
+        <link rel="preload" href="/fonts/calibrib.woff" as="font" crossorigin="anonymous" />
+        <link rel="preload" href="/webfonts/fa-brands-400.woff" as="font" crossorigin="anonymous" />
+        
+    </head>
+    <body>
+         <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5RGSNM"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        @Html.Partial("header")
+
+        <!-- Content -->
+        <main class="home home-landing">
+            <div class="wrap-home">
+                 @RenderBody()
+            </div>       
+        </main>
+
+        <!-- Footer -->
+  
+        <!-- Scripts -->
+    <script rel="preload" as="script"  src="https://code.jquery.com/jquery-2.2.4.min.js"   crossorigin="anonymous"></script>
+    <script rel="preload" as="script" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script rel="preload" as="script" src="/scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script rel="preload" as="script" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"   crossorigin="anonymous"></script>
+    <script  rel="preload" as="script"  src="https://cdnjs.cloudflare.com/ajax/libs/jInvertScroll/0.8.3/js/jquery.jInvertScroll.min.js"></script>
+    <script  rel="preload" as="script"  src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/vendors/scrolloverflow.min.js"></script>
+    <script  rel="preload" as="script"  src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/fullpage.min.js"></script>
+    <script  rel="preload" as="script"  src="https://rousecom.azureedge.net/rousecomstatic/scripts/slick.js"></script>
+    <script  rel="preload" as="script" src="../../scripts/app.js"></script>
+    </body>
+    @Html.Partial("CookiesBanner")
+</html>
+
+

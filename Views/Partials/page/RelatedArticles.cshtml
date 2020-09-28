@@ -1,0 +1,50 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+      var newsBlogNetwork = Umbraco.Content(Guid.Parse("238166b3-7efc-49e1-ab2c-5f48d5206751"))
+        .Children()
+        .Where(x => x.IsVisible())
+        .Where (x=> x.Value<String>("newsCategory") == "Rouse Blog Network")
+        .OrderByDescending(x => x.CreateDate);
+}
+
+<section class="group-image-section container related-articles-section ">	
+	<div class="title-section">
+		<h4>Related Articles</h4>
+		<a class="more" href="">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+	</div>
+
+	<div class="row">
+	    	@foreach (var item in newsBlogNetwork)
+            {
+            	 var itemImage = "";
+            	 if (item.HasValue("newsImage"))
+                 {
+                        itemImage = item.Value<IPublishedContent>("newsImage").Url;
+                                                
+                 }
+    	 <!-- A Item  -->
+	<div class="col-xs-12 col-md-4 col-lg-4 item item-news" style="background-image:url('@itemImage')">
+		<div class="item-content item-content-news">
+			<div class="title">@item.Value("newsTitle")</div>
+			<div class="description">
+		    	@item.Value("newsContent")
+			</div>
+			<p class="time">@item.Value("newsTimeRead") minute read</p>
+			<p class="author">@(item.Value<IPublishedContent>("newsAuthor").Value("authorName"))</p>
+			<a href="@item.Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+			<p class="datetime">@item.CreateDate.ToString("dd MMM yyyy", null)</p>
+			<ul class="tags-list">
+                        @foreach (var tag in item.Value<string[]>("newsHashtag")) {
+                          <li>#@tag.ToLower()</li>
+                        }
+                      
+            </ul>
+		</div>
+	</div>
+    <!-- End Item -->
+
+   }
+	</div>	
+	
+</section>
+

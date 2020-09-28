@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "IPExMaster.cshtml";
+    ViewBag.Title = "Active account";
+    var queryStringUrl = HttpContext.Current.Request.Url.Query;
+    var token = "";
+
+    if (queryStringUrl.Contains("?token="))
+    {
+        token = queryStringUrl.Replace("?token=", "");
+    }
+}
+
+@section Scripts{
+    <script>
+        var MESSAGE_TOKEN_IS_CORRECT = "Token is incorrect";
+        function InitData() {
+            var token = '@token';
+            if (token == ""){
+                window.alert(MESSAGE_TOKEN_IS_CORRECT);
+                window.location.href = "/login";
+            }
+             $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ActiveAccount", "IPExplorer")',
+                    data: { token: '@token'},
+                 success: function (result) {
+                     console.log(result);
+                            if (result.status == 0)
+                                window.alert("Actived success");
+
+                            if (result.status != 0)
+                                    window.alert(MESSAGE_TOKEN_IS_CORRECT);
+
+                             window.location.href = "/login";
+                    },
+                    dataType: 'Json'
+                });
+        }
+        InitData();
+    </script>
+}

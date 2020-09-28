@@ -1,0 +1,85 @@
+{
+  "name": "Subscriber",
+  "created": "2019-11-18T06:36:37.2987927+00:00",
+  "pages": [
+    {
+      "fieldSets": [
+        {
+          "caption": null,
+          "sortOrder": 0,
+          "id": "69db7b8a-8147-4c34-b2a7-3f290fd5d91d",
+          "page": "00000000-0000-0000-0000-000000000000",
+          "containers": [
+            {
+              "caption": null,
+              "width": 12,
+              "fields": [
+                {
+                  "caption": "Subscribe",
+                  "tooltip": null,
+                  "placeholder": null,
+                  "cssClass": null,
+                  "alias": "subscribe",
+                  "id": "34c8a796-3697-427a-d435-5133207cf53e",
+                  "fieldTypeId": "3f92e01b-29e2-4a30-bf33-9df5580ed52c",
+                  "prevalueSourceId": "00000000-0000-0000-0000-000000000000",
+                  "dataSourceFieldKey": null,
+                  "containsSensitiveData": false,
+                  "mandatory": true,
+                  "regex": "[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+",
+                  "requiredErrorMessage": "Please enter a valid email",
+                  "invalidErrorMessage": "Please enter a valid email",
+                  "condition": {
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "enabled": false,
+                    "actionType": "Show",
+                    "logicType": "All",
+                    "rules": []
+                  },
+                  "settings": {
+                    "DefaultValue": "",
+                    "Placeholder": "Your email address"
+                  },
+                  "preValues": []
+                }
+              ]
+            }
+          ],
+          "condition": {
+            "id": "69db7b8a-8147-4c34-b2a7-3f290fd5d91d",
+            "enabled": false,
+            "actionType": "Show",
+            "logicType": "All",
+            "rules": []
+          }
+        }
+      ],
+      "caption": null,
+      "sortOrder": 0,
+      "id": "00000000-0000-0000-0000-000000000000",
+      "form": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "id": "5043a2ea-4fd0-4ee9-a8c1-605e3958af6a",
+  "fieldIndicationType": "NoIndicator",
+  "indicator": "*",
+  "showValidationSummary": false,
+  "hideFieldValidation": false,
+  "requiredErrorMessage": "Please provide a value for {0}",
+  "invalidErrorMessage": "Please provide a valid value for {0}",
+  "messageOnSubmit": "1",
+  "goToPageOnSubmit": 0,
+  "xPathOnSubmit": null,
+  "manualApproval": false,
+  "storeRecordsLocally": true,
+  "cssClass": "subscriber-form-wrap",
+  "disableDefaultStylesheet": false,
+  "useClientDependency": false,
+  "workflows": [
+    "f988823e-d8a0-48f8-a271-4c223f806ead"
+  ],
+  "datasource": null,
+  "submitLabel": "Subscribe",
+  "nextLabel": "Next",
+  "prevLabel": "Previous"
+}

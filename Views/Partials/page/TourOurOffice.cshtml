@@ -1,0 +1,174 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+	var TourOurOffice = Umbraco.Content(Guid.Parse("72cde182-db01-4741-97f1-23538fefff79"))
+    .Children()
+    .Where(x => x.IsVisible());
+    var count = 0;
+}
+
+
+
+<div class="section-break-title section-break-mobile">
+	<h2 class="title">Tour Our Offices</h2>	
+</div>
+<section class="section-our-office container" id="tour-our-office">
+   @if (!Request.Browser.IsMobileDevice)
+{
+   
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    @foreach (var item in TourOurOffice)
+	{
+	if (count == 0 ){
+	  <li data-target="#carouselExampleIndicators" data-slide-to="@count" class="active"></li>
+	} else {
+	  <li data-target="#carouselExampleIndicators" data-slide-to="@count"></li>
+	}
+  
+    
+    
+      count ++;
+    }
+  </ol>
+  <div class="carousel-inner">
+ @{
+    count = 0;
+ }
+ @foreach (var item in TourOurOffice)
+	{
+	 var officeLeftImage = "";
+	 var officeRightTopImage = "";
+	 var officeRightBottomImage = "";
+	 
+	 if (item.HasValue("officeLeftImage"))
+     {
+            officeLeftImage = item.Value<IPublishedContent>("officeLeftImage").Url;
+                                    
+     }
+     
+     if (item.HasValue("officeRightTopImage"))
+     {
+            officeRightTopImage = item.Value<IPublishedContent>("officeRightTopImage").Url;
+                                    
+     }
+     
+     if (item.HasValue("officeRightBottomImage"))
+     {
+            officeRightBottomImage = item.Value<IPublishedContent>("officeRightBottomImage").Url;
+                                    
+     }
+     
+  
+    
+     if (count == 0 ) {
+      <!--Office Item-->
+    <div class="carousel-item active">
+         <div class="office-item "> 
+             <div class="row">
+	<div class="col-md-6 office-left" style="background-image:url('@officeLeftImage')">
+        <div class="office-text">
+			<h3>@item.Value("officeTitle")</h3>
+		</div>
+    </div>
+	<div class="col-md-6 office-right">
+		<div class="row">
+			<div class="col-md-12 office-top" style="background-image:url('@officeRightTopImage')">
+                <div class="office-text">
+			<h3>@item.Value("officeTitleRightTop")</h3>
+		</div>
+            </div>
+			<div class="col-md-12 office-bottom" style="background-image:url('@officeRightBottomImage')">
+                <div class="office-text">
+			<h3>@item.Value("officeTitleRightBottom")</h3>
+		</div>
+            </div>
+		</div>
+	</div>
+</div>
+         </div>
+    </div>
+    
+    <!--End Item-->
+    } else {
+          <!--Office Item-->
+    <div class="carousel-item">
+         <div class="office-item "> 
+             <div class="row">
+	<div class="col-md-6 office-left" style="background-image:url('@officeLeftImage')">
+        <div class="office-text">
+			<h3>@item.Value("officeTitle")</h3>
+		</div>
+    </div>
+	<div class="col-md-6 office-right">
+		<div class="row">
+			<div class="col-md-12 office-top" style="background-image:url('@officeRightTopImage')">
+                <div class="office-text">
+		        	<h3>@item.Value("officeTitleRightTop")</h3>
+		        </div>
+            </div>
+			<div class="col-md-12 office-bottom" style="background-image:url('@officeRightBottomImage')">
+                <div class="office-text">
+			<h3>@item.Value("officeTitleRightBottom")</h3>
+		</div>
+            </div>
+		</div>
+	</div>
+</div>
+         </div>
+    </div>
+    
+    <!--End Item-->
+    
+    }
+    
+    
+        count++;
+
+   }
+   
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+} else {
+    <div class="sliderSlickWrap">
+             @foreach (var item in TourOurOffice)
+	{
+	 var officeLeftImage = "";
+	 var officeRightTopImage = "";
+	 var officeRightBottomImage = "";
+	 
+	 if (item.HasValue("officeLeftImage"))
+     {
+            officeLeftImage = item.Value<IPublishedContent>("officeLeftImage").Url;
+                                    
+     }
+    
+     
+     <!--Office Item-->
+    <div class="carousel-item" style="background-image:url('@officeLeftImage')">
+
+        <div class="office-text">
+			<h3>@item.Value("officeTitle")</h3>
+		</div>
+
+    </div>
+    <!--End Item-->
+     
+        
+
+   }
+    </div>
+}
+
+
+
+</section>

@@ -1,0 +1,95 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.IpexAboutIntangibles>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "IPExMaster.cshtml";
+    ViewBag.Title = "About Intangibles";
+}
+
+<div class="container-desktop">
+    <div class="d-flex">
+        <div class="container-custom content-intangibles">
+            <div class="d-flex flex-column align-items-center w-100">
+                <header class="sticky-top w-100">
+                    <div class="m-auto">
+                        <div class="d-flex align-items-end position-relative logo">
+                            <div>
+                                <img width="50" src="~/Assets/IPEx/images/logo.svg">
+                            </div>
+                            <div class="nametag">
+                                <div>@Model.Value("IPEx_IntangibleHeaderTitle")</div>
+                                <div></div>
+                            </div>
+                            <div class="progress position-absolute w-100">
+                                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 20%;"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <wrapper class="overflow-auto">
+                    <div class="">
+                        <div class="title">@Model.Value("IPEx_IntangibleTitle")</div>
+                        <figure class="figure m-auto d-flex flex-column">
+                            <div class="intangibles-model-lv1 d-flex align-items-center justify-content-center">
+                                <div class="intangibles-model-lv2 d-flex align-items-center justify-content-center">
+                                    <div class="intangibles-model-lv3 d-flex align-items-center justify-content-center">
+                                        <span>Intellectual Property (IP)</span>
+                                    </div>
+                                    <span>Intellectual Property (IP)</span>
+                                </div>
+                                <span>Intellectual Capital</span>
+                            </div>
+                            <figcaption class="figure-caption">
+                                @Model.Value("IPEx_IntangibleDescription")
+                            </figcaption>
+                        </figure>
+                        <div class="intangibles-details">
+                            <div class="d-flex">
+                                <div class="intangibles-details_lv3"></div>
+                                <div>
+                                    <div class="intangibles-details_title">@Model.Value("IPEx_IntangibleIntellectualPropertyTitle")</div>
+                                    <div class="intangibles-details_content">
+                                        @Model.Value("IPEx_IntangibleIntellectualPropertyDescription")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="intangibles-details_lv2"></div>
+                                <div>
+                                    <div class="intangibles-details_title">@Model.Value("IPEx_IntangibleIntellectualAssetTitle")</div>
+                                    <div class="intangibles-details_content">
+                                        @Model.Value("IPEx_IntangibleIntellectualAssetDescription")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="intangibles-details_lv1"></div>
+                                <div>
+                                    <div class="intangibles-details_title">@Model.Value("IPEx_IntangibleIntellectualCapitalTitle")</div>
+                                    <div class="intangibles-details_content">
+                                        @Model.Value("IPEx_IntangibleIntellectualCapitalDescription")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="intangibles-details_content">
+                                @Model.Value("IPEx_IntangibleBottomDescription")
+                            </div>
+                        </div>
+                        <div class="w-100">
+                            <a class="btn btn-custom btn-Allports w-100" style="border-radius: 10px;"
+                               href="@Model.Value("IPEx_IntangibleBtnExploreLink")">@Model.Value("IPEx_IntangibleBtnExploreTitle")</a>
+                        </div>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-index">
+        <div class="contact-name">Contact Us</div>
+        <div class="contact-mail d-flex align-items-center">
+            <i class="far fa-envelope mr-2"></i>ipexplorer@rouse.com
+        </div>
+    </footer>
+</div>
+
+

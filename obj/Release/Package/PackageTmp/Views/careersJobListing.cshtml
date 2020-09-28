@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.CareersJobListing>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+}
+  @Html.Partial("page/jobsearch")
+
+
+    <div class="container" id="talkconsultant-section">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="page-content">
+                   @Model.Value("careersJobListingContent")
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-content">
+                    @Umbraco.RenderMacro("renderUmbracoForm", new {FormGuid="cd694e5d-6822-4760-922e-d4d1960e3043", FormTheme="apply-job", ExcludeScripts="0"})
+
+                </div>
+            </div>
+        </div>
+    </div>

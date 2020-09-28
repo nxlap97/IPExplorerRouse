@@ -1,0 +1,320 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.About>
+@using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+   		 var aboutImage = "";
+  try {
+                          if ( Model.HasValue("aboutImage") &&  Model.Value<IPublishedContent>("aboutImage").GetCropUrl("AboutImageContent") != null)
+                                    {
+                                        aboutImage =  Model.Value<IPublishedContent>("aboutImage").GetCropUrl("AboutImageContent").ToString();
+                                    } else
+                                    {
+                                        aboutImage =  Model.Value<IPublishedContent>("aboutImage").Url.ToString();
+                                    }
+                    
+                    
+       } catch (Exception e) {
+       
+       
+       
+       }            
+     	 var isActiveNewsFromRouse = Model.Value<bool>("isActiveNewsFromRouse");
+	
+    var    countItem = 1;
+     var newsFromRouse  = Umbraco.Content(Guid.Parse("cf43b81f-90f7-41b2-b16d-5d1526e37ff8"))
+    .Descendants()
+    .Where(x => x.IsVisible()).OrderByDescending(d => d.Value<System.DateTime>("publishedDate")).Take(60);
+      var open ="<div class='item'>";
+        var close = "</div>";
+	 var bannerImage = "";
+    
+                        try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue("aboutBannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("aboutBannerImage").GetCropUrl("BannerDesktop") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("aboutBannerImage").GetCropUrl("BannerDesktop").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("aboutBannerImage").Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue("aboutBannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("aboutBannerImage").GetCropUrl("BannerMobile") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("aboutBannerImage").GetCropUrl("BannerMobile").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         bannerImage ="";
+                  
+                  }
+    
+     var imageSection1 = "";
+    if (Model.Value<IPublishedContent>("aboutTheRouseNetworkImage") != null ) {
+        imageSection1 = Model.Value<IPublishedContent>("aboutTheRouseNetworkImage").Url;
+    } 
+     var imageSection2 = "";
+    if (Model.Value<IPublishedContent>("rouseConnectImage") != null ) {
+        imageSection2 = Model.Value<IPublishedContent>("rouseConnectImage").Url;
+    } 
+     var imageSection3 = "";
+    if (Model.Value<IPublishedContent>("aboutCorporateSocialResponsibilityImage") != null ) {
+        imageSection3 = Model.Value<IPublishedContent>
+    ("aboutCorporateSocialResponsibilityImage").Url;
+    }
+    }
+    
+    @functions {
+     public  string GetImageDesktop(string imageName)
+        {
+          var sectionImageNomal = "";
+      try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue(imageName)) {
+                  
+                                    if (Model.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop") != null)
+                                    {
+                                        sectionImageNomal =  Model.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop").ToString();
+                                    } else
+                                    {
+                                        sectionImageNomal =  Model.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue(imageName)) {
+                  
+                                    if (Model.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop") != null)
+                                    {
+                                        sectionImageNomal =  Model.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop").ToString();
+                                    } else
+                                    {
+                                        sectionImageNomal =  Model.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         sectionImageNomal ="";
+                  
+                  }
+            return sectionImageNomal;
+    
+        
+        }
+        
+         public  string GetImageLapTop(string imageName)
+        {
+          var sectionImageLaptop = "";
+      try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue(imageName)) {
+                  
+                                    if (Model.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop") != null)
+                                    {
+                                        sectionImageLaptop =  Model.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop").ToString();
+                                    } else
+                                    {
+                                        sectionImageLaptop =  Model.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue(imageName)) {
+                  
+                                    if (Model.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop") != null)
+                                    {
+                                        sectionImageLaptop =  Model.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop").ToString();
+                                    } else
+                                    {
+                                        sectionImageLaptop =  Model.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         sectionImageLaptop ="";
+                  
+                  }
+            return sectionImageLaptop;
+    
+        
+        }
+    }
+ 
+    <section class="people-page top-banner" id="aboutTopBanner" style="background-image:url('@bannerImage')">
+        <h2> We are <strong>Rouse</strong></h2>
+    </section>
+
+    <section class="container section-content-text  wrap-section-middle" id="aboutTopScroll">
+        <div class="section-break-title break-small" id="about-top-title">
+            <h2 class="title">About Us</h2>
+        </div>
+        <div class="wrap-content-page">
+            <div class="content-center" id="page-top-content">
+                @Model.Value("aboutTopContent")
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                
+                       <img id="about-image-top" src="@aboutImage">
+                  
+                </div>
+                <div class="col-md-6">
+                    <div class="section-break-title break-small" id="theRouseDifference">
+                        <h2 class="title">The Rouse Difference</h2>
+                    </div>                  
+                    @Model.Value("aboutTheRouseDifference")
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+   @if (Model.HasValue("aboutTheRouseNetworkImage")){
+    <section class="image-section ">
+    <picture>
+      <source media="(max-width:1366px)" srcset="@GetImageLapTop("aboutTheRouseNetworkImage")">
+      <source media="(max-width:768)" srcset="img_white_flower.jpg">
+      <img src="@GetImageDesktop("aboutTheRouseNetworkImage")">
+    </picture>
+    </section>
+   }
+   
+
+       
+
+    <section class="container section-content-text aboutPageSection" id="theRouseNetwork">
+        <div class="section-break-title break-small break-title-in-wrap">
+            <h2 class="title">The Rouse Network</h2>
+        </div>
+        <div class="wrap-content-page">
+              <div class="content-center">
+            @Model.Value("aboutTheRouseNetwork")
+        </div>
+        </div>
+    </section>
+
+  
+    @if (Model.HasValue("aboutCorporateSocialResponsibilityImage")){
+    <section class="image-section" >
+      
+        <picture>
+      <source media="(max-width:1366px)" srcset="@GetImageLapTop("aboutCorporateSocialResponsibilityImage")">
+      <source media="(max-width:768)" srcset="img_white_flower.jpg">
+      <img src="@GetImageDesktop("aboutCorporateSocialResponsibilityImage")">
+    </picture>
+    </section>
+    }
+   
+    <section class="container section-content-text aboutPageSection" id="rouseConnect">
+        <div class="section-break-title break-small break-title-in-wrap">
+            <h2 class="title">Rouse Connect</h2>
+        </div>
+        <div class="wrap-content-page">
+               <div class="content-center">
+            @Model.Value("rouseConnect")
+            </div>
+        </div>
+    </section>
+    
+    @if (Model.HasValue("rouseConnectImage")){
+    <section class="image-section ">
+          
+              <picture>
+      <source media="(max-width:1366px)" srcset="@GetImageLapTop("rouseConnectImage")">
+      <source media="(max-width:768)" srcset="img_white_flower.jpg">
+      <img src="@GetImageDesktop("rouseConnectImage")">
+    </picture>
+    </section>
+    }
+    
+    <section  class="container section-content-text aboutPageSection" id="corporateSocialResponsibility">
+        <div class="section-break-title break-small break-title-in-wrap">
+            <h2 class="title">Diversity</h2>
+        </div>
+        <div class="wrap-content-page">
+              <div class="content-center">
+            @Model.Value("corporateSocialResponsibility")
+            </div>
+        </div>
+    </section>
+@if (!isActiveNewsFromRouse) {
+    
+    if (!Request.Browser.IsMobileDevice)
+    {
+    <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section" id="whathappend">
+				<div class="container">
+					<div class="section-content"  id="whathappening">
+						<div class="section-title">
+							<h3>What's happening at Rouse?</h3>
+						@{
+						             countItem = 1;
+						         }
+						<div class="list-item slick-slider">
+					
+						         
+						           @foreach (var item in newsFromRouse) {
+						               var mod = (int)(countItem % 3);
+						              
+						                
+						               if (mod == 1) {
+						                    @Html.Raw(open)
+						               }
+						               
+						                 @Html.Partial("page/news/Slider",item) 
+						                 
+						               
+						               if (mod == 0 ) {
+						               
+						                      @Html.Raw(close)
+						               }
+						               
+						               
+						               countItem++;
+				
+						           }
+						   </div>
+				</div>	
+    </section>
+    } else {
+    	<div class="title-section">
+		<h4>Recent News</h4>
+		<a class="more" href="/insights/webinars/">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+	</div>
+	 
+	
+    <div id="mobilde-news-blog-network" class="sliderSlickWrap">
+              @foreach (var news in newsFromRouse)
+                    {
+                    	
+                    	   @Html.Partial("page/InsightsRouseBlogNetwork",news)
+        
+                     }
+                     
+
+     </div> 
+    
+    }
+   }
+    @Html.Partial("how-can")
+    
+   
+
+
+

@@ -1,0 +1,473 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.LandingPage>
+@using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "landingMaster.cshtml";
+	  var countSection = 0;
+
+     	var newsNearYou = Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"))
+        .Descendants().OfTypes("news")
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.Value<System.DateTime>("publishedDate")).Take(4);
+    
+    
+     
+     var happenInRouse = Model.Value<IEnumerable<IPublishedElement>>("happenInRouse");
+     
+     var careers_link = Model.Value<IEnumerable<Link>>("careersBoxUrl");
+     var careersImage ="";
+        if (Model.Value<IPublishedContent>("careersBoxImage") != null ) {
+            careersImage = Model.Value<IPublishedContent>("careersBoxImage").Url;
+        } 
+	
+	var isActiveHappenInRouse = Model.Value<bool>("isActiveHappenInRouse");
+	
+	var isActiveNewsNearYou = Model.Value<bool>("isActiveNewsNearYou");
+
+  
+    var listSection = Model.Value("sectionNewsList");
+
+   
+	var newsLanding = Model.Value<IEnumerable<IPublishedElement>>("topNewsSection");
+       
+     var itemCount = 0;
+    
+      var urlNews = "";
+    
+}
+
+@if (!Request.Browser.IsMobileDevice)
+{
+
+<div id="fullpage" >
+
+
+@foreach (var item in newsLanding)
+{
+     var sectionImage = "";
+	 var sectionBackground = "";
+
+	 var sectionId = "section"+ countSection;
+	  if (item.HasValue("LandingSectionImage"))
+     {
+            sectionImage = item.Value<IPublishedContent>("LandingSectionImage").Url;
+            
+            sectionBackground = item.Value<IPublishedContent>("LandingSectionBackground").Url;
+                                    
+     }
+     
+      try {
+                            if (item.Value<IPublishedContent>("LandingSectionImage") != null)
+                            {
+
+                                if (item.Value<IPublishedContent>("LandingSectionImage").GetCropUrl("ImageLanding") != null)
+                                {
+                                    sectionImage = item.Value<IPublishedContent>("LandingSectionImage").GetCropUrl("ImageLanding").ToString();
+                                }
+                                else
+                                {
+                                    sectionImage = item.Value<IPublishedContent>("LandingSectionImage").Url.ToString();
+                                }
+                             
+                            }
+
+                        } catch (Exception e)
+                        {
+                            sectionImage = "";
+
+                        }
+        
+                
+                
+     if (countSection == 1) {
+	
+      <div class="section"  id="section1" style="background-image:url('@sectionBackground');    background-repeat-y: repeat;" >
+        <!-- Content section -->
+        <div class="row section-content">
+            <div class="col-md-6 section-content-box section2-box-left">
+              
+                <img class="main-image" src="@sectionImage" alt="">
+            </div>
+            <div class="col-md-6 section-content-box detail-box section2-box-right">
+                <article class="content-slide-section">
+                    <h4 class="title">@item.Value("landingSectionTitle")</h4>
+                    <div class="description">@item.Value("landingSectionContent")
+                    </div>
+                    @{
+                    try {
+                        urlNews = item.Value<IPublishedContent>("news").Url;
+                    } catch (Exception e) {
+                        urlNews = "";
+                    }
+                    }
+                    <a href="@urlNews" class="readmore">READ MORE &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                </article>
+            </div>
+
+        </div>
+        <!-- End content section -->
+    </div>
+     } else {
+     
+         if (countSection == 0) {
+             <div class="section " id="@sectionId" style="background-image:url('@sectionBackground');    background-repeat-y: repeat;">
+            <!-- Content section -->
+            <div class="row section-content">
+                <div class="col-md-6 section-content-box detail-box section2-box-left">
+                    <article class="content-slide-section">
+                       <h4 class="title">@item.Value("landingSectionTitle")</h4>
+                        <div class="description">@item.Value("landingSectionContent")</div>
+                           @{
+                          try {
+                        urlNews = item.Value<IPublishedContent>("news").Url;
+                    } catch (Exception e) {
+                        urlNews = "";
+                    }
+                    }
+                        <a href="@urlNews" class="readmore">READ MORE &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                    </article>
+                </div>
+                <div class="col-md-6 section-content-box section2-box-right">
+                    <img class="main-image" src="@sectionImage" alt="">
+                </div>
+            </div>
+            <!-- End content section -->
+        </div>
+        } else {
+             <div class="section " id="@sectionId" style="background-image:url('@sectionBackground');    background-repeat-y: repeat;">
+            <!-- Content section -->
+            <div class="row section-content">
+                <div class="col-md-6 section-content-box detail-box box-left ">
+                    <article class="content-slide-section">
+                       <h4 class="title">@item.Value("landingSectionTitle")</h4>
+                        <div class="description">@item.Value("landingSectionContent")</div>
+                           @{
+                          try {
+                        urlNews = item.Value<IPublishedContent>("news").Url;
+                    } catch (Exception e) {
+                        urlNews = "";
+                    }
+                    }
+                        <a href="@urlNews" class="readmore">READ MORE &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                    </article>
+                </div>
+                <div class="col-md-6 section-content-box box-right">
+                    <img class="main-image" src="@sectionImage" alt="">
+                </div>
+            </div>
+            <!-- End content section -->
+        </div>
+        }
+     
+     
+     }
+   
+    countSection++;
+ }    
+
+ <div class="section" id="section3">
+     @if (isActiveNewsNearYou) {
+     
+ <!--Begin news near rouse-->
+                  <section>
+<!-- a Group -->
+<div class="group-content">
+			<!--<a href="#1"><h2 id="go-to-top"style="text-align: center;"><i class="fa fa-angle-up"></i></h2></a>-->
+	<div class="title container news-near-you-wrap-title">
+		<h3>Latest Insights</h3>
+	</div>
+	<!-- A row Item -->
+    <div class="row">
+                  	@foreach (var itemNewsNearYou in newsNearYou)
+	{
+	                @Html.Partial("page/NewsNearYou",itemNewsNearYou)
+	}
+	
+	
+	</div>
+	<!-- End a row Item -->
+</div>
+<!-- End group -->
+
+</section>
+<!--End New near rouse-->
+}
+
+@if (isActiveHappenInRouse) {
+            <!--Begin happen in rouse-->
+  
+<section>
+<!-- a Group -->
+<div class="group-content">
+	<div class="title container">
+		<h3>What’s Happening at Rouse  <a class="more"  href="/about#what">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a></h3>
+		 
+               
+              
+	</div>
+	<!-- A row Item -->
+    <div class="row">
+        
+        
+            	@foreach (var itemHappendInRouse in happenInRouse)
+	{
+	               @Html.Partial("page/HappeningInRouse",itemHappendInRouse)
+	}
+	
+  	</div>
+	<!-- End a row Item -->
+</div>
+<!-- End group -->
+
+</section>
+<!--End Happend in rouse-->
+
+}
+
+                  
+                  
+                <!-- a Group -->
+                <div class="group-content career-group-content">
+                	<div  class="title container careers-title-wrap">
+                		<h3>Careers</h3>
+                	</div>
+                	<!-- A row Item -->
+                    <div class="row">
+                    <!-- A Item  -->
+                	<div class="col-md-12 item careers" style="background-image:url('@careersImage')" >
+                       
+                		<div class="item-content">
+                			<div class="title">@Model.Value("careersBoxTitle")</div>
+                			<div class="description">
+                				@Model.Value("careersBoxDescription")
+                			</div>
+                			
+                	
+                            @if (careers_link.Any())
+                            {
+                               
+                                    foreach (var link in careers_link)
+                                    {
+                                       
+                                        <a href="@link.Url" target="@link.Target" class="readmore"> @link.Name &nbsp; &nbsp;<i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                                    }
+                               
+                            }
+                		 
+                		
+                		</div>
+                	</div>
+                    <!-- End Item -->
+                  
+                	</div>
+                	<!-- End a row Item -->
+                	
+                </div>
+                <!-- End group -->
+                @Html.Partial("how-can")
+    		  
+    		  
+    		  
+                @Html.Partial("footer")
+
+    </div>
+    
+
+    
+
+</div>
+
+    
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+    var myFullpage = new fullpage('#fullpage', {
+        licenseKey: '05304AAC-5D004D23-8D5D6ADC-931DF417',
+        // anchors: ['1', '2', '3', '4'],
+        scrollOverflow: true,
+        navigation: true,
+        // navigationTooltips: ['Section 1', 'Section 2', 'Section 3', 'Section 4'],
+        showActiveTooltip: true,
+        navigationPosition: 'left',
+        menu: '#menu'
+    });
+});
+</script>
+ 
+
+} else {
+    <!-- Owl Carousel Assets -->
+   
+    
+    <link  rel="preload"  as="style" onload="this.onload=null;this.rel='stylesheet'"  href="https://kenwheeler.github.io/slick/slick/slick.css"/>
+    // Add the new slick-theme.css if you want the default styling
+    <link   rel="preload"  as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+
+ 
+ 
+<!--Mobile-->
+<div class="mobile-landingpage">  
+    <div id="mobile-landind-top-slider" >
+      
+          @foreach (var item in newsLanding)
+        {
+    	 var sectionImage = "";
+    	 var sectionBackground = "";
+    	 var sectionId = "section-"+ countSection;
+    	 var wrapId = "wrapperSection-"+ countSection;
+    	 var sectionImageMobile = "";
+
+    
+          try {
+                            if (item.Value<IPublishedContent>("LandingSectionImage") != null)
+                            {
+
+                                if (item.Value<IPublishedContent>("LandingSectionImage").GetCropUrl("ImageLanding") != null)
+                                {
+                                    sectionImage = item.Value<IPublishedContent>("LandingSectionImage").GetCropUrl("ImageLanding").ToString();
+                                }
+                                else
+                                {
+                                    sectionImage = item.Value<IPublishedContent>("LandingSectionImage").Url.ToString();
+                                }
+                            }
+                                      sectionImageMobile =  item.Value<IPublishedContent>("LandingSectionImage").GetCropUrl(height: 500, width: 500);
+
+                        } catch (Exception e)
+                        {
+                            sectionImage = "";
+
+                        }
+        
+                
+        
+          <div class="item news-item" id="@wrapId">
+              <div class="col-md-12 section-content-box ">
+                        <article class="mobile-content-slide-section">
+                            <h4 class="title">@item.Value("landingSectionTitle")</h4>
+                            <div class="description"><p>@item.Value("landingSectionContent")</p></div>
+                              @{
+                              try {
+                        urlNews = item.Value<IPublishedContent>("news").Url;
+                    } catch (Exception e) {
+                        urlNews = "";
+                    }
+                    }
+                            <a href="@urlNews" class="readmore">READ MORE &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                          <img id="@sectionId" class="main-image" src="@sectionImageMobile" alt="">
+                        </article>
+                       
+               </div>
+            
+                  
+              
+          </div>
+          
+           countSection++;
+         }
+    </div>
+                  <!--Begin news near rouse-->
+                  <section>
+<!-- a Group -->
+<div class="group-content">
+			<!--<a href="#1"><h2 id="go-to-top"style="text-align: center;"><i class="fa fa-angle-up"></i></h2></a>-->
+	<div class="title container">
+		<h3>News Near You</h3>
+	</div>
+	  <div id="mobile-news-near-rouse" class="sliderSlickWrap">
+                        	@foreach (var itemNewsNearYou in newsNearYou)
+	{
+	                @Html.Partial("page/NewsNearYou",itemNewsNearYou)
+	}
+ 
+    </div>
+	<!-- A row Item -->
+    <div class="row">
+  
+	
+	</div>
+	<!-- End a row Item -->
+</div>
+<!-- End group -->
+
+</section>
+<!--End New near rouse-->
+
+@if (Model.Value<bool>("isActiveHappenInRouse")) {
+            <!--Begin happen in rouse-->
+  
+<!--Begin happen in rouse-->
+  
+<section>
+<!-- a Group -->
+<div class="group-content">
+	<div class="title container">
+		<h3>What’s Happening in Rouse</h3>
+	</div>
+	<!-- A row Item -->
+    <div id="mobilde-happen-in-rouse" class="sliderSlickWrap">
+        
+        
+            	@foreach (var itemHappendInRouse in happenInRouse)
+	{
+	               @Html.Partial("page/HappeningInRouse",itemHappendInRouse)
+	}
+	
+  	</div>
+	<!-- End a row Item -->
+</div>
+<!-- End group -->
+
+</section>
+<!--End Happend in rouse-->
+}
+                  
+<!-- a Group -->
+<div class="group-content group-content career-group-content">
+	<div class="title container">
+		<h3>Careers</h3>
+	</div>
+	<!-- A row Item -->
+    <div class="row">
+    <!-- A Item  -->
+	<div class="col-md-12 item careers" id="careers" style="background-image:url('@careersImage.GetCropUrl(height: 600)')" >
+      
+                		<div class="item-content">
+                			<div class="title">@Model.Value("careersBoxTitle")</div>
+                			<div class="description">
+                				@Model.Value("careersBoxDescription")
+                			</div>
+                			
+                	
+                            @if (careers_link.Any())
+                            {
+                               
+                                    foreach (var link in careers_link)
+                                    {
+                                       
+                                        <a href="@link.Url" target="@link.Target" class="readmore"> @link.Name &nbsp; &nbsp;<i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a> 
+                                    }
+                               
+                            }
+                		 
+                		
+                		</div>
+	</div>
+    <!-- End Item -->
+  
+	</div>
+	<!-- End a row Item -->
+	
+</div>
+<!-- End group -->
+
+
+@Html.Partial("how-can")
+@Html.Partial("footer")
+    
+</div>  
+<!--End Mobile-->
+
+
+
+
+}

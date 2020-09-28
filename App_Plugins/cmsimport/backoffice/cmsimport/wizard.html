@@ -1,0 +1,62 @@
+﻿<div ng-controller="cmsimport.wizardController" ng-cloak>
+  <form name="frm" ng-model="model" ng-show="loaded" no-validate no-dirty-check val-form-manager>
+    <umb-editor-view>
+
+      <umb-editor-header name="model.currentStep.stepTitle"
+                         name-locked="true"
+                         hide-icon="true"
+                         hide-description="true"
+                         hide-alias="true"
+                         menu="menu">
+      </umb-editor-header>
+
+      <umb-editor-container>
+        <cmsimport-licenseinfo></cmsimport-licenseinfo>
+        <div class="alert alert-error" ng-if="model.isInValid">
+          <ul>
+            <li ng-repeat="validationMessage in model.validationMessages">{{validationMessage}}</li>
+          </ul>
+        </div>
+        <div class="alert alert-warning" ng-if="model.hasWarnings">
+          <ul>
+            <li ng-repeat="validationMessage in model.warnings">{{validationMessage}}</li>
+          </ul>
+        </div>
+        
+        <umb-tabs-content class="form-horizontal" view="true">
+          <div id="tab{{tab.id}}" ng-repeat="tab in model.tabs">
+            <div class="umb-expansion-panel" ng-if="tab.alias == model.currentStep.stepAlias  && model.currentStep.isPropertyContainer == false ">
+              <div class="umb-expansion-panel__content">
+                <p class="umb-abstract" ng-if="model.currentStep.stepIntro" ng-bind-html="model.currentStep.stepIntro"></p>
+                <umb-property data-element="property-{{tab.alias}}" ng-repeat="property in tab.properties track by property.alias" property="property">
+                  <umb-property-editor model="property"></umb-property-editor>
+                </umb-property>
+              </div>
+            </div>
+            <div class="umb-expansion-panel" ng-if="tab.alias == model.currentStep.stepAlias  && model.currentStep.isPropertyContainer == true ">
+              <div class="umb-expansion-panel__content">
+                <p class="umb-abstract" ng-if="model.currentStep.stepIntro" ng-bind-html="model.currentStep.stepIntro"></p>
+                <div ng-repeat="parentproperty in tab.properties track by parentproperty.alias">
+                  <umb-property data-element="property-{{tab.alias}}" ng-repeat="property in parentproperty.value.properties | filter:{enabled:true} track by property.alias" property="property">
+                    <umb-property-editor model="property"></umb-property-editor>
+                  </umb-property>
+                </div>
+              </div>
+            </div>
+          </div>
+        </umb-tabs-content>
+
+      </umb-editor-container>
+
+      <umb-editor-footer>
+        <umb-editor-footer-content-right ng-if="model.showButtons">
+          <a class="btn btn-info" ng-show="model.showPreviousButton" ng-click="goPrevious()"><localize key="buttons_previous">Previous</localize></a>
+          <a class="btn btn-info" ng-show="model.showSaveButton" ng-click="save()"><localize key="buttons_save">Save</localize></a>
+          <a class="btn btn-success" ng-show="model.showNextButton" ng-click="goNext()"><localize key="buttons_next">Next</localize></a>
+        </umb-editor-footer-content-right>
+      </umb-editor-footer>
+
+    </umb-editor-view>
+
+  </form>
+</div>

@@ -1,0 +1,17 @@
+{
+  "id": "c06c0fee-9e77-4ce4-93b0-f3d9b08357ee",
+  "name": "",
+  "form": "5043a2ea-4fd0-4ee9-a8c1-605e3958af6a",
+  "active": true,
+  "workflowTypeId": "470eeb3a-cb15-4b08-9fc0-a2f091583332",
+  "executesOn": "Submitted",
+  "settings": {
+    "Url": "aaaaaaaaaaaaaaaaaaaaaa",
+    "Method": "POST",
+    "XsltFile": "",
+    "Fields": "[]",
+    "Username": "",
+    "Password": ""
+  },
+  "sortOrder": 0
+}

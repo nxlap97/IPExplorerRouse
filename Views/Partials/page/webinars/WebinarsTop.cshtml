@@ -1,0 +1,192 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+
+			var newsInsights = Umbraco.Content(Guid.Parse("a32eea85-b7ff-464f-9598-69fb10df8ffc"))
+        .Children()
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.UpdateDate).Take(4);
+     
+
+        var insightFirst = newsInsights.First();
+         var imageFirstNews= "";
+            if (insightFirst.Value<IPublishedContent>("newsImage") != null ) {
+                imageFirstNews = insightFirst.Value<IPublishedContent>("newsImage").Url;
+            } 
+        var countInsight = 0;
+            var alpha = "@";
+            
+            	 var industries =  Model.Value<IEnumerable<IPublishedElement>>("industries");
+	 var services =  Model.Value<IEnumerable<IPublishedElement>>("services");
+	 var types =  Model.Value<IEnumerable<IPublishedElement>>("types");
+	 var featuredTopics =  Model.Value<IEnumerable<IPublishedElement>>("featuredTopics");
+	
+	 var space = ", ";
+	 IEnumerable<IPublishedElement> authorList; 
+	  var countAuthor = 0; 
+	  
+}
+  <div class="title-page container">
+        <h3 class="title insight-title">Featured Webinars</h3>
+    </div>
+      @if (!Request.Browser.IsMobileDevice) {
+          <div class="filter-group container insight-filter-wrap news-filter-wrap featured-webinars-section" id="insights-filter">
+              <div id="clear-all"> <a href="javascript:void(0)">Clear All</a></div>
+        <div class="row">
+            <div class="col-md-1"><span class="filter-text">Filter By</span></div>
+            <div class="col-md-11 filer-dropdown">
+                
+                 <div class="component">
+                   <div class="dropdown filter-insight-dropdown" id="industries">
+                    <p  class="btn btn-default dropdown-toggle"  id="industries-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Industries" >Industries
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="industries"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="industries-menu">
+                             @if  ( industries.Count() > 0 && industries!= null ) {
+                                   foreach (IPublishedContent industryItem in industries) 
+                                    {
+                                       <li value="@industryItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@industryItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+                
+                
+              
+                
+                 <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="services">
+                    <p  class="btn btn-default dropdown-toggle"  id="services-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Services" >Services
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="services"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="services-menu">
+                             @if  ( services.Count() > 0 && services!= null ) {
+                                  foreach (IPublishedContent serviceItem in services) 
+                                    {
+                                       <li value="@serviceItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@serviceItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                
+                
+                
+                 <div class="component">
+                        <div class="dropdown filter-insight-dropdown" id="types">
+                    <p  class="btn btn-default dropdown-toggle"  id="types-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Types" >Types
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="types"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="types-menu">
+                              @if  (types.Count() > 0  && types!= null  ) {
+                                foreach (IPublishedContent typeItem in types) 
+                                    {
+                                       <li value="@typeItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@typeItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+        } else {
+         <section class="container people-filter-controller" id="insightsMobileFilter">
+         
+         <div class="row filter-controller">
+         
+         <h2 class="title" id="dropdownToggleButton" data-toggle="collapse" data-target="#insightMobildeSearchArea" >Filter By</h2>
+         <div id="clear-all"> <a href="javascript:void(0)">Clear All</a></div>
+         </div>
+         
+              <div class="row collapse show"   id="insightMobildeSearchArea">
+            <div class="col-md-10 filer-dropdown">
+                
+                  <div class="component">
+                   <div class="dropdown filter-insight-dropdown" id="industries">
+                    <p  class="btn btn-default dropdown-toggle"  id="industries-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Industries" >Industries
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="industries"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="industries-menu">
+                             @if  ( industries.Count() > 0 && industries!= null ) {
+                                   foreach (IPublishedContent industryItem in industries) 
+                                    {
+                                       <li value="@industryItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@industryItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+                
+                
+              
+                
+                 <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="services">
+                    <p  class="btn btn-default dropdown-toggle"  id="services-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Services" >Services
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="services"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="services-menu">
+                             @if  ( services.Count() > 0 && services!= null ) {
+                                  foreach (IPublishedContent serviceItem in services) 
+                                    {
+                                       <li value="@serviceItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@serviceItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                
+                
+                
+                 <div class="component">
+                        <div class="dropdown filter-insight-dropdown" id="types">
+                    <p  class="btn btn-default dropdown-toggle"  id="types-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Types" >Types
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="types"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="types-menu">
+                              @if  (types.Count() > 0  && types!= null  ) {
+                                foreach (IPublishedContent typeItem in types) 
+                                    {
+                                       <li value="@typeItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@typeItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+        
+        
+                    
+    </section>
+           
+        }
+
+  @Html.Partial("page/webinars/TopFeatured")
+  
+
+    

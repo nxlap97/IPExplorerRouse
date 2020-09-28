@@ -1,0 +1,212 @@
+﻿@using ContentModels = Umbraco.Web.PublishedModels;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+ @using System.Text.RegularExpressions;
+@{
+    Layout = "master.cshtml";
+}
+@{
+	var domain = HttpContext.Current.Request.Url.Host;
+    var pageSize = 10;
+    var searchQuery = Request.QueryString["search-content"];
+    var page = Convert.ToDouble(Request.QueryString["page"]);
+    long resultCount = 0;
+    var results = Umbraco.ContentQuery.Search("", string.Empty);
+
+
+    if (!string.IsNullOrWhiteSpace(searchQuery))
+    {   
+       
+        results = Umbraco.ContentQuery.Search(searchQuery, string.Empty).OrderBy(x => x.Content.Name);
+        resultCount = results != null && results.Any() ? results.Count() : 0;
+       
+    }
+
+    var totalPages = (int)Math.Ceiling((double)resultCount / (double)pageSize);
+    if (page > totalPages)
+    {
+        page = totalPages;
+    }
+    else if (page < 1)
+    {
+        page = 1;
+    }
+      
+    var contentDescrition  = "";
+}
+
+<div class="container">
+				<div id="search-results-page" key-word="@searchQuery">
+					<nav>
+					
+                @if(totalPages > 1){
+					 <ul class="pagination">
+                          @if(page > 1)
+                            {
+                               <li class="page-item  ">
+            						    <a class="page-link" href="?search-content=@searchQuery&page=@(page-1)" tabindex="-1" >« </a>
+            					</li>
+                              
+                            }
+                              @for (int p = 1; p < totalPages + 1; p++)
+                                {
+                                
+                                    <li class="page-item @(p == page ? "active" : string.Empty)">
+                                        <a class="page-link" href="?search-content=@searchQuery&page=@p">@p</a>
+                                        
+                                    </li>
+                                }
+						 
+						      @if (page < totalPages)
+                                {
+                                    <li class="page-item" ><a class="page-link" href="?search-content=@searchQuery&page=@(page+1)">»</a></li>
+                                }
+					  	</ul>
+				
+				}
+					</nav>
+					@if (resultCount > 1 ) {
+						<div id="result-stats"><span>About @resultCount results</span></div>
+					} else {
+						<div id="result-stats"><span>About @resultCount result</span></div>
+					}
+				
+					<div class="search-results-page">
+				 @foreach (var item in results.Skip(((int)page - 1) * pageSize).Take(pageSize))
+                    { 
+                        var peopleImage = "";
+                        
+                        if (item.Content.Value("profileImage") != null) {
+							    try {
+							     if ( item.Content.Value<IPublishedContent>("profileImage").GetCropUrl("AuthorMedium") != null)
+                                 {
+                                       peopleImage = item.Content.Value<IPublishedContent>("profileImage").GetCropUrl("AuthorMedium").ToString();
+                                                                
+                                 } else {
+                                  peopleImage = item.Content.Value<IPublishedContent>("profileImage").Url.ToString();
+                                 }
+							
+							    } catch (Exception e) {
+							    peopleImage = "";
+							    
+							    
+							    }
+					    }
+					    
+					if (item.Content.Value("profileImage") != null ) {
+					   if (item.Content.Url == "/people/rouse-editor") { }
+					   else{
+					    	<article class="item item-profile">
+					    	 <div class="profileImage">	<img src="@peopleImage" >   </div>
+					         <div class="profileContent">
+					             	<h4 class="item-title"><a href="@item.Content.Url">@item.Content.Name</a></h4>
+							   
+							
+						       
+                        	@try {
+							  if (item.Content.Value("newsContent") != null) {
+							        contentDescrition =  (item.Content.Value("newsContent").ToString().Length > 500) ?  item.Content.Value("newsContent").ToString().Substring(0,500) : item.Content.Value("newsContent").ToString();
+						    	} else if (item.Content.Value("biography") != null ) {
+						    	     contentDescrition =  (item.Content.Value("biography").ToString().Length > 500) ?  item.Content.Value("biography").ToString().Substring(0,500) : item.Content.Value("biography").ToString();
+						    	
+						    	}  else {
+						    	
+						    	    contentDescrition = "No description";
+						    	}
+							} catch (Exception e ) {
+							
+							    contentDescrition = "No description";
+							}
+						
+						      
+						      <div class="item-desc"> 
+						                  @contentDescrition
+						                 
+						      </div>
+						      <div class="item-url"></div>
+					    </div>
+						
+							
+				</article>
+				
+				}
+					
+					} else {
+					    	<article class="item">
+							<h4 class="item-title"><a href="@item.Content.Url">@item.Content.Name</a></h4>
+							   
+							
+						       
+                        	@try {
+							   if (item.Content.Value("newsContent") != null) {
+							        contentDescrition =  (item.Content.Value("newsContent").ToString().Length > 500) ?  item.Content.Value("newsContent").ToString().Substring(0,500) : item.Content.Value("newsContent").ToString();
+						    	} else if (item.Content.Value("biography") != null ) {
+						    	     contentDescrition =  (item.Content.Value("biography").ToString().Length > 500) ?  item.Content.Value("biography").ToString().Substring(0,500) : item.Content.Value("biography").ToString();
+						    	
+						    	}  else {
+						    	
+						    	    contentDescrition = "No description";
+						    	}
+							} catch (Exception e ) {
+							
+							    contentDescrition = "No description";
+							}
+						
+						      
+						      <div class="item-desc"> 
+						                  @contentDescrition
+						                  
+						                
+						      </div>
+						     <div class="item-url"> </div>
+							
+				</article>
+					}
+                
+                   }
+					
+						
+					</div>
+				</div>
+			</div>
+			
+			
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+     $(document).ready(function () {
+    
+         var keyword = $("#search-results-page").attr("key-word");
+         var listItem = $(".item .item-desc");
+         
+         $.fn.wrapInTag = function(opts) {
+  
+          var tag = opts.tag || 'strong',
+              words = opts.words || [],
+              regex = RegExp(words.join('|'), 'gi'),
+              replacement = '<'+ tag +'>$&</'+ tag +'>';
+          
+          return this.html(function() {
+            return $(this).text().replace(regex, replacement);
+          });
+        };
+        
+        $('p').wrapInTag({
+          tag: 'strongspecial',
+          words: ['world', 'red']
+        });
+        
+        
+        listItem.each (function(i,e){
+            console.log (e)
+              $(e).wrapInTag({
+          tag: 'strongspecial',
+          words: [keyword]
+        });
+        })
+
+         console.log (listItem)
+        //  var keyword = str.search("W3Schools");
+         
+     })
+})
+</script>

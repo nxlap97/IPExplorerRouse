@@ -1,0 +1,164 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.IPcommercial>
+     @using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	  var newsLatestIP = Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"))
+       .Descendants().OfTypes("news")
+       .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.CreateDate).Take(4);
+        
+	 var bannerImage = "";
+     try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue("bannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerDesktop") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerDesktop").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue("bannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerMobile") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerMobile").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         bannerImage ="";
+                  
+                  }
+    
+      <!--Slide question-->
+   var listQuestionCount = 0;
+   var sliderImage = "";
+   var questionSliderCount = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").Count();
+   if (questionSliderCount > 0 ) {
+         var slider = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").First();
+         if (slider.Value<IPublishedContent>("questionSliderImage") != null ) {
+            sliderImage = slider.Value<IPublishedContent>("questionSliderImage").Url;
+         }
+          listQuestionCount =  slider.Value<IEnumerable<IPublishedElement>>("questionSliderItemGroup").Count();
+     
+        
+   }
+   
+}
+
+   
+ 
+
+    
+    <section class="top-banner" style="background-image:url('@bannerImage')">
+        
+        <div class="content-box content-box-right">
+            <h3 class="title">@Model.Value("iPCommercialTopBannerTitle")</h3>
+            <p class="description">@Model.Value("iPCommercialTopBannerContent")</p>
+            <a class="btn btn-primary" href="../../talkconsultant">Talk to a Consultant</a>
+
+        </div>
+    </section>
+    
+ <section class="container section-content-text" id="section-content-question-page">
+     <div class="row">
+       <div class="section-break-title break-small">
+   	<h2 class="title">IP Commercial</h2>	
+   </div>
+ 
+       <div  class="wrap-content-page">
+           @Model.Value("iPCommercialContent")
+           
+        </div>
+          </div>
+</section>
+
+<!--Question Slider-->
+@if (listQuestionCount > 0 ) {
+       	 @Html.Partial("page/Question", Model)
+}
+  <!--End question slider-->
+
+
+
+    
+   
+  <section class="new-from-rouse container">
+        <div class="row">
+        <div class="title-section">
+            <h4>Latest @Model.Value("servicesTitle") Insights</h4>
+            <a class="more" href="/insights">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+        </div>
+        </div>
+                  
+          @if (!Request.Browser.IsMobileDevice)
+         {
+          <div class="row">
+            	@foreach (var item in newsLatestIP)
+            	{
+            	
+            	 @Html.Partial("page/InsightsNews",item)
+            	}
+        
+         </div>
+         } else {
+           <div class="sliderSlickWrap">
+         	@foreach (var item in newsLatestIP)
+        	{ 
+        		 @Html.Partial("page/InsightsNews",item)
+        	}
+
+          </div>
+
+         
+         
+         }
+           
+    </section>
+
+ 
+ <section class="container global-reach-section" >
+      <div class="row">
+      <div class="title-section">
+            <h4>Global Reach</h4>
+     </div>
+       <div  class="wrap-content-page">
+          <p>Brief description of global reach. </p> 
+          <p>Aenean sed lorem est. Sed quis neque ut nibh suscipit imperdiet ac non augue. Aenean ornare sit amet lectus non tristique. Nunc ut volutpat lectus. Nulla velit augue, pulvinar sed nisi sit amet, eleifend fermentum est. Quisque nibh justo, congue ut erat at, aliquet efficitur purus. Integer venenatis odio vitae orci efficitur mollis. Donec ultrices diam dictum dignissim vestibulum. Proin eleifend nunc nunc. Sed non arcu eget lorem viverra sodales.</p>
+       </div>   
+   <div  class="list-country">
+   <ul>
+	<li>China</li>
+	<li>Hong Kong</li>
+	<li>Indonesia</li>
+	<li>Myanmar</li>
+	<li>Philippines</li>
+	<li>Thailand</li>
+	<li>Vietnam</li>
+	<li>Russia</li>
+	<li>Saudi Arabia</li>
+	<li>United Arab Emirates</li>
+	<li>United Kingdom</li>
+</ul>
+        </div>
+        </div>
+</section>
+
+@if (Model.Value<bool>("showCaseStudiesSection")) {
+@Html.Partial("page/CaseStudiesNews")
+}
+
+@Html.Partial("page/OurTeam")
+
+@Html.Partial("how-can")

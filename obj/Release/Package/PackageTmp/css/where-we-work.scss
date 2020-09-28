@@ -1,0 +1,583 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  // height: 120px;
+}
+
+.china-service-body {
+  overflow: hidden;
+}
+
+#burger-menu a.active {
+  color: #007F9C !important;
+}
+
+#rouse-burger {
+  position: fixed;
+  z-index: 1;
+  left: 0px;
+}
+
+#rouse-burger #wrap-burger-menu a {
+  color: black;
+  text-decoration: none;
+}
+
+.main-menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 8px;
+  margin-left: -35px;
+}
+
+.main-menu ul li {
+  list-style-type: none;
+  padding-right: 30px;
+}
+
+.main-menu ul li a {
+  text-decoration: none;
+}
+
+.main-menu ul li a:hover {
+  color: #007f9c;
+}
+
+.main-menu .dropdown-content ul li {
+  padding-left: 0px;
+}
+
+.dropdown-content {
+  .group-country {
+    margin-left: 10px;
+  }
+
+  ul {
+    display: block;
+
+    li {
+      padding-left: 0px;
+    }
+  }
+}
+
+.service-content {
+  .service-desription {
+    margin-bottom: 20px;
+    font: 18px/21px Calibri Regular;
+    margin-top: 10px;
+  }
+
+  h2,
+  h3 {
+    font-weight: bold;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+    font:  36px/60px Calibri Bold;
+  }
+
+  a:hover {
+    color: #007f9c;
+
+  }
+}
+
+
+.service-content a:hover {
+  color: #007f9c;
+}
+
+
+
+.front {
+  z-index: 500;
+  /*top: 0px;
+  width: 16150px;*/
+}
+
+.horizon {
+  line-height: 0;
+  z-index: 100;
+  width: 3000px;
+}
+
+.page {
+  top: 150px;
+  width: 800px;
+  padding: 10px 30px;
+  position: absolute;
+}
+
+.description {
+  left: 1500px;
+}
+
+.documentation {
+  left: 2450px;
+  width: 700px;
+}
+
+.options {
+  width: 700px;
+  left: 3800px;
+}
+
+.download {
+  width: 500px;
+  left: 5100px;
+}
+
+#ipConsulting {
+    left: 3000px;
+    width: 1400px;
+    .service-content .service-desription {
+        width: 800px;
+    }
+}
+
+#ipPortfolios {
+    left: 4850px;
+    width: 1410px;
+}
+
+#ipEnforcemen {
+  left: 6800px;
+}
+
+#ipLegal {
+  left: 8200px;
+  width: 1410px;
+}
+
+#ipImageSection1 img {
+  position: absolute;
+  left: 1550px;
+  top: -86px;
+  width: auto !important;
+  height: 773px;
+  max-width: max-content;
+
+}
+
+#ipImageSection2 {
+  left: 4350px;
+}
+
+#ipImageSection2 img {
+  height: 600px;
+}
+
+#ipImageSection3 {
+    left: 6200px;
+}
+
+#ipImageSection4 {
+  left: 6900px;
+  top: -160px;
+}
+
+.services-control {
+  position: fixed;
+  bottom: -20px;
+  z-index: 2;
+  left: 315px;
+  display: inline-block;
+}
+
+.services-control button {    
+ transition: all 0.2s linear;
+  position: relative;
+  bottom: 0px;
+  color: #FFF;
+  margin-right: -5px;
+  width: 150px;
+  text-align: center;
+  height: 30px;
+  font: 10px/11px Calibri Light;
+  border-radius: 0%;
+}
+
+.services-control button.active {
+  height: 70px;
+  font:  12px/14px Calibri Bold;
+  padding-bottom: 40px;
+}
+
+#phone {
+  z-index: 1;
+  position: absolute;
+}
+
+#phone-border {
+  z-index: 0;
+  position: absolute;
+  left: 110px;
+}
+
+#board {
+  position: relative;
+  right: 500px;
+}
+
+#btnIPConsultingChina {
+  background-color: #007F9C;
+}
+
+#btnIPPortfoliosChina {
+  background-color: #096E4A;
+}
+
+#btnEnforcementChina {
+  background-color: #5B2080;
+}
+
+#btnIPLegalChina {
+  background-color: #429BB0;
+}
+
+.middle {
+  z-index: 250;
+  line-height: 0;
+  width: 4500px;
+}
+
+.front {
+  .image-item-services {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+  }
+
+  #item-image-1 {
+    top: 350px;
+    left: 100px;
+}
+
+#item-image-2 {
+    top: 720px;
+    left: 1000px;
+}
+
+#item-image-3 {
+    top: 450px;
+    left: 1500px;
+}
+
+#item-image-4 {
+    top: 200px;
+    left: 2500px;
+}
+
+#item-image-5 {
+    top: 600px;
+    left: 2500px;
+}
+
+#item-image-6 {
+    top: 500px;
+    left: 3400px;
+}
+
+#item-image-7 {
+  top: 826px;
+    left: 4500px;
+
+}
+
+#item-image-8 {
+    top: 420px;
+    left: 4500px;
+}
+
+#item-image-9 {
+    top: 350px;
+    left: 5000px;
+
+}
+
+#item-image-10 {
+    top: 250px;
+    left: 8000px;
+}
+
+#item-image-11 {
+  top: 650px;
+  left: 7354px;
+}
+
+#item-image-12 {
+    top: 750px;
+    left: 8000px;
+}
+
+
+
+
+  // background: url(/media/service/services01.svg) no-repeat top 37px left -600px,
+  //  url(/media/service/services02.svg) no-repeat top 37px left 800px, 
+  //  url(/media/service/services03.svg) no-repeat top 37px left 1700px,
+  //  url(/media/service/services04.svg) no-repeat top 577px left 1702px,
+  //   url(/media/service/services05.svg) no-repeat top 300px left 2400px,
+  //    url(/media/service/services06.svg) no-repeat top 37px left 3200px, 
+  //    url(/media/service/services07.svg) no-repeat top 600px left 3200px,
+  //     url(/media/service/services08.svg) no-repeat top 350px left 4200px,
+  //      url(/media/service/services09.svg) no-repeat top 375px left 4700px, 
+  //      url(/media/service/services010.svg) no-repeat top 37px left 5600px,
+  //       url(/media/service/services011.svg) no-repeat top 37px left 5002px, 
+  //       url(/media/service/services12.svg) no-repeat top 540px left 6402px, 
+  //       url(/media/service/services13.svg) no-repeat top 375px left 6402px, 
+  //       url(/media/service/services14.svg) no-repeat top 37px left 6402px;
+  // background-attachment: scroll;
+  // background-size: 30% 30%;
+}
+
+/*# sourceMappingURL=services_style.css.map */
+
+//   .front  {
+//       top: 1000px;
+//       .page {
+//           top: 1000px;
+//       }
+//   }
+
+#chinaServicesId {
+  /*top: 900px;*/
+}
+
+#services-in-china-title.title-fixed {
+  z-index: 999;
+  position: fixed;
+  top: 39px;
+}
+
+#china-services-controller {}
+
+
+
+.china-services-credentials {
+ background-color: #FFF;
+  position: relative;
+  top: 7800px;
+
+  .credentials-content {
+    font-size: 21px;
+    line-height: 26px;
+
+    h2 {
+      font-size: 48px;
+      line-height: 24px;
+    }
+  }
+}
+
+#china-our-team-section {
+  top: 9100px;
+  position: relative;
+  width: 100%;
+  .col-lg-3 {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .col-md-3 {
+    padding-right: 0px;
+    padding-left: 0px;
+
+    .people-information {
+      left: 25px;
+    }
+  }
+
+
+}
+
+.credentials-content {
+  font: 21px/26px Calibri;
+  padding: 10px 50px;
+
+  .title {
+    font:  48px/24px Calibri Bold;
+    margin-bottom: 26px;
+  }
+}
+
+#china-success-stories-section {
+  top: 9050px;
+  position: relative;
+  width: 100%;
+
+  .item {
+    height: 720px;
+
+    .item-content {
+      opacity: 0.9;
+      width: 66%;
+      height: 540px;
+      top: 150px;
+      left: 30px;
+
+      .description {
+        height: 352px;
+        margin-top: 16px;
+        max-height: 352px;
+      }
+    }
+  }
+
+}
+
+#china-locations {
+  width: 100%;
+  top: 9130px;
+  position: relative;
+  z-index: 999;
+  .tab-content {
+    width: 100%;
+   
+    iframe {
+      width: 100%;
+      height: 813px;
+    }
+  }
+  .location-control {
+    width: max-content;
+    margin: auto;
+    margin-bottom: 20px;
+    border-bottom: none;
+
+    li {
+      font: 18px/21px Calibri Regular;
+      font-weight: 300;
+      margin-right: 50px;
+
+      a {
+        border: none;
+        padding: 0px;
+      }
+    }
+
+    a.nav-link.active {
+      font-weight: bold;
+    }
+  }
+}
+
+.china-location-content {
+  // position: absolute;
+  // top: 0px;
+}
+
+.banner-howcan {
+  position: relative;
+  top: 9250px;
+}
+
+footer {
+  position: relative;
+  top: 9275px;
+  ;
+}
+
+.china-section-content {
+  section {
+    z-index: 999;
+  }
+}
+
+.china-banner-company {
+  top: 105px;
+}
+
+
+.services-group-title {
+  font:  56px/60px Calibri Bold;
+
+  a {
+    font:  56px/60px Calibri Bold;
+  }
+
+}
+
+.our-services-text {
+  font:  48px/60px Calibri Bold;
+}
+
+.umbraco-forms.missing-library {
+  display: none;
+}
+
+.section-break-title.break-small {
+  margin-top: 120px;
+  margin: auto;
+}
+
+.tab-pane {
+  position: relative;
+}
+
+.location-infor {
+  width: 310px;
+  position: absolute;
+  bottom: 30px;
+  height: 346px;
+  opacity: 0.9;
+  left: 30px;
+  background-color: #FFF;
+  padding-left: 33px;
+
+  h3 {
+    font:  24px/38px Calibri Bold;
+    margin-top: 35px;
+  }
+
+  .description {
+    p {
+      margin-bottom: 2px;
+    }
+
+    font: 18px/21px Calibri Regular;
+    margin-top: 17px;
+  }
+}
+
+#ipConsulting .service-content .service-desription {
+    width: 800px;
+    max-width: 100%;
+}
+
+
+@media (max-width: 1800px) {
+  .service-content .service-desription {
+      margin-bottom: 10px;
+      font: 16px/16px Calibri Regular;
+      margin-top: 10px;
+  }
+  #ipImageSection1 img {
+      max-height: 537px;
+  }
+  #ipImageSection2 img {
+      height: 455px;
+  }
+  #hand {
+      max-height: 400px;
+  }
+  #board {
+      
+  }
+}
+@media (max-width: 1366px) {
+    #services-in-china-title.title-fixed {
+        background: #fff;
+    }
+    .header-master.background-unset {
+        background: #fff !important;
+    }
+   
+ }
+

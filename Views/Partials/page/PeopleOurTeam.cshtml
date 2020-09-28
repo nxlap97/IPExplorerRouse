@@ -1,0 +1,288 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Newtonsoft.Json;
+
+@{
+    var ipTest =  Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+    
+	var ourTeams = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+    .Children()
+    .Where(x => x.IsVisible()).Take(12);
+      var ourTeamsArray =  new  Umbraco.Core.Models.PublishedContent.IPublishedContent[5]  ;
+      var itemTeamCount = 0;
+
+      var locationList = Model.Value<IPublishedContent>("peopleLocationList");
+                        
+    var departmentList = Model.Value<IPublishedContent>("peopleDepartmentList");
+                           
+    var firmList  =  Model.Value<IPublishedContent>
+    ("peopleFirmList");
+
+    var ipAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+    var ip =  HttpContext.Current.Request.UserHostAddress;
+
+
+
+    var nameSearch = Request.QueryString["name"];
+    var departmentSearch = Request.QueryString["department"];
+    var locationSearch = Request.QueryString["location"];
+
+    var searchResultArray =  new  Umbraco.Core.Models.PublishedContent.IPublishedContent[12]  ;
+    var count = 0;
+    var listWhereWeWork = Umbraco.Content(1246);
+
+    }
+
+    <style>
+        .dropdown-item {
+            padding: 0rem !important;
+        }
+    </style>
+    @if (!Request.Browser.IsMobileDevice)
+    {
+    <section class="container people-filter-controller" id="peopleOurTeamSection">
+        <div class="row">
+            <div class="title-section people-break">
+                <h4>Our Team</h4>
+            </div>
+            <div class="our-team-top-title">
+                <div><h2 class="title ">Filter By</h2></div>
+                <div id="clear-all"> <a href="javascript:void(0)">Clear All</a></div>
+            </div>
+
+
+        </div>
+
+        <div class="row people-controller-wrap">
+            <div class="col-md-12 col-lg-3">
+                <h5>Name</h5>
+                <input class="form-control filter" id="filterName" name="peopleName" type="text" placeholder="Start typing a Name">
+            </div>
+
+            <div class="col-md-12 col-lg-3">
+                <h5>Location</h5>
+                <div class="component">
+                    <div class="dropdown filter-insight-dropdown peopleLocation" id="peopleLocation">
+                        <p class="btn btn-default dropdown-toggle" data-flip="false" id="peopleLocation-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations">
+                            Choose a Location
+
+                        </p>
+                        <i class="drop-icon clear-filter" target="peopleLocation"></i>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="peopleLocation-menu">
+                            @foreach (IPublishedContent countTryItem in listWhereWeWork.Children)
+                            {
+                            <li class="dropdown-item disabled">@countTryItem.Name</li>
+                            foreach (var cityItem in countTryItem.Children)
+                            {
+                            <li style="margin-left:15px" id-item="@countTryItem.Id" location-id="@countTryItem.Id" value="@countTryItem.Name" role="presentation" class="dropdown-item">@cityItem.Name</li>
+                            }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-3">
+                <h5>Firm</h5>
+                <div class="component">
+                    <div class="dropdown filter-insight-dropdown peopleFirm" id="peopleFirm">
+                        <p class="btn btn-default dropdown-toggle" data-flip="false" id="peopleFirm-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Firm">
+                            Choose a Firm
+
+                        </p>
+                        <i class="drop-icon clear-filter" target="peopleFirm"></i>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="peopleFirm-menu">
+
+                            @foreach (IPublishedContent firmItem in firmList.Children)
+                            {
+                            <li location-id="@firmItem.Id" value="@firmItem.Name" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@firmItem.Name.ToLower()</a></li>
+
+                            }
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-3 ">
+                <h5>Service</h5>
+                <div class="component">
+                    <div class="dropdown filter-insight-dropdown peopleDepartment" id="peopleDepartment">
+                        <p class="btn btn-default dropdown-toggle" data-flip="false" id="peopleDepartment-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Services">
+                            Choose a Service
+
+                        </p>
+                        <i class="drop-icon clear-filter" target="peopleDepartment"></i>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="peopleDepartment-menu">
+
+                            @foreach (IPublishedContent departmentItem in departmentList.Children)
+                            {
+                            <li location-id="@departmentItem.Id" value="@departmentItem.Name" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@departmentItem.Name</a></li>
+
+                            }
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </section>
+    } else {
+    <section class="container people-filter-controller mobile-version">
+        <div class="row">
+            <div class="title-section people-break">
+                <h4>Our Team</h4>
+            </div>
+            <div class="our-team-top-title">
+                <div><h2 class="title" show-filter="false" data-toggle="collapse" data-target="#peopleSearchArea">Filter Results</h2></div>
+                <div id="clear-all" class="hide"> <a href="javascript:void(0)">Clear All</a></div>
+            </div>
+
+
+        </div>
+
+        <div class="row collapse" id="peopleSearchArea">
+            <div class="col-md-12 col-lg-3">
+                <h5>Name</h5>
+                <input class="form-control filter" id="filterName" name="peopleName" type="text" placeholder="Start typing a Name">
+            </div>
+
+            <div class="col-md-12 col-lg-3">
+                <h5>Location</h5>
+                <div class="component">
+                    <div class="dropdown filter-insight-dropdown peopleLocation" id="peopleLocation">
+                        <p class="btn btn-default dropdown-toggle" data-flip="false" id="peopleLocation-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose a Location">
+                            Choose a Location
+
+                        </p>
+                        <i class="drop-icon clear-filter" target="peopleLocation"></i>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="peopleLocation-menu">
+                            @foreach (IPublishedContent locationItem in locationList.Children)
+                            {
+                            <li location-id="@locationItem.Id" value="@locationItem.Name" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@locationItem.Name</a></li>
+
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-3">
+                <h5>Firm</h5>
+                <div class="component">
+                    <div class="dropdown filter-insight-dropdown peopleFirm" id="peopleFirm">
+                        <p class="btn btn-default dropdown-toggle" data-flip="false" id="peopleFirm-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose a Firm">
+                            Choose a Firm
+
+                        </p>
+                        <i class="drop-icon clear-filter" target="peopleFirm"></i>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="peopleFirm-menu">
+
+                            @foreach (IPublishedContent firmItem in firmList.Children)
+                            {
+                            <li location-id="@firmItem.Id" value="@firmItem.Name" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@firmItem.Name</a></li>
+
+                            }
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-3 ">
+                <h5>Department</h5>
+                <div class="component">
+                    <div class="dropdown filter-insight-dropdown peopleDepartment" id="peopleDepartment">
+                        <p class="btn btn-default dropdown-toggle" data-flip="false" id="peopleDepartment-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose a Department">
+                            Choose a Department
+
+                        </p>
+                        <i class="drop-icon clear-filter" target="peopleDepartment"></i>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="peopleDepartment-menu">
+
+                            @foreach (IPublishedContent departmentItem in departmentList.Children)
+                            {
+                            <li location-id="@departmentItem.Id" value="@departmentItem.Name" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@departmentItem.Name</a></li>
+
+                            }
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+
+    }
+
+    <section class="our-people-member container people-our-team" current-page="1" id="our-team-section">
+        @if (!Request.Browser.IsMobileDevice)
+        {
+        <div class="row" id="people-search-result" current-page="1" total-page="">
+
+        </div>
+        } else {
+        <div id="people-search-result" class="people-search-result-slick-mobile">
+
+        </div>
+        }
+
+
+
+    </section>
+
+    <div class="load-more-list people-loadmore">
+        <a>Load More <i class="fas fa-angle-down"></i></a>
+    </div>
+
+    <script>
+                                                                                                        // document.addEventListener("DOMContentLoaded", (event) => {
+
+                                                                                                        //     $.get("https://api.ipdata.co?api-key=test", function(response) {
+                                                                                                        //         var ip_address = response.ip;
+                                                                                                        //         console.log ("IP USER ACCESS:  " + ip_address );
+                                                                                                        //       $.getJSON('http://api.ipstack.com/'+ip_address+'?access_key=3cede86e5a54150d63f2c232ae85a0b8', function (data) {
+                                                                                                        //         console.log (typeof data);
+                                                                                                        //         console.log(data);
+                                                                                                        //         console.log(data);
+                                                                                                        //         let locationName = data.country_name.toLowerCase();
+                                                                                                        //         let locationNameFormat = locationName;
+                                                                                                        //         console.log(locationNameFormat);
+                                                                                                        //         $("#locationListId option[value='"+locationNameFormat+"']").attr('selected', 'selected');
+                                                                                                        //     });
+
+                                                                                                        //     }, "jsonp");
+
+                                                                                                        // let locationSelect = "@locationSearch";
+                                                                                                        // let departmentSelect = "@departmentSearch";
+                                                                                                        // console.log ("locationSelect");
+                                                                                                        // console.log (locationSelect);
+
+                                                                                                        // console.log ("departmentSelect");
+                                                                                                        // console.log (departmentSelect.length);
+                                                                                                        // if (locationSelect.length > 0 && locationSelect != "all") {
+                                                                                                        //              document.getElementById("peopleLocation").value = locationSelect;
+                                                                                                        // } else {
+                                                                                                        //              document.getElementById("peopleLocation").value = "all";
+                                                                                                        // }
+
+                                                                                                        // if (departmentSelect.length > 0 && departmentSelect != "all") {
+                                                                                                        //              document.getElementById("peopleDepartment").value = departmentSelect;
+                                                                                                        // } else {
+                                                                                                        //              document.getElementById("peopleDepartment").value = "all";
+                                                                                                        // }
+
+                                                                                                        // });
+
+    </script>

@@ -1,0 +1,16 @@
+{
+  "id": "f127c74c-4453-4b46-900d-daa99360f08d",
+  "name": "aaaaa",
+  "form": "05078743-8f73-417a-a62e-e9c3e1cee441",
+  "active": true,
+  "workflowTypeId": "e96badd7-05be-4978-b8d9-b3d733de70a5",
+  "executesOn": "Submitted",
+  "settings": {
+    "Email": "phulong95@gmail.com",
+    "SenderEmail": "phulong9517@gmail.com",
+    "Subject": "aaaa",
+    "Message": "aaaaaa",
+    "Attachment": "True"
+  },
+  "sortOrder": 0
+}

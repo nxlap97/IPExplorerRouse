@@ -1,0 +1,395 @@
+.header {
+    position: fixed;
+    top: -3px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    // height: 120px;
+    /*background-color: unset !important;*/
+
+}
+
+#burger-menu {
+    a.active {
+        color: #007F9C !important;
+    }
+}
+
+#rouse-burger {
+    position: fixed;
+    z-index: 1;
+    left: 0px;
+
+    #wrap-burger-menu {
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+    }
+}
+
+.main-menu {
+    ul {
+        margin-left: -35px;
+        margin: 0px;
+
+        li {
+            list-style-type: none;           
+            display: inline-block;
+
+            a {
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #007f9c;
+            }
+        }
+
+        li:not(:last-child) {
+            padding-right: 30px;
+        }
+    }
+
+    .dropdown-content {
+        ul {
+            display: block;
+
+            li {
+                padding-left: 0px;
+            }
+        }
+    }
+}
+
+.service-content {
+    .service-desription {
+        margin-bottom: 20px;
+        font: 18px/21px Calibri Regular;
+        margin-top: 10px;
+    }
+
+    h2,
+    h3 {
+        font-weight: bold;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font:  36px/60px Calibri Bold;
+    }
+
+    a:hover {
+        color: #007f9c;
+
+    }
+}
+
+.front {
+    z-index: 500;
+    top: 0px;
+    width: 8000px;
+}
+
+.horizon {
+    line-height: 0;
+    z-index: 100;
+    width: 3000px;
+}
+
+.page {
+    top: 150px;
+    width: 800px;
+    padding: 10px 30px;
+    position: absolute;
+}
+
+.description {
+    left: 1500px;
+}
+
+.documentation {
+    left: 2450px;
+    width: 700px;
+}
+
+.options {
+    width: 700px;
+    left: 3800px;
+}
+
+.download {
+    width: 500px;
+    left: 5100px;
+}
+
+#ipConsulting {
+    left: 800px;
+
+    .service-content .service-desription {
+           max-width: 800px;
+    }
+}
+
+
+#ipConsulting.page {
+    min-width: 1310px;
+    width: 1000px;
+}
+
+#ipPortfolios {
+    left: 2530px;
+    width: 1410px;
+}
+
+#ipEnforcemen {
+    left: 4500px;
+}
+
+
+#ipLegal {
+    left: 5600px;
+    width: 1410px;
+}
+
+#ipImageSection1 {
+    img {
+        position: absolute;
+        top: 0px;
+        left: -210px;
+    }
+}
+
+#ipImageSection2 {
+    left: 2050px;
+
+    img {
+        height: 600px;
+    }
+}
+
+#ipImageSection3 {
+    left: 3800px;
+}
+
+#ipImageSection4 {
+    left: 5100px;
+    top: -160px;
+}
+
+.services-control {
+    position: fixed;
+    bottom: -20px;
+    z-index: 2;
+    left: 315px;
+
+
+    display: inline-block;
+
+    button {
+        position: relative;
+        bottom: 0px;
+        color: #FFF;
+        margin-right: -5px;
+        width: 150px;
+        text-align: center;     
+        font-size: 12px;
+        height: 30px;
+        font: 10px/11px Calibri Light;
+        border-radius: 0%;
+    }
+
+    button.active {
+        height: 70px;
+        font:  12px/14px Calibri Bold;
+        padding-bottom: 40px;
+    }
+}
+
+#phone {
+    z-index: 1;
+    position: absolute;
+
+}
+
+#phone-border {
+    z-index: 0;
+    position: absolute;
+    left: 110px;
+}
+
+#board {
+    position: relative;
+    right: 500px;
+}
+
+#btnIPConsulting {
+    background-color: #007F9C;
+}
+
+#btnIPPortfolios {
+    background-color: #096E4A;
+}
+
+#btnEnforcement {
+    background-color: #5B2080;
+}
+
+#btnIPLegal {
+    background-color: #429BB0;
+}
+
+.middle {
+    z-index: 250;
+    line-height: 0;
+    width: 4500px;
+}
+
+.front {
+    .image-item-services {
+        width: 250px;
+        height: 250px;
+        position: absolute;
+    }
+
+    #item-image-1 {
+        top: 37px;
+        left: 100px;
+    }
+
+    #item-image-2 {
+        top: 720px;
+        left: 1000px;
+    }
+
+    #item-image-3 {
+        top: 200px;
+        left: 1500px;
+    }
+
+    #item-image-4 {
+        top: -80px;
+        left: 2500px;
+    }
+
+    #item-image-5 {
+        top: 600px;
+        left: 2500px;
+    }
+
+    #item-image-6 {
+        top: 500px;
+        left: 3400px;
+    }
+
+    #item-image-7 {
+        top: 500px;
+        left: 4000px;
+    }
+
+    #item-image-8 {
+        top: 420px;
+        left: 4500px;
+    }
+
+    #item-image-9 {
+        top: 350px;
+        left: 5000px;
+
+    }
+
+    #item-image-10 {
+        top: 100px;
+        left: 6500px;
+    }
+
+    #item-image-11 {
+        top: 500px;
+        left: 6000px;
+    }
+
+    #item-image-12 {
+        top: 450px;
+        left: 6500px;
+    }
+
+
+    // background:
+    // url(/media/service/services01.svg) no-repeat  top 37px left -600px, 
+    // url(/media/service/services02.svg) no-repeat  top 37px left 800px , 
+    // url(/media/service/services03.svg) no-repeat  top 37px left 1700px , 
+    // url(/media/service/services04.svg) no-repeat  top 577px left 1702px, 
+    // url(/media/service/services05.svg) no-repeat  top 300px left 2400px, 
+    // url(/media/service/services06.svg) no-repeat  top 37px left 3200px, 
+    // url(/media/service/services07.svg) no-repeat  top 600px left 3200px, 
+    // url(/media/service/services08.svg) no-repeat  top 350px left 4200px, 
+    // url(/media/service/services09.svg) no-repeat  top 375px left 4700px, 
+    // url(/media/service/services010.svg) no-repeat top 37px left 5600px , 
+    // url(/media/service/services011.svg) no-repeat  top 37px left 5002px, 
+    // url(/media/service/services12.svg) no-repeat  top 540px left 6402px, 
+    // url(/media/service/services13.svg) no-repeat  top 375px left 6402px, 
+    // url(/media/service/services14.svg) no-repeat  top 37px left 6402px,
+    // url(/media/service/services15.svg) no-repeat  top 37px left 7000px, 
+    // url(/media/service/services16.svg) no-repeat  top 6000px left 7000px, 
+
+    // url(/media/service/services17.svg) no-repeat  top 37px left 42px, 
+    // url(/media/service/services18.svg) no-repeat  top 37px left 42px, 
+    // url(/media/service/services19.svg) no-repeat  top 37px left 42px, 
+    // url(/media/service/services20.svg) no-repeat  top 37px left 42px, 
+    // url(/media/service/services21.svg) no-repeat  top 37px left 42px     ;      
+
+
+
+
+    // background-attachment: scroll;
+    // background-size: 30% 30%;
+}
+
+.services-group-title {
+    font:  56px/60px Calibri Bold;
+
+    a {
+        font:  56px/60px Calibri Bold;
+    }
+
+}
+
+.our-services-text {
+    font:  48px/60px Calibri Bold;
+}
+
+@media (max-width: 1800px) {
+    .service-content .service-desription {
+        margin-bottom: 20px;
+        font: 16px/21px Calibri Regular;
+        margin-top: 10px;
+    }
+    #ipImageSection1 img {
+        max-height: 537px;
+    }
+    #ipImageSection2 img {
+        height: 455px;
+    }
+    #hand {
+        max-height: 400px;
+    }
+    #board {
+        
+    }
+}
+
+.umbraco-forms.missing-library {
+    display: none ;
+}
+@media (max-width: 1024px) {
+    .header-master .row {
+        z-index: 100;
+        margin-top: -22px;
+    }
+
+    .header-container {
+        margin-top: 20px;
+    }
+}

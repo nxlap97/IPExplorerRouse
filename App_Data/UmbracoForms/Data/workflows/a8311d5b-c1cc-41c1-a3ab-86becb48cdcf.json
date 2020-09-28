@@ -1,0 +1,17 @@
+{
+  "id": "a8311d5b-c1cc-41c1-a3ab-86becb48cdcf",
+  "name": "Send Data",
+  "form": "05078743-8f73-417a-a62e-e9c3e1cee441",
+  "active": true,
+  "includeSensitiveData": "False",
+  "workflowTypeId": "fd02c929-4e7d-4f90-b9fa-13d074a76688",
+  "executesOn": "Submitted",
+  "settings": {
+    "Url": "http://192.168.0.117/Umbraco/Api/SendEmail/SendEmail",
+    "Method": "POST",
+    "Fields": "[{\"alias\":\"name\",\"value\":\"f6718dda-0e45-48f9-bf8f-ecfe8a500a9e\",\"staticValue\":\"\",\"$$hashKey\":\"object:1690\"},{\"alias\":\"cv\",\"value\":\"8ab1f187-9323-43d8-95ef-681e8d5bf9a4\",\"staticValue\":\"\",\"$$hashKey\":\"object:1696\"}]",
+    "Username": "",
+    "Password": ""
+  },
+  "sortOrder": 0
+}

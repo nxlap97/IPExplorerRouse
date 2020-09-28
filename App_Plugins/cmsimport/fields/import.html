@@ -1,0 +1,55 @@
+﻿<div ng-controller="cmsimport.importController">
+  <div class="umb-group-panel__content" ng-show="importResult">
+    <div ng-show="importResult.canceled" class="alert alert-warning">
+      <localize key="importResult_canceled">Records updated</localize>
+    </div>
+    <div class="control-group umb-control-group ">
+
+      <div class="umb-el-wrap cmsimportDisplayControl">
+        <label class="control-label ng-binding" title="Duration"><localize key="importResult_duration"></localize></label>
+        <div class="controls" noDirtyCheck>
+          {{importResult.duration}}
+        </div>
+      </div>
+
+      <div class="umb-el-wrap cmsimportDisplayControl">
+        <label class="control-label ng-binding"><localize key="importResult_recordsInDataSource">Records in datasource</localize></label>
+        <div class="controls" noDirtyCheck>
+          {{importResult.recordsInDataSource}}
+        </div>
+      </div>
+      <div class="umb-el-wrap cmsimportDisplayControl">
+        <label class="control-label ng-binding"><localize key="importResult_recordsAdded">Records added</localize></label>
+        <div class="controls" noDirtyCheck>
+          {{importResult.recordsAdded}}
+        </div>
+      </div>
+      <div class="umb-el-wrap cmsimportDisplayControl" ng-if="importResult.showRecordsUpdated">
+        <label class="control-label ng-binding"><localize key="importResult_recordsUpdated">Records updated</localize></label>
+        <div class="controls" noDirtyCheck>
+          {{importResult.recordsUpdated}}
+        </div>
+      </div>
+      <div class="umb-el-wrap cmsimportDisplayControl" ng-if="importResult.showRecordsSkipped">
+        <label class="control-label ng-binding"><localize key="importResult_recordsSkipped">Records skipped</localize></label>
+        <div class="controls" noDirtyCheck>
+          {{importResult.recordsSkipped}}
+        </div>
+      </div>
+      <div class="umb-el-wrap cmsimportDisplayControl" ng-if="importResult.showRecordsDeleted">
+        <label class="control-label ng-binding"><localize key="importResult_recordsDeleted">Records deleted</localize></label>
+        <div class="controls" noDirtyCheck>
+          {{importResult.recordsDeleted}}
+        </div>
+      </div>
+      <div class="umb-el-wrap cmsimportDisplayControl" ng-if="importResult.showErrors">
+        <label class="control-label ng-binding"><localize key="importResult_errors">Errors</localize></label>
+        <div class="controls alert alert-error" noDirtyCheck>
+          <ul>
+            <li ng-repeat="e in importResult.errors track by $index">{{e}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

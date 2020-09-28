@@ -1,0 +1,275 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+	var newsRoom = Umbraco.Content(Guid.Parse("a32eea85-b7ff-464f-9598-69fb10df8ffc"))
+    .Descendants().OfTypes("news").OrderByDescending(x => x.CreateDate)
+    .Where(x => x.IsVisible()).Take(3);
+    var count = 0;
+            
+	 var space = ", ";
+	 IEnumerable<IPublishedElement> authorList; 
+      var countAuthor = 0; 
+    
+      var newsRoomsArray =  new  Umbraco.Core.Models.PublishedContent.IPublishedContent[5]  ;
+      var newsRoomsImageArray =  new  string [5]  ;
+      var itemNewsCount = 0;
+    
+       foreach (var itemNews  in  newsRoom) {
+          newsRoomsArray[itemNewsCount] = itemNews;
+          var itemImage = "";
+          if (itemNews.HasValue("newsImage")) {
+            itemImage =  itemNews.Value<IPublishedContent>("newsImage").Url;
+          }
+            newsRoomsImageArray[itemNewsCount] = itemImage;
+          itemNewsCount++;
+    }
+    
+    
+    
+    		       var title ="";
+    		        var title1 ="";
+    		         var title2 ="";
+    		       var newsSummary = "";
+    		        var newsSummary1 = "";
+    		         var newsSummary2 = "";
+    		       try {
+    		           title =  (newsRoomsArray[0].Value("newsTitle").ToString().Length > 80) ? newsRoomsArray[0].Value("newsTitle").ToString().Substring(0,80) : newsRoomsArray[0].Value("newsTitle").ToString();
+    		            title1 =  (newsRoomsArray[1].Value("newsTitle").ToString().Length > 80) ? newsRoomsArray[1].Value("newsTitle").ToString().Substring(0,80) : newsRoomsArray[1].Value("newsTitle").ToString();
+    		             title2 =  (newsRoomsArray[2].Value("newsTitle").ToString().Length > 80) ? newsRoomsArray[2].Value("newsTitle").ToString().Substring(0,80) : newsRoomsArray[2].Value("newsTitle").ToString();
+    		           newsSummary =  (newsRoomsArray[0].Value("newsSummary").ToString().Length > 120) ? newsRoomsArray[0].Value("newsSummary").ToString().Substring(0,120) : newsRoomsArray[0].Value("newsSummary").ToString();
+    		            newsSummary1 =  (newsRoomsArray[1].Value("newsSummary").ToString().Length > 120) ? newsRoomsArray[1].Value("newsSummary").ToString().Substring(0,120) : newsRoomsArray[1].Value("newsSummary").ToString();
+    		             newsSummary2 =  (newsRoomsArray[2].Value("newsSummary").ToString().Length > 120) ? newsRoomsArray[2].Value("newsSummary").ToString().Substring(0,120) : newsRoomsArray[2].Value("newsSummary").ToString();
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		      
+    		    
+    		    
+}
+
+
+  <section class="section-our-office container">
+        @if (!Request.Browser.IsMobileDevice)
+        {
+        
+               <div class="office-item webinars-top-feared">
+            <div class="row" id="newsWebinarsID" current-page="1" total-page="4" is-all="false" filter-active="true">
+                <div class="col-sm-12 col-md-6 office-left" style="">
+                 
+                    <div class="content-box">
+                       <div class="title"><a target="blank" href="@newsRoomsArray[0].Url">@title</a></div>
+                       @if (newsSummary != "") {
+                            <div class="description">
+                                 @newsSummary 
+                          </div>
+                       }
+                       <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = newsRoomsArray[1].Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(2) ) {
+                      var urlImage = ""; 
+                      try {
+                          if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                      } catch (Exception e) {
+                            urlImage = ""; 
+                      }
+                   
+                         if (author != authorList.First()) {
+                            @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                        <p class="watch-now"><a target="blank" href="@newsRoomsArray[0].Url">Watch Now</a></p>
+                    </div>
+                   
+             
+                </div>
+                <div class="col-sm-12 col-md-6 office-right">
+                    <div class="row">
+                        <div class="col-md-12 office-top" style="">
+                        
+                    <div class="content-box">
+                       <div class="title"><a href="@newsRoomsArray[1].Url">@title1</a></div>
+                         @if (newsSummary1 != "") {
+                            <div class="description">
+                                 @newsSummary1 
+                          </div>
+                       }
+                        <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = newsRoomsArray[1].Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(2) ) {
+                      var urlImage = ""; 
+                      try {
+                          if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                      } catch (Exception e) {
+                            urlImage = ""; 
+                      }
+                   
+                         if (author != authorList.First()) {
+                            @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                        <p class="watch-now"><a target="blank" href="@newsRoomsArray[1].Url">Watch Now</a></p>
+                    </div>
+                   
+               
+                        </div>
+                        <div class="col-md-12 office-bottom" style="">
+                         
+                    <div class="content-box">
+                       <div class="title"><a href="@newsRoomsArray[2].Url">@title2</a></div>
+                         @if (newsSummary2 != "") {
+                            <div class="description">
+                                 @newsSummary2 
+                          </div>
+                       }
+                       <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = newsRoomsArray[2].Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(2) ) {
+                      var urlImage = ""; 
+                      try {
+                          if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                      } catch (Exception e) {
+                            urlImage = ""; 
+                      }
+                   
+                         if (author != authorList.First()) {
+                            @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                        <p class="watch-now"><a target="blank" href="@newsRoomsArray[2].Url">Watch Now</a></p>
+                    </div>
+                   
+              
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        } else {
+        <section class="new-from-rouse container" id="rouse-webinars">
+           <div class="office-item"  id="newsWebinarsID" current-page="1" total-page="4" is-all="false" filter-active="true">
+         <div  class="sliderSlickWrap" id="mobilde-news-rouse-webinars" >
+       @foreach (var item  in  newsRoom) {
+       
+                
+          var itemImage = "";
+          if (item.HasValue("newsImage")) {
+            itemImage =  item.Value<IPublishedContent>("newsImage").Url;
+          }
+          
+                <!-- A Item  -->
+                <div class="new-box">
+                                     <div class="content-box">
+                     @{
+                         
+    		       try {
+    		           title =  (item.Value("newsTitle").ToString().Length > 80) ? item.Value("newsTitle").ToString().Substring(0,80) : item.Value("newsTitle").ToString();
+    		            newsSummary =  (item.Value("newsSummary").ToString().Length > 120) ? item.Value("newsSummary").ToString().Substring(0,120) : item.Value("newsSummary").ToString();
+    		      } catch (Exception e) {
+    		              
+    		       }
+                     }
+                        <p class="title"><a  href="@item.Url" target="blank" >@title </a> </p> 
+                        <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = item.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(2) ) {
+                      var urlImage = ""; 
+                      try {
+                          if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                      } catch (Exception e) {
+                            urlImage = ""; 
+                      }
+                   
+                         if (author != authorList.First()) {
+                            @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                        <p class="watch-now"><a target="blank" href="@item.Url">Watch Now</a></p>
+                    </div>
+                    </div>
+    <!-- End Item -->
+    }
+    </div>
+      </div>
+       </section>
+        }
+
+
+    </section>

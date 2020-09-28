@@ -1,0 +1,30 @@
+﻿<div ng-controller="cmsimport.datasourcePickerController">
+  <div class="cmsimportRow">
+    <div class="cmsimportCaption"><input type="radio" ng-checked="model.value.pickerType=='filePicker'" ng-click="switchUpload()" /><localize key="datasourcePickerField_uploadLocalFile">Upload a local file</localize>
+        
+      </div>
+    <div ng-show="model.value.pickerType=='filePicker'">
+      <label for="selectDatasourceFile" class="btn btn-success cmsimportFilePickerButton">Choose a file</label>
+      <div class="cmsimportDisplayControl">
+        <input type="file" data-file name="fileUpload" ng-model="fileValue" id="selectDatasourceFile" ng-change="uploadChanged()" class="cmsimportdatasourcefilehide" />
+      </div>
+      <div ng-show="selectedfileName" class="cmsimportFileSelected"><localize key="datasourcePickerField_currentSelectedFile">Currently selected: </localize>:{{selectedfileName}}</div>
+  </div>
+  </div>
+  <div class="cmsimportRow cmsimportClear">
+    <div class="cmsimportCaption"><input type="radio" ng-checked="model.value.pickerType=='urlPicker'" ng-click="switchUrl()" /><localize key="datasourcePickerField_pickUrl">Specify an url</localize></div>
+    <div ng-show="model.value.pickerType=='urlPicker'">
+      <div class="cmsimportDisplayControl">
+        <input type="text" id="selectUrl" class="cmimportField" placeholder="https://" ng-model="model.value.url" />
+        <br />
+        <input type="checkbox" ng-model="model.value.urlRequiresAuthentication" /><localize key="datasourcePickerField_authenticatedUrl">Url requires authentication</localize><br />
+        <div ng-show="model.value.urlRequiresAuthentication">
+          <div class="cmsimportCaption"><localize key="datasourcePickerField_authenticatedUsername">Username</localize>:</div><input type="text" ng-model="model.value.authenticationUserName" /><br />
+          <div class="cmsimportCaption"><localize key="datasourcePickerField_authenticatedPassword">Password</localize>:</div><input type="password" ng-model="model.value.authenticationUserPassword" />
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

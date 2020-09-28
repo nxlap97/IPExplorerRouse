@@ -1,0 +1,7918 @@
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1641px;
+    }
+
+    body, header {
+        max-width: 1920px;
+        margin: auto !important;
+    }
+
+    /*.content-center {
+      min-width: 73%;
+    }*/
+}
+
+
+
+@media (min-width: 3840px) {
+    .container {
+        max-width: 3400px;
+    }
+
+    .news-title {
+        width: 46%;
+    }
+
+    .news-content .content p span {
+        font-size: 26pt !important;
+    }
+
+    .news-content .content p em span {
+        font-size: 26pt !important;
+    }
+
+    .news-content .content {
+        font-size: 48px;
+        line-height: 60px;
+    }
+
+    #search-form {
+        top: -17px;
+    }
+
+    .fab {
+        font-size: 31px;
+        padding-top: 14px;
+    }
+
+
+    .news-title h2 {
+        font: 80px/56px Calibri Bold;
+    }
+
+    .news-top-infor .infor .author-name {
+        display: block;
+        font: 43px/38px Calibri Bold;
+    }
+
+    .news-top-infor .infor .author-phone {
+        font: 33px/46px Calibri Light;
+    }
+
+
+    .news-top-infor .infor .author-email {
+        font: 33px/24px Calibri Light;
+    }
+
+    .news-top-infor img {
+        width: 150px;
+        height: 150px;
+        float: left;
+    }
+
+    #news-tags ul li {
+        height: 41px;
+        line-height: 7px;
+        margin-right: 10px;
+        padding: 22px;
+        border: 4px solid;
+        font-size: 33px;
+        float: left;
+        margin-bottom: 10px;
+    }
+
+    #news-tags h2 {
+        font: 29px/75px Calibri;
+        font-weight: bold;
+    }
+
+    .author-detail .author-name {
+        font-size: 40px;
+        line-height: 42px;
+        font-weight: bold;
+    }
+
+    #authorBottomWrap .author-detail .author-phone, #authorBottomWrap .author-detail .author-email {
+        font-size: 31px;
+        line-height: 35px;
+    }
+
+    .news-item-related {
+        height: 300px;
+        padding: 20px 30px 10px 30px;
+
+        h4 {
+            font: 43px/40px Calibri Bold;
+        }
+
+        .minute {
+            font: 46px/36px Calibri Light;
+        }
+
+        .tags-list {
+            height: 44px;
+            overflow: hidden;
+            width: 105%;
+        }
+    }
+
+
+    #recentNewsId .item-news .item-content {
+        bottom: 0px;
+        width: 90%;
+        height: 139px;
+        left: 5%;
+        padding-bottom: 523px;
+    }
+
+    .news-item-related .tags-list {
+        height: 36px;
+    }
+
+    .item .item-content .readmore {
+        font: 44px/81px Calibri Bold;
+    }
+
+    .title-section h4 {
+        font: 53/29px Calibri Bold;
+    }
+
+    .blog-network-section .section-title h3 {
+        font: 58px/29px Calibri Bold;
+    }
+
+    h4 {
+        font-size: 2.5rem;
+    }
+
+    .item .item-content .title {
+        text-align: left;
+        font: 50px/48px Calibri Bold;
+    }
+
+    footer .subcribes .title {
+        font: 44px/42px Calibri Bold;
+    }
+
+    .news-group .related-title {
+        text-align: left;
+        font: 50px/29px Calibri Bold;
+    }
+
+    .tags-list {
+        height: 62px;
+        overflow: hidden;
+    }
+
+    footer .footer-top .logo img {
+        width: 196px;
+        height: auto;
+    }
+
+    .item .item-content .title {
+        font: 79px/59px Calibri Bold;
+    }
+
+    .item .item-content .description {
+        height: auto;
+        font: 38px/32px Calibri Regular;
+    }
+
+    .item .item-content .author, .item .item-content .time {
+        font: 47px/23px Calibri Light;
+    }
+
+    .title-section h4 {
+        font: 58px/29px Calibri Bold;
+    }
+
+    #insights-filter .filter-insight-dropdown p {
+        font-size: 3rem;
+    }
+
+    .filter-group .filer-dropdown .dropdown li a {
+        font: 60px/67px Calibri Regular;
+    }
+
+    .nav-item ul.group-country li a {
+        margin-top: 6px;
+        font: 47px/42px Calibri Light;
+    }
+
+    .news-group .news-banner .news-content-box .time, .news-group .news-banner .news-content-box .author {
+        font-size: 37px;
+    }
+
+    .news-group .news-banner .news-content-box {
+        opacity: 0.8;
+        height: 428px;
+    }
+
+
+    #rouse-webinars.new-from-rouse .title {
+        max-height: none;
+        height: auto;
+        font: 59px/32px Calibri Bold;
+    }
+
+    #rouse-webinars .summary {
+        font: 39px/25px Calibri Regular;
+        color: #FFF;
+        margin-top: 10px;
+    }
+
+    .more {
+        font-size: 49px;
+    }
+
+    .arrow {
+        font-size: 38px;
+    }
+
+    .item .item-content {
+        opacity: 0.8;
+        box-shadow: 0px 3px 6px #00000029;
+        padding: 0px 49px 63px 40px;
+    }
+
+    .title-page .title {
+        font: 102px/105px Calibri Bold;
+    }
+
+    .filter-group {
+        font: 59px/25px Calibri Light;
+        margin-top: 50px;
+    }
+
+    .nav-item ul.group-country li.strong {
+        font: 49px/50px Calibri Bold;
+    }
+
+    .banner-howcan .title {
+        font: 106px/66px Calibri Bold;
+    }
+
+    footer .menu-footer ul li a {
+        font: 43px/24px Calibri Bold;
+    }
+
+    footer .footer-bottom .social-icons a {
+        width: 43px;
+        height: 43px;
+        font-size: 30px;
+    }
+
+    .banner-howcan .description {
+        font: 57px/28px Calibri;
+        letter-spacing: 0;
+        color: #FFFFFF;
+    }
+
+    .item .item-content .datetime, .item .item-content .tags-list {
+        font: 49px/35px Calibri Light;
+    }
+
+    .wrap-home .group-content .item .item-content .readmore {
+        text-align: left;
+        font: 47px/36px Calibri Bold;
+        letter-spacing: 0;
+        color: #008197;
+        opacity: 1;
+    }
+
+    .wrap-home .group-content .item .item-content {
+        height: 378px;
+    }
+
+    .wrap-home .group-content .item .item-content .description {
+        height: auto;
+        font: 40px/37px Calibri;
+    }
+
+    footer .subcribes {
+        width: 700px;
+    }
+
+    .disclaimerContent {
+        font: 48px/52px Calibri Regular;
+    }
+
+    .item .item-content .author, .item .item-content .time {
+        font: 35px/24px Calibri Light;
+    }
+
+    h3 {
+        font-size: 4.75rem;
+    }
+
+    #ipImageSection1 img {
+        position: absolute;
+        top: 7px;
+        left: -210px;
+        margin-top: 865px;
+    }
+
+    #board {
+        position: relative;
+        right: 500px;
+        margin-top: 191px;
+    }
+
+    #hand {
+        margin-top: 50px;
+    }
+
+    .our-services-text {
+        font: 73px/74px;
+        font-family: Arial;
+    }
+
+    .service-content .service-desription {
+        margin-bottom: 20px;
+        font: 59px/49px Calibri Regular;
+        margin-top: 10px;
+    }
+
+    .services-group-title {
+        font: 73px/65px Calibri Bold;
+    }
+
+    .services-group-title a {
+        font: 73px/65px Calibri Bold;
+    }
+
+    .wrap-home .group-content .item .item-content .title {
+        margin-bottom: 20px;
+        text-align: left;
+        font: 61px/50px Calibri Bold;
+        letter-spacing: 0;
+        color: #000000;
+        opacity: 1;
+    }
+
+    header .main-menu ul li a {
+        top: 65px;
+        left: 1291px;
+        width: 140px;
+        height: 21px;
+        text-align: left;
+        font: 65px/24px Calibri Bold;
+        letter-spacing: 0;
+        color: #000000;
+        opacity: 1;
+    }
+
+    .disclaimerContent {
+        margin-top: 20px;
+        font: 47px/52px Calibri Regular;
+    }
+
+    .detail-box {
+        position: relative;
+
+        .content-slide-section {
+            top: 30%;
+            left: 20%;
+            position: absolute;
+            width: 550px;
+
+            .title {
+                font: 80px/65px Calibri Bold;
+            }
+
+            .description {
+                margin-top: 36px;
+                margin-bottom: 30px;
+                font: 50px/44px Calibri Regular;
+            }
+
+            .readmore {
+                font: 33PX/27px Calibri Bold;
+            }
+        }
+
+        .description {
+            font-size: 3vw;
+        }
+    }
+
+    .cookies-notification .container .ensButtons {
+        height: auto;
+        width: auto;
+    }
+
+    .cookies-notification .container .ensButtons button {
+        background-color: black;
+        color: #FFF;
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        font: 45px/33px Calibri Regular;
+    }
+
+    #logo .bar {
+        width: 43px;
+        height: auto;
+        margin-right: 50px;
+    }
+
+    #logo #bar-middle {
+        margin-top: 5px;
+        width: 42px;
+        height: 7px;
+    }
+
+    #logo #bar-bottom {
+        margin-top: 5px;
+        width: 42px;
+        height: 7px;
+    }
+
+    #logo #bar-top {
+        width: 42px;
+        height: 8px;
+        margin-bottom: 3px;
+    }
+
+    body {
+        background-color: #FFFFFF;
+        color: #222222;
+        line-height: 17px;
+        font-size: 40px;
+        font-weight: 400;
+        font-style: normal;
+        font-family: calibri, sans-serif;
+    }
+
+    .cookies-notification .container #ensBannerDescription {
+        font: 50px/35px Calibri Bold;
+        width: 82%;
+    }
+
+    header #logo img {
+        width: auto;
+        height: auto;
+        margin-left: 35px;
+    }
+
+    body, header {
+        max-width: 3840px;
+        margin: auto !important;
+    }
+
+    #recentNewsId .item-news {
+        height: 637px;
+        max-width: 31%;
+        margin-right: 40px;
+    }
+
+    .service-mobile-section {
+        display: none;
+    }
+    /*.content-center {
+      min-width: 73%;
+    }*/
+    header .main-menu {
+        padding-right: 352px;
+    }
+
+    #touch-menu-trigger {
+        margin-right: 14px;
+        height: 96px;
+        overflow: hidden;
+        padding-top: 35px;
+        position: absolute;
+        left: -50px;
+        top: -12px;
+        width: 70px;
+    }
+
+    .detail-box .content-slide-section {
+        width: 900px;
+    }
+
+    .news-top-infor {
+        height: 150px;
+        margin-left: 24px;
+    }
+}
+
+
+@media (max-width: 2560px) {
+    /*China template*/
+    #china-our-team-section .row {
+        width: 100%;
+    }
+
+    .people-item .people-information .position {
+        max-height: 40px;
+        height: auto;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+    .people-item .people-information .name {
+        font: 24px/34px Calibri Bold;
+    }
+    /*end chinna template*/
+
+
+    .left-move {
+    }
+    // .section-break-title.break-small  {
+    //     margin-left: 0px;
+    // }
+    #china-overview {
+        .section-break-title {
+            /*margin-left: 0px;*/
+        }
+
+        .wrap-content-page {
+            max-width: 812px;
+            margin: auto;
+
+            .content-center {
+                padding-top: 10px;
+            }
+        }
+    }
+
+    #chinaServicesId.china-service-custom {
+        top: 355px !important;
+    }
+
+    #siteServicesId {
+        top: 52px;
+    }
+
+    #services-in-china-title {
+        max-width: 1920px;
+    }
+
+    #people-top-section {
+        .row {
+            display: block;
+
+            .break-title-in-wrap {
+                margin: auto;
+                /*margin-bottom: 30px;*/
+                max-width: 812px;
+            }
+        }
+    }
+
+    .content-center {
+        max-width: 812px;
+    }
+
+    .break-title-in-wrap {
+        margin: auto;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 30px;
+        max-width: 812px;
+    }
+
+    #about-top-title.section-break-title {
+        margin: auto;
+        margin-top: 0px;
+        margin-bottom: 30px;
+    }
+
+    .service-desktop-section {
+        display: block;
+    }
+
+    .service-mobile-section {
+        display: none;
+    }
+
+    .china-service-desktop-section {
+        display: block;
+    }
+
+    .china-service-mobile-section {
+        display: none;
+    }
+
+    .china-service-desktop-content {
+        display: block;
+    }
+
+    // .china-service-mobile-content {
+    //     display: none;
+    // }
+
+    // product
+    #product-tool-wrap {
+        .item-news:not(:nth-child(3)) {
+            margin-right: 40px;
+        }
+
+        .item-news {
+            max-width: 520px;
+        }
+    }
+
+    // News Detail
+    .related-articles-section {
+        margin-bottom: 0px;
+
+        .item-news {
+            max-width: 520px;
+        }
+
+        .item-news:not(:last-child) {
+            margin-right: 40px;
+        }
+    }
+
+    // End  news Detail
+    #ipImageSection4 {
+        /*left: 5100px;*/
+        top: -17px;
+    }
+
+    //  Service page
+    #siteServicesId {
+        .page {
+            top: 563px;
+        }
+
+        #ipImageSection4 {
+            top: 0px;
+            left: 5290px;
+
+            #board {
+                top: 60px;
+            }
+        }
+
+        #ipLegal {
+            left: 5900px;
+        }
+    }
+
+    // End service page
+    // Set font size
+
+    .detail-box {
+        .content-slide-section {
+            .title {
+                // font-size: 2.9vw;
+            }
+
+            .description {
+                // font-size: 1.04vw;
+            }
+        }
+    }
+
+    header .main-menu {
+        ul li a {
+            font-size: 1.125rem;
+        }
+    }
+
+    //    End set font size
+
+    /*header .main-menu {
+        margin-left: 0px;
+        padding-left: 0px;
+        left: 210px;
+    }*/
+
+    /*#search-form {
+        left: 60px;
+    }*/
+
+    .new-from-rouse .new-box {
+        height: 350px;
+        padding-left: 0px;
+        padding-right: 0px;
+        // max-width: 520px;
+    }
+
+    // .new-from-rouse .new-box:not(:last-child) {
+    //     margin-right: 40px;
+    // }
+
+
+    // .group-image-section .item-news:not(:last-child) {
+    //     margin-right: 40px;
+    // }
+
+    .group-image-section .item-news {
+        padding-left: 0px;
+        padding-right: 0px;
+        // max-width: 520px;
+    }
+
+    // For china service page
+    #chinaServicesId.front {
+        /*width:  16100px;*/
+    }
+
+    #chinaServicesId {
+        /*top: 1500px;
+        width: 16000px;*/
+        #ipImageSection4 {
+            left: 6920px;
+            top: -17px;
+        }
+
+
+
+        #chinaServicesId #ipLegal {
+            left: 8200px;
+            width: 1410px;
+        }
+
+        .china-services-credentials {
+            top: 11000px;
+        }
+
+        #china-success-stories-section {
+            top: 11000px;
+        }
+
+        #china-our-team-section {
+            top: 11000px;
+        }
+
+        #china-locations {
+            top: 11000px;
+        }
+
+        .banner-howcan {
+            top: 11000px;
+        }
+
+        footer {
+            top: 11000px;
+        }
+
+        .page {
+            top: 398px;
+        }
+    }
+
+    // End china service page
+
+
+
+    // Landing page
+
+
+    // End landing page
+    //Update for insight page
+    #insight-blog-network {
+        .group-image-section .item-news:not(:last-child) {
+            margin-right: 0px;
+        }
+    }
+}
+
+@media (max-width: 2048px) {
+    .left-move {
+        padding-right: 300px;
+    }
+
+
+    .news-content .content p em span {
+        font-size: 14pt !important;
+    }
+
+    .news-content .content p span {
+        font-size: 14pt !important;
+    }
+
+    .content-center {
+        /*width: 67%;*/
+    }
+
+    #chinaServicesId.china-service-custom {
+        top: 67px !important;
+    }
+
+    #siteServicesId {
+        top: 160px;
+    }
+
+
+    /*header .main-menu {
+        margin-left: 0px;
+        padding-left: 0px;
+        left: 330px;
+    }*/
+
+    // Service
+    .page {
+        top: 170px;
+    }
+
+    //  Service page
+    #siteServicesId {
+        .page {
+            top: 170px;
+        }
+
+        #ipImageSection4 {
+            top: -17px;
+        }
+
+        #ipLegal {
+            left: 6000px;
+        }
+    }
+
+    // End service page
+
+    // For china service page
+    #chinaServicesId.front {
+        /*width: 16100px;*/
+    }
+
+    #chinaServicesId {
+        z-index: 500;
+        /*top: 1000px;
+        width: 16500px;*/
+        #ipImageSection4 {
+            left: 6920px;
+            top: 180px;
+        }
+    }
+
+    // End china service page
+
+
+    // Landing page
+    .news-top-infor {
+        height: 150px;
+        margin-left: 23px;
+    }
+}
+
+@media (max-width: 1920px) {
+    .left-move {
+        padding-right: 300px !important;
+    }
+
+    #chinaServicesId.china-service-custom {
+        top: -148px !important;
+    }
+
+    .news-content .content p span {
+        font-size: 14pt !important;
+    }
+
+    #siteServicesId {
+        top: -50px;
+    }
+
+    #page-top-content {
+        width: 812px;
+    }
+
+    // Service
+    .page {
+        top: 150px;
+    }
+
+    #ipImageSection4 {
+        top: -160px;
+        left: 5600px !important;
+    }
+
+    .china-services-credentials {
+        top: 7800px;
+    }
+
+    #china-success-stories-section {
+        top: 7800px;
+    }
+
+    #china-our-team-section {
+        top: 7760px;
+    }
+
+    #china-locations {
+        top: 7750px;
+    }
+
+    .banner-howcan {
+        top: 7750px;
+    }
+
+    footer {
+        top: 7765px;
+    }
+
+    #ipImageSection4 {
+        left: 5100px;
+        top: 117px;
+    }
+    // For china service page
+    #chinaServicesId.front {
+        /*top: 1200px;
+        width: 16000px;*/
+    }
+
+    #chinaServicesId {
+        /*top: 1200px;
+        width: 16180px;*/
+        #ipImageSection4 {
+            left: 7500px !important;
+            top: 138px;
+        }
+
+        .front {
+            z-index: 500;
+            top: 0px;
+            width: 16150px;
+        }
+    }
+    // End china service page
+    //  Service page
+    #siteServicesId {
+        .page {
+            top: 170px;
+        }
+
+        #ipImageSection4 {
+            top: -17px;
+        }
+
+        #ipLegal {
+            left: 6250px;
+        }
+
+        #ipEnforcemen {
+            top: 45%;
+        }
+    }
+    // End service page
+    // end Service
+    /*#search-form {
+        left: 0px;
+    }*/
+    .new-from-rouse .new-box {
+        height: 350px;
+        padding-left: 0px;
+        padding-right: 0px;
+        // max-width: 520px;
+    }
+    // .new-from-rouse .new-box:not(:last-child) {
+    //     margin-right: 40px;
+    // }
+    // Landing page
+    .news-top-infor {
+        height: 150px;
+        margin-left: 21px;
+    }
+}
+
+@media only screen and (max-width:1919px) {
+    .news-title {
+        width: 34%;
+    }
+}
+
+@media (max-width: 1900px) {
+    header .main-menu {
+        margin-left: 4.5%;
+        padding-left: 0%;
+        left: 10%;
+    }
+
+    .related-articles-section .item-news:not(:last-child) {
+        margin-right: 0px;
+    }
+
+    .related-articles-section {
+        .item-news {
+            background-size: cover;
+        }
+    }
+
+    header .main-menu {
+        margin-left: 0px;
+        padding-left: 0px;
+        left: 10%;
+    }
+    /*#search-form {
+        left: 190px;
+    }*/
+
+    .left-move {
+    }
+
+    footer .footer-bottom .social-icons {
+        margin-top: 40px;
+    }
+}
+
+@media only screen and (max-width:1832px) {
+    .news-title {
+        width: 36%;
+    }
+}
+
+@media only screen and (max-width:1625px) {
+    .news-title {
+        width: 40%;
+    }
+}
+
+@media (max-width: 1600px ) {
+    #authorBottomWrap .author-detail .author-phone, .author-email {
+        font: 12px/16px Calibri Light;
+    }
+
+    .news-top-infor .infor .social-network ul li {
+        font-size: 14px;
+    }
+
+    .search-results-page {
+        .item.item-profile {
+            display: flex;
+
+            .profileImage {
+                flex-basis: 10%;
+
+                img {
+                    height: 122px;
+                    width: 122px;
+                }
+            }
+
+            .profileContent {
+                flex-basis: 90%;
+                padding-left: 30px;
+            }
+        }
+    }
+
+    .item .item-content .tags-list {
+        display: -webkit-inline-box;
+
+        li {
+            display: inline;
+        }
+    }
+
+    .umbraco-forms-field-wrapper input {
+        border: 1px solid;
+    }
+
+    .blog-network-section .list-item .item {
+        display: flex;
+        flex-wrap: wrap;
+        height: 550px;
+        background-size: cover !important;
+    }
+
+    .title-section {
+        h4 {
+            font: 26px/29px Calibri Bold;
+        }
+    }
+
+    .blog-network-section .section-title {
+        h3 {
+            font: 26px/29px Calibri Bold;
+        }
+    }
+
+    .people-page.top-banner .find-box {
+        width: 72%;
+        left: 14.25%;
+    }
+
+    #careerBannerId.people-page.top-banner .find-box {
+        width: 60%;
+        left: 21.25%;
+    }
+
+    .our-team-top-title {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font: 22px/25px Calibri Light;
+
+        .title {
+            font: 32px/25px Calibri Light;
+        }
+
+        #clear-all {
+            margin-right: 10px;
+        }
+
+        #clear-all a {
+            font: 32px/25px Calibri Light;
+        }
+    }
+
+    insights-filter {
+        #clear-all a {
+            font: 18px/18px Calibri Light;
+        }
+    }
+
+
+    #author-sticky {
+        .item-author {
+            margin-bottom: 8px;
+        }
+
+        .group-icon-control {
+            padding-top: 20px;
+            margin-top: 15px;
+            border-top: 1px solid;
+            width: 50%;
+            display: flex;
+        }
+    }
+
+    .filter-insight-dropdown .dropdown-toggle {
+        width: 100%;
+        min-width: 160px;
+        text-align: left;
+        padding-left: 0px;
+    }
+
+    .filter-group .filer-dropdown .dropdown li a {
+        font: 18px/20px Calibri Regular;
+    }
+
+    #clear-all {
+        a {
+            font: 18px/25px Calibri Light;
+        }
+    }
+
+    #section3 .item-content .time {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    #filterInsightResult .item {
+        max-width: 32%;
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 530px;
+    }
+
+    #filterInsightResult .item:not(:nth-child(3n)) {
+        margin-right: 20px;
+        padding: 0px;
+        margin-left: 0px;
+    }
+
+    #china-locations {
+        .title-section {
+            margin-bottom: 20px;
+        }
+    }
+
+    .banner-howcan {
+        margin-top: 45px;
+    }
+
+    .profile-section .section-content-detail {
+        font: 16px/20px Calibri Regular;
+    }
+
+    .profile-section .profile-banner .profile-image {
+        width: 230px;
+        height: 230px;
+    }
+
+    #china-locations .tab-content iframe {
+        width: 100%;
+        height: 500px;
+    }
+
+    .image-section {
+        height: 540px;
+    }
+
+    .cookies-notifiction .container .ensButtons button {
+        font: 14px/15px Calibri Regular;
+    }
+
+    #recentNewsId {
+
+        .item:not(:last-child) {
+            /*margin-right: 20px;*/
+        }
+
+        .item-news {
+            height: 530px;
+            max-width: 32%;
+            margin-right: 20px;
+
+            .item-content {
+                height: 315px;
+                bottom: 0px;
+                width: 90%;
+                left: 5%;
+
+                .description {
+                    margin-bottom: 15px;
+                }
+
+                .time {
+                    margin-bottom: 5px;
+                    font: 16px/16px Calibri Light;
+                }
+
+                .author {
+                    font: 16px/16px Calibri Light;
+                    margin-bottom: 10px;
+                }
+
+                .tags-list {
+                    font: 12px/20px Calibri Light;
+                }
+
+                .datetime {
+                    margin-top: 10px;
+                    font: 14px/20px Calibri Light;
+                }
+            }
+        }
+    }
+
+    .brand-creation-content .row img {
+        height: 420px;
+        width: auto;
+    }
+
+    .home-service {
+        .banner-howcan {
+            /*top: 8066px;*/
+        }
+
+        .footer {
+            top: 7761px;
+        }
+    }
+
+    #rouse-burger .container #wrap-burger-content .content #burgerLastNews li {
+        overflow: hidden;
+        //max-height: 90px;
+    }
+
+    #news-content-section {
+        width: 90%;
+    }
+
+    #section2 img.main-image {
+        left: 20%;
+    }
+
+    #talkconsultant-section {
+        .page-content {
+            font-size: 19px;
+            line-height: 24px;
+
+            .title {
+                font: 22px/21px Calibri Bold;
+            }
+        }
+    }
+
+    header .main-menu .ul-menu {
+        li {
+            padding-right: 15px;
+        }
+    }
+
+    footer .menu-footer ul li {
+        padding-right: 15px;
+
+        a {
+            font: 16px/24px Calibri Bold;
+        }
+    }
+
+
+    .people-item .people-information .social-network ul {
+        padding-left: 8%;
+    }
+
+    footer {
+        .social-icons {
+            margin-top: 60px;
+        }
+    }
+    // Service font
+    .services-group-title {
+        font: 42px/40px Calibri Bold;
+    }
+
+    .our-services-text {
+        font: 36px/40px Calibri Bold;
+    }
+
+    .service-content a {
+        text-decoration: none;
+        color: black;
+        font: 32px/32px Calibri Bold;
+    }
+    // End service
+    #our-team-section .people-item .people-information {
+        /*padding-top: 40px;
+            padding-left: 25px;
+            left: 2%;
+            width: 95%;*/
+    }
+
+    #chinaServicesId.china-service-custom {
+        top: -150px !important;
+    }
+
+    .question-content {
+        width: 20%;
+    }
+
+    .global-reach-section .list-country {
+        width: 100%;
+        margin-left: 5%;
+    }
+
+    .people-item {
+        background-size: contain;
+    }
+
+
+
+    header .main-menu {
+        /*margin-left: -200px;
+            padding-right: 400px;*/
+    }
+    /*#search-form {
+        padding-top: 5px;
+        z-index: 999;
+        position: absolute;
+        right: 60px;
+        left: unset !important;
+    }*/
+    .left-move {
+        padding-right: 235px !important;
+    }
+
+    .top-banner .content-box {
+        width: 50%;
+    }
+
+    .new-from-rouse .new-box {
+        height: 350px;
+        padding-left: 0px;
+        padding-right: 0px;
+        max-width: 32%;
+    }
+
+    .new-from-rouse .new-box:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    .group-image-section .item-news {
+        max-width: 32%;
+    }
+
+
+    .group-image-section .item-news:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    #rouse-webinars .title {
+        overflow: hidden;
+        max-height: none;
+        font: 21px/32px Calibri Light;
+    }
+
+    .new-from-rouse .new-box .content-box .watch-now a {
+        font: 31px/40px Calibri Bold;
+        letter-spacing: 0;
+        color: #FFFFFF !important;
+        font-size: 28px;
+        margin-top: 24px;
+        display: block;
+    }
+    //update
+    #chinaServicesId.china-service-custom {
+        top: -250px !important;
+    }
+
+    .services-group-title {
+        font: 42px/36px Calibri Bold;
+    }
+
+    #china-locations .location-control {
+        width: auto;
+        margin: auto;
+        margin-bottom: 20px;
+        border-bottom: none;
+    }
+
+    #china-locations {
+        .row {
+            width: 100%;
+        }
+    }
+
+    .people-item .people-information {
+        /*height: 240px;
+            width: 90%;
+            padding-left: 5%;
+            position: absolute;
+            top: 462px;*/
+        /*left: 5%;*/
+        opacity: 0.9;
+        font-size: 18px;
+        background-color: #FFF;
+        font: 18px/21px Calibri Regular;
+
+        .name {
+            font: 20px/34px Calibri Bold;
+            max-height: 34px;
+            overflow: hidden;
+        }
+    }
+
+    #china-success-stories-section {
+        .row {
+            width: 100%;
+        }
+    }
+
+    #our-team-section .people-item .people-information {
+        /*height: 240px;
+            width: 90%;
+            padding-left: 5%;
+            position: absolute;
+            top: 462px;
+            left: 5%;*/
+        opacity: 0.9;
+        font-size: 18px;
+        background-color: #FFF;
+        font: 16px/21px Calibri Regular;
+
+        .name {
+            font: 16px/22px Calibri Bold;
+            max-height: 34px;
+            overflow: hidden;
+        }
+    }
+
+
+
+
+    #rouse-burger .burger-content-container {
+        padding-top: 118px;
+    }
+
+    #rouse-burger .container #wrap-burger-content h1 {
+        font: 36px/42px Calibri Bold;
+    }
+
+    #rouse-burger .container #wrap-burger-menu #burger-menu li {
+        margin-bottom: 25px;
+
+        a {
+            font: 18px/24px Calibri Bold;
+        }
+    }
+
+    #rouse-burger .container #wrap-burger-content {
+        h1 {
+            font: 28px/42px Calibri Bold;
+        }
+
+        .content {
+            padding-top: 10px;
+
+            .two-column {
+                margin-bottom: 10px;
+            }
+
+            h1 {
+                font: 28px/42px Calibri Bold;
+            }
+
+            h2 {
+                font: 18px/24px Calibri Bold;
+                margin-bottom: 5px;
+            }
+
+            ul li {
+                font: 15px/16px Calibri Light;
+                padding: 5px 0px;
+            }
+        }
+    }
+
+    .people-item {
+        background-size: cover;
+    }
+
+    .people-item .people-information .social-network ul li {
+        font-size: 16px;
+    }
+    // end update
+    /*Insight page*/
+    .news-item-related {
+        height: 200px;
+        padding: 15px 15px;
+
+
+        h4 {
+            font: 20px/22px Calibri Bold;
+        }
+
+        .author,
+        .minute {
+            font: 16px Calibri Light;
+        }
+
+        .minute {
+            margin-bottom: 5px;
+        }
+    }
+
+    #insights-top.item-content {
+        width: 55%;
+        height: 50%;
+        bottom: 15%;
+        left: auto;
+
+        .title {
+            margin-bottom: 20px;
+            font: 20px/26px Calibri Bold;
+        }
+    }
+    //Footer
+    footer .menu-footer {
+        margin-top: 50px;
+    }
+    /*New near you*/
+    .wrap-home .group-content .item {
+        background-size: cover;
+        background-position: center center;
+        height: 465px;
+
+        .item-content .title {
+            margin-bottom: 20px;
+            text-align: left;
+            font: 22px/26px Calibri Bold;
+            letter-spacing: 0;
+            color: #000000;
+            opacity: 1;
+            height: auto;
+            /*max-height: 60px;*/
+        }
+    }
+
+
+    .group-image-section .item .item-content .title {
+        font: 22px/26px Calibri Bold;
+        font-weight: bold;
+        margin-bottom: 16px;
+        max-height: 55px;
+        overflow: hidden;
+    }
+    /*Career page*/
+    #available-positions-section .job-item .job-title {
+        font: 20px/28px Calibri Bold;
+    }
+
+    .department-item {
+        color: black;
+        font: 17px/18px Calibri Regular;
+    }
+
+    #available-positions-section .job-item {
+        position: relative;
+        line-height: 25px;
+        height: 59px;
+        margin-bottom: 10px;
+        display: flex;
+        width: 100%;
+    }
+
+    .careerImageSection {
+        height: 500px;
+        max-height: 500px;
+    }
+
+    #ourCultureSection {
+        /*padding-top: 100px;*/
+        .our-culture-content {
+            /*margin-top: 20px;*/
+        }
+    }
+
+    #serviceIndividual .image-section {
+        height: 540px;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    #meetSomePeopleTitle {
+        margin-top: 60px;
+    }
+
+    #id-news-detail .news-content {
+        width: 812px;
+        margin: auto;
+    }
+
+    .author-detail {
+
+        .wrap-author-detail {
+            flex-basis: 55.43%;
+
+            .detail {
+                width: calc(100% - 240px);
+                margin-top: -10px;
+
+                .author-description {
+                    font-size: 18px;
+                    line-height: 21px;
+                    max-height: 210px;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+    /*color-profile detail*/
+    .profile-section .profile-banner .infor-profile {
+        height: 240px;
+        max-width: 230px;
+        /*width: 65%;
+            left: 26%;*/
+    }
+    /*Question Service*/
+    .question-title {
+        position: absolute;
+        top: 12%;
+        left: 10%;
+        color: #FFF;
+        font: 24px/36px Calibri Bold;
+    }
+    /*insight page*/
+    .item .item-content {
+        width: 90%;
+        left: 5%;
+    }
+
+
+    #section1 img.main-image {
+        left: 15%;
+        width: 45%;
+        max-width: 65%;
+    }
+
+    #section3 .careers .item-content {
+        width: 40%;
+        top: 125px;
+        height: 260px;
+        top: inherit;
+        left: inherit;
+    }
+
+    #section3 .item-content {
+        left: auto;
+        height: 310px;
+    }
+    /*Buger Menu*/
+    #rouse-burger .container #wrap-burger-content .content .row .row {
+        margin-bottom: 0px;
+    }
+    /*Contact Us*/
+    .contact-us-section.contact-us-form {
+        padding: 40px;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 0.9;
+        background: #ffffff;
+        max-width: 610px;
+        margin-left: 0%;
+    }
+
+    .contact-us-section.contact-us-form .umbraco-forms-form .umbraco-forms-caption {
+        font: 28px/40px Calibri Bold !important;
+    }
+
+    #china-overview.section-content-text {
+        padding-top: 0px;
+        margin-top: 20px;
+    }
+
+    #newsroomId .item-content-news {
+        width: 75%;
+        height: 280px;
+    }
+
+    .item .item-content .title {
+        text-align: left;
+        font: 22px/26px Calibri Bold;
+        letter-spacing: 0;
+        color: #000000;
+        opacity: 1;
+    }
+
+    .insight-filter-wrap#insights-filter {
+        .filer-dropdown {
+            padding-left: 5%;
+        }
+    }
+
+
+    #news-content-section {
+        .news-title {
+            h2 {
+                font: 30px/35px Calibri Bold;
+            }
+        }
+    }
+
+    .news-title {
+        text-align: left;
+
+        h2 {
+            font: 40px/44px Calibri Bold;
+        }
+    }
+
+    .item .item-content .title {
+        font: 24px/28px Calibri Bold;
+        max-height: 60px;
+        /*min-height: 60px;*/
+        overflow: hidden;
+    }
+
+    .item .item-content {
+        padding: 25px 25px 25px 25px;
+    }
+
+    .wrap-content-page .row h2 {
+        font: 24px/24px Calibri Bold;
+    }
+
+    .umbraco-forms-rouse-talk-consultant {
+        .umbraco-forms-container {
+            padding-right: 0px;
+        }
+
+        padding: 40px 0px 40px 20px !important;
+
+        .checkbox-wrap {
+            position: relative;
+            margin-right: 20px;
+            margin-top: 25px;
+        }
+
+        .checkboxlist label {
+            float: left;
+            clear: left;
+            font: 15px/19px Calibri Light;
+            line-height: 20px;
+        }
+    }
+
+    #authorBottomWrap {
+        .author-detail {
+            img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .author-description {
+                font: 14px/18px Calibri Light;
+                height: auto;
+                max-height: 92px;
+                overflow: hidden;
+
+                p {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+
+    #id-news-detail .news-content {
+        width: 67.43%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .author-detail .wrap-author-detail {
+        flex-basis: 67.43%;
+    }
+
+    #id-news-detail .news-content .content .author-infor {
+        position: fixed;
+        top: 20%;
+        left: 2%;
+        width: 121px;
+    }
+
+
+    #news-content-section {
+        width: 55%;
+
+        .news-top-infor img {
+            width: 80px;
+            height: 80px;
+            float: left;
+        }
+
+        .author-phone, .author-email {
+            font: 14px/24px Calibri Light;
+        }
+
+        .author-name {
+            font: 14px/24px Calibri Bold;
+        }
+    }
+
+    #id-news-detail .news-content {
+        width: 55.43%;
+        margin: auto;
+        margin-bottom: 20px;
+
+        .content .author-infor {
+            position: fixed;
+            top: 20%;
+            left: 6%;
+            width: 121px;
+        }
+    }
+
+    .author-detail .wrap-author-detail {
+        flex-basis: 50.43%;
+    }
+
+    #authorBottomWrap .author-detail img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .author-detail .wrap-author-detail .detail {
+        width: calc(100% - 140px);
+    }
+
+    #newsCaseStudiesID, #case-studies-wrap {
+        .item-content {
+            max-height: 304px;
+            height: 304px;
+            width: 90%;
+            padding: 20px 25px;
+
+            .title {
+                font: 22px/28px Calibri Bold;
+                max-height: 60px;
+                height: auto;
+                overflow: hidden;
+            }
+
+            .description {
+                height: 40px;
+                overflow: hidden;
+                padding-bottom: 20px;
+                font: 16px/14px Calibri;
+            }
+
+            .time {
+                font: 16px/20px Calibri Light;
+            }
+
+            .datetime {
+                font-family: Calibri Light;
+                margin-top: 18px;
+                font: 14px/20px Calibri Light;
+            }
+
+            .tags-list {
+                font: 14px/20px Calibri Light;
+            }
+
+            .readmore {
+                text-align: left;
+                font: 16px/27px Calibri Bold;
+                letter-spacing: 0;
+                color: #008197;
+                opacity: 1;
+            }
+        }
+
+        .item .item-content .title {
+            font: 22px Calibri Bold;
+            max-height: 60px;
+            height: 60px;
+            overflow: hidden;
+        }
+    }
+
+
+
+    #chinaServicesId .page {
+        top: 345px;
+    }
+
+    .top-news-detail-wrap {
+        width: 100%;
+        padding-bottom: 0px;
+
+        .news-top-infor {
+            height: 100px;
+        }
+    }
+
+    .author-detail .wrap-author-detail {
+        flex-basis: 57.43%;
+    }
+
+    .author-detail .wrap-author-detail .social-network {
+        margin-top: 14px;
+
+        li {
+            padding-right: 0px;
+        }
+
+        i {
+            font-size: 16px;
+        }
+    }
+
+    .news-banner-image {
+        height: 670px;
+    }
+
+    #author-sticky .group-icon-control {
+        margin-top: 0px;
+    }
+
+    #china-success-stories-section .item .item-content .description {
+        height: 400px;
+        margin-top: 16px;
+    }
+
+    .blog-network-section .list-item .item .blog-item .item-content {
+        max-height: 304px;
+        height: 304px;
+        width: 90%;
+        padding: 20px 25px;
+    }
+
+    #section3 .item-content {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        opacity: 0.8;
+        width: 70%;
+        padding: 30px 30px 10px 30px;
+
+        .datetime {
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+    }
+
+    .insight-filter-wrap.news-filter-wrap select {
+        border: none;
+        font: 16px/16px Calibri Bold;
+        width: 180px;
+        padding: 0px;
+        margin-right: 20px;
+
+        option {
+            font: 16px/16px Calibri Light;
+        }
+    }
+
+    .news-banner-image {
+        height: 530px;
+    }
+
+    .filter-group {
+        .filter-text {
+            font: 18px/25px Calibri Light;
+        }
+    }
+
+
+    #rouse-burger .container #wrap-burger-content .content {
+
+        #burgerTopArticles li:hover {
+            color: #007F9C;
+
+            a {
+                color: #007F9C;
+            }
+        }
+
+
+        #burgerTopArticles li a:hover {
+            color: #007F9C;
+        }
+
+
+        #burgerTopArticles li {
+            font: 15px/15px Calibri Bold;
+            color: black;
+
+
+            .description {
+                font: 15px/15px Calibri Light;
+                margin-top: 16px;
+            }
+        }
+    }
+
+    .umbraco-forms-field-wrapper {
+        .field-validation-error {
+            font: 12px/16px Calibri Regular;
+            color: #8a1f11 !important;
+        }
+
+        .input-validation-error {
+            margin-bottom: 1px !important;
+            background: #FBE3E4;
+            border-color: #FBC2C4;
+        }
+    }
+
+    .news-item-related {
+        padding: 30px 30px 10px 30px;
+        height: 200px;
+
+        .minute {
+            font: 16px/10px Calibri Light;
+            margin-bottom: 7px;
+        }
+
+        .author {
+            font: 16px/20px Calibri Light;
+            margin-bottom: 7px;
+        }
+    }
+
+    .cvupload {
+        .umbraco-forms-field-wrapper::after {
+            left: 40px;
+        }
+
+        .umbraco-forms-field-wrapper.input-validation-error::after {
+            left: 40px;
+        }
+
+        .umbraco-forms-field-wrapper {
+            .field-validation-error {
+                span {
+                    position: relative;
+                    top: 5px;
+                }
+            }
+        }
+    }
+
+    .aboutPageSection {
+        .section-break-title.break-small {
+            max-width: 812px;
+        }
+    }
+
+    .china-service-body {
+        .section-break-title {
+            /*width: auto;*/
+        }
+    }
+
+    #section3 .careers {
+        height: 380px !important;
+    }
+
+
+    #siteServicesId {
+        top: 85px;
+
+        #ipImageSection4 {
+            #hand {
+                position: relative;
+                top: 125px;
+            }
+
+            #board {
+                max-width: 600px;
+            }
+        }
+    }
+
+    #our-team-section, #china-our-team-section {
+
+        .people-item {
+            height: 450px;
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+                top: 20px;
+                overflow: hidden;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+
+            .people-information {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0px);
+                bottom: 0px;
+                width: 100%;
+                height: auto;
+                top: 250px;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .box {
+                    text-align: center;
+                    padding: 0px 20px;
+
+
+
+                    .top {
+                    }
+
+                    .social-network {
+                        ul {
+                            position: static;
+                            display: inline-block;
+
+                            li {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                }
+
+                .name {
+                    font-weight: bold;
+                    font: 24px/34px Calibri Bold;
+                    color: #000000;
+                }
+
+                .position {
+                    max-height: 39px;
+                }
+            }
+        }
+    }
+
+    .people-item .people-information {
+
+        .box {
+            p {
+                font: 16px/18px Calibri Regular;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .profile-section {
+        .section-content-detail h3 {
+            font: 24px/26px Calibri Bold;
+        }
+
+        .profile-banner .infor-profile .name {
+            font: 22px/28px Calibri Bold;
+        }
+    }
+
+    .wrap-home .group-content .item .item-content .title {
+        font: 22px/26px Calibri Bold;
+    }
+
+    .item .item-content .title {
+        max-height: none;
+        font: 22px/26px Calibri Bold;
+    }
+
+    .author-detail .wrap-author-detail {
+        margin-bottom: 0px;
+
+        .author-name {
+            font: 18px/22px Calibri Bold;
+        }
+
+        .social-network i {
+            font-size: 14px;
+        }
+    }
+
+    .news-title {
+        padding-bottom: 20px;
+        top: unset;
+        bottom: 0px;
+        width: 49%;
+    }
+
+    .insight-filter-wrap#insights-filter.featured-webinars-section .filer-dropdown {
+        padding-left: 20%;
+    }
+    /*update font size*/
+    .wrap-home .group-content .title h3 {
+        font: 30px/32px Calibri Bold;
+    }
+
+    #section3 .careers .item-content {
+        .title {
+            font: 22px/32px Calibri Bold;
+        }
+
+        .description {
+            font: 16px/20px Calibri Regular;
+        }
+
+        .readmore {
+            font: 16px/20px Calibri Bold;
+        }
+    }
+
+    .title-page .title {
+        font: 30px/36px Calibri Bold;
+    }
+
+    #rouse-webinars .title a {
+        font-size: 22px;
+        font: 22px/25px Calibri Bold;
+    }
+
+    .new-from-rouse .new-box .content-box .author {
+        font: 18px/21px Calibri Bold;
+    }
+
+
+    .news-content {
+        .content {
+            font-size: 21px;
+            line-height: 26px;
+        }
+    }
+
+    #news-tags h2 {
+        font: 20px/24px Calibri;
+        font-weight: bold;
+    }
+
+    .service-section-content .section-break-title.break-small .title {
+        font-size: 30px;
+    }
+
+    .service-section-content .wrap-content-page {
+        font-size: 19px;
+        font: 19px/24px Calibri Regular;
+    }
+
+    #our-team-section .people-item .people-information .name, #china-our-team-section .people-item .people-information .name {
+        font: 22px/34px Calibri Bold;
+    }
+
+    .section-break-title.break-small .title {
+        font-size: 30px;
+    }
+
+    .wrap-content-page {
+        font-size: 19px;
+        font: 19px/21px Calibri Regular;
+    }
+
+    .section-break-title .title {
+        font-weight: bold;
+        font: 30px/29px Calibri Bold;
+    }
+
+    #available-positions-section h2.title-text {
+        font: 30px/32px Calibri Bold;
+    }
+
+    #available-positions-section .list-title {
+        font: 18px/38px Calibri Bold;
+    }
+
+    #available-positions-section .job-item .job-title {
+        font: 22px/28px Calibri Bold;
+    }
+
+    #available-positions-section .job-item .job-location {
+        font: 16px/21px Calibri Regular;
+    }
+
+    .department-item {
+        color: black;
+        font: 16px/18px Calibri Regular;
+    }
+
+    .department-item.strong {
+        font: 16px/18px Calibri Bold;
+    }
+
+    .item .item-content .title {
+        font: 22px/22px Calibri Bold;
+    }
+
+    .lastest-ip-news .item-content {
+        .time {
+            font: 16px/16px Calibri Light;
+        }
+
+        .readmore {
+            font: 16px/21px Calibri Bold;
+        }
+    }
+
+    #insights-top.item-content .title {
+        font: 22px/26px Calibri Bold;
+    }
+
+    .end-section a.readmore {
+        font: 22px/25px Calibri Bold;
+    }
+
+    #peopleOurTeamSection {
+        font: 18px/25px Calibri Bold;
+
+        .our-team-top-title {
+            h2.title {
+                font: 16px/25px Calibri Bold;
+            }
+
+            #clear-all a {
+                font: 16px/25px Calibri Light;
+            }
+        }
+    }
+
+    .people-filter-controller {
+        h5 {
+            font-weight: bold;
+            font: 18px/21px Calibri Bold;
+        }
+
+        input.form-control {
+            font: 16px/19px Calibri Regular;
+        }
+
+        .filter-insight-dropdown {
+            p {
+                font: 16px/18px Calibri Regular;
+            }
+
+            ul li a {
+                font: 16px/18px Calibri Regular;
+            }
+        }
+    }
+
+    #rouse-webinars.new-from-rouse .content-box .title {
+        max-height: none;
+        height: auto;
+        font: 22px/25px Calibri Bold;
+    }
+    /*End update font size*/
+    .mobile-landingpage {
+        .group-content .careers.item .item-content {
+            left: auto;
+            right: 40px;
+        }
+    }
+
+    .news-title {
+        width: 44%;
+    }
+
+    #news-content-section .author-phone, #news-content-section .author-email {
+        font: 14px/18px Calibri Light;
+    }
+}
+
+@media only screen and (max-width:1561px) {
+    .news-title {
+        width: 47%;
+    }
+}
+
+@media(max-width: 1400px) {
+    .news-title {
+        width: 51%;
+    }
+}
+
+@media (max-width: 1366px) {
+
+    .news-content .content p span {
+        font-size: 13pt;
+    }
+
+    #authorBottomWrap .author-detail .author-email {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .blog-network-section .slick-slider .slick-dots li {
+        margin: 1px 1px;
+    }
+
+    .slick-dots li {
+        width: 23px;
+        height: 26px;
+    }
+
+    .blog-network-section .list-item .item {
+        display: flex;
+        flex-wrap: wrap;
+        height: 550px;
+        background-size: cover !important;
+    }
+
+    .title-section {
+        h4 {
+            font: 26px/29px Calibri Bold;
+        }
+    }
+
+    .blog-network-section .section-title {
+        h3 {
+            font: 26px/29px Calibri Bold;
+        }
+    }
+
+    .people-page.top-banner .find-box {
+        width: 72%;
+        left: 14.25%;
+    }
+
+    #careerBannerId.people-page.top-banner .find-box {
+        width: 60%;
+        left: 21.25%;
+    }
+
+    .our-team-top-title {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font: 22px/25px Calibri Light;
+
+        .title {
+            font: 32px/25px Calibri Light;
+        }
+
+        #clear-all {
+            margin-right: 10px;
+        }
+
+        #clear-all a {
+            font: 32px/25px Calibri Light;
+        }
+    }
+
+    insights-filter {
+        #clear-all a {
+            font: 18px/18px Calibri Light;
+        }
+    }
+
+
+    #author-sticky {
+        .item-author {
+            margin-bottom: 8px;
+        }
+
+        .group-icon-control {
+            padding-top: 20px;
+            margin-top: 15px;
+            border-top: 1px solid;
+            width: 50%;
+            display: flex;
+        }
+    }
+
+    .filter-insight-dropdown .dropdown-toggle {
+        width: 100%;
+        min-width: 160px;
+        text-align: left;
+        padding-left: 0px;
+    }
+
+    .filter-group .filer-dropdown .dropdown li a {
+        font: 18px/20px Calibri Regular;
+    }
+
+    #clear-all {
+        a {
+            font: 18px/25px Calibri Light;
+        }
+    }
+
+    #section3 .item-content .time {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    #filterInsightResult .item {
+        max-width: 32%;
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 530px;
+    }
+
+    #filterInsightResult .item:not(:nth-child(3n)) {
+        margin-right: 20px;
+        padding: 0px;
+        margin-left: 0px;
+    }
+
+    #china-locations {
+        .title-section {
+            margin-bottom: 20px;
+        }
+    }
+
+    .banner-howcan {
+        margin-top: 45px;
+    }
+
+    .profile-section .section-content-detail {
+        font: 16px/20px Calibri Regular;
+    }
+
+    .profile-section .profile-banner .profile-image {
+        width: 230px;
+        height: 230px;
+    }
+
+    #china-locations .tab-content iframe {
+        width: 100%;
+        height: 500px;
+    }
+
+    .image-section {
+        height: 540px;
+    }
+
+    .cookies-notifiction .container .ensButtons button {
+        font: 14px/15px Calibri Regular;
+    }
+
+    #recentNewsId {
+
+        .item:not(:last-child) {
+            /*margin-right: 20px;*/
+        }
+
+        .item-news {
+            height: 530px;
+            max-width: 32%;
+            margin-right: 20px;
+
+            .item-content {
+                height: 315px;
+                bottom: 0px;
+                width: 90%;
+                left: 5%;
+
+                .description {
+                    margin-bottom: 15px;
+                }
+
+                .time {
+                    margin-bottom: 5px;
+                    font: 16px/16px Calibri Light;
+                }
+
+                .author {
+                    font: 16px/16px Calibri Light;
+                    margin-bottom: 10px;
+                }
+
+                .tags-list {
+                    font: 12px/20px Calibri Light;
+                }
+
+                .datetime {
+                    margin-top: 10px;
+                    font: 14px/20px Calibri Light;
+                }
+            }
+        }
+    }
+
+    .brand-creation-content .row img {
+        height: 420px;
+        width: auto;
+    }
+
+    .home-service {
+        .banner-howcan {
+            /*top: 8066px;*/
+        }
+
+        .footer {
+            top: 7761px;
+        }
+    }
+
+    #rouse-burger .container #wrap-burger-content .content #burgerLastNews li {
+        overflow: hidden;
+        font: 18px/18px Calibri Bold;
+        //max-height: 90px;
+    }
+
+    #news-content-section {
+        width: 90%;
+    }
+
+    #section2 img.main-image {
+        left: 20%;
+    }
+
+    #talkconsultant-section {
+        .page-content {
+            font-size: 19px;
+            line-height: 24px;
+
+            .title {
+                font: 22px/21px Calibri Bold;
+            }
+        }
+    }
+
+    header .main-menu .ul-menu {
+        li {
+            padding-right: 15px;
+        }
+    }
+
+    footer .menu-footer ul li {
+        padding-right: 15px;
+
+        a {
+            font: 16px/24px Calibri Bold;
+        }
+    }
+
+
+    .people-item .people-information .social-network ul {
+        padding-left: 8%;
+    }
+
+    footer {
+        .social-icons {
+            margin-top: 60px;
+        }
+    }
+    // Service font
+    .services-group-title {
+        font: 42px/40px Calibri Bold;
+    }
+
+    .our-services-text {
+        font: 36px/40px Calibri Bold;
+    }
+
+    .service-content a {
+        text-decoration: none;
+        color: black;
+        font: 32px/32px Calibri Bold;
+    }
+    // End service
+    #our-team-section .people-item .people-information {
+        /*padding-top: 40px;
+            padding-left: 25px;
+            left: 2%;
+            width: 95%;*/
+    }
+
+    #chinaServicesId.china-service-custom {
+        top: -150px !important;
+    }
+
+    .question-content {
+        width: 20%;
+    }
+
+    .global-reach-section .list-country {
+        width: 100%;
+        margin-left: 5%;
+    }
+
+    .people-item {
+        background-size: contain;
+    }
+
+
+
+    header .main-menu {
+        /*margin-left: -200px;
+        padding-right: 400px;*/
+    }
+    /*#search-form {
+        padding-top: 5px;
+        z-index: 999;
+        position: absolute;
+        right: 60px;
+        left: unset !important;
+    }*/
+    .left-move {
+        padding-right: 235px !important;
+    }
+
+    .top-banner .content-box {
+        width: 50%;
+    }
+
+    .new-from-rouse .new-box {
+        height: 350px;
+        padding-left: 0px;
+        padding-right: 0px;
+        max-width: 32%;
+    }
+
+    .new-from-rouse .new-box:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    .group-image-section .item-news {
+        max-width: 32%;
+    }
+
+
+    .group-image-section .item-news:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    #rouse-webinars .title {
+        overflow: hidden;
+        max-height: 64px;
+        font: 21px/32px Calibri Light;
+    }
+
+    .new-from-rouse .new-box .content-box .watch-now a {
+        font: 31px/40px Calibri Bold;
+        letter-spacing: 0;
+        color: #FFFFFF !important;
+        font-size: 28px;
+        margin-top: 24px;
+        display: block;
+    }
+    //update
+    #chinaServicesId.china-service-custom {
+        top: -250px !important;
+    }
+
+    .services-group-title {
+        font: 42px/36px Calibri Bold;
+    }
+
+    #china-locations .location-control {
+        width: auto;
+        margin: auto;
+        margin-bottom: 20px;
+        border-bottom: none;
+    }
+
+    #china-locations {
+        .row {
+            width: 100%;
+        }
+    }
+
+    .people-item .people-information {
+        /*height: 240px;
+            width: 90%;
+            padding-left: 5%;
+            position: absolute;
+            top: 462px;*/
+        /*left: 5%;*/
+        opacity: 0.9;
+        font-size: 18px;
+        background-color: #FFF;
+        font: 18px/21px Calibri Regular;
+
+        .name {
+            font: 20px/34px Calibri Bold;
+            max-height: 34px;
+            overflow: hidden;
+        }
+    }
+
+    #china-success-stories-section {
+        .row {
+            width: 100%;
+        }
+    }
+
+    #our-team-section .people-item .people-information {
+        /*height: 240px;
+            width: 90%;
+            padding-left: 5%;
+            position: absolute;
+            top: 462px;
+            left: 5%;*/
+        opacity: 0.9;
+        font-size: 18px;
+        background-color: #FFF;
+        font: 16px/21px Calibri Regular;
+
+        .name {
+            font: 16px/22px Calibri Bold;
+            max-height: 34px;
+            overflow: hidden;
+        }
+    }
+
+    .banner-howcan .title {
+        text-align: center;
+        font: 46px/38px Calibri Bold;
+        letter-spacing: 0;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    #rouse-burger .burger-content-container {
+        padding-top: 118px;
+    }
+
+    #rouse-burger .container #wrap-burger-content h1 {
+        font: 36px/42px Calibri Bold;
+    }
+
+    #rouse-burger .container #wrap-burger-menu #burger-menu li {
+        margin-bottom: 25px;
+
+        a {
+            font: 18px/24px Calibri Bold;
+        }
+    }
+
+    #rouse-burger .container #wrap-burger-content {
+        h1 {
+            font: 28px/42px Calibri Bold;
+        }
+
+        .content {
+            padding-top: 10px;
+
+            .two-column {
+                margin-bottom: 10px;
+            }
+
+            h1 {
+                font: 28px/42px Calibri Bold;
+            }
+
+            h2 {
+                font: 18px/24px Calibri Bold;
+                margin-bottom: 5px;
+            }
+
+            ul li {
+                font: 15px/16px Calibri Light;
+                padding: 5px 0px;
+            }
+        }
+    }
+
+    .people-item {
+        background-size: cover;
+    }
+
+    .people-item .people-information .social-network ul li {
+        font-size: 16px;
+    }
+    // end update
+    /*Insight page*/
+    .news-item-related {
+        height: 200px;
+        padding: 15px 15px;
+
+
+        h4 {
+            font: 20px/22px Calibri Bold;
+        }
+
+        .author,
+        .minute {
+            font: 16px Calibri Light;
+        }
+
+        .minute {
+            margin-bottom: 5px;
+        }
+    }
+
+    #insights-top.item-content {
+        width: 55%;
+        height: 50%;
+        bottom: 15%;
+        left: auto;
+
+        .title {
+            margin-bottom: 20px;
+            font: 20px/26px Calibri Bold;
+        }
+    }
+    //Footer
+    footer .menu-footer {
+        margin-top: 50px;
+    }
+    /*New near you*/
+    .wrap-home .group-content .item {
+        background-size: cover;
+        background-position: center center;
+        height: 465px;
+
+        .item-content .title {
+            margin-bottom: 20px;
+            text-align: left;
+            font: 22px/26px Calibri Bold;
+            letter-spacing: 0;
+            color: #000000;
+            opacity: 1;
+            height: auto;
+            /*max-height: 60px;*/
+        }
+    }
+
+
+    .group-image-section .item .item-content .title {
+        font: 22px/26px Calibri Bold;
+        font-weight: bold;
+        margin-bottom: 16px;
+        max-height: 55px;
+        overflow: hidden;
+    }
+    /*Career page*/
+    #available-positions-section .job-item .job-title {
+        font: 20px/28px Calibri Bold;
+    }
+
+    .department-item {
+        color: black;
+        font: 17px/18px Calibri Regular;
+    }
+
+    #available-positions-section .job-item {
+        position: relative;
+        line-height: 25px;
+        height: 59px;
+        margin-bottom: 10px;
+        display: flex;
+        width: 100%;
+    }
+
+    .careerImageSection {
+        height: 500px;
+        max-height: 500px;
+    }
+
+    #ourCultureSection {
+        /*padding-top: 100px;*/
+        .our-culture-content {
+            /*margin-top: 20px;*/
+        }
+    }
+
+    #serviceIndividual .image-section {
+        height: 540px;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    #meetSomePeopleTitle {
+        margin-top: 60px;
+    }
+
+    #id-news-detail .news-content {
+        width: 812px;
+        margin: auto;
+    }
+
+    .author-detail {
+
+        .wrap-author-detail {
+            flex-basis: 55.43%;
+
+            .detail {
+                width: calc(100% - 240px);
+                margin-top: -10px;
+
+                .author-description {
+                    font-size: 18px;
+                    line-height: 21px;
+                    max-height: 210px;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+    /*color-profile detail*/
+    .profile-section .profile-banner .infor-profile {
+        height: 240px;
+        max-width: 230px;
+        /*width: 65%;
+            left: 26%;*/
+    }
+    /*Question Service*/
+    .question-title {
+        position: absolute;
+        top: 12%;
+        left: 10%;
+        color: #FFF;
+        font: 24px/36px Calibri Bold;
+    }
+    /*insight page*/
+    .item .item-content {
+        width: 90%;
+        left: 5%;
+    }
+
+
+    #section1 img.main-image {
+        left: 15%;
+        width: 45%;
+        max-width: 65%;
+    }
+
+    #section3 .careers .item-content {
+        width: 40%;
+        top: 125px;
+        height: 260px;
+        top: inherit;
+        left: inherit;
+    }
+
+    #section3 .item-content {
+        left: auto;
+        height: 310px;
+    }
+    /*Buger Menu*/
+    #rouse-burger .container #wrap-burger-content .content .row .row {
+        margin-bottom: 0px;
+    }
+    /*Contact Us*/
+    .contact-us-section.contact-us-form {
+        padding: 40px;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 0.9;
+        background: #ffffff;
+        max-width: 610px;
+        margin-left: 0%;
+    }
+
+    .contact-us-section.contact-us-form .umbraco-forms-form .umbraco-forms-caption {
+        font: 28px/40px Calibri Bold !important;
+    }
+
+    #china-overview.section-content-text {
+        padding-top: 0px;
+        margin-top: 20px;
+    }
+
+    #newsroomId .item-content-news {
+        width: 75%;
+        height: 280px;
+    }
+
+    .item .item-content .title {
+        text-align: left;
+        font: 22px/26px Calibri Bold;
+        letter-spacing: 0;
+        color: #000000;
+        opacity: 1;
+    }
+
+    .insight-filter-wrap#insights-filter {
+        .filer-dropdown {
+            padding-left: 5%;
+        }
+    }
+
+
+    #news-content-section {
+        .news-title {
+            h2 {
+                font: 30px/35px Calibri Bold;
+            }
+        }
+    }
+
+    .news-title {
+        text-align: left;
+
+        h2 {
+            font: 40px/44px Calibri Bold;
+        }
+    }
+
+    .item .item-content .title {
+        font: 24px/28px Calibri Bold;
+        max-height: 60px;
+        /*min-height: 60px;*/
+        overflow: hidden;
+    }
+
+    .item .item-content {
+        padding: 25px 25px 25px 25px;
+    }
+
+    .wrap-content-page .row h2 {
+        font: 24px/24px Calibri Bold;
+    }
+
+    .umbraco-forms-rouse-talk-consultant {
+        .umbraco-forms-container {
+            padding-right: 0px;
+        }
+
+        padding: 40px 0px 40px 20px !important;
+
+        .checkbox-wrap {
+            position: relative;
+            margin-right: 20px;
+            margin-top: 25px;
+        }
+
+        .checkboxlist label {
+            float: left;
+            clear: left;
+            font: 15px/19px Calibri Light;
+            line-height: 20px;
+        }
+    }
+
+    #authorBottomWrap {
+        .author-detail {
+            img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .author-description {
+                font: 14px/18px Calibri Light;
+                height: auto;
+                max-height: 92px;
+                overflow: hidden;
+
+                p {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+
+    #id-news-detail .news-content {
+        width: 67.43%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .author-detail .wrap-author-detail {
+        flex-basis: 67.43%;
+    }
+
+    #id-news-detail .news-content .content .author-infor {
+        position: fixed;
+        top: 20%;
+        left: 2%;
+        width: 121px;
+    }
+
+
+    #news-content-section {
+        width: 55%;
+
+        .news-top-infor img {
+            width: 80px;
+            height: 80px;
+            float: left;
+        }
+
+        .author-phone, .author-email {
+            font: 12px/16px Calibri Light;
+        }
+
+        .author-name {
+            font: 12px/16px Calibri Bold;
+        }
+    }
+
+    #id-news-detail .news-content {
+        width: 51.43%;
+        margin: auto;
+        margin-bottom: 20px;
+
+        .content .author-infor {
+            position: fixed;
+            top: 20%;
+            left: 6%;
+            width: 121px;
+        }
+    }
+
+    .author-detail .wrap-author-detail {
+        flex-basis: 50.43%;
+    }
+
+    #authorBottomWrap .author-detail img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .author-detail .wrap-author-detail .detail {
+        width: calc(100% - 140px);
+    }
+
+    #newsCaseStudiesID, #case-studies-wrap {
+        .item-content {
+            max-height: 304px;
+            height: 304px;
+            width: 90%;
+            padding: 20px 25px;
+
+            .title {
+                font: 22px/28px Calibri Bold;
+                max-height: 60px;
+                height: auto;
+                overflow: hidden;
+            }
+
+            .description {
+                height: 40px;
+                overflow: hidden;
+                padding-bottom: 20px;
+                font: 16px/14px Calibri;
+            }
+
+            .time {
+                font: 16px/20px Calibri Light;
+            }
+
+            .datetime {
+                font-family: Calibri Light;
+                margin-top: 18px;
+                font: 14px/20px Calibri Light;
+            }
+
+            .tags-list {
+                font: 14px/20px Calibri Light;
+            }
+
+            .readmore {
+                text-align: left;
+                font: 16px/27px Calibri Bold;
+                letter-spacing: 0;
+                color: #008197;
+                opacity: 1;
+            }
+        }
+
+        .item .item-content .title {
+            font: 22px Calibri Bold;
+            max-height: 60px;
+            height: 60px;
+            overflow: hidden;
+        }
+    }
+
+
+
+    #chinaServicesId .page {
+        top: 345px;
+    }
+
+    .top-news-detail-wrap {
+        width: 100%;
+        padding-bottom: 0px;
+
+        .news-top-infor {
+            height: 100px;
+            margin-left: 24px;
+        }
+    }
+
+    .author-detail .wrap-author-detail {
+        flex-basis: 57.43%;
+    }
+
+    .author-detail .wrap-author-detail .social-network {
+        margin-top: 14px;
+
+        li {
+            padding-right: 0px;
+        }
+
+        i {
+            font-size: 16px;
+        }
+    }
+
+    .news-banner-image {
+        height: 670px;
+    }
+
+    #author-sticky .group-icon-control {
+        margin-top: 0px;
+    }
+
+    #china-success-stories-section .item .item-content .description {
+        height: 400px;
+        margin-top: 16px;
+    }
+
+    .blog-network-section .list-item .item .blog-item .item-content {
+        max-height: 304px;
+        height: 304px;
+        width: 90%;
+        padding: 20px 25px;
+    }
+
+    #section3 .item-content {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        opacity: 0.8;
+        width: 70%;
+        padding: 30px 30px 10px 30px;
+
+        .datetime {
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+    }
+
+    .insight-filter-wrap.news-filter-wrap select {
+        border: none;
+        font: 16px/16px Calibri Bold;
+        width: 180px;
+        padding: 0px;
+        margin-right: 20px;
+
+        option {
+            font: 16px/16px Calibri Light;
+        }
+    }
+
+    .news-banner-image {
+        height: 530px;
+    }
+
+    .filter-group {
+        .filter-text {
+            font: 18px/25px Calibri Light;
+        }
+    }
+
+
+    #rouse-burger .container #wrap-burger-content .content {
+
+        #burgerTopArticles li:hover {
+            color: #007F9C;
+
+            a {
+                color: #007F9C;
+            }
+        }
+
+
+        #burgerTopArticles li a:hover {
+            color: #007F9C;
+        }
+
+
+        #burgerTopArticles li {
+            font: 15px/15px Calibri Bold;
+            color: black;
+
+
+            .description {
+                font: 15px/15px Calibri Light;
+                margin-top: 16px;
+            }
+        }
+    }
+
+    .umbraco-forms-field-wrapper {
+        .field-validation-error {
+            font: 12px/16px Calibri Regular;
+            color: #8a1f11 !important;
+        }
+
+        .input-validation-error {
+            margin-bottom: 1px !important;
+            background: #FBE3E4;
+            border-color: #FBC2C4;
+        }
+    }
+
+    .news-item-related {
+        padding: 30px 30px 10px 30px;
+        height: 200px;
+
+        .minute {
+            font: 16px/10px Calibri Light;
+            margin-bottom: 7px;
+        }
+
+        .author {
+            font: 16px/20px Calibri Light;
+            margin-bottom: 7px;
+        }
+    }
+
+    .cvupload {
+        .umbraco-forms-field-wrapper::after {
+            left: 40px;
+        }
+
+        .umbraco-forms-field-wrapper.input-validation-error::after {
+            left: 40px;
+        }
+
+        .umbraco-forms-field-wrapper {
+            .field-validation-error {
+                span {
+                    position: relative;
+                    top: 5px;
+                }
+            }
+        }
+    }
+
+    .aboutPageSection {
+        .section-break-title.break-small {
+            max-width: 812px;
+        }
+    }
+
+    .china-service-body {
+        .section-break-title {
+            /*width: auto;*/
+        }
+    }
+
+    #section3 .careers {
+        height: 380px !important;
+    }
+
+
+    #siteServicesId {
+        top: -75px;
+
+        #ipImageSection4 {
+            #hand {
+                position: relative;
+                top: 125px;
+            }
+
+            #board {
+                max-width: 600px;
+            }
+        }
+    }
+
+    #our-team-section, #china-our-team-section {
+
+        .people-item {
+            height: 450px;
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+                top: 20px;
+                overflow: hidden;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+
+            .people-information {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0px);
+                bottom: 0px;
+                width: 100%;
+                height: auto;
+                top: 250px;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .box {
+                    text-align: center;
+                    padding: 0px 20px;
+
+
+
+                    .top {
+                    }
+
+                    .social-network {
+                        ul {
+                            position: static;
+                            display: inline-block;
+
+                            li {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                }
+
+                .name {
+                    font-weight: bold;
+                    font: 24px/34px Calibri Bold;
+                    color: #000000;
+                }
+
+                .position {
+                    max-height: 39px;
+                }
+            }
+        }
+    }
+
+    .people-item .people-information {
+
+        .box {
+            p {
+                font: 16px/18px Calibri Regular;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .profile-section {
+        .section-content-detail h3 {
+            font: 24px/26px Calibri Bold;
+        }
+
+        .profile-banner .infor-profile .name {
+            font: 22px/28px Calibri Bold;
+        }
+    }
+
+    .wrap-home .group-content .item .item-content .title {
+        font: 22px/26px Calibri Bold;
+    }
+
+    .item .item-content .title {
+        max-height: none;
+        font: 22px/26px Calibri Bold;
+    }
+
+    .author-detail .wrap-author-detail {
+        margin-bottom: 0px;
+
+        .author-name {
+            font: 18px/22px Calibri Bold;
+        }
+
+        .social-network i {
+            font-size: 14px;
+        }
+    }
+
+    .news-title {
+        padding-bottom: 20px;
+        top: unset;
+        bottom: 0px;
+        width: 47%;
+    }
+
+    .insight-filter-wrap#insights-filter.featured-webinars-section .filer-dropdown {
+        padding-left: 20%;
+    }
+    /*update font size*/
+    .wrap-home .group-content .title h3 {
+        font: 30px/32px Calibri Bold;
+    }
+
+    #section3 .careers .item-content {
+        .title {
+            font: 22px/32px Calibri Bold;
+        }
+
+        .description {
+            font: 16px/20px Calibri Regular;
+        }
+
+        .readmore {
+            font: 16px/20px Calibri Bold;
+        }
+    }
+
+    .title-page .title {
+        font: 30px/36px Calibri Bold;
+    }
+
+    #rouse-webinars .title a {
+        font-size: 22px;
+    }
+
+    .new-from-rouse .new-box .content-box .author {
+        font: 18px/21px Calibri Bold;
+    }
+
+
+    .news-content {
+        .content {
+            font-size: 21px;
+            line-height: 26px;
+        }
+    }
+
+    #news-tags h2 {
+        font: 20px/24px Calibri;
+        font-weight: bold;
+    }
+
+    .service-section-content .section-break-title.break-small .title {
+        font-size: 30px;
+    }
+
+    .service-section-content .wrap-content-page {
+        font-size: 19px;
+        font: 19px/24px Calibri Regular;
+    }
+
+    #our-team-section .people-item .people-information .name, #china-our-team-section .people-item .people-information .name {
+        font: 22px/34px Calibri Bold;
+    }
+
+    .section-break-title.break-small .title {
+        font-size: 30px;
+    }
+
+    .wrap-content-page {
+        font-size: 19px;
+        font: 19px/21px Calibri Regular;
+    }
+
+    .section-break-title .title {
+        font-weight: bold;
+        font: 30px/29px Calibri Bold;
+    }
+
+    #available-positions-section h2.title-text {
+        font: 30px/32px Calibri Bold;
+    }
+
+    #available-positions-section .list-title {
+        font: 18px/38px Calibri Bold;
+    }
+
+    #available-positions-section .job-item .job-title {
+        font: 22px/28px Calibri Bold;
+    }
+
+    #available-positions-section .job-item .job-location {
+        font: 16px/21px Calibri Regular;
+    }
+
+    .department-item {
+        color: black;
+        font: 16px/18px Calibri Regular;
+    }
+
+    .department-item.strong {
+        font: 16px/18px Calibri Bold;
+    }
+
+    .item .item-content .title {
+        font: 22px/22px Calibri Bold;
+    }
+
+    .lastest-ip-news .item-content {
+        .time {
+            font: 16px/16px Calibri Light;
+        }
+
+        .readmore {
+            font: 16px/21px Calibri Bold;
+        }
+    }
+
+    #insights-top.item-content .title {
+        font: 22px/26px Calibri Bold;
+    }
+
+    .end-section a.readmore {
+        font: 22px/25px Calibri Bold;
+    }
+
+    #peopleOurTeamSection {
+        font: 18px/25px Calibri Bold;
+
+        .our-team-top-title {
+            h2.title {
+                font: 16px/25px Calibri Bold;
+            }
+
+            #clear-all a {
+                font: 16px/25px Calibri Light;
+            }
+        }
+    }
+
+    .people-filter-controller {
+        h5 {
+            font-weight: bold;
+            font: 18px/21px Calibri Bold;
+        }
+
+        input.form-control {
+            font: 16px/19px Calibri Regular;
+        }
+
+        .filter-insight-dropdown {
+            p {
+                font: 16px/18px Calibri Regular;
+            }
+
+            ul li a {
+                font: 16px/18px Calibri Regular;
+            }
+        }
+    }
+
+
+    #rouse-webinars.new-from-rouse {
+
+
+        .content-box {
+            padding-top: 10px;
+
+            .title {
+                max-height: none;
+                height: auto;
+                font: 22px/25px Calibri Bold;
+            }
+        }
+    }
+
+    .news-title {
+        padding-bottom: 20px;
+        top: unset;
+        bottom: 0px;
+        width: 49%;
+    }
+    /*End update font size*/
+}
+
+
+
+@media (max-width: 1255px) {
+    .news-title {
+        width: 53%;
+    }
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+    header .main-menu {
+        margin-left: 0px;
+        padding-left: 0px;
+        left: 10%;
+        padding-right: 28%;
+    }
+
+    .news-title {
+        width: 48%;
+    }
+}
+
+@media (max-width: 1024px) {
+    #available-positions-section .result-career-wrapper {
+        padding-left: 0px;
+    }
+
+    .search-results-page .item.item-profile .profileImage {
+        flex-basis: 15%;
+    }
+
+    #our-team-section {
+        .load-more-list {
+            display: none;
+        }
+    }
+
+    .news-title h2 {
+        font: 22px/30px Calibri Bold;
+    }
+
+    .our-team-top-title {
+        padding: 0px 27px;
+
+        .title {
+            margin-left: 0px;
+        }
+
+        #clear-all {
+            margin-right: 0px;
+        }
+    }
+
+    .filter-insight-dropdown .clear-filter {
+        font-size: 16px;
+        right: 17px;
+        top: calc(50% - 9px);
+    }
+    /*Start insight*/
+    #insightMobildeSearchArea .filter-insight-dropdown p {
+        font-size: 16px;
+        padding: 8px 15px;
+        font-family: Calibri Bold;
+        line-height: 24px;
+        height: auto;
+        text-transform: inherit;
+        background-color: #E3E8E9;
+    }
+
+    #insightsMobileFilter h5 {
+        margin-bottom: 15px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    #insightMobildeSearchArea .filter-insight-dropdown {
+        margin-bottom: 20px;
+        border-radius: 6px;
+    }
+
+    #insightMobildeSearchArea .dropdown-menu {
+        border: 0;
+    }
+
+    #insightMobildeSearchArea li {
+        height: auto;
+        margin-bottom: 0;
+        padding: 0;
+
+        a {
+            font-size: 16px;
+            line-height: 16px;
+            font-family: Calibri Bold;
+            padding: 15px 17px;
+        }
+    }
+
+    #insightMobildeSearchArea li:last-child a {
+        border-bottom: 1px solid #1DC0E5;
+    }
+
+    #insightMobildeSearchArea li a:hover {
+        background-color: #BEEAF3;
+    }
+
+    #insightMobildeSearchArea .filter-insight-dropdown.active {
+        height: auto;
+        border: 1px solid #707070;
+    }
+
+    #insightMobildeSearchArea .filter-insight-dropdown.active p {
+        background-color: #007F9C;
+    }
+
+    #insightMobildeSearchArea .filter-insight-dropdown.active .reset-filter {
+        font-size: 16px;
+        right: 0px;
+        top: calc(50% - 20px);
+        height: 100%;
+        padding-top: 10px;
+        width: 45px;
+    }
+
+    .people-filter-controller.mobile-version h2.title {
+        font-size: 16px;
+        line-height: 24px;
+        font-family: Calibri Bold;
+        margin-left: 0px;
+    }
+
+    .filter-insight-dropdown {
+        background-color: #f0f0f0;
+    }
+
+    #insightsMobileFilter #clear-all {
+        font-size: 16px;
+        line-height: 24px;
+
+        a {
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+
+    #insightMobildeSearchArea .filter-insight-dropdown.active p {
+        text-transform: capitalize
+    }
+    /*End Insight*/
+    /*Start People*/
+    #peopleSearchArea .filter-insight-dropdown p {
+        font-size: 16px;
+        padding: 8px 15px;
+        font-family: Calibri Bold;
+        line-height: 24px;
+        height: auto;
+        text-transform: inherit;
+        background-color: #E3E8E9;
+    }
+
+    #peopleSearchArea h5 {
+        margin-bottom: 15px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    #peopleSearchArea .filter-insight-dropdown {
+        margin-bottom: 20px;
+    }
+
+    #peopleSearchArea .dropdown-menu {
+        border: 0;
+    }
+
+    #peopleSearchArea li {
+        height: auto;
+        margin-bottom: 0;
+        padding: 0;
+
+        a {
+            font-size: 16px;
+            line-height: 16px;
+            font-family: Calibri Bold;
+            padding: 15px 17px;
+        }
+    }
+
+    #peopleSearchArea li:last-child a {
+        border-bottom: 1px solid #1DC0E5;
+    }
+
+    #peopleSearchArea li a:hover {
+        background-color: #BEEAF3;
+    }
+
+    #peopleSearchArea .filter-insight-dropdown.active {
+        height: auto;
+        border: 1px solid #707070;
+    }
+
+    #peopleSearchArea .filter-insight-dropdown.active p {
+        background-color: #007F9C;
+    }
+
+    #peopleSearchArea .filter-insight-dropdown.active .reset-filter {
+        font-size: 16px;
+        right: 0px;
+        top: calc(50% - 20px);
+        height: 100%;
+        padding-top: 10px;
+        width: 45px;
+    }
+
+    #peopleSearchArea h2.title {
+        font-size: 16px;
+        line-height: 24px
+    }
+
+    .filter-insight-dropdown {
+        background-color: #f0f0f0;
+        border-radius: 6px;
+    }
+
+    #peopleSearchArea #clear-all {
+        font-size: 16px;
+        line-height: 24px;
+
+        a {
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+
+    #peopleSearchArea .filter-insight-dropdown.active p {
+        text-transform: capitalize
+    }
+    /*End People*/
+    .wrap-home .mobile-landingpage #careers {
+        background-position: left center;
+    }
+
+    .our-team-top-title #clear-all {
+        /*margin-right: 10px;*/
+        a {
+            font-size: 16px;
+        }
+    }
+
+    .mobile-controller-wrap {
+        display: block;
+    }
+
+    .search-wrap-button {
+        margin: auto;
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .people-filter-controller {
+        .filter-insight-dropdown p {
+            font: 16px/16px Calibri Regular;
+        }
+
+        h5 {
+            font-weight: bold;
+            font: 16px/16px Calibri Bold;
+        }
+    }
+
+    .search-wrap-button {
+        margin: auto;
+    }
+
+    .filter-insight-dropdown .dropdown-toggle {
+        height: 47px;
+        margin-bottom: 0px;
+        background-color: unset;
+        padding-left: 5px;
+    }
+
+    .filter-insight-dropdown.active {
+        .reset-filter {
+            color: #FFF;
+        }
+
+        .dropdown-toggle {
+            background-color: #17a2b8;
+            color: #FFF;
+            font-weight: bold;
+            height: 100%;
+            border-bottom: none !important;
+        }
+    }
+
+
+    .filter-insight-dropdown .reset-filter {
+        font-size: 16px;
+        right: 0px;
+        top: calc(50% - 20px);
+        height: 100%;
+        padding-top: 10px;
+        width: 45px;
+    }
+
+    .filter-insight-dropdown {
+        padding-right: 0px;
+        margin-right: 0px;
+    }
+
+    .filter-controller {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 15px;
+
+        #clear-all {
+            /*margin-right: 15px;*/
+        }
+    }
+
+    #filterInsightResult .item:not(:nth-child(3n)) {
+        margin-right: 0px;
+    }
+
+    #filterInsightResult .section-title {
+        margin-left: 0px;
+    }
+
+    #filterInsightResult {
+        padding: 0px 15px;
+    }
+
+    .section-title {
+        h3, h4 {
+            font: 20px/22px Calibri Bold;
+        }
+    }
+
+    #filterInsightResult .item {
+        max-width: none;
+        margin-bottom: 20px;
+
+        .item .item-content {
+            width: 80%;
+            bottom: 0px;
+        }
+    }
+
+    .profile-section .section-content-detail {
+        margin-top: 30px;
+
+        h3 {
+            padding-top: 0px;
+            font: 24px/26px Calibri Bold;
+        }
+    }
+
+    .people-loadmore {
+        display: none !important;
+    }
+
+    #our-team-section .people-item, #china-our-team-section .people-item {
+        height: 420px;
+    }
+
+    #insightsMobileFilter {
+        margin-bottom: 0px;
+        /*margin-top: 50px;*/
+    }
+
+    .title-section {
+        margin-bottom: 20px;
+    }
+
+    .top-banner, #peopleSearchArea, .people-filter-controller {
+        select {
+            /*background: #17a2b8 !important;*/
+            option:not(:checked) {
+                background-color: #FFF;
+                color: black;
+            }
+        }
+
+        select {
+            border-color: #17a2b8;
+            outline-color: #17a2b8;
+        }
+
+        .select-display {
+            background: #17a2b8 !important;
+        }
+    }
+
+
+    .supportPageWraper {
+        #legalWrapperId.support-content-wrap .supportPageList {
+            padding-left: 15px;
+        }
+    }
+
+    .cookies-notification {
+        height: auto;
+        padding-bottom: 15px;
+
+        .container {
+            display: block;
+
+
+            #ensBannerDescription {
+                font: 18px/22px Calibri Bold;
+                width: 100%;
+            }
+
+            .ensButtons {
+                height: 42px;
+                width: 180px;
+                margin: auto;
+                margin-top: 20px;
+
+                button {
+                    background-color: black;
+                    color: #FFF;
+                    height: 100%;
+                    width: 100%;
+                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+                    font: 16px/15px Calibri Regular;
+                }
+
+                button:hover {
+                    background-color: #007F9C !important;
+                }
+            }
+        }
+    }
+
+    #serviceIndividual {
+        .top-banner {
+            max-height: 640px;
+        }
+
+        .image-section {
+            height: 370px;
+
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+    }
+
+    .disclaimerContent {
+        font: 14px/20px Calibri;
+        margin-top: 16px;
+    }
+
+    #china-success-stories-section .row {
+        width: 105%;
+    }
+
+    .content-top-enforcement {
+        width: 100%;
+    }
+
+
+
+    #where-we-work-country {
+        .company-box .details {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+
+
+    #where-we-work-country .company-box {
+        .details {
+            border-right: none;
+        }
+    }
+
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item #section1.main-image {
+        right: 0%;
+        max-width: 50%;
+    }
+
+    .item.item-news {
+        background-size: cover !important;
+    }
+
+    footer.container {
+        pading-left: 35px;
+        pading-right: 35px;
+    }
+
+    #insights-top.item-content {
+        left: 5%;
+
+        .title {
+            font: 20px/24px Calibri Bold;
+        }
+    }
+
+    #section0, #section1, #section2 {
+        background-color: unset;
+    }
+
+    .china-service-body {
+        .header-master {
+            z-index: 1000;
+        }
+    }
+
+    #phoneImageWrap {
+        margin-top: 80px;
+        position: relative;
+        height: 450px;
+
+        #subPhone {
+            position: absolute;
+            top: 0px;
+            max-height: 400px;
+        }
+
+        #mainPhone {
+            position: absolute;
+            top: 41px;
+            max-height: 400px;
+        }
+    }
+
+    #search-section {
+        margin-top: 0px;
+
+        .pagination {
+            ul {
+                li:nth-child(n) {
+                    display: none;
+                }
+
+                li:nth-child(2), li:nth-child(3), li:nth-child(4), li.active {
+                    display: inline-block;
+                }
+
+                li:first-child {
+                    display: inline-block;
+                }
+
+                li:last-child {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .options {
+        width: 100%;
+        left: auto;
+    }
+
+    .section-content-text {
+        width: 80%;
+    }
+
+    #page-top-content {
+        width: 100%;
+    }
+
+    #questionCarousel {
+        .carousel-item {
+            padding-top: 25px;
+        }
+
+        .more {
+            display: block;
+        }
+    }
+
+    .question-content {
+        width: 30%;
+    }
+
+    .top-question {
+        display: block;
+        margin-bottom: 25px;
+        text-align: center;
+
+        .question-title {
+            font-size: 18px;
+            font-weight: bold;
+            left: auto;
+            margin-left: 0px;
+            margin: auto;
+            position: relative;
+            width: 100%;
+            font: 18px/21px Calibri Bold;
+        }
+    }
+
+
+    .search-input {
+        background-color: #FFF;
+    }
+    /*Code scss */
+    /*About page */
+    .image-section {
+        height: 370px;
+        margin-top: 50px;
+    }
+
+    .image-section img {
+        height: 100%;
+        max-width: fit-content;
+        transform: translateY(-30px) translateX(0px) scale(1.1);
+        //    width: auto;
+    }
+
+    .section-break-title .title {
+        font: 20px/24px Calibri Bold;
+    }
+
+    .load-more-list {
+    }
+
+    .load-more-list {
+        font: 20px/28px Calibri Bold;
+        color: #008197;
+        margin: auto;
+        margin-top: 40px;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 114px;
+    }
+
+    .section-break-mobile {
+        margin-top: 0px;
+        text-align: center;
+        border-bottom: none;
+        margin-bottom: 0px !important;
+    }
+
+    #tour-our-office {
+        width: 80%;
+        padding-top: 40px;
+        border-top: 1px solid #939393;
+        margin-bottom: 80px;
+    }
+
+    .carousel-item {
+        height: 391px;
+    }
+
+    #tour-our-office .office-text {
+        width: 90%;
+        height: 100px;
+        top: 61%;
+        left: 4%;
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+
+    #tour-our-office .office-text h3 {
+        font: 20px/24px Calibri Bold;
+    }
+    /*end code scss*/
+    #available-positions-section {
+        border-top: 1px solid #939393;
+        padding: 20px 0px;
+        padding-bottom: 0px;
+        width: 80%;
+
+        .col-md-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        h2.title-text {
+            font: 20px/23px Calibri Bold;
+            margin-bottom: 40px;
+        }
+
+        .section-break-mobile {
+            border: none;
+            margin-top: 0px;
+
+            h2.title {
+                text-align: center;
+                font: 20px/24px Calibri Bold;
+            }
+        }
+    }
+
+    #meetSomePeopleTitle {
+        margin: 0px;
+        text-align: center;
+        padding-bottom: 10px;
+        border: none;
+    }
+
+    #ourCultureSection {
+        padding-top: 0px;
+        padding-bottom: 0px;
+
+        .our-culture-content {
+            width: 100%;
+            margin: auto;
+            border-top: 1px solid #939393;
+            padding: 20px 0px;
+        }
+
+        #ourCultureTitle {
+            padding-bottom: 0px;
+            border: none;
+            margin-bottom: 10px;
+        }
+    }
+
+    #people-top-section {
+        .row .break-title-in-wrap {
+            margin: auto;
+            margin-bottom: 0px;
+            max-width: 812px;
+            padding-bottom: 10px;
+        }
+
+        .content-center {
+            border-top: 1px solid #939393;
+            padding-top: 20px;
+            width: 100%;
+            padding: 20px 0px;
+        }
+    }
+
+    #careerBannerId {
+        h2 {
+            top: 7.8%;
+            left: 12%;
+            font: 36px/42px Calibri Light;
+
+            strong {
+                font: 36px/42px Calibri Bold;
+            }
+
+            strong::before {
+                content: "";
+            }
+        }
+    }
+
+    .section-banner-company .company-box .details .company-content {
+        .country {
+            font: 24px/21px Calibri Bold;
+        }
+
+        .company-content h3 {
+            font: 20px/21px Calibri Bold;
+        }
+
+        .group-country li {
+            font-family: Calibri Light;
+            font-size: 14px;
+        }
+    }
+
+    #news-tags {
+        display: block;
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            li {
+                margin-right: 20px;
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    main.home {
+        padding-top: 80px;
+    }
+
+    footer .footer-top .logo {
+        position: relative;
+        margin-left: 0px;
+    }
+    //Footer
+    footer .menu-footer {
+        margin-top: 0px;
+    }
+
+
+
+    main.home.home-landing {
+        /*padding-top: 50px;*/
+        /*margin-top: 100px;*/
+    }
+    // .copyright-contain {
+    //     display: none;
+    // }.section-banner-company .company-box .list-country
+    .section-break-title.break-small .title {
+        font: 20px/24px Calibri Bold;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .people-page.top-banner {
+        top: 25%;
+        height: 580px;
+
+        h2 {
+            top: 44px;
+            left: 46px;
+            font-weight: lighter;
+
+            strong {
+                font-weight: bolder;
+            }
+        }
+    }
+
+    #available-positions-section .departments-list li {
+        width: fit-content !important;
+        margin-right: 20px;
+    }
+
+    .profile-detail {
+
+        h3 {
+            font-weight: bold;
+            padding-top: 40px;
+        }
+    }
+
+
+    .profile-section {
+        margin-bottom: 80px;
+    }
+
+    .news-banner-image {
+        height: 500px;
+
+        .news-title {
+            bottom: 0px;
+            top: auto;
+            width: 65%;
+        }
+    }
+
+    .sliderSlickWrap {
+        // padding-left: 25px;
+        .slick-slide {
+            width: 100%;
+            // margin-right: 20px;
+        }
+    }
+
+
+    #newsRoomId {
+        //   padding-left: 10px;
+        .slick-slide {
+            margin-right: 10px;
+        }
+    }
+
+
+
+    .slick-center.item {
+
+        .item-content.news-content-box {
+            // animation: mymove;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+
+        .main-image {
+            animation: landingImage;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    @keyframes mymove {
+        from {
+            transform: scaleY(1);
+            height: 200px;
+        }
+
+        to {
+            transform: scaleY(1.1);
+            height: 222px;
+        }
+    }
+
+    @keyframes landingImage {
+        from {
+            opacity: 0;
+            width: 50%;
+        }
+
+        to {
+            opacity: 1;
+            width: 100%;
+        }
+    }
+
+    .title-section {
+        border: none;
+    }
+
+    .group-image-section .title-section {
+        border: none;
+    }
+
+    #insights-top.item-content {
+        .title {
+            max-height: 47px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+    }
+
+    .slick-dots {
+        bottom: 90px !important;
+
+        li {
+            height: 5px;
+
+            button:before {
+                content: "-" !important;
+                width: 25px;
+                height: 5px !important;
+                background-color: #008197;
+            }
+        }
+    }
+
+    footer.container {
+        /*padding-top: 41px;*/
+        padding-left: 36px;
+        margin-bottom: 0px;
+
+        .footer-top {
+            display: block;
+            margin-left: 0;
+
+            .logo {
+                #logo-footer-contain {
+                    margin-top: 0px;
+                }
+
+                img {
+                    width: 100px;
+                    height: auto;
+                }
+            }
+        }
+
+        .social-icons {
+            margin-top: 28px;
+
+            a {
+                border: 1px solid black;
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                border-radius: 50%;
+                color: black;
+                font-size: 24px;
+                line-height: 42px;
+                margin-right: 20px;
+            }
+        }
+
+        .footer-bottom {
+            border: none;
+            margin-top: 28px;
+            display: block;
+            padding-left: 15px;
+
+            .menu-footer {
+                margin-bottom: 53px;
+
+                ul {
+                    margin-left: 0px;
+
+                    li {
+                        a {
+                            font: 15px/24px Calibri Bold;
+                            height: 18px;
+                            margin-bottom: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #our-team-section, #china-our-team-section {
+        border-top: 1px solid #939393;
+        margin-bottom: 0px;
+        padding: 0px;
+        width: 90%;
+        margin-top: 20px;
+
+        .title-section {
+            margin-top: 0px;
+        }
+
+        .people-item {
+            /*background-size: cover;
+            height: 527px;
+            position: relative;
+            padding: 0px 15px;*/
+            .people-information {
+                /*max-width: 90%;
+                margin: auto;
+                position: absolute;
+                padding-top: 30px;
+                padding-left: 15px;
+                height: 200px;
+                left: unset;
+                top: unset;
+                bottom: 14px;
+                left: 0px;
+                right: 0px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 370px;*/
+                .box {
+                    width: 80%;
+                    margin: auto;
+                }
+
+                .position {
+                    font: 15px/18px Calibri Regular;
+                    margin-top: 5px;
+                    margin-bottom: 0px;
+                }
+
+                .name {
+                    font: 24px/28px Calibri Bold;
+                    margin-bottom: 0px;
+                }
+
+                .email {
+                    font: 15px/18px Calibri Regular;
+                    margin-bottom: 0px;
+                    margin-top: 15px;
+                }
+
+                .phone {
+                    font: 12px/15px Calibri Regular;
+                }
+
+                .social-network {
+                    ul {
+                        padding-left: unset;
+                        position: unset;
+                        left: unset;
+
+                        li {
+                            font-size: 13px;
+                            margin-right: 8px;
+                            padding-right: 0px;
+                            ;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #china-our-team-section {
+        border-top: none;
+    }
+
+
+    .load-more-list {
+        font-size: 20px;
+        font: 20px/28px Calibri Bold;
+        color: #008197;
+        margin: auto;
+        width: 100%;
+        margin-top: 40px;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .people-filter-controller {
+        margin-bottom: 37px;
+
+        .people-break {
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 18px;
+            margin-left: 15px;
+            margin-bottom: 25px;
+
+            .fas {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .people-page.top-banner .find-box {
+        height: 410px;
+        width: 91%;
+        padding-left: 30px;
+
+        .container {
+            padding-left: 0px;
+        }
+
+        .col-md-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .component {
+            margin-bottom: 15px;
+
+            select {
+                border-bottom-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                text-indent: 1px;
+                text-overflow: '';
+            }
+
+            a {
+                padding-left: 0px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                text-indent: 1px;
+                text-overflow: '';
+                text-align: left;
+                border-bottom-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+                font-size: 18px;
+            }
+
+            a::after {
+                content: "";
+                display: none;
+            }
+
+            input {
+                font-size: 18px;
+            }
+
+            .form-control {
+                font-size: 18px;
+                padding-left: 0px;
+            }
+
+            #btn-search-people {
+                margin-top: 25px;
+                width: 100%;
+                border-radius: 10px;
+                height: 40px;
+            }
+        }
+    }
+
+    .header-master {
+        height: 57px;
+        padding-top: 0px;
+    }
+
+    .related-articles-section {
+        margin-bottom: 0px;
+    }
+
+    .insight-title {
+        border-bottom: 1px solid #939393;
+    }
+
+    #mobilde-news-rouse-webinars {
+        .new-box {
+            max-height: 180px;
+            margin: 0px 10px;
+
+            .content-box {
+                max-height: 188px;
+                padding-top: 10px;
+
+                .text-top {
+                    margin-bottom: 0px;
+                    font-size: 12px;
+                }
+
+                .title {
+                    font-size: 20px;
+                    margin-top: 7px;
+                    line-height: 21px;
+                    margin-bottom: 10px;
+
+                    a {
+                        font-size: 20px;
+                    }
+                }
+
+                .summary {
+                    font-size: 12px;
+                    font: 12px/16px Calibri Regular;
+                }
+
+                .author {
+                    margin-top: 0px;
+                    font-size: 12px;
+                }
+
+                .watch-now {
+                    a {
+                        margin-top: 0px;
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            .description {
+                font-size: 15px;
+                height: 34px;
+                overflow: hidden;
+                line-height: 18px;
+                padding: 0px 20px;
+            }
+        }
+    }
+
+    #mobile-news-related-articles {
+        .item.item-news {
+            margin: 0px 5px;
+        }
+    }
+
+    .item.item-news {
+        max-height: 391px;
+        position: relative;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin: 0px 10px;
+
+        .item-content.news-content-box {
+            height: 222px;
+            max-height: 222px;
+            position: absolute;
+            bottom: 0px;
+            padding-top: 25px;
+
+            .title {
+                margin-bottom: 20px;
+                max-height: 48px;
+                overflow: hidden;
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+            .author {
+                margin-bottom: 0px;
+                font-size: 12px;
+            }
+
+            .datetime {
+                margin-top: 10px;
+                margin-bottom: 0px;
+                font-size: 12px;
+            }
+
+            .description {
+                height: 24px;
+                overflow: hidden;
+                font: 12px/14px Calibri Regular;
+            }
+
+            .readmore {
+                font-size: 11px;
+                display: block;
+                margin-bottom: 13px;
+                margin-top: 5px;
+                font-size: 11px;
+
+                .arrow {
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+
+    .item .item-content {
+        .title {
+            font-size: 20px;
+        }
+    }
+
+    .more {
+        display: none;
+    }
+
+    .title-page.container {
+        margin-top: 0px;
+        border: none;
+
+        h3 {
+            font-size: 20px;
+        }
+    }
+
+    .title-section {
+        padding: 0px 27px;
+        border-bottom: none;
+
+        h4 {
+            padding-bottom: 8px;
+            font-size: 20px;
+            text-align: center;
+            border-bottom: 1px solid #939393;
+            width: 100%;
+        }
+    }
+
+    .banner-howcan {
+        padding-top: 20px;
+        max-height: 180px;
+
+        .title {
+            font: 24px/29px Calibri Bold;
+            margin-top: 30px;
+        }
+
+        .description {
+            color: #FFF;
+            font: 15px/21px Calibri Regular;
+            margin-top: 20px;
+        }
+    }
+
+    .home-landing {
+        section {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+    }
+
+    .wrap-home .group-content {
+        margin-top: 0px;
+        margin-bottom: 47px;
+
+        .title {
+            margin-bottom: 40px;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #707070;
+        }
+    }
+
+    .title.container {
+        padding-bottom: 0px;
+
+        h3 {
+            font-size: 20px;
+        }
+    }
+
+    #rouse-burger {
+        z-index: -1;
+        min-height: 667px;
+        background-color: #EEEEEE;
+
+        .burger-content-container {
+            padding-top: 107px;
+            padding-left: 36px;
+
+            #burger-menu {
+                li {
+                    margin-bottom: 21px;
+
+                    a {
+                        font: 18px/24px Calibri Bold;
+                    }
+                }
+            }
+        }
+    }
+
+    .location-group-control {
+        /*display: none;*/
+    }
+
+    .job-detail-content {
+        padding: 0px 36px;
+    }
+
+    #available-positions-section .job-item {
+        background-color: #EEEEEE;
+        height: 187px;
+        margin: 0px 5px;
+        padding-left: 40px;
+        padding-top: 50px;
+        margin-left: -10px;
+        margin-right: 30px;
+
+        .job-title {
+            margin-bottom: 30px;
+            height: 54px;
+            overflow: hidden;
+            font: 18px/21px Calibri Bold;
+        }
+
+        .job-location {
+            font: 12px/15px Calibri Regular;
+        }
+    }
+
+    #available-positions-section .department-wrap {
+        border: none;
+    }
+
+    .profile-section {
+        .profile-detail {
+            padding: 0px 50px;
+        }
+
+        .profile-banner {
+            height: 600px;
+            margin-left: 15px;
+
+
+            .infor-profile {
+                bottom: 18px;
+                left: 10%;
+                background-color: #FFF;
+                opacity: 0.8;
+                top: unset;
+
+                .name {
+                    font: 24px/28px Calibri Bold;
+                }
+
+                .position {
+                    font: 15px/18px Calibri Regular;
+                    max-height: 75px;
+                    overflow: hidden;
+                }
+
+                .email {
+                    font: 15px/18px Calibri Regular;
+                }
+
+                .phone {
+                    font: 15px/19px Calibri Light;
+                }
+
+                .social-network {
+                    ul {
+                        position: relative;
+                        padding-left: 0px;
+
+                        li {
+                            font-size: 16px;
+                            padding-right: 0px;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .group-image-section .item {
+        clear: unset;
+    }
+
+    #author-sticky {
+        display: none !important;
+    }
+
+    .top-news-detail-wrap {
+        padding-bottom: 0px;
+    }
+
+    #news-content-section {
+        width: 100%;
+        padding: 0px 36px;
+
+        .news-title {
+            h2 {
+                font-size: 20pt;
+                line-height: 24pt;
+            }
+
+            border-bottom: 1px solid #707070;
+            margin-bottom: 20px;
+        }
+
+        .news-top-infor {
+            display: flex;
+            height: auto;
+            margin-bottom: 10px;
+
+            img {
+                width: 86px;
+                height: 86px;
+            }
+
+            .infor {
+                margin-top: 0px;
+                padding-top: 0px;
+                margin-left: 14px;
+                position: relative;
+
+                .author-name {
+                    font: 12px/16px Calibri Bold;
+                }
+
+                .author-email {
+                    font: 12px/16px Calibri Light;
+                }
+
+                .social-network {
+                    display: block;
+                    height: 27px;
+                    position: absolute;
+
+
+
+                    ul {
+                        right: unset;
+                        left: 0px;
+                        padding-left: 0px;
+                        margin-left: 0px;
+
+                        li {
+                            font-size: 16px;
+                        }
+
+                        i {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .top-news-detail-wrap #news-content-section .news-top-infor .infor p {
+        line-height: 16px;
+        margin-bottom: 0px;
+    }
+
+    #id-news-detail {
+
+        .news-content {
+            width: 100%;
+            padding: 0px 36px;
+
+            .content {
+                padding-top: 40px;
+                border-top: none;
+                font-size: 16pt;
+                line-height: 19pt;
+
+                #news-tags {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+
+    .author-detail {
+        width: 100%;
+        padding: 0px 36px;
+
+        .wrap-author-detail {
+            display: flex;
+            flex-basis: 100%;
+            justify-content: left;
+
+
+            .detail {
+                left: unset;
+                width: unset;
+                position: unset;
+                margin-left: 20px;
+                margin-top: 5px;
+                height: 60px;
+
+                .author-phone {
+                    margin-bottom: 0px;
+                }
+
+                .author-email {
+                    margin-bottom: 0px;
+                }
+
+                .author-name {
+                    line-height: 25px;
+                }
+
+                .social-network {
+                    /*display: none;*/
+                    margin-top: 0px;
+                    display: flex;
+
+                    ul {
+                        margin-left: 0px;
+                        padding-left: 0px;
+
+                        li {
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                .author-description {
+                    display: none;
+                }
+
+                .author-phone, .author-email {
+                    display: block;
+                }
+
+
+
+
+
+                .author-name {
+                    .symbol {
+                        display: none;
+                    }
+
+                    .firm-name {
+                        display: none;
+                    }
+                }
+            }
+
+
+
+            img.author-image {
+                width: 86px;
+                height: 86px;
+            }
+        }
+    }
+
+    #authorBottomWrap .author-detail {
+        .author-phone, .author-email {
+            display: block;
+        }
+    }
+
+    header {
+        padding-top: 0px;
+    }
+
+    #insights-filter {
+        display: none;
+    }
+
+    .wrap-home {
+        .mobile-landingpage {
+
+            #mobile-landind-top-slider {
+
+                .news-item {
+                    .main-image {
+                        max-width: 321px;
+                        width: 100%;
+                        margin-left: 25px;
+                        left: unset;
+                        right: -35px;
+                    }
+
+
+
+
+                    .mobile-content-slide-section {
+                        padding-left: 5%;
+                        padding-right: 0%;
+
+
+                        .title {
+                            margin-bottom: 26px;
+                        }
+
+                        .readmore {
+                            margin-top: 26px;
+                            display: block;
+                            font-size: 12px;
+
+                            .arrow {
+                                font-size: 11px;
+                            }
+                        }
+                    }
+                }
+
+                .slick-slide.slick-current {
+                    img#section1 {
+                        margin-left: -5%;
+                        margin-top: 10%;
+                    }
+                }
+            }
+
+            .section-content-box {
+                .description {
+                    color: #000;
+                }
+            }
+
+            .group-content {
+                .item {
+                    margin: 0px 10px;
+                    height: 391px;
+
+                    .item-content {
+                        width: 91%;
+                        padding: 0px 24px;
+                        height: 222px;
+                        max-height: 222px;
+                        padding-top: 25px;
+                        position: absolute;
+                        bottom: 0px;
+                        //  background-color: unset;
+                        .title {
+                            font-size: 20px;
+                            line-height: 24px;
+                            background-color: #FFF;
+                            opacity: 0.8;
+                            border: none;
+                            max-height: 48px;
+                            margin-bottom: 10px;
+                        }
+
+                        .description {
+                            height: 24px;
+                            overflow: hidden;
+                            font-size: 12px;
+                            font-weight: 300;
+                            height: auto;
+                            overflow: hidden;
+                        }
+
+                        .datetime {
+                            margin-top: 10px;
+                            margin-bottom: 0px;
+                        }
+
+                        .readmore {
+                            font-size: 11px;
+                            margin-top: 0px;
+                        }
+                    }
+                }
+
+                .news-item {
+                    height: 391px;
+                }
+            }
+
+            .career-group-content {
+                margin-bottom: 0px;
+            }
+
+            .readmore {
+                font: Bold 11px/14px Calibri;
+
+
+                .arrow {
+                    font-size: 11px;
+                }
+            }
+
+            #careers {
+                max-width: 100%;
+                margin-right: 0px;
+                overflow: hidden;
+
+                .item-content {
+                    width: 73%;
+                    left: 21%;
+                    height: 200px;
+                    padding-left: 24px;
+                    background-color: #FFF;
+                    bottom: 20px;
+
+                    .description {
+                        color: #000000;
+                        font-size: 14px;
+                        height: auto;
+                        line-height: 21px;
+                        margin-bottom: 0px;
+                        margin-top: 10px;
+                    }
+
+                    .readmore {
+                        font: 11px/14px Calibri Bold;
+                        margin: 0px;
+
+                        .arrow {
+                            font-size: 11px;
+                        }
+                    }
+                }
+
+                img {
+                    max-width: initial;
+                    height: 100%;
+                    transform: translate(72px, -84px) scale(1.75);
+                }
+
+                .title {
+                    background-color: unset;
+                    border: none;
+                    height: 25px;
+                    margin-bottom: 0px;
+                }
+            }
+
+
+            #mobilde-happen-in-rouse {
+                .title {
+                    background-color: unset;
+                }
+            }
+        }
+    }
+
+
+    .filter-group .filer-dropdown {
+        display: block;
+
+        .dropdown {
+            margin-bottom: 15px;
+        }
+    }
+
+    .china-services-credentials .credentials-content {
+        font: 16px/21px Calibri Regular;
+
+        h2 {
+            font-size: 36px;
+            line-height: 24px;
+            font: 30px/27px Calibri Bold;
+            margin-top: 40px;
+        }
+    }
+
+    #china-success-stories-section .item .item-content {
+        opacity: 0.8;
+        width: 90%;
+        height: 540px;
+        top: 10%;
+        left: 5%;
+
+        .readmore {
+            font: 10px/15px Calibri Bold;
+            margin-top: 15px;
+            display: block;
+
+            .arrow {
+                font-size: 11px;
+            }
+        }
+    }
+
+    #tour-our-office .office-text {
+        width: 90%;
+        height: 100px;
+        top: 60%;
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+
+
+
+    .front {
+        z-index: 500;
+        top: 0px;
+        height: auto;
+    }
+
+
+    .service-desktop-section {
+        display: none;
+    }
+
+    .service-mobile-section {
+        display: block;
+        margin-top: 240px;
+
+        .image-service-item {
+            width: 80%;
+            margin: auto;
+        }
+
+        .service-top-image {
+            position: relative;
+            top: -100px;
+
+            img {
+                transform: scale(1.5);
+            }
+        }
+
+        .service-content {
+            .service-desription {
+                margin-bottom: 0px;
+            }
+
+            padding: 0px 36px;
+
+            a {
+                h3 {
+                    font: 20px/24px Calibri Bold;
+                    margin-top: 30px;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .services-group-title {
+            font: 30px/27px Calibri Bold;
+            text-align: left;
+            margin-top: 40px;
+
+            a {
+                font: 30px/27px Calibri Bold;
+            }
+        }
+
+        .our-services-text {
+            font: 24px/27px Calibri Bold;
+        }
+
+        #board {
+            left: 0px;
+        }
+    }
+
+    .china-service-desktop-section {
+        display: none;
+    }
+    // China services mobile
+    .china-service-mobile-section {
+        padding-left: 5%;
+        display: block;
+
+        img {
+            width: 100%;
+        }
+
+        .services-group-title {
+            font: 30px/27px Calibri Bold;
+
+            a {
+                font: 30px/27px Calibri Bold;
+            }
+        }
+
+        .our-services-text {
+            font: 30px/27px Calibri Bold;
+        }
+
+        #board {
+            left: 0px;
+        }
+
+        .documentation {
+            width: 100%;
+        }
+
+        .options {
+            width: 100%;
+        }
+
+        .download {
+            width: 100%;
+        }
+    }
+    // End china services mobile
+    .people-group {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #main {
+        top: 50%;
+    }
+    // China service for mobile
+    #china-locations {
+        margin-bottom: 40px;
+
+        .location-control li {
+            margin-bottom: 10px;
+        }
+
+        .tab-content {
+            width: 86%;
+            margin: auto;
+
+            iframe {
+                width: 100%;
+                height: 500px;
+            }
+
+            .location-infor {
+                width: 80%;
+            }
+        }
+    }
+
+    .china-our-team-section {
+
+        .people-item {
+            padding: 0px;
+        }
+    }
+
+    .china-banner-company {
+        top: 0px;
+    }
+
+    .china-service-desktop-content {
+        display: none;
+    }
+
+    .china-service-mobile-content {
+        display: block;
+
+        .china-service-desktop-content {
+            top: 0px;
+        }
+    }
+
+    .china-services-credentials {
+        top: 0px;
+    }
+
+    #china-success-stories-section {
+        top: 0px;
+    }
+
+    #china-our-team-section {
+        top: 0px;
+    }
+
+    #china-locations {
+        top: 0px;
+    }
+
+    .where-we-work-master {
+        footer {
+            top: 0px;
+        }
+
+        .banner-howcan {
+            top: 0px;
+        }
+    }
+
+    .front {
+        width: auto;
+    }
+
+
+    .section-content-text {
+        padding-top: 0px;
+        width: 75%;
+        margin-top: 50px;
+
+        .section-break-title {
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+    }
+
+    #aboutImage1 {
+        top: 0px;
+    }
+
+    #where-we-work-main {
+        height: 700px;
+    }
+
+    #china-banner-company {
+        height: 1100px;
+    }
+
+    #where-we-work-child {
+        height: 1200px;
+
+        .section-banner-company .company-box {
+            height: 80%;
+        }
+    }
+
+    .section-banner-company {
+        background-size: cover !important;
+        height: 640px;
+
+        .list-country {
+            display: none;
+        }
+
+        .company-box {
+            height: 80%;
+        }
+    }
+
+    #available-positions-section .job-item .left {
+        width: 90%;
+    }
+
+    #newsroomId {
+        .item-content-news {
+            width: 70%;
+            height: 260px;
+        }
+
+        .slick-slide {
+            margin-left: -5px;
+        }
+    }
+
+    .services-control {
+        position: fixed;
+        bottom: 0px;
+        z-index: 2;
+        left: 5%;
+        display: grid;
+    }
+
+    #investor-relations-banner h2 {
+        left: 15%;
+    }
+
+
+    #rouse-burger {
+        z-index: -1;
+        height: auto;
+
+        #wrap-burger-menu {
+            border: none !important;
+        }
+
+        .container #wrap-burger-content {
+            padding-left: 15px;
+
+            .content .col-right {
+                padding-left: 100px;
+            }
+        }
+    }
+    // hide nav bar Landing page
+    #fp-nav {
+        display: none;
+    }
+
+    .top-banner h2 {
+        top: 30%;
+        left: 10%;
+        font-size: 36px;
+    }
+
+    .profile-service {
+        display: none;
+    }
+
+    .profile-section .profile-banner {
+        max-width: 100%;
+    }
+
+    #logo {
+        top: 0px;
+        left: unset;
+        display: flex;
+        margin: unset;
+        width: 100%;
+        position: relative;
+        padding-left: 15px;
+
+        a {
+            display: block;
+            margin: auto;
+        }
+
+        #touch-menu-trigger {
+            left: unset;
+            width: unset;
+            top: -32px;
+        }
+    }
+
+    .header-master #logo {
+        top: 0px;
+        left: unset;
+        display: flex;
+        flex: 0 0 100%;
+        max-width: 100%;
+        // margin: unset;
+        a {
+            display: block;
+            margin: auto;
+        }
+    }
+
+    .social-icons {
+        margin-top: 0px;
+    }
+
+    header .main-menu {
+        left: 0px;
+        padding-left: 0px;
+        display: none !important;
+    }
+
+    header #logo {
+        margin: auto;
+        left: 0px;
+
+        img {
+            height: auto;
+            width: 100px;
+            margin: auto;
+        }
+
+        #touch-menu-trigger-mobile {
+            left: 0px;
+            top: -10px;
+        }
+    }
+
+    #search-form {
+        position: absolute;
+        left: unset;
+        right: 15px;
+        z-index: 999999;
+    }
+
+    .content-infor-center {
+        width: 500px;
+        margin: auto;
+    }
+
+    .section-break-title {
+        width: 100%;
+        padding: 20px 0px;
+    }
+
+    .carousel-indicators {
+        width: 50px;
+        margin: auto;
+    }
+
+    .news-group .news-banner .news-content-box {
+        width: 80%;
+    }
+
+    footer .menu-footer ul {
+        display: block;
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    .menu_mobile {
+        position: relative;
+        left: 50%;
+    }
+
+    .fas.fa-bars {
+        font-size: 50px;
+    }
+
+    .search {
+        position: absolute;
+        right: 90px;
+    }
+
+    .item-content {
+        width: 350px;
+    }
+    //     .section-banner-company .company-box {
+    //         width: 520px ;
+    //    }
+    .related {
+        padding-left: 50px;
+        padding-top: 20px;
+    }
+
+    .footer-top {
+        .subcribes {
+            margin-top: 25px;
+        }
+    }
+
+    .people-page.top-banner .find-box {
+        bottom: 20px;
+        left: 5%;
+        top: unset;
+        // height: auto;
+        width: 90%;
+
+        .btn-search-banner {
+            margin-top: 80px;
+        }
+    }
+
+    .top-banner .content-box {
+        width: 80%;
+    }
+
+    .group-image-section .item-news {
+        max-width: 100%;
+        // margin: 0px 5px;
+    }
+
+    .new-from-rouse .new-box {
+        height: 350px;
+        padding-left: 0px;
+        padding-right: 0px;
+        max-width: 100%;
+    }
+
+
+    .people-page.top-banner .find-box .btn-search-banner {
+        margin-top: 10px;
+    }
+
+    .people-page.top-banner .find-box .component #btn-search-people {
+        margin-top: 10px;
+    }
+
+    .people-page.top-banner .find-box {
+        height: unset;
+        width: 91%;
+        padding-left: 30px;
+    }
+
+    .image-section img {
+        position: absolute;
+        width: 100%;
+    }
+
+    #china-overview.section-content-text {
+        margin-top: 20px;
+    }
+
+    .section-banner-company {
+        height: auto;
+        padding: 50px;
+        padding-top: 100px;
+    }
+
+    .section-banner-company .company-box {
+        position: static;
+        height: auto;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+    }
+
+    #available-positions-section .job-item .job-title {
+        max-height: 54px;
+    }
+
+    #china-our-team-section {
+        padding: 0%;
+        width: 95%;
+        margin-left: 5%;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .slick-slide.slick-current {
+        img#section1 {
+            bottom: 70px;
+            left: 30%;
+        }
+
+        img#section2 {
+            bottom: 100px;
+            left: 55%;
+        }
+    }
+
+
+    .cvupload {
+        .umbraco-forms-field-wrapper::after {
+            font: 14px/8px Calibri Light;
+            /*top: -45px;           
+            left: 30px;
+            font: 14px/8px Calibri Light;*/
+        }
+
+        .umbraco-forms-field-wrapper {
+            background-size: 18px 18px;
+        }
+    }
+
+
+    #our-team-section .people-item .people-information {
+        .position {
+        }
+
+        .name {
+            max-height: 32px;
+        }
+    }
+
+    .profile-section .profile-banner .infor-profile {
+        height: 240px;
+        left: 0px;
+        right: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+    }
+
+    #theRouseDifference {
+        padding-bottom: 0px;
+        margin-top: 50px;
+    }
+
+    .wrap-home .mobile-landingpage .group-content .item .item-content .title {
+        max-height: initial;
+        font: 16px/19px Calibri Bold;
+    }
+
+    #insights-top.item-content .title {
+        max-height: initial;
+        font: 16px/19px Calibri Bold;
+    }
+
+    #insights-top.item-content .title {
+        max-height: initial;
+        font: 16px/19px Calibri Bold;
+    }
+
+    .item.item-news .item-content.news-content-box .title {
+        max-height: initial;
+        font: 16px/19px Calibri Bold;
+    }
+
+    .item.item-news .item-content.news-content-box .description {
+        height: auto;
+    }
+
+    .item .item-content .description {
+        height: auto;
+        max-height: unset;
+        font: 12px/14px Calibri Regular;
+    }
+
+    .item .item-content .title {
+        font: 16px/20px Calibri Bold;
+    }
+
+    .wrap-home .mobile-landingpage .group-content .item .item-content .description {
+        height: auto;
+        font-size: 12px;
+        font-weight: 300;
+        max-height: initial;
+        overflow: auto;
+        font: 12px/14px Calibri;
+    }
+
+    .item .item-content .author, .item .item-content .time {
+        font: 12px/16px Calibri Light;
+        margin-bottom: 0px;
+    }
+
+    .filter-insight-dropdown .dropdown-toggle {
+        width: 100%;
+    }
+
+
+    .item .item-content {
+        .datetime {
+            font: 12px/16px Calibri Light;
+        }
+
+        .tags-list {
+            font: 12px/16px Calibri Light;
+        }
+
+        .author {
+            font: 12px/16px Calibri Light;
+        }
+    }
+
+    .item .item-content .readmore {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .author-detail .wrap-author-detail .detail {
+        max-width: 65%;
+        height: auto;
+    }
+
+    .author-detail .wrap-author-detail .detail .social-network {
+        margin-top: 5px;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .main-image#section0 {
+        right: -45%;
+    }
+
+    #peopleSearchArea {
+        padding: 0px 15px;
+
+        > div {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+    .section-content-text {
+        padding-top: 0px;
+        width: 80%;
+        margin-top: 50px;
+    }
+
+    #china-locations > .row {
+        width: 100%;
+        margin-left: 0px;
+    }
+    /*Landing page mobile*/
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider {
+        /*Section 0*/
+        .news-item#wrapperSection-0 {
+            .mobile-content-slide-section {
+                .title {
+                    width: 50%;
+                    margin-left: 0px;
+                }
+
+                .description {
+                    width: 50%;
+                    margin-left: 0px;
+                }
+            }
+
+            .main-image {
+                right: -60%;
+            }
+        }
+        /*Section 1*/
+        .news-item#wrapperSection-1 {
+            .mobile-content-slide-section {
+                .title {
+                    width: 50%;
+                    margin-left: 50%;
+                }
+
+                .description {
+                    width: 50%;
+                    margin-left: 50%;
+                }
+
+                .readmore {
+                    margin-left: 50%;
+                }
+            }
+        }
+        /*Section 2*/
+        .news-item#wrapperSection-2 {
+            .mobile-content-slide-section {
+                .title {
+                    width: 50%;
+                    margin-left: 0px;
+                }
+
+                .description {
+                    width: 50%;
+                    margin-left: 0px;
+                }
+            }
+
+            .main-image {
+                right: -60%;
+            }
+        }
+    }
+
+    .blog-network-section .slick-slider .slick-dots {
+        top: 557px;
+    }
+}
+
+@media (max-width: 1014px) {
+    .news-banner-image .news-title {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 989px) {
+    .news-banner-image .news-title {
+        width: 73%;
+    }
+}
+
+@media (max-width: 960px) {
+    .news-banner-image .news-title {
+        width: 75%;
+    }
+}
+
+@media (max-width: 958px) {
+    .news-banner-image .news-title {
+        width: 77%;
+    }
+
+    .group-image-section .item-news:not(:last-child) {
+        margin-bottom: 263px;
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+    .news-banner-image .news-title {
+        width: 86%;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .main-image#section0 {
+        right: -35px;
+    }
+
+    .search-results-page .item.item-profile .profileImage {
+        flex-basis: 20%;
+    }
+
+    #fullpage {
+        .section.active {
+            padding-top: 100px;
+
+            img .main-image {
+                width: 66%;
+                max-width: 80%;
+            }
+        }
+    }
+
+    .top-news-detail-wrap #news-content-section {
+        width: 100%;
+        padding-left: 20px;
+        margin-top: 5px;
+    }
+
+    .news-banner-image {
+        height: 500px;
+
+        .news-title {
+            bottom: 0px;
+            width: 85%;
+        }
+    }
+
+    .top-news-detail-wrap #news-content-section .news-top-infor .infor {
+        margin-top: 0px;
+    }
+
+    .news-title {
+        width: 90%;
+    }
+
+    #our-team-section {
+        #people-search-result {
+            .col-md-6 {
+                padding: 0px;
+            }
+        }
+    }
+
+    .profile-section {
+        .profile-banner {
+            margin-left: 0px;
+        }
+    }
+
+    .thank-you-banner {
+        width: 96%;
+    }
+
+    main.home.home-landing {
+        padding-top: 0px;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .mobile-content-slide-section {
+        padding-left: 25%;
+        padding-right: 0%;
+
+
+        img#section2 {
+            bottom: 100px;
+            left: 30%;
+        }
+    }
+
+    .thank-you-banner .wrap {
+        .content {
+            font: 17px/24px Calibri Regular;
+            text-align: center;
+        }
+
+        .title {
+            font: 28px/19px Calibri Bold;
+            text-align: center;
+        }
+    }
+
+    .cvupload {
+        .umbraco-forms-field-wrapper::after {
+            font: 16px/8px Calibri Light;
+            /*top: -45px;           
+            left: 30px;
+            font: 14px/8px Calibri Light;*/
+        }
+
+        .umbraco-forms-field-wrapper {
+            background-size: 18px 18px;
+        }
+    }
+
+
+    .carousel-indicators {
+        width: auto;
+    }
+
+    #questionCarousel .carousel-indicators li {
+        width: 15px;
+        height: 15px;
+    }
+
+    .support-content-wrap {
+        .content {
+            line-height: 26px;
+            padding-top: 20px;
+            width: 100%;
+        }
+
+        .top-title {
+            font: 28px/10px Calibri Bold;
+        }
+    }
+
+    .content-infor-center {
+        width: 100%;
+        margin: auto;
+    }
+
+    #phoneImageWrap {
+        margin-top: 80px;
+        position: relative;
+        height: 370px;
+
+        #subPhone {
+            position: absolute;
+            top: 0px;
+            // max-height: 131px;
+        }
+
+        #mainPhone {
+            position: absolute;
+            top: 41px;
+            // max-height: 131px;
+        }
+    }
+
+
+    #investor-relations-banner {
+        height: 580px;
+        max-height: 580px;
+
+        h2 {
+            left: 35%;
+            font: 36px/42px Calibri Bold;
+            top: 7.5%;
+        }
+    }
+
+    .wrap-section-lagre {
+        margin-top: 46px;
+    }
+
+    #title-news-result {
+        font: 20px/24px Calibri Bold;
+        text-align: center;
+    }
+
+
+    .investor-wrap {
+        .title-section {
+            padding-left: 0px;
+            border-bottom: none;
+            margin-bottom: 47px;
+            border-bottom: 1px solid #939393;
+            font: 20px/24px Calibri Bold;
+            text-align: center;
+            padding-bottom: 8px;
+        }
+    }
+
+    #investor-content {
+        width: 80%;
+        margin: auto;
+        margin-bottom: 88px;
+
+        .title-section {
+            text-align: left;
+            border: none;
+            margin-bottom: 20px;
+        }
+    }
+
+    #newsRoomId {
+        .item-content-news {
+            width: 91%;
+            left: 5%;
+
+            .title {
+                font: 20px/24px Calibri Bold;
+                margin-bottom: 20px;
+            }
+
+            .author {
+                margin-bottom: 4px;
+            }
+
+            .readmore {
+                color: #008197;
+                font: 10px/15px Calibri Bold;
+            }
+        }
+    }
+
+    .section-break-title {
+        // width: 80%;
+        // padding: 20px 0px;
+        // margin-bottom: 0px;
+    }
+
+    .invester-relation {
+        margin-bottom: 0px;
+    }
+
+    #financial-data-section {
+        padding: 0px 36px;
+
+        .year-list {
+            li {
+                font: 20px/23px Calibri Bold;
+            }
+        }
+
+        .financial-data-content {
+            margin-top: 40px;
+            font: 20px/23px Calibri Regular;
+        }
+    }
+
+
+    #people-top-section .content-center {
+        width: 100%;
+        padding: 20px 0px;
+        padding-bottom: 0px;
+    }
+
+    #ourCultureSection {
+        .our-culture-content {
+            width: 100%;
+        }
+    }
+
+    #our-team-section {
+        border-top: 1px solid #939393;
+        margin-bottom: 0px;
+        padding: 0px;
+        width: 80%;
+    }
+
+    .people-filter-controller select {
+        border: none;
+        width: 60%;
+    }
+
+    #search-section .searchresults {
+        width: 80%;
+        margin: auto;
+
+        h3 {
+            font: 24px/26px Calibri Regular;
+        }
+
+        ul {
+            padding-left: 0px;
+
+            li {
+                h3 {
+                    a {
+                        font: 16px/21px Calibri Regular;
+                    }
+                }
+
+                height: 26px;
+                overflow: hidden;
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    .section-content-text {
+        /*padding-top: 46px;*/
+        width: 80%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #mobilde-news-rouse-webinars .new-box .content-box {
+
+        .title {
+            font-size: 20px;
+            margin-top: 7px;
+            line-height: 21px;
+            font: 16px/21px Calibri Light;
+        }
+
+        .author {
+            margin-bottom: 0px;
+        }
+    }
+
+    .question-content {
+        width: 40%;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .mobile-content-slide-section {
+        padding-left: 10px;
+    }
+
+    .people-page.top-banner .find-box .component #btn-search-people {
+        margin-top: 0;
+    }
+
+    .people-page.top-banner .find-box .btn-search-banner {
+        margin-top: 80px;
+    }
+
+
+    .people-page.top-banner .find-box {
+        height: 394px;
+        width: 91%;
+        padding-left: 30px;
+    }
+
+    .image-section img {
+        height: 100%;
+        max-width: fit-content;
+        transform: translateY(-30px) translateX(0px) scale(1.1);
+        width: auto;
+    }
+
+    #where-we-work-main {
+        height: 490px;
+    }
+
+    .section-banner-company .company-box {
+        top: 10%;
+        left: 5%;
+    }
+
+    #our-team-section .people-item .people-information {
+        .position {
+            font: 15px/18px Calibri Regular;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            height: auto;
+            max-height: 40px;
+            overflow: hidden;
+        }
+
+        .name {
+            max-height: 32px;
+        }
+    }
+
+    .contact-us-section.follow-us-section h3 {
+        font-size: 28px;
+        line-height: 33px;
+    }
+
+    .contact-us-section.follow-us-section {
+        padding: 70px 0;
+    }
+
+    .contact-us-section.follow-us-section .social-icons a {
+        margin: 0 7px;
+    }
+
+    #where-we-work-main {
+        height: auto;
+        padding: 30px;
+    }
+
+    .section-banner-company .company-box {
+        position: static;
+        margin: 0;
+        padding: 20px;
+        opacity: 1;
+        background: rgba(255,255,255,0.95);
+    }
+
+    #peopleSearchArea {
+        padding: 0 12px;
+    }
+
+    #peopleSearchArea > div {
+        margin-bottom: 30px;
+    }
+
+    #our-team-section {
+        width: calc(100% - 54px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #our-team-section .col-md-6, #our-team-section .col-lg-3 {
+        padding: 0 0px;
+    }
+
+    .job-detail-content {
+        padding: 0px 10px;
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    .banner-howcan .title {
+        font-size: 19px;
+        line-height: 24px;
+    }
+
+    #mobile-landind-top-slider .item {
+        height: calc(100vh - 210px);
+    }
+
+    #mobile-landind-top-slider .item .section-content-box {
+        height: 100%;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .mobile-content-slide-section {
+        height: 100%;
+        position: relative;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .main-image {
+        left: initial;
+        margin-left: 0;
+        position: absolute;
+        right: -35px;
+        bottom: 0;
+        top: initial;
+        max-width: 70%;
+    }
+
+    #mobile-landind-top-slider .slick-dots {
+        bottom: 30px !important;
+    }
+
+    .mobile-landingpage {
+        margin-top: -30px;
+    }
+
+    .umbraco-forms-rouse-talk-consultant .umbraco-forms-caption {
+        font: 26px/40px Calibri Bold !important;
+    }
+
+    #our-team-section {
+        margin-bottom: 25px;
+    }
+
+    .top-banner .content-box .title {
+        letter-spacing: 0px;
+        color: rgb(0, 0, 0);
+        font: 28px / 40px Calibri Bold;
+    }
+
+    .author-detail .wrap-author-detail {
+        .author-name {
+            font-size: 18px;
+
+            .people-name {
+                display: block !important;
+            }
+
+            .symbol, .firm-name {
+                display: none;
+            }
+        }
+    }
+
+    .item .item-content .author {
+        max-height: 40px;
+        overflow: hidden;
+    }
+
+    #where-we-work-country.one-background {
+        background-attachment: fixed !important;
+    }
+
+    #where-we-work-country.section-banner-company .company-box .details .company-content h3 {
+        font-size: 24px;
+        font: 20px/21px Calibri Bold;
+        margin-bottom: 25px;
+    }
+
+    .item.item-news {
+        background-size: cover;
+    }
+
+    #our-team-section .col-md-6, #our-team-section .col-lg-3 {
+        padding: 0 0px;
+    }
+
+    .wrap-content-page {
+        width: 100%;
+    }
+
+    .section-content-text .content-bottom {
+        width: 100%;
+
+        .content-left, .content-right {
+            padding-right: 0px;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .service-section-content {
+    }
+
+    /*Landing page mobile*/
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider {
+        /*Section 0*/
+        .news-item#wrapperSection-0 {
+            .mobile-content-slide-section {
+                .title {
+                    width: 70%;
+                    margin-left: 0px;
+                }
+
+                .description {
+                    width: 70%;
+                    margin-left: 0px;
+                }
+            }
+
+            .main-image {
+                right: 0%;
+            }
+        }
+        /*Section 1*/
+        .news-item#wrapperSection-1 {
+            .mobile-content-slide-section {
+                .title {
+                    width: 70%;
+                    margin-left: 30%;
+                }
+
+                .description {
+                    width: 70%;
+                    margin-left: 30%;
+                }
+
+                .readmore {
+                    margin-left: 30%;
+                }
+            }
+
+            .main-image {
+                right: 30%;
+            }
+        }
+        /*Section 2*/
+        .news-item#wrapperSection-2 {
+            .mobile-content-slide-section {
+                .title {
+                    width: 60%;
+                    margin-left: 0px;
+                }
+
+                .description {
+                    width: 70%;
+                    margin-left: 0px;
+                }
+            }
+
+            .main-image {
+                right: -5%;
+            }
+        }
+    }
+
+    .news-banner-image .news-title {
+        bottom: 0px;
+        width: 94%;
+    }
+}
+
+@media only screen and (max-width: 735px) {
+    .news-banner-image .news-title {
+        bottom: 0px;
+        width: 74%;
+    }
+}
+
+@media (max-width: 694px) {
+    .news-banner-image .news-title {
+        bottom: 0px;
+        width: 79%;
+    }
+
+    .item.item-news {
+      //  margin-bottom: 225px;
+    }
+}
+
+@media (max-width: 640px) {
+
+    /*Landing page mobile*/
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider {
+        /*Section 0*/
+        .news-item#wrapperSection-0 {
+            .mobile-content-slide-section {
+                .title {
+                    width: 100%;
+                    margin-left: 0px;
+                }
+
+                .description {
+                    width: 100%;
+                    margin-left: 0px;
+                }
+            }
+
+            .main-image {
+                right: 0%;
+            }
+        }
+        /*Section 1*/
+        .news-item#wrapperSection-1 {
+            .mobile-content-slide-section {
+                .title {
+                    width: 100%;
+                    margin-left: 0%;
+                }
+
+                .description {
+                    width: 100%;
+                    margin-left: 0%;
+                }
+
+                .readmore {
+                    margin-left: 0%;
+                }
+            }
+
+            .main-image {
+                right: 0%;
+            }
+        }
+        /*Section 2*/
+        .news-item#wrapperSection-2 {
+            .mobile-content-slide-section {
+                .title {
+                    width: 100%;
+                    margin-left: 0px;
+                }
+
+                .description {
+                    width: 100%;
+                    margin-left: 0px;
+                }
+            }
+
+            .main-image {
+                right: -12%;
+            }
+        }
+    }
+
+
+
+    .thank-you-banner {
+        width: 100%;
+    }
+
+    .question-content {
+        width: 50%;
+    }
+
+    .search-input {
+        max-width: 210px;
+    }
+
+    .news-title {
+        width: 85%;
+    }
+}
+
+@media (max-width: 575px) {
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .mobile-content-slide-section {
+        .title {
+            width: 100%;
+            margin-left: 0px;
+        }
+
+        .description {
+            width: 100%;
+            margin-left: 0px;
+        }
+    }
+
+
+    .top-news-detail-wrap #news-content-section {
+        .row {
+            > div {
+                margin-bottom: 15px;
+            }
+        }
+
+        width: 100%;
+        padding-left: 20px;
+        margin-top: 5px;
+    }
+
+    #search-form {
+        right: 15px;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .news-banner-image .news-title {
+        bottom: 0px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .location-group-control {
+        width: 100%;
+    }
+
+    .search-results-page .item.item-profile .profileImage {
+        flex-basis: 40%;
+    }
+
+    #mobilde-news-rouse-webinars {
+        .content-box {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+    }
+
+    #careerBannerId.people-page.top-banner .find-box {
+        width: 90%;
+        left: 5%;
+    }
+
+    .section-content-text {
+        width: 95%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #news-content-section .news-top-infor img {
+        width: 70px;
+        height: 70px;
+    }
+
+    #news-content-section .author-phone, .author-email {
+        font: 12px/14px Calibri Light;
+    }
+
+    #news-content-section .news-top-infor .infor .social-network ul li {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .news-banner-image .news-title {
+        bottom: 0px;
+        width: 85%;
+    }
+
+    .supportPageWraper #legalWrapperId.support-content-wrap .supportPageList ul {
+        padding-left: 10px;
+    }
+
+    .supportPageWraper #legalWrapperId.support-content-wrap .supportPageList .secondary ul li a {
+        font-size: 15px;
+    }
+
+
+    .profile-section .profile-detail {
+        margin-top: 50px;
+    }
+
+    #our-team-section {
+        border: none;
+    }
+
+    .top-banner .content-box .title {
+        letter-spacing: 0px;
+        color: black;
+        font: 22px/40px Calibri Bold;
+    }
+
+    #our-team-section #people-search-result .col-md-6 {
+        padding: 0px 25px;
+    }
+
+    #our-team-section .col-md-6, #our-team-section .col-lg-3 {
+        padding: 0 0px;
+    }
+
+    #china-locations .location-control {
+        width: 45%;
+    }
+
+    #id-news-detail .news-content .content table {
+        width: 100% !important;
+        word-break: break-word;
+        font-size: 14px;
+    }
+
+    #available-positions-section .job-item .job-location {
+        word-break: break-word;
+        height: auto;
+        max-height: 30px;
+        overflow: hidden;
+    }
+
+    .thank-you-banner {
+        margin-left: -15px;
+    }
+
+    .cvupload {
+        .umbraco-forms-field-wrapper::after {
+            display: none;
+        }
+
+        .umbraco-forms-field-wrapper {
+            background-size: 18px 18px;
+            background-position-x: 0%;
+            background-position: center;
+        }
+    }
+
+
+    .profile-section .profile-banner {
+        height: 400px;
+    }
+
+    #china-success-stories-section .row {
+        width: 100%;
+        padding-left: 5%;
+    }
+
+    #phoneImageWrap {
+        margin-top: 80px;
+        position: relative;
+        height: 200px;
+    }
+
+    #investor-relations-banner {
+        height: 580px;
+        max-height: 580px;
+
+        h2 {
+            left: 10%;
+            font: 36px/42px Calibri Bold;
+            top: 7.5%;
+        }
+    }
+
+    .people-filter-controller select {
+        border: none;
+        width: 90%;
+    }
+
+    .new-from-rouse .new-box .description {
+        margin-top: 22px;
+    }
+
+    .service-top-image img {
+        -webkit-transform: scale(2);
+        transform: scale(2);
+    }
+
+    .question-content {
+        width: 60%;
+    }
+
+    .search-input {
+        height: 35px;
+        top: -9px;
+        width: 250px;
+    }
+
+    .section-banner-company .company-box {
+        left: 10px;
+        width: 100%;
+    }
+
+    #mad-banner .content-box {
+        right: 100px;
+        left: auto;
+        background-color: #FFF;
+        width: 90%;
+        left: 5%;
+
+        .title {
+            font: 18px/24px Calibri Bold;
+        }
+    }
+
+    .top-banner .content-box {
+        left: 5% !important;
+        width: 90%;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .slick-slide.slick-current {
+        img#section1 {
+            bottom: 50px;
+            left: 30%;
+        }
+
+        img#section2 {
+            bottom: 40px;
+            left: 30%;
+        }
+    }
+
+
+    .top-banner .content-box .title {
+        letter-spacing: 0px;
+        color: black;
+        font: 18px/24px Calibri Bold;
+    }
+
+    #where-we-work-country.section-banner-company .country-top img {
+        right: 0px;
+        max-height: 15px;
+        position: initial;
+        margin-top: 5px;
+        margin-left: 10px;
+        width: fit-content;
+    }
+
+    .news-title {
+        min-height: 195px;
+    }
+}
+
+@media (max-width: 375px) {
+    .search-results-page .item.item-profile .profileImage {
+        flex-basis: 40%;
+
+        img {
+            height: 100px;
+            width: 100px;
+        }
+    }
+
+    #filterInsightResult {
+        padding: 0px 10px;
+    }
+
+    .support-content-wrap .content {
+        font-size: 24px;
+        line-height: 33px;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+    }
+
+    main.home.home-landing {
+        padding-top: 0px;
+    }
+
+    #mobile-landind-top-slider .news-item .main-image {
+        margin-top: 15px;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .slick-slide.slick-current img#section1 {
+        margin-top: 15px;
+    }
+
+    #search-results-page .search-results-page .item .item-title {
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    .service-mobile-section .service-content {
+        padding: 0px 36px;
+        margin-top: 0px;
+    }
+
+    .search-input {
+        height: 35px;
+        top: -9px;
+        width: 250px;
+    }
+
+    .news-group .news-banner {
+        height: 500px;
+    }
+
+    .group-image-section .item-news {
+        height: 500px;
+        margin-bottom: 40px;
+    }
+
+    // .group-image-section .item .item-content-news {
+    //     top: 100px;
+    //     left: 8%;
+    // }
+
+    #insights-top.item-content {
+        width: 91%;
+        // left: 10%;
+    }
+
+    #about-image-top {
+        height: auto;
+    }
+
+    .umbraco-forms-field {
+        width: 99%;
+    }
+
+    .umbraco-forms-page {
+        width: 100%;
+        padding: 0px 15px;
+    }
+
+    .subscriber-form-wrap .umbraco-forms-field-wrapper input.text {
+        width: 100%;
+    }
+
+    .subscriber-form-wrap #submit-subscribe {
+        width: 100%;
+    }
+
+    .item .item-content {
+        width: 90%;
+        left: 5%;
+        height: 280px;
+    }
+
+    .lastest-ip-news .item-content .title {
+        height: 32px;
+        overflow: hidden;
+        font: 32px/38px Calibri Bold;
+    }
+
+    .top-banner {
+        .content-box {
+            width: 90%;
+            left: 10%;
+        }
+
+        .content-box-right {
+            /*left: 2% !important;*/
+        }
+    }
+
+
+    #section3 .careers .item-content {
+        width: 85%;
+        left: 7%;
+    }
+
+    .banner-howcan {
+        .title {
+            // font: Bold 30px/62px Calibri;
+        }
+
+        .description {
+            font: 16px/28px Calibri;
+        }
+    }
+
+    .global-reach-section {
+        .wrap-content-page {
+            width: 80%;
+        }
+
+        .list-country {
+            width: 100%;
+            margin-left: 0%;
+            margin-top: 50px;
+
+            ul {
+                column-count: 2;
+            }
+        }
+    }
+
+    #section0 {
+        img.main-image {
+            top: 70%;
+        }
+
+        .title {
+            font-size: 36px;
+        }
+    }
+
+    #section1 {
+        img.main-image {
+            margin-left: -5%;
+            margin-top: 10%;
+            top: 70%;
+        }
+
+        .title {
+            font-size: 36px;
+        }
+    }
+
+    #section2 {
+        .title {
+            font-size: 36px;
+        }
+
+        img.main-image {
+            top: 35%;
+            width: 60%;
+        }
+
+        .box-right {
+            position: relative;
+            top: -110px;
+        }
+
+        .section-content {
+            height: -webkit-fill-available;
+
+            .detail-box .content-slide-section {
+                top: -30%;
+                left: 6%;
+                position: absolute;
+                width: 90%;
+            }
+        }
+    }
+
+
+    .section.active .box-left {
+        position: relative;
+        top: -90px;
+    }
+
+
+
+    .top-banner h2 {
+        top: 30%;
+        left: 5%;
+    }
+
+
+
+    footer {
+        .subcribes {
+            width: 100%;
+
+            .title {
+                font-size: 16px;
+                line-height: 21px;
+            }
+
+            p {
+                margin-top: 15px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .umbraco-forms-form {
+            margin-top: 0;
+            padding: 0;
+        }
+
+        .umbraco-forms-page {
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .subscribe-customer-footer .row #submit-subscribe {
+            position: static;
+            margin-top: 15px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+            max-width: 100%;
+        }
+    }
+
+    .top-banner .content-box {
+        left: 2.5%;
+    }
+
+    .wrap-content-page h2 {
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .wrap-content-page {
+        font-size: 19px;
+        line-height: 24px;
+    }
+
+    .profile-section .profile-banner .infor-profile {
+        width: 80%;
+        /*padding: 40px 40px 23px 40px;*/
+    }
+
+    .wrap-home .mobile-landingpage .group-content .item {
+        margin: 0;
+    }
+
+    .wrap-home .mobile-landingpage #careers .item-content {
+        width: 80%;
+        left: 10%;
+    }
+
+    footer .subscribe-customer-footer .row #submit-subscribe {
+        border-radius: 10px;
+    }
+
+    #mobile-landind-top-slider .item {
+        height: calc(100vh - 110px);
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .main-image {
+        max-width: 100%;
+    }
+
+    #mobile-landind-top-slider .slick-dots {
+        bottom: 15px !important;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item #section0.main-image {
+        bottom: 70px;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item #section1.main-image {
+        max-width: 60%;
+        right: 40px;
+        bottom: 50px;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item #section2.main-image {
+        max-width: 75%;
+        bottom: 45px;
+    }
+
+    #where-we-work-country.section-banner-company {
+        height: auto;
+        padding: 15px;
+        padding-top: 100px;
+
+        .company-box .details {
+            border-right: none;
+        }
+
+        .country-top img {
+            right: 0px;
+            max-height: 12px;
+            position: initial;
+            margin-top: 5px;
+            margin-left: 10px;
+            width: fit-content;
+        }
+    }
+
+    .umbraco-forms-container .umbraco-forms-label {
+        font: 16px/19px Calibri Light;
+    }
+
+    .umbraco-forms-rouse-talk-consultant {
+        .checkboxlist {
+            width: 125%;
+            margin-left: -8%;
+        }
+
+        label {
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+
+    #our-team-section, #china-our-team-section {
+        width: 95%;
+        left: 2%;
+    }
+
+    .global-reach-section .list-country ul li {
+        list-style-type: none;
+        margin-bottom: 50px;
+        font: 20px/20px Calibri;
+    }
+
+    .top-banner .content-box .title {
+        letter-spacing: 0px;
+        color: black;
+        font: 18px/24px Calibri Bold;
+    }
+
+    #insights-top.item-content .title {
+        font: 18px/23px Calibri Bold;
+    }
+
+    .item.item-news .item-content.news-content-box .title {
+        margin-bottom: 10px;
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .subscribe-customer-footer .row #submit-subscribe {
+        top: -16px;
+    }
+
+    #id-news-detail .news-content .content {
+        a {
+            word-break: break-all;
+        }
+
+        table {
+            width: 100%;
+            word-break: break-word;
+            font-size: 14px;
+        }
+    }
+
+    #mad-banner .content-box {
+        right: 100px;
+        left: auto;
+        background-color: #FFF;
+        width: 90%;
+        left: 5%;
+    }
+
+    #where-we-work-country.one-background {
+        background-size: auto !important;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .mobile-content-slide-section .title {
+        font: 26px/32px Calibri Bold;
+    }
+
+    #insights-top.item-content .title {
+        max-height: initial;
+        font: 16px/16px Calibri Bold;
+    }
+
+    .item.item-news .item-content.news-content-box .title {
+        max-height: initial;
+        font: 16px/16px Calibri Bold;
+    }
+
+
+
+    .item.item-news .item-content.news-content-box {
+        .author {
+            font: 12px/14px Calibri Light;
+        }
+
+        .datetime {
+            font: 12px/14px Calibri Light;
+        }
+    }
+
+    .blog-network-section .slick-slider .slick-dots {
+        top: 557px;
+    }
+}
+
+@media (max-width: 360px) {
+    .search-results-page .item.item-profile .profileImage {
+        flex-basis: 50%;
+    }
+
+    .news-banner-image .news-title {
+        width: 90%;
+    }
+
+    .item.item-news .item-content.news-content-box .title {
+        margin-bottom: 10px;
+        max-height: initial;
+        font: 16px/16px Calibri Bold;
+    }
+
+    #our-team-section .people-item .people-information {
+        width: 90%;
+
+        .box {
+            width: 80%;
+            margin: auto;
+        }
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item .mobile-content-slide-section .title {
+        font: 26px/32px Calibri Bold;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item #section1.main-image {
+        max-width: 45%;
+        right: 40px;
+        top: 310px;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .news-item #section2.main-image {
+        max-width: 65%;
+        margin-bottom: 90px;
+    }
+
+    .wrap-home .mobile-landingpage #mobile-landind-top-slider .slick-slide.slick-current img#section2 {
+        bottom: -30px;
+        left: 35%;
+    }
+
+    .umbraco-forms-rouse-talk-consultant .checkbox-wrap {
+        margin-right: 0px;
+        width: 50%;
+    }
+
+    #where-we-work-main {
+        height: 885px;
+
+        .company-box {
+            height: 80%;
+        }
+    }
+
+    footer.container .social-icons a {
+        border: 1px solid black;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        border-radius: 50%;
+        color: black;
+        font-size: 24px;
+        line-height: 42px;
+        margin-right: 15px;
+    }
+
+    .top-banner .content-box {
+        width: 95%;
+        left: 3%;
+    }
+
+    #mad-banner .content-box {
+        right: auto;
+        left: 3%;
+    }
+
+    .section-banner-company {
+        // height: 1200px;
+        background-size: cover;
+
+        .company-box {
+            height: 95%;
+        }
+    }
+
+    .section-banner-company.china-banner-company {
+        height: 1500px;
+        background-size: cover;
+
+        .company-box {
+            height: 85%;
+            top: 10%;
+        }
+    }
+
+    .top-banner h2 {
+        top: 30%;
+        left: 0%;
+    }
+
+    #where-we-work-main .company-box {
+        height: 100%;
+        width: 100%;
+    }
+
+    footer .subscribe-customer-footer .row #submit-subscribe {
+        margin-top: 15px;
+    }
+
+    .banner-howcan .title {
+        text-align: center;
+    }
+
+    .top-banner .content-box {
+        width: 90%;
+    }
+}
+
+@media (max-width: 320px) {
+}

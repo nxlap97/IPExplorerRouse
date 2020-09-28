@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	var howWeCanContent =Umbraco.Content(Guid.Parse("89cda73a-5d7f-485d-ba47-8cf471e1678b"));
+	var title = howWeCanContent.Value("howWeCanTitle");
+	var description = howWeCanContent.Value("howWeCanDescription");
+	
+
+    
+    
+}
+<div class="banner-howcan">
+	<h4 class="title">@title</h4>
+	<div class="description">@description</div>
+</div>
+
+
+
+
+

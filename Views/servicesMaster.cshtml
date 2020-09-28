@@ -1,0 +1,117 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = null;
+	var seo = Model.Value("sEOChecker") as SEOChecker.MVC.MetaData;
+}
+@* the fun starts here *@
+ <!DOCTYPE html>
+    <!-- saved from url=(0044)https://www.pixxelfactory.net/jInvertScroll/ -->
+    <html>
+    <head>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K5RGSNM');</script>
+    <!-- End Google Tag Manager -->
+    
+        <meta charset="utf-8">
+        <title>Rouse - @Model.Name</title>
+        
+        @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Robots)){
+            <meta name="robots" content="@seo.Robots">
+        }
+        @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Title)){
+                <meta name="title" content="@seo.Title">
+        }
+        @if (@seo != null && !string.IsNullOrWhiteSpace(@seo.Description)){
+                <meta name="description" content="@seo.Description">
+        }
+
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="shortcut icon"  type="image/png" href="/media/alkhthku/favicon.ico">
+        <link rel="stylesheet" href="../../css/fontawesome.all.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link href="../css/page_style.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://kenwheeler.github.io/slick/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+        <link rel="stylesheet" href="../css/jInvertScroll.css">
+        <link href="../../css/page_style.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/services_style.css">
+        <link href="../css/responsive.css" rel="stylesheet">
+   </head>
+
+
+  <body>
+      <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5RGSNM"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+           @Html.Partial("header")
+                
+           @RenderBody()
+
+@Html.Partial("CookiesBanner")
+ </body>
+  @Html.Partial("CookiesBanner")
+<script type="text/javascript" src="../scripts/jquery-v1.min.js"></script>
+<script type="text/javascript" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
+<script src="../scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="../scripts//jquery.jInvertScroll.js"></script>
+<script src="../../scripts/app.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+   function checkPosition(idName) {
+            let element = document.getElementById(idName);
+            let position = element.getBoundingClientRect().left + window.scrollX
+            console.log(position);
+            if (position >= 0 && position <= 1500) {
+                console.log('action')
+            } else {
+                console.log('Khong action');
+            }
+        }
+         function goto(url)
+            {
+            window.location=url;
+
+            }
+          var windowWidth = $(window).width();  
+          if (windowWidth > 1024) {
+               (function ($) {
+            $.jInvertScroll(['.scroll'], {
+
+                onScroll: function (percent) {
+
+                    $(".services-control button").removeClass('active');
+                    if (percent < 0.3) {
+                        $("#btnIPConsulting").addClass('active');
+                    } else if (percent > 0.3 && percent < 0.6) {
+                         $("#btnIPPortfolios").addClass('active');
+                    } else if (percent > 0.6 && percent < 0.8){
+                         $("#btnEnforcement").addClass('active');
+                    } else if (percent > 0.8) {
+                         $("#btnIPLegal").addClass('active');
+                    }
+                    console.log(percent);
+
+                  
+                }
+
+            });
+        }(jQuery));
+
+        $('html, body').animate({ scrollTop: 0 }, 20);
+       
+          } 
+    
+    
+ 
+    
+  });
+</script>
+
+</html>

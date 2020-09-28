@@ -1,0 +1,19 @@
+﻿<div ng-controller="cmsimport.multiStringController">
+
+  <div>
+    <div ng-repeat="item in model.value">
+      <div>
+        <input type="text" ng-model="item" required />
+        <a ng-click="removeItem(model.alias,item)"> <i class="icon-trash"></i></a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <input overlay-submit-on-enter="false" name="newItem" type="text" ng-model="newItem" val-highlight="{{hasError}}" />
+    </div>
+    <div>
+      <a class="add-link" ng-click="addItem(model.alias,newItem)"><localize key="general_add">Add</localize></a>
+    </div>
+  </div>
+</div>

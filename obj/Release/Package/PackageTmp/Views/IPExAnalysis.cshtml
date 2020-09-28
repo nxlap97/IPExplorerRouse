@@ -1,0 +1,122 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.IPexAnalysis>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Rousesite_Umbraco.Utilities;
+@using System.Configuration;
+@{
+    Layout = "IPExMaster.cshtml";
+    ViewBag.Title = "Analysis";
+    var user = Members.GetCurrentMember();
+    if (user == null)
+    {
+        Response.Redirect("/login");
+    }
+}
+<div class="container-desktop">
+    <div class="d-flex">
+        <div class="container-custom content-chart">
+            <div class="d-flex flex-column align-items-center w-100">
+                <header class="sticky-top w-100">
+                    <div class="m-auto">
+                        <div class="d-flex align-items-end position-relative logo">
+                            <div>
+                                <img width="50" src="~/Assets/IPEx/images/logo.svg">
+                            </div>
+                            <div class="nametag">
+                                <div>@Model.Value("IPEx_AnalysisHeaderTitle")</div>
+                                <div></div>
+                            </div>
+                            <div class="progress position-absolute w-100">
+                                <div class="progress-bar progress-bar-custom" role="progressbar"
+                                     style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <wrapper class="overflow-auto h-100">
+                    <div class="content">
+                        @Model.Value("IPEx_AnalysisContent")
+                        <div class="m-auto" style="max-width: 243px;">
+                            <canvas id="myChart" width="400"
+                                    height="400"></canvas>
+                        </div>
+                        <div class="d-flex justify-content-between btn-group-footer">
+                            <a class="btn btn-custom btn-custom-outline" href="@Model.Value("IPEx_AnalysisBtnPreviousLink")">@Model.Value("IPEx_AnalysisBtnPreviousTitle")</a>
+                            <a class="btn btn-custom btn-Allports" href="@Model.Value("IPEx_AnalysisBtnContinueLink")">@Model.Value("IPEx_AnalysisBtnContinueTitle")</a>
+                        </div>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-index">
+        <div class="contact-name">Contact Us</div>
+        <div class="contact-mail d-flex align-items-center">
+            <i class="far fa-envelope mr-2"></i>ipexplorer@rouse.com
+        </div>
+    </footer>
+</div>
+
+
+@section Scripts{
+    <script>
+        var dataChart = $.parseJSON('@(Html.Raw(user?.GetDataChartFromUser()))');
+        var backgroundColor = ["rgba(78, 129, 189, 1)", "rgba(192, 80, 77, 1)", "rgba(155, 186, 88, 1)", "rgba(128, 100, 161, 1)", "rgba(75, 171, 198, 1)", "rgba(247, 150, 69, 1)", "#000080","#008080"];
+        var labelName = [];
+        var lstData = [];
+        var links = [];
+        var total = 0;
+        $.each(dataChart, function (index, mthis) {
+            total += parseInt(mthis.Value);
+            lstData.push(mthis.Value);
+            labelName.push(mthis.Name);
+            links.push(mthis.Link)
+        });
+        var data = {
+            labels: labelName,
+            datasets: [{
+                label: '# of Votes',
+                data: lstData,
+                backgroundColor: backgroundColor,
+                borderColor: ["#FFFFFF"],
+                borderWidth: 1
+            }],
+            links: links
+        };
+        var options = {
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        var value = data.datasets[0].data[tooltipItem.index];
+                        var label = data.labels[tooltipItem.index];
+                        return label + ': ' + parseInt((value / total)*100) + ' %';
+                    }
+                }
+            }
+        }
+        var ctx = document.getElementById('myChart');
+        var ctx = ctx.getContext('2d');
+       // var ctx = $('#myChart');
+        //var ctx = 'myChart';
+
+
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: options,
+            });
+            $('#myChart').click(function (e) {
+                var slice = myPieChart.getElementAtEvent(e);
+                if (!slice.length) return;
+                var index = slice[0]._index;
+                window.open(slice[0]._chart.config.data.links[index]);
+            });
+
+        });
+
+
+    </script>
+
+}

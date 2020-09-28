@@ -1,0 +1,103 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "IPExMaster.cshtml";
+    ViewBag.Title = "Registered";
+}
+<style>
+    @@media (min-width: 320px) {
+        .container-custom .content {
+            font-family: "Raleway";
+            font-size: 14px;
+            line-height: 16px;
+            height: 225px;
+        }
+
+        .content-registered .title {
+            margin-bottom: 50px;
+        }
+
+        .container-custom .content p {
+            font-family: "Raleway";
+            font-size: 14px;
+            line-height: 16px;
+        }
+    }
+</style>
+
+<div class="container-desktop">
+    <div class="d-flex">
+        <div class="sidebar-right">
+            <div class="logo">
+                <img width="100" src="~/Assets/IPEx/images/logo.svg">
+            </div>
+            <div class="list-partner text-center">
+                <div>Created and Powered by</div>
+                <ul class="list-group list-group-vertical">
+                    <li class="list-group-item">
+                        <img class="img-fluid" width="117"
+                             src="~/Assets/IPEx/images/ip-rouse.png" />
+                    </li>
+                    <li class="list-group-item">
+                        <img class="img-fluid" width="111"
+                             src="~/Assets/IPEx/images/inngotDesktop.svg" />
+                    </li>
+                    <li class="list-group-item">
+                        <img class="img-fluid" width="182"
+                             src="~/Assets/IPEx/images/fsipDesktop.svg" />
+                    </li>
+                    <li class="list-group-item">
+                        <img class="img-fluid" width="210"
+                             src="~/Assets/IPEx/images/UKGovDesktop.svg" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-custom content-index">
+            <div class="d-flex flex-column align-items-center w-100">
+                <div class="language ml-auto">
+                    <i class="fas fa-language"></i>
+                    <span>English</span>
+                </div>
+                <wrapper>
+                    <div class="text-center">
+                        <div class="logo">
+                            <img width="100" src="~/Assets/IPEx/images/logo.svg">
+                        </div>
+                        <div class="title text-left">@Model.Value("IPEx_RegisteredTitle")</div>
+                        <div style="margin-bottom:50px;"></div>
+                        <div class="content text-left">
+                            @Model.Value("IPEx_RegisteredContent")
+                        </div>
+                        <form class="needs-validation" novalidate>
+                            <div class="action action-signIn">
+                                <a class="btn btn-custom w-100 btn-Allports text-white btn-login" href="@Model.Value("IPEx_RegisteredBtnLoginLink")">
+                                    @Model.Value("IPEx_RegisteredBtnLoginTitle")
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-index">
+        <div class="contact-name">Contact Us</div>
+        <div class="contact-mail d-flex align-items-center"><i class="far fa-envelope mr-2"></i>ipexplorer@rouse.com</div>
+    </footer>
+</div>
+
+
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(document).on('keypress', function (e) {
+                if (e.which == 13) {
+                    $('.btn-login').click();
+                }
+            });
+        });
+    </script>
+}

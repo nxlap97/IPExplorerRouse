@@ -1,0 +1,9 @@
+{
+  "id": "860a8c74-0b31-42d7-a3ac-e01b92712782",
+  "name": "Services",
+  "settings": {
+    "RootNode": "1241",
+    "DocType": "ServiceIndividual"
+  },
+  "fieldPreValueSourceTypeId": "de996870-c45a-11de-8a39-0800200c9a66"
+}

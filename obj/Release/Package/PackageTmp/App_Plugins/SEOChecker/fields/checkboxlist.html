@@ -1,0 +1,7 @@
+﻿<div>
+  <div ng-repeat="item in model.value.items">
+    <label>
+      <input type="checkbox" ng-model="item.selected" ng-checked="item.selected" /> {{item.value}}
+    </label>
+  </div>
+</div>

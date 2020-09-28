@@ -1,0 +1,240 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = null;
+}
+
+<style>
+    .table-fixed {
+      width: 100%;
+      background-color: #f3f3f3;
+    }
+    .table-fixed tbody {
+      height: 400px;
+      overflow-y: auto;
+      width: 100%;
+    }
+    .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+      //display: block;
+    }
+    .table-fixed tbody td {
+      float: left;
+    }
+    .table-fixed thead tr th {
+      float: left;
+      background-color: #f39c12;
+      border-color: #e67e22;
+    }
+</style>
+
+<div class="section-break-title break-small break-title-in-wrap">
+    <h2 class="title">Media Cleaning</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @RenderContents()
+    </div>
+</div>
+
+@helper RenderContents() {
+    DefaultNamespace.MediaHelper mediaHelper = new DefaultNamespace.MediaHelper();
+    var allMedias = mediaHelper.RenderMedias();
+    var umbracoHelper = Rouse.Extensions.Utils.GetHelper();
+    var listContent = umbracoHelper.TypedContentAtRoot();
+    var usingMedias = new List<IPublishedContent>();
+            foreach (var content in listContent)
+            {
+                foreach (var publishedProperty in content.Properties)
+                {
+                    if (publishedProperty.DataValue.ToString().Contains("/media/") && !publishedProperty.DataValue.ToString().Contains("<SEOChecker>"))
+                    {
+                        if (publishedProperty.DataValue.ToString().Contains("umb://media/"))
+                        {
+                            GuidUdi udi;
+                            if (GuidUdi.TryParse(publishedProperty.DataValue.ToString(), out udi))
+                            {
+                                var attempt = ApplicationContext.Current.Services.EntityService.GetIdForKey(udi.Guid, UmbracoObjectTypes.Media);
+                                mediaHelper.AddMedia(usingMedias, umbracoHelper.TypedMedia(attempt.Result));
+                            }
+                            else
+                            {
+                                foreach (var item in allMedias)
+                                {
+                                    if (publishedProperty.DataValue.ToString().ToLower().Contains(item.Url.ToLower()))
+                                    {
+                                        mediaHelper.AddMedia(usingMedias, item);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (var item in allMedias)
+                            {
+                                if (publishedProperty.DataValue.ToString().ToLower().Contains(item.Url.ToLower()))
+                                {
+                                    mediaHelper.AddMedia(usingMedias, item);
+                                }
+                            }
+                        }
+                    } else {
+                        if (publishedProperty.PropertyTypeAlias == "image" 
+                        || publishedProperty.PropertyTypeAlias == "pdfDownload" 
+                        || publishedProperty.PropertyTypeAlias == "videoThumbnail" 
+                        || publishedProperty.PropertyTypeAlias == "pdfDownload2" 
+                        || publishedProperty.PropertyTypeAlias == "brochureThumbnail" 
+                        || publishedProperty.PropertyTypeAlias == "mapImage") {
+                            foreach (var item in allMedias)
+                            {
+                                if (publishedProperty.DataValue.ToString() == item.Id.ToString())
+                                {
+                                    mediaHelper.AddMedia(usingMedias, item);
+                                }
+                            }
+                        }
+                        if (publishedProperty.PropertyTypeAlias == "download") {
+                            string downloadValue = publishedProperty.DataValue.ToString();
+                            if (!string.IsNullOrEmpty(downloadValue)) {
+                                string[] downloadValues = downloadValue.Split(',');
+                                foreach (var downloadId in downloadValues) {
+                                    foreach (var item in allMedias)
+                                    {
+                                        if (downloadId.ToString() == item.Id.ToString())
+                                        {
+                                            mediaHelper.AddMedia(usingMedias, item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                }
+
+                if (content.Children != null && content.Children.Any())
+                {
+                    @RenderChildContents(content.Children, usingMedias, allMedias)
+                }
+            }
+
+    var unuseMedias = new List<IPublishedContent>();
+    foreach (var parrentItem in allMedias)    {
+        var count = 0;
+        foreach (var usingItem in usingMedias)
+        {
+            if (usingItem.Id == parrentItem.Id)
+            {
+                count++;
+            }
+        }
+
+        if (count == 0)
+        {
+            unuseMedias.Add(parrentItem);
+        }
+    }
+
+    <h1>Unused medias</h1>
+    <table class="table table-fixed">
+        <thead>
+        <tr>
+            <th class="col-xs-2">Name</th>
+            <th class="col-xs-3">UpdatedDate</th>
+            <th class="col-xs-6">Url</th>
+            <th class="col-xs-1">Link</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var content in unuseMedias)
+            {
+                <tr>
+                    <td class="col-xs-2">@content.Name</td>
+                    <td class="col-xs-3">@(String.IsNullOrEmpty(@content.UpdateDate.ToString()) ? "Not Updated" : @content.UpdateDate.ToString() )</td>
+                    <td class="col-xs-6">@content.Url</td>
+                    <td class="col-xs-1"><a href="@Request.Url.Scheme://@Request.Url.Host/umbraco/#/media/media/edit/@content.Id" target="_blank">Edit</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@helper RenderChildContents(IEnumerable<IPublishedContent> contentItems, List<IPublishedContent> usingMedias, IEnumerable<IPublishedContent> allMedias) {
+DefaultNamespace.MediaHelper mediaHelper = new DefaultNamespace.MediaHelper();
+var umbracoHelper = Rouse.Extensions.Utils.GetHelper();
+if (contentItems != null && contentItems.Any())
+{
+            foreach (var media in contentItems)
+            {
+                    foreach (var publishedProperty in media.Properties)
+                    {
+                        if (publishedProperty.DataValue.ToString().Contains("/media/") && !publishedProperty.DataValue.ToString().Contains("<SEOChecker>"))
+                        {
+                            if (publishedProperty.DataValue.ToString().Contains("umb://media/"))
+                            {
+                                GuidUdi udi;
+                                if (GuidUdi.TryParse(publishedProperty.DataValue.ToString(), out udi))
+                                {
+                                    var attempt = ApplicationContext.Current.Services.EntityService.GetIdForKey(udi.Guid, UmbracoObjectTypes.Media);
+                                    mediaHelper.AddMedia(usingMedias, umbracoHelper.TypedMedia(attempt.Result));
+                                }
+                                else
+                                {
+                                    foreach (var item in allMedias)
+                                    {
+                                        if (publishedProperty.DataValue.ToString().ToLower().Contains(item.Url.ToLower()))
+                                        {
+                                            mediaHelper.AddMedia(usingMedias,item);
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach (var item in allMedias)
+                                {
+                                    if (item.Url.Contains(publishedProperty.DataValue.ToString()))
+                                    {
+                                        mediaHelper.AddMedia(usingMedias, item);
+                                    }
+                                }
+                            }
+                        }else {
+                        if (publishedProperty.PropertyTypeAlias == "image" 
+                        || publishedProperty.PropertyTypeAlias == "pdfDownload" 
+                        || publishedProperty.PropertyTypeAlias == "videoThumbnail" 
+                        || publishedProperty.PropertyTypeAlias == "pdfDownload2" 
+                        || publishedProperty.PropertyTypeAlias == "brochureThumbnail" 
+                        || publishedProperty.PropertyTypeAlias == "mapImage") {
+                            foreach (var item in allMedias)
+                            {
+                                if (publishedProperty.DataValue.ToString() == item.Id.ToString())
+                                {
+                                    mediaHelper.AddMedia(usingMedias, item);
+                                }
+                            }
+                        }
+                        if (publishedProperty.PropertyTypeAlias == "download" || publishedProperty.PropertyTypeAlias == "downloadItems") {
+                            string downloadValue = publishedProperty.DataValue.ToString();
+                            if (!string.IsNullOrEmpty(downloadValue)) {
+                                string[] downloadValues = downloadValue.Split(',');
+                                foreach (var downloadId in downloadValues) {
+                                    foreach (var item in allMedias)
+                                    {
+                                        if (downloadId.ToString() == item.Id.ToString())
+                                        {
+                                            mediaHelper.AddMedia(usingMedias, item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                    }
+                        if (media.Children != null && media.Children.Any())
+                        {
+                            @RenderChildContents(media.Children, usingMedias, allMedias)
+                        }
+                    
+            }
+    }
+}

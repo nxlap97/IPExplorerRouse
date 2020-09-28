@@ -1,0 +1,206 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using System.Text.RegularExpressions;
+@using Umbraco.Web.Models
+
+ @{
+      var space = ", ";
+	  IEnumerable<IPublishedElement> authorList; 
+	  var countAuthor = 0; 
+	  
+	  
+                        
+                 
+                        
+                         var ourGuidesList = Model.Value<IEnumerable<IPublishedElement>>("ourGuidesList");
+                        
+}
+
+@functions {
+ public static int CountWord(string content)
+{
+    string pattern = "[^\\w]";
+  
+    string[] words = null;
+    int i = 0;
+    int count = 0;
+  
+    words = Regex.Split(content, pattern, RegexOptions.IgnoreCase);
+    for (i = words.GetLowerBound(0); i <= words.GetUpperBound(0); i++) {
+        if (words[i].ToString() == string.Empty) {
+         count = count - 1;
+        }
+           
+        count = count + 1;
+    }
+    
+    return count;
+    
+  
+}
+public static string EstimateTimeToRead(int number)
+{
+    
+    int wordPerMin = 250; 
+    int result = number/wordPerMin;
+    
+    if (result == 0 ) {
+        result =  1;
+    }
+    
+    if (result > 10) {
+        result = result - 3;
+    } 
+    
+    if (result > 1) {
+        return result + " minute read";
+    
+    } else {
+         return result + " minute read";
+    }
+}
+}
+        <section class="new-from-rouse container third-party-publication">
+        <div class="row">
+        <div class="title-section">
+            <h4>Our Guides</h4>
+          
+        </div>
+        </div>               
+          @if (!Request.Browser.IsMobileDevice)
+         {
+         <div class="row"> 
+         	@foreach (var item in ourGuidesList)
+            	{
+            	    var imageNews = "";
+            	   var title ="";
+            	   var url = "";
+            	   try {
+            	    url = item.Value<Link>("itemUrl").Url;
+            	   } catch (Exception e) {
+            	   }
+            	   
+    		       var newsSummary = "";
+    		       try {
+    		           title =  (item.Value("title").ToString().Length > 80) ? item.Value("title").ToString().Substring(0,80) : item.Value("title").ToString();
+    		           newsSummary =  (item.Value("summary").ToString().Length > 120) ? item.Value("summary").ToString().Substring(0,120) : item.Value("summary").ToString();
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		      
+    		        try {
+                                    if (item.Value<IPublishedContent>("image") != null)
+                            {
+
+                                if (item.Value<IPublishedContent>("image").GetCropUrl("InsightsItem") != null)
+                                {
+                                    imageNews = item.Value<IPublishedContent>("image").GetCropUrl("InsightsItem").ToString();
+                                }
+                                else
+                                {
+                                    imageNews = item.Value<IPublishedContent>("image").Url.ToString();
+                                }
+                            }
+
+                        } catch (Exception e)
+                        {
+                            imageNews = "";
+
+                        }
+                          var publishedDate ="";
+                     publishedDate = (item.Value<System.DateTime>("date").ToString("dd MMM yyyy", null) != "01 Jan 0001") ? item.Value<System.DateTime>("date").ToString("dd MMM yyyy", null) : "";
+                        
+                        
+            	       <!-- A Item  -->
+            <div class="col-xs-12 col-md-6 col-lg-6 item item-news lastest-ip-news"  style="background-image:url('@imageNews')">
+                <div class="item-content item-content-news" >
+                    <div class="title"><a target="blank" href="@url">@title</a></div>
+                    @if( newsSummary != "" ) {
+                     <div class="description">
+                      @newsSummary
+                    </div>
+                    }
+                   
+                   
+                  
+                    <a target="blank" href="@url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                    <p class="datetime">@publishedDate</p>
+                 
+                </div>
+            </div>
+            <!-- End Item -->
+               }
+              </div>
+
+       
+
+} else {
+          <div id="mobilde-news-blog-network" class="sliderSlickWrap">
+          	@foreach (var item in ourGuidesList)
+            	{
+            	    var imageNews = "";
+            	   var title ="";
+            	   var url = "";
+            	   try {
+            	    url = item.Value<Link>("itemUrl").Url;
+            	   } catch (Exception e) {
+            	   }
+            	   
+    		       var newsSummary = "";
+    		       try {
+    		           title =  (item.Value("title").ToString().Length > 80) ? item.Value("title").ToString().Substring(0,80) : item.Value("title").ToString();
+    		           newsSummary =  (item.Value("summary").ToString().Length > 120) ? item.Value("summary").ToString().Substring(0,120) : item.Value("summary").ToString();
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		      
+    		        try {
+                                    if (item.Value<IPublishedContent>("image") != null)
+                            {
+
+                                if (item.Value<IPublishedContent>("image").GetCropUrl("InsightsItem") != null)
+                                {
+                                    imageNews = item.Value<IPublishedContent>("image").GetCropUrl("InsightsItem").ToString();
+                                }
+                                else
+                                {
+                                    imageNews = item.Value<IPublishedContent>("image").Url.ToString();
+                                }
+                            }
+
+                        } catch (Exception e)
+                        {
+                            imageNews = "";
+
+                        }
+                          var publishedDate ="";
+                     publishedDate = (item.Value<System.DateTime>("date").ToString("dd MMM yyyy", null) != "01 Jan 0001") ? item.Value<System.DateTime>("date").ToString("dd MMM yyyy", null) : "";
+                        
+            	       <!-- A Item  -->
+          	<div class="col-xs-12 col-md-12 col-lg-4 item item-news"   style="background-image:url('@imageNews')">
+                <div class="item-content news-content-box" >
+                    <div class="title"><a target="blank" href="@url">@title</a></div>
+                    @if( newsSummary != "" ) {
+                     <div class="description">
+                      @newsSummary
+                    </div>
+                    }
+                   
+                   
+                  
+                    <a target="blank" href="@url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+              
+             
+                <p class="datetime">@publishedDate</p>
+                 
+                </div>
+            </div>
+            <!-- End Item -->
+               }
+               
+               </div>
+  
+}
+
+   </section>
+
+  

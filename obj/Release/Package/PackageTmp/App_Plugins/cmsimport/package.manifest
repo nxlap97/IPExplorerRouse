@@ -1,0 +1,8 @@
+﻿{
+  "javascript": [
+    "~/app_plugins/cmsimport/backoffice/cmsimport/cmsimport.js"
+  ],
+  "css": [
+    "~/app_plugins/cmsimport/css/cmsimport.css"
+  ]
+}

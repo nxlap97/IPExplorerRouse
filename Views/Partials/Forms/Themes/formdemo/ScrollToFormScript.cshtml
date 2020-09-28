@@ -1,0 +1,79 @@
+﻿@inherits WebViewPage<Umbraco.Forms.Web.Models.FormViewModel>
+@if (!ViewData.ModelState.IsValid || Model.SubmitHandled)
+{
+    <script>
+        $(document).ready(function() {
+    //Intercept Submit button in order to make ajax call instead of a postback
+    $('.umbraco-forms-form form').preventDoubleSubmission();
+});
+
+// jQuery plugin to prevent double submission of forms
+    jQuery.fn.preventDoubleSubmission = function () {
+        $(this).on('submit', function (e) {
+            e.preventDefault();
+
+            var $form = $(this);
+
+            if ($form.data('submitted') === true) {
+                // Previously submitted - don't submit again
+            } else {
+                if ($form.valid()) {
+                    // Mark it so that the next submit can be ignored
+                    $form.data('submitted', true);
+
+                    // Make ajax call form submission
+                    $.ajax({
+                        url: $form.attr('action'),
+                        type: 'POST',
+                        cache: false,
+                        data: $form.serialize(),
+                        success: function (result) {
+                            var thankYouMessage = $(result).find('.umbraco-forms-submitmessage').first();
+                            $form.html(thankYouMessage);
+                        }
+                    });
+                }
+            }
+        });
+
+        // Keep chainability
+        return this;
+        };
+
+
+        document.onreadystatechange = function () {
+          
+            if (document.readyState == "complete") {
+                var validationsDivs = document.querySelectorAll(".field-validation-error, .umbraco-forms-submitmessage");
+               
+                var scrollY = 0;
+                for (var i = 0; i < validationsDivs.length; i++) {
+
+                    var node = getNode(validationsDivs[i]);
+                    var offset   = node.getBoundingClientRect().top;
+                    
+                    if (0 < offset && (offset < scrollY || scrollY === 0)) {
+                        scrollY = offset;
+                    }
+                }
+        
+                if (scrollY > 0) {
+                    window.scrollTo(0, scrollY);
+                }
+            }
+        }
+        
+        function getNode(node) {
+            var runner = node;
+            while (runner.tagName !== "BODY") {
+                if (runner.classList.contains("umbraco-forms-field")) {
+                    return runner;
+                }
+                
+                runner = runner.parentNode;
+            }
+
+            return node;
+        }
+    </script>
+}

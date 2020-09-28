@@ -1,0 +1,99 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.IPexMyAccount>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using Rousesite_Umbraco.Utilities;
+@{
+    Layout = "IPExMaster.cshtml";
+}
+
+@{
+    var user = Members.GetCurrentMember();
+    if (user == null)
+    {
+        Response.Redirect("/login");
+        //Response.Redirect(Model.Value("accountSignInLink") == null ?  "/" : Model.Value("accountSignInLink").ToString());
+    }
+
+    ViewBag.Title = "My account";
+    var selection = Model.Value<IEnumerable<IPublishedElement>>("IPEx_myAccountNode");
+}
+<style>
+    .add-show-color {
+        background-color: #007F9C;
+        color: white !important;
+    }
+</style>
+
+<div class="container-desktop">
+    <div class="d-flex">
+        <div class="container-custom content-myAccount">
+            <div class="d-flex flex-column align-items-center w-100">
+                <header class="sticky-top w-100">
+                    <div class="m-auto">
+                        <div class="d-flex align-items-end position-relative logo">
+                            <div>
+                                <img width="50" src="~/Assets/IPEx/images/logo.svg">
+                            </div>
+                            <div class="nametag welcome">
+                                <div class="tag">@Model.Value("IPEx_myAccountHeaderTitle")</div>
+                                <div class="name">@user.Name</div>
+                            </div>
+                            <div class="progress position-absolute w-100">
+                                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 0%;"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <wrapper class="overflow-auto pr-0">
+                    <div class="">
+                        @Model.Value("IPEx_myAccountContent")
+                        <div class="list-accordion">
+                            <div class="d-inline-flex">
+                                @foreach (var item in selection)
+                                {
+                                    var indexOf = selection.IndexOf(item);
+                                    var str = (indexOf == 0 || indexOf == 1) ? "add-show-color" : "";
+                                    <div onclick="window.location='@item.Value("IPEx_myAccountSelectionLink")'">
+                                        <div class="item @str">
+                                            @item.Value("IPEx_myAccountSelectionTitle")
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <div class="language-select">@Model.Value("IPEx_myaccountLanguageTitle")</div>
+                            <div class="select">
+                                English
+                            </div>
+                        </div>
+                        <div class="action-myAccount">
+                            <a class="btn btn-circle color-Allports" href="@Model.Value("iPEx_myAccountBtnSaveLink")">
+                                <span><i class="fas fa-save"></i></span>
+                                <span>@Model.Value("IPEx_myAccountBtnSaveTitle")</span>
+                            </a>
+                        </div>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-index">
+        <div class="contact-name">Contact Us</div>
+        <div class="contact-mail d-flex align-items-center">
+            <i class="far fa-envelope mr-2"></i>ipexplorer@rouse.com
+        </div>
+    </footer>
+</div>
+
+@section Scripts{
+
+    <script>
+        $(document).on('click', '.item', function () {
+            n = $(this).index();
+            console.log(n)
+            n = $(this)
+            n.toggleClass('active')
+        });
+    </script>
+}

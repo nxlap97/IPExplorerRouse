@@ -1,0 +1,83 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.WhereWeWorkMain>
+@using ContentModels = Umbraco.Web.PublishedModels;
+
+@{
+	Layout = "master.cshtml";
+	
+    var backgroundImage = "";
+    if (Model.Value<IPublishedContent>("countryBackground") != null ) {
+        backgroundImage = Model.Value<IPublishedContent>("countryBackground").Url;
+    } 
+    	 var countryBackgroundSub = "";
+    if (Model.Value<IPublishedContent>("countryBackgroundSub") != null ) {
+        countryBackgroundSub = Model.Value<IPublishedContent>("countryBackgroundSub").Url;
+    } 
+    
+    var items = Model.Value<IEnumerable<IPublishedElement>>("branchLocation");
+}
+ @if (countryBackgroundSub != "") {
+     <section class="section-banner-company" id="where-we-work-country" style="background:url('@backgroundImage') left/ 51% auto  no-repeat ,url('@countryBackgroundSub') right/50% auto no-repeat">
+
+
+	<div class="company-box row">
+		<div class="col-md-9 details">
+			<article class="company-content">
+			   <h2 class="country"> @Model.Value("countryName") </h2>
+		       @Model.Value("countryContent")
+		         <div class="row">
+      
+            @foreach(var item in items)
+                {
+                   
+                      <div class="col-md-4 location-item-detail">
+                            <h3> @item.Value("branchName") <span><i class="fas fa-map-marked-alt"></i></span></h3>                             
+                            <p> @item.Value("branchAddress")</p>
+                            <p> @item.Value("branchContact")</p>                           
+                        </div>
+                }
+                      
+                       
+                    </div>
+			</article>
+		</div>	
+		<div class="col-md-3">
+		  @Html.Partial("where-we-work-group-country")
+		</div>
+	</div>
+	
+</section>
+ } else {
+  <section class="section-banner-company" style="background:url('@backgroundImage') left/ 100% auto  no-repeat">
+
+
+	<div class="company-box row">
+		<div class="col-md-9 details">
+			<article class="company-content">
+			   <h2 class="country"> @Model.Value("countryName") </h2>
+		       @Model.Value("countryContent")
+		         <div class="row">
+      
+            @foreach(var item in items)
+                {
+                   
+                      <div class="col-md-4 location-item-detail">
+                            <h3> @item.Value("branchName") <span><i class="fas fa-map-marked-alt"></i></span></h3>                             
+                            <p> @item.Value("branchAddress")</p>
+                            <p> @item.Value("branchContact")</p>                           
+                        </div>
+                }
+                      
+                       
+                    </div>
+			</article>
+		</div>	
+		<div class="col-md-3">
+		  @Html.Partial("where-we-work-group-country")
+		</div>
+	</div>
+	
+</section>
+ }
+ 
+
+

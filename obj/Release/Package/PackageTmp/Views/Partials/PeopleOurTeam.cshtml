@@ -1,0 +1,311 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Newtonsoft.Json;
+
+@{
+    var ipTest =  Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+    
+	var ourTeams = Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+    .Children()
+    .Where(x => x.IsVisible()).Take(12);
+      var ourTeamsArray =  new  Umbraco.Core.Models.PublishedContent.IPublishedContent[5]  ;
+      var itemTeamCount = 0;
+
+  var locationList = Umbraco.Content(Guid.Parse("4a087704-5c73-48a8-bd63-7a257276804b"))
+                        .Children()
+                        .Where(x => x.IsVisible());
+    var departmentList = Umbraco.Content(Guid.Parse("9e4d5ad3-7310-4e56-b128-48a6d5ba7cba"))
+                        .Children()
+                        .Where(x => x.IsVisible());
+    var ipAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+    var ip =  HttpContext.Current.Request.UserHostAddress;
+    
+    
+    
+      var nameSearch = Request.QueryString["name"];
+      var departmentSearch = Request.QueryString["department"];
+      var locationSearch = Request.QueryString["location"];
+      
+      var searchResultArray =  new  Umbraco.Core.Models.PublishedContent.IPublishedContent[12]  ;
+      var count = 0;
+      
+      if (!string.IsNullOrWhiteSpace(departmentSearch) || !string.IsNullOrWhiteSpace(nameSearch) || !string.IsNullOrWhiteSpace(locationSearch)) {
+            
+             if (departmentSearch == "all")
+               {
+                       if (locationSearch == "all" ) {
+                       
+                                    if (!string.IsNullOrWhiteSpace(nameSearch)) {
+                                            var searchByNameList =  Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+                                            .Children()
+                                            .Where(x => x.Name.Contains(nameSearch))
+                                            .Where(x => x.IsVisible()).Take(12);
+                                             foreach ( var searchItem in searchByNameList) {
+                                                         if(searchItem.Parent != null  && searchItem.Parent.Name == "People"){
+                                                              searchResultArray[count] = searchItem;
+                                                         }
+                                                         count++;
+                                    }
+                                      
+                                    } else {
+                                            var searchByNameList =  Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+                                            .Children()
+                                            .Where(x => x.IsVisible()).Take(12);
+                                             foreach ( var searchItem in searchByNameList) {
+                                                         if(searchItem.Parent != null  && searchItem.Parent.Name == "People"){
+                                                              searchResultArray[count] = searchItem;
+                                                         }
+                                                         count++;
+                                             }
+                                    }
+           
+                         } else  {
+                         
+                               if (!string.IsNullOrWhiteSpace(nameSearch)) {
+                                    var searchByNameList =  Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+                                    .Children()
+                                    .Where(x => x.Name.Contains(nameSearch))
+                                    .Where (x=> x.Value<IPublishedContent>("profileLocationMain").Value("locationName").ToString() == locationSearch)
+                                    .Where(x => x.IsVisible()).Take(12);
+                                     foreach ( var searchItem in searchByNameList) {
+                                                         if(searchItem.Parent != null  && searchItem.Parent.Name == "People"){
+                                                              searchResultArray[count] = searchItem;
+                                                         }
+                                                         count++;
+                                                }
+                               } else {
+                                     var searchByNameList =  Umbraco.Content(Guid.Parse("2101fd88-9c70-4497-bdc9-fd8b97221dea"))
+                                    .Children()
+                                    .Where (x=> x.Value<IPublishedContent>("profileLocationMain").Value("locationName").ToString() == locationSearch)
+                                    .Where(x => x.IsVisible()).Take(12);
+                                     foreach ( var searchItem in searchByNameList) {
+                                                         if(searchItem.Parent != null  && searchItem.Parent.Name == "People"){
+                                                              searchResultArray[count] = searchItem;
+                                                         }
+                                                         count++;
+                                                }
+                               }
+                         
+                               
+                         
+                         
+                         }
+                                     
+               } else {
+               
+                  var profileSearch = Umbraco.TagQuery.GetContentByTag(departmentSearch);
+                                         foreach ( var searchItem in profileSearch) {
+                                             if(searchItem.Parent != null  && searchItem.Parent.Name == "People"){
+                                             
+                                                  if (locationSearch != "all") {
+                                                    if (string.IsNullOrWhiteSpace(nameSearch)) {
+                                                         if (searchItem.Value<IPublishedContent>("profileLocationMain").Value("locationName").ToString() == locationSearch) {
+                                                          searchResultArray[count] = searchItem;
+                                                         }
+                                                    } else {
+                                                        if (searchItem.Value<IPublishedContent>("profileLocationMain").Value("locationName").ToString() == locationSearch && searchItem.Value("profileName") == nameSearch) {
+                                                          searchResultArray[count] = searchItem;
+                                                         }
+                                                    }
+                                                  } else {
+                                                  
+                                                     if (string.IsNullOrWhiteSpace(nameSearch)) {
+                                                          searchResultArray[count] = searchItem;
+                                                    } else {
+                                                        if (searchItem.Value("profileName") == nameSearch) {
+                                                          searchResultArray[count] = searchItem;
+                                                         }
+                                                    }
+                                                  
+                                                  
+                                                  }
+                                             }
+                                             count++;
+                                    }
+               
+               
+               }
+        
+      
+      
+      
+      }
+     
+   
+    }
+     
+
+ 
+   
+        @if (!Request.Browser.IsMobileDevice)
+        {
+         <section class="container people-filter-controller">
+         <div class="row">
+        <div class="title-section people-break">
+            <h4>Our team</h4>
+        </div>
+         <h2 class="title ">Filter By</h2>
+         </div>
+         
+             <div class="row">
+                        <div class="col-md-3">
+                            <h5>Loaction</h5>
+                            <select class="form-control" id="locationListId" name="sellist1">
+                                <option selected value="all">All Locations</option>
+                                  @foreach(var locationItem in locationList)
+                                {
+            
+                                <option value="@locationItem.Name"> @locationItem.Name</option>
+                                }
+                            </select>
+                        </div>
+                         <div class="col-md-3">
+                            <h5>Industry</h5>
+                            <select class="form-control" id="locationListId" name="sellist1">
+                                <option selected value="all">Choose a Industry</option>
+                             
+                            </select>
+                        </div>
+                         <div class="col-md-3">
+                            <h5>Business Function</h5>
+                            <select class="form-control" id="locationListId" name="sellist1">
+                                <option selected value="all">Choose a Business Function</option>
+            
+                            </select>
+                        </div>
+                         <div class="col-md-3">
+                            <h5>Firm</h5>
+                            <select class="form-control" id="locationListId" name="sellist1">
+                                <option selected value="all">Choose a Firm</option>
+                            </select>
+                        </div>
+                      
+                    </div>
+                    
+    </section>
+        } else {
+           <section class="container people-filter-controller">
+         <div class="row">
+        <div class="title-section people-break">
+            <h4>Our team</h4>
+        </div>
+         <h2 class="title ">Filter <i class="fas fa-filter"></i></h2>
+         </div>
+         
+             <div class="row">
+                        <div class="col-md-3">
+                            <h5>Loaction</h5>
+                            <select class="form-control" id="locationListId" name="sellist1">
+                                <option selected value="all">All Locations</option>
+                                  @foreach(var locationItem in locationList)
+                                {
+            
+                                <option value="@locationItem.Name"> @locationItem.Name</option>
+                                }
+                            </select>
+                        </div>
+                         <div class="col-md-3">
+                            <h5>Industry</h5>
+                            <select class="form-control" id="locationListId" name="sellist1">
+                                <option selected value="all">Choose a Industry</option>
+                             
+                            </select>
+                        </div>
+                         <div class="col-md-3">
+                            <h5>Business Function</h5>
+                            <select class="form-control" id="locationListId" name="sellist1">
+                                <option selected value="all">Choose a Business Function</option>
+            
+                            </select>
+                        </div>
+                         <div class="col-md-3">
+                            <h5>Firm</h5>
+                            <select class="form-control" id="locationListId" name="sellist1">
+                                <option selected value="all">Choose a Firm</option>
+                            </select>
+                        </div>
+                      
+                    </div>
+                    
+    </section>
+           
+        }
+
+
+       
+       
+
+
+    <section class="our-people-member container people-our-team" current-page="1" id="our-team-section">
+
+         <div class="row" id="people-search-result" current-page="1" total-page="" >
+                      
+        </div>
+                                          
+    </section>
+
+    <div class="load-more-list">
+          <a>Load More</a>
+    </div>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            
+            $.get("https://api.ipdata.co?api-key=test", function(response) {   
+                var ip_address = response.ip;
+                console.log ("IP USER ACCESS:  " + ip_address );
+              $.getJSON('http://api.ipstack.com/'+ip_address+'?access_key=3cede86e5a54150d63f2c232ae85a0b8', function (data) {
+                console.log (typeof data);
+                console.log(data);
+                console.log(data);
+                let locationName = data.country_name.toLowerCase();
+                let locationNameFormat = locationName;
+                console.log(locationNameFormat);
+                $("#locationListId option[value='"+locationNameFormat+"']").attr('selected', 'selected'); 
+            });
+            
+            }, "jsonp");
+            
+        let locationSelect = "@locationSearch";
+        let departmentSelect = "@departmentSearch";
+        console.log ("locationSelect");
+        console.log (locationSelect);
+        
+        console.log ("departmentSelect");
+        console.log (departmentSelect.length);
+        if (locationSelect.length > 0 && locationSelect != "all") {
+                     document.getElementById("peopleLocation").value = locationSelect;
+        } else {
+                     document.getElementById("peopleLocation").value = "all";
+        }
+        
+        if (departmentSelect.length > 0 && departmentSelect != "all") {
+                     document.getElementById("peopleDepartment").value = departmentSelect;
+        } else {
+                     document.getElementById("peopleDepartment").value = "all";
+        }
+        
+   
+            
+            
+  
+            
+            
+        });
+        
+    </script>

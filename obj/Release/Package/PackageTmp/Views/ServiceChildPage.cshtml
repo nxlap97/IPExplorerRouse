@@ -1,0 +1,116 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ServiceChildPage>
+@using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	var sliderImage = "/media/ayubmpl3/question_slider.jpg";
+	 var bannerImage = Model.Value<IPublishedContent>("topBannerImage");
+	 var link = Model.Value<Link>("buttonUrl");
+	  var listQuestion = Model.Value<IEnumerable<IPublishedElement>>("questionSlider");
+    
+}
+
+ <section class="top-banner" style="background-image:url('  @if (bannerImage != null ) { @bannerImage.Url }')">
+
+        <div class="content-box content-box-right" id="content-box-consultancy" >
+            <h3 class="title">@Model.Value("topBannerTitle")</h3>
+            <p class="description">@Model.Value("topBannerContent")</p>
+    @if (link != null)
+    {
+            <a class="btn btn-primary" href="@link.Url">Talk to a Consultant</a>
+    }
+        </div>
+    </section>
+
+    <section class="container section-content-text" id="section-content-question-page">
+         <div  class="wrap-content-page">
+              @Model.Value("topPageContent")
+           
+        </div>
+    </section>
+    
+@if (listQuestion.Count() > 0 ) {
+    <section class="slider-section" id="question-slider">
+        <div id="questionCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+             @{
+               var countItemOption = 0;
+             }
+             @foreach (var item in listQuestion)
+            	{
+            	  if (countItemOption == 0) {
+                <li data-target="#questionCarousel" data-slide-to="@countItemOption" class="active"></li>
+                  } else {
+                   <li data-target="#questionCarousel" data-slide-to="@countItemOption" class=""></li>
+                  }
+                countItemOption++;
+                
+                }
+         
+            </ol>
+            <div class="carousel-inner">
+                @{
+               var countItem = 0;
+               	}
+               @foreach (var item in listQuestion)
+            	{
+            	    if (countItem == 0) {
+                <div class="carousel-item @countItem if active" style="background-image:url(' @if (sliderImage != null ) {  @sliderImage }')">
+                    <h2 class="question-title">Key concerns facing our clients:</h2>
+                    <article class="question-content">
+                        <div>
+                            <p>@item.Value("questionItemCategory")</p>
+                            <p>“@item.Value("questionItemContentTop")”</p>
+                            <p>@item.Value("questionItemContentBottom")</p>
+                        </div>
+                           <a class="more learnmore" href="">LEARN MORE  <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                    </article>
+                </div>
+                } else {
+                     <div class="carousel-item" style="background-image:url(' @if (sliderImage != null ) {  @sliderImage }')">
+                    <h2 class="question-title">Key concerns facing our clients:</h2>
+                    <article class="question-content">
+                        <div>
+                            <p>@item.Value("questionItemCategory")</p>
+                            <p>“@item.Value("questionItemContentTop")”</p>
+                            <p>@item.Value("questionItemContentBottom")</p>
+                        </div>
+                        <a class="more learnmore" href="">LEARN MORE  <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                    </article>
+                </div>
+                }
+
+                       countItem++;
+            	}
+            
+            </div>
+
+
+            <a class="carousel-control-prev" href="#questionCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#questionCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+        
+}
+      
+      
+
+
+    <section > 
+         @Model.Value("bottomPageContent")
+    </section>
+
+
+    @Html.Partial("page/LatestIPConsultancyNews")
+    
+    @Html.Partial("page/CaseStudiesNews")
+    
+    @Html.Partial("page/OurTeam")
+
+    @Html.Partial("how-can")

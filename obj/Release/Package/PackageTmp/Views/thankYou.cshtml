@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ThankYou>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+}
+<div class="container">
+<div class="confirmed-page">
+	<div class="row">
+			<div class="col-md-6 content">
+			    @Model.Value("pageContent")
+			</div>
+	<div class="col-md-6 thank-you">
+		<div class="text-box">
+			<h3 class="title">Thank You!</h3>
+		<p class="content">Someone will be contacting you shortly.</p>
+		</div>
+		
+	</div>
+	</div>
+
+</div>
+</div>

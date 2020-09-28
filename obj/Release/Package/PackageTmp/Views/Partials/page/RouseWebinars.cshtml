@@ -1,0 +1,171 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using System.Text.RegularExpressions;
+@using Umbraco.Web.Models
+              @{
+              
+                   var Webinars = Model.Value<IEnumerable<IPublishedElement>>("webinars");
+              
+              }
+	
+	  
+            @if (!Request.Browser.IsMobileDevice)
+            {
+              <div class="row">
+    
+                 @foreach (IPublishedContent item in Webinars)
+                    {
+                   var title ="";
+            	   var url = "";
+            	   try {
+            	    if (item.Value("webinarThirdParty") != null) {
+            	      url = item.Value<Link>("webinarThirdParty").Url;
+            	     } else {
+            	 
+            	       url = item.Url;
+            	     }
+            	  
+            	   } catch (Exception e) {
+            	   }
+            	   
+    		       var newsSummary = "";
+    		       try {
+    		           title =  (item.Value("newsTitle").ToString().Length > 80) ? item.Value("newsTitle").ToString().Substring(0,80) : item.Value("newsTitle").ToString();
+    		           newsSummary =  (item.Value("newsSummary").ToString().Length > 120) ? item.Value("newsSummary").ToString().Substring(0,120) : item.Value("newsSummary").ToString();
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		       
+    		     
+                      <!-- item box -->
+                <div class="new-box col-xs-12 col-md-12 col-lg-4">
+                    <div class="content-box">
+                       <div class="title"><a target="_blank"  href="@url">@title</a></div>
+                     
+                        <div class="summary">
+                            @newsSummary
+                        </div>
+                     
+                    @if(item.Value<IEnumerable<IPublishedElement>>("newsAuthor") != null) {
+                     <p class="author">
+                     @{
+                                          var space = ", ";
+                    	 IEnumerable<IPublishedElement> authorList; 
+                    	 var countAuthor = 0; 
+                         
+                             authorList  = item.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(3) ) {
+                     
+                   
+                         if (author != authorList.First()) {
+                            @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                }
+                
+                
+                       
+                
+                
+                
+                        <p class="watch-now"><a target="_blank"  href="@url">Watch Now</a></p>
+                    </div>
+                   
+                </div>
+                <!-- End item box -->
+        
+                     }
+           </div>
+              
+                }
+    
+             else {
+             
+              <div id="mobilde-news-rouse-webinars" class="sliderSlickWrap">
+                        @foreach (IPublishedContent item in Webinars)
+                    {
+                   var title ="";
+            	   var url = "";
+            	   try {
+            	    if (item.Value("webinarThirdParty") != null) {
+            	      url = item.Value<Link>("webinarThirdParty").Url;
+            	     } else {
+            	 
+            	       url = item.Url;
+            	     }
+            	  
+            	   } catch (Exception e) {
+            	   }
+            	   
+    		       var newsSummary = "";
+    		       try {
+    		           title =  (item.Value("newsTitle").ToString().Length > 80) ? item.Value("newsTitle").ToString().Substring(0,80) : item.Value("newsTitle").ToString();
+    		           newsSummary =  (item.Value("newsSummary").ToString().Length > 120) ? item.Value("newsSummary").ToString().Substring(0,120) : item.Value("newsSummary").ToString();
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		       
+    		     
+                      <!-- item box -->
+                <div class="new-box col-xs-12 col-md-12 col-lg-4">
+                    <div class="content-box">
+                       <div class="title"><a target="_blank"  href="@url">@title</a></div>
+                     
+                        <div class="summary">
+                            @newsSummary
+                        </div>
+                     
+                    @if(item.Value<IEnumerable<IPublishedElement>>("newsAuthor") != null) {
+                     <p class="author">
+                     @{
+                                          var space = ", ";
+                    	 IEnumerable<IPublishedElement> authorList; 
+                    	 var countAuthor = 0; 
+                         
+                             authorList  = item.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(3) ) {
+                     
+                   
+                         if (author != authorList.First()) {
+                            @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                }
+                
+                
+                       
+                
+                
+                
+                        <p class="watch-now"><a target="_blank"  href="@url">Watch Now</a></p>
+                    </div>
+                   
+                </div>
+                
+                <!-- End item box -->
+                           
+                                }
+                                </div>
+             
+            }

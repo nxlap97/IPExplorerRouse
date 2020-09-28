@@ -1,0 +1,117 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.legal>
+@using Umbraco.Web.Models
+@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = "master.cshtml";
+	var listSupportPage = Umbraco.Content("4833").Value<IEnumerable<IPublishedElement>>("supportPage");
+	
+	var imageSection = "";
+	  try {
+                            if (Model.Value<IPublishedContent>("sectionImage") != null)
+                            {
+
+                                if (Model.Value<IPublishedContent>("sectionImage").GetCropUrl("InsightsHome") != null)
+                                {
+                                    imageSection = Model.Value<IPublishedContent>("sectionImage").GetCropUrl("InsightsHome").ToString();
+                                }
+                                else
+                                {
+                                    imageSection = Model.Value<IPublishedContent>("sectionImage").Url.ToString();
+                                }
+                            }
+
+                        } catch (Exception e)
+                        {
+                            imageSection = "";
+
+                        }
+                        
+                        
+    var titlePage = Model.Value("titlePage");
+    var topTitle = Model.Value("topTitle");
+    var content = Model.Value("content");
+  
+}
+<section class="supportPageWraper">
+    
+
+<div class="legalTop container">
+    <h2 class="top-title">@titlePage</h2>
+</div>
+
+@if (imageSection != "" ) {
+        <div class="intro-image no-gutter bleed">
+                                    <img src="@imageSection" alt="Legal">
+        
+        </div>
+}
+@if (topTitle != "" && topTitle.ToString().Length > 0 ) {
+ <div class="top-title-wrapper">
+     <div class="container">
+           <div class="row">
+      <div class="col-sm-6 col-md-7 col-lg-8">
+        <h2>@topTitle</h2>
+    
+    </div>
+    </div>
+     </div>
+        
+     </div>
+}  
+<div class="container support-content-wrap" id="legalWrapperId">
+    
+   
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-6 col-md-7 col-lg-8">
+                 @content
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-4 supportPageList">
+                <nav class="secondary">
+                    <p class="nav_sec_title ">
+                        <a href="#">Support Pages</a>
+                    </p>
+                  
+                    
+
+                    <ul>
+                          
+        
+                        
+                          
+                    @foreach ( var group in listSupportPage ) {
+                      
+                                 <li class="current">
+                                    <a href="@(group.Value<Link>("pageGroupUrl").Url)">@group.Value("title")<span class="icon"></span></a>
+                                 </li>
+                                    
+                    <ul>  
+                            @if (group.Value<IEnumerable<IPublishedElement>>("listPage") != null && group.Value<IEnumerable<IPublishedElement>>("listPage").Count() > 0 ) {
+                               foreach (var page in group.Value<IEnumerable<IPublishedElement>>("listPage")) {
+                              
+                                <li class="">
+                                    <a href="@(page.Value<Link>("pageUrl").Url)">@(page.Value("title"))<span class="icon"> </span></a>
+                                </li>
+                            }
+                            }
+                            
+                          
+                    </ul>
+                    
+                        
+                    
+                        
+                        }       
+                             
+                               
+                    </ul>
+</nav>
+            </div>
+        </div>
+     
+        
+    </div>
+			
+</div>
+
+</section>

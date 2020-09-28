@@ -1,0 +1,216 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Web.PublishedModels
+
+@using Umbraco.Web.Models
+
+@{
+ 	var home = Umbraco.Content(Guid.Parse("89cda73a-5d7f-485d-ba47-8cf471e1678b"));
+	 var footerMenu = home.Value<IEnumerable<Link>>("footerMenu");
+	 var socialNetwork = home.Value<IEnumerable<IPublishedElement>>("socialNetwork");
+	 var yearNow = System.DateTime.Now.Year.ToString();
+	  var disclaimerContent = home.Value<string>("disclaimerContent");
+
+
+
+  var rouseLogo = "";
+    var rouseConsultancyLogo = "";
+    var rouseConsultancyLogoUrl = "/services?Consultancy=1";
+    var rouseLogoUrl = "/";
+    
+    var isServiceConsultancy= Request.QueryString["Consultancy"];
+
+    try {
+        if (home.Value<IPublishedContent>("logoHeaderConsultancy") != null ) {
+            rouseConsultancyLogo = home.Value<IPublishedContent>("logoHeaderConsultancy").Url;
+        } 
+        
+        if (home.Value<IPublishedContent>("rouseLogo") != null ) {
+            rouseLogo = home.Value<IPublishedContent>("rouseLogo").Url;
+        } 
+    } catch (Exception e) {
+    
+    }
+   var logoCurrentPage  = "";
+   var logoCurrentUrl = "/";
+    logoCurrentPage =  rouseLogo;
+    var currentPage = Model.Name;
+    var idModel =  Model.Id;
+    
+    var contentModel = Umbraco.Content(idModel);
+    var contentModelType = Umbraco.Content(idModel).ToString();
+
+    if (currentPage.ToLower().Contains("consultancy")) {
+         
+    logoCurrentPage =  rouseConsultancyLogo;
+    logoCurrentUrl = rouseConsultancyLogoUrl;
+    } 
+    
+    
+    if (!string.IsNullOrWhiteSpace(isServiceConsultancy) && isServiceConsultancy == "1" && currentPage.ToLower() == "services")
+    {   
+       
+         logoCurrentPage =  rouseConsultancyLogo;
+         logoCurrentUrl = rouseConsultancyLogoUrl;
+       
+    }
+    
+    
+    if (contentModelType.Contains("ProfileContent") ) {
+           if (contentModel.HasValue("services")) {
+            var servicePeopleList = contentModel.Value<IEnumerable<IPublishedContent>>("services");
+           if ( CheckService (servicePeopleList,"consultancy")) {
+                  logoCurrentPage =  rouseConsultancyLogo;
+                   logoCurrentUrl = rouseConsultancyLogoUrl;
+           }
+           }
+           
+          
+    
+    } else if (contentModelType.Contains("News") ) {
+           if (contentModel.HasValue("newsServices")) {
+           var serviceList = contentModel.Value<IEnumerable<IPublishedContent>>("newsServices");
+           if ( CheckService (serviceList,"consultancy")) {
+                  logoCurrentPage =  rouseConsultancyLogo;
+                  logoCurrentUrl = rouseConsultancyLogoUrl;
+           }
+           }
+           
+    
+    } 
+   
+ 
+  
+}
+
+@functions {
+public bool CheckService(IEnumerable<IPublishedContent> list, string keyWord)
+        {
+            foreach (var item in list)
+            {
+
+                if (item.Name.ToString().Trim().ToLower().Contains(keyWord.Trim().ToLower()))
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+ }
+ 
+<footer class="container">
+    
+    @if (!Request.Browser.IsMobileDevice)
+{
+
+
+
+    <div class="row footer-top">
+        <div class="col-xs-12 logo">
+            <div id="logo-footer-contain">
+                <img src="@logoCurrentPage" alt="">
+            </div>
+        </div>
+        <div class="col-xs-12 subcribes">
+            <h5 class="title">SUBSCRIBE TO OUR LATEST INSIGHTS</h5>
+            <p>The latest Rouse news, articles and resources sent straight to your inbox.</p>
+            
+            @Umbraco.RenderMacro("renderUmbracoForm", new {FormGuid="5043a2ea-4fd0-4ee9-a8c1-605e3958af6a", FormTheme="subscribe", ExcludeScripts="0"})
+
+        </div>
+    </div>
+    <div class="disclaimerContent">
+        
+        @disclaimerContent
+    </div>
+    <div class="row footer-bottom">
+        <div class="menu-footer col-xs-12">
+            <ul>
+                  @if (footerMenu.Any())
+                {
+                  
+                        foreach (var link in footerMenu)
+                        {
+                            <li><a href="@link.Url" target="@link.Target">@link.Name</a></li>
+                        }
+                   
+                }
+              
+            </ul>
+        </div>
+       
+        <div class="col-xs-12 social-icons">
+        @if ( socialNetwork != null && socialNetwork.Count() > 0 ) {
+            foreach (var socialItem in socialNetwork ) {
+             <a class="linkedin" href="@socialItem.Value("socialNetworkUrl")" target="_blank"><i class="@socialItem.Value("socialNetworkIcon")"></i></a>
+        
+        }
+        }
+        </div>
+    </div>
+
+
+    <div class="row copyright-contain">
+        <div class="copyright-text">
+            <span>Rouse International Limited.</span>
+        </div>
+
+    </div>
+} else {
+       <div class="col-xs-12 subcribes">
+            <h5 class="title">SUBSCRIBE TO OUR LATEST INSIGHTS</h5>
+            <p>The latest Rouse news, articles, and resources, sent straight to your inbox.</p>
+            
+            @Umbraco.RenderMacro("renderUmbracoForm", new {FormGuid="5043a2ea-4fd0-4ee9-a8c1-605e3958af6a", FormTheme="subscribe", ExcludeScripts="0"})
+
+        </div>
+        
+        
+     <div class="row footer-top">
+            <div class="col-xs-12 logo">
+                <div id="logo-footer-contain">
+                    <img src="@logoCurrentPage" alt="">
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="disclaimerContent">
+        
+        @disclaimerContent
+    </div>
+        
+       <div class="col-xs-12 social-icons">
+              @if ( socialNetwork != null && socialNetwork.Count() > 0 ) {
+            foreach (var socialItem in socialNetwork ) {
+             <a class="linkedin" href="@socialItem.Value("socialNetworkUrl")" target="_blank"><i class="@socialItem.Value("socialNetworkIcon")"></i></a>
+        
+        }
+        }
+        </div>
+        
+     <div class="row footer-bottom">
+        <div class="menu-footer col-xs-12">
+            <ul>
+                   @if (footerMenu.Any())
+                {
+                  
+                        foreach (var link in footerMenu)
+                        {
+                            <li><a href="@link.Url" target="@link.Target">@link.Name</a></li>
+                        }
+                   
+                }
+             
+            </ul>
+        </div>
+     
+    </div>
+}
+
+
+
+
+
+</footer>

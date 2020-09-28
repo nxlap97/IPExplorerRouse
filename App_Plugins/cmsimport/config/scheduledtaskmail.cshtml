@@ -1,0 +1,30 @@
+﻿@model CMSImport.Extensions.Models.Mail.ScheduledTaskMail
+<html>
+<body style="font-family:Verdana;font-size:12px;">
+  <p>This is an automated mail to inform you that the task <strong>@Model.TaskName</strong> executed</p>
+  <p><strong>Statistics:</strong></p>
+  <p>
+    @Model.RecordCount records in datasource<br />
+    @Model.RecordsAdded records added<br />
+    @Model.RecordsUpdated records updated<br />
+    @if (Model.RecordsDeleted > 0)
+    {
+      @Model.RecordsDeleted <text>Deleted</text><br />
+    }
+    @if (Model.RecordsSkipped>0)
+    {
+      @Model.RecordsSkipped <text>records skipped during import: </text><br />
+    }
+    @if (Model.ErrorMessages.Any())
+    {
+      @Model.Errors <text>errors during import: </text><br />
+      <ul>
+        @foreach (var msg in Model.ErrorMessages)
+        {
+          <li>@msg</li>
+        }
+      </ul>
+    }
+  </p>
+</body>
+</html>

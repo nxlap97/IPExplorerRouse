@@ -1,0 +1,103 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Web.Models
+@{
+     var home = Umbraco.Content(Guid.Parse("89cda73a-5d7f-485d-ba47-8cf471e1678b"));
+	 var headerMenu = home.Value<IEnumerable<Link>>("logoHeaderConsultancy");   
+
+	var logoHeaderConsultancy = "";
+    if (home.Value<IPublishedContent>("logoHeaderConsultancy") != null ) {
+        logoHeaderConsultancy = home.Value<IPublishedContent>("logoHeaderConsultancy").Url;
+    } 
+    
+    var closeIconConsultancy = "";
+    if (home.Value<IPublishedContent>("closeIconConsultancy") != null ) {
+        closeIconConsultancy = home.Value<IPublishedContent>("closeIconConsultancy").Url;
+    } 
+	 
+}
+<header class="header header-master">
+    <div class="container header-container">
+        <div class="header-top">
+
+            <div class="language col-md-1 offset-11">
+                <!--<img src="Media/united-kingdom.svg" alt="">-->
+                <div class="language-dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown"> English <i class="fas fa-caret-down"></i> </a>
+                    <span class="caret"></span></button>
+                    <!--<ul class="dropdown-menu">-->
+                    <!--    <li><a href="#">HTML</a></li>-->
+                    <!--    <li><a href="#">CSS</a></li>-->
+                    <!--    <li><a href="#">JavaScript</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+
+        </div>
+        <!-- Menu mobile -->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="/insights">Insights</a>
+             <a href="/products">Services</a>
+            <a href="/services">Services</a>
+            <a href="/where-we-work">Where We Work</a>
+            <a href="/people">People</a>
+            <a href="/careers">Careers</a>
+            <a href="/about">About</a>
+        </div>
+        <!--<div style="z-index:9999;" id="main">-->
+        <!--    <button style="z-index:9999;" class="openbtn" onclick="openNav()">☰</button>-->
+        <!--</div>-->
+       <script>
+                     function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+            }
+
+       </script>
+        <!-- End Menu Mobile -->
+        <div class="row top-header">
+            @if (!Request.Browser.IsMobileDevice)
+            {
+                 <div id="logo" class="col-md-2">
+                   
+                 <div id="touch-menu-trigger"  data-toggle="collapse" data-target="#rouse-burger">
+                        <span id="bar-top" class="bar"></span>
+                        <span id="bar-middle" class="bar"></span>
+                        <span id="bar-bottom" class="bar"></span>
+                </div>
+               <a href="/"><img src="@logoHeaderConsultancy"></a>
+            </div>
+            } else {
+            
+                 <div id="logo">
+                <div id="touch-menu-trigger"  data-toggle="collapse" data-target="#rouse-burger">
+                        <span id="bar-top" class="bar"></span>
+                        <span id="bar-middle" class="bar"></span>
+                        <span id="bar-bottom" class="bar"></span>
+                        <span id="bugger-close-icon" class="hide"> <i class="fas fa-times"></i> </span>
+                </div>
+               <a href="/"><img src="@logoHeaderConsultancy"></a>
+            </div>
+            
+            }
+            
+            
+          
+          
+            
+              @Html.Partial("MainMenu")
+
+             @Html.Partial("Search")
+
+
+        </div>
+    </div>
+     @Html.Partial("burgermenu")
+</header>
+
+ 

@@ -1,0 +1,241 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.MAD>
+     @using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	  var newsLatestIP = Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"))
+       .Descendants().OfTypes("news")
+       .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.CreateDate).Take(4);
+        
+	  var bannerImage = "";
+   
+      try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Model.HasValue("bannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerDesktop") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerDesktop").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Model.HasValue("bannerImage")) {
+                  
+                                    if (Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerMobile") != null)
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").GetCropUrl("ServiceBannerMobile").ToString();
+                                    } else
+                                    {
+                                        bannerImage =  Model.Value<IPublishedContent>("bannerImage").Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         bannerImage ="";
+                  
+                  }
+    
+    
+    
+    
+     var imageSection1 = "";
+    if (Model.Value<IPublishedContent>("mADImage1") != null ) {
+        imageSection1 = Model.Value<IPublishedContent>("mADImage1").Url;
+    } 
+     var imageSection2 = "";
+    if (Model.Value<IPublishedContent>("mADImage2") != null ) {
+        imageSection2 = Model.Value<IPublishedContent>("mADImage2").Url;
+    } 
+     var imageSection3 = "";
+    if (Model.Value<IPublishedContent>("mADImage3") != null ) {
+        imageSection3 = Model.Value<IPublishedContent>("mADImage3").Url;
+    } 
+     var imageSection4 = "";
+    if (Model.Value<IPublishedContent>("mADImage4") != null ) {
+        imageSection4 = Model.Value<IPublishedContent>("mADImage4").Url;
+    } 
+    
+    var digitalImage = "";
+    if (Model.Value<IPublishedContent>("digitalOnlineImage") != null ) {
+        digitalImage = Model.Value<IPublishedContent>("digitalOnlineImage").Url;
+    } 
+    
+      <!--Slide question-->
+   var listQuestionCount = 0;
+   var sliderImage = "";
+   var questionSliderCount = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").Count();
+   var questionUrl = "";
+   if (questionSliderCount > 0 ) {
+         var slider = Model.Value<IEnumerable<IPublishedElement>>("questionSlider").First();
+         if (slider.Value<IPublishedContent>("questionSliderImage") != null ) {
+            sliderImage = slider.Value<IPublishedContent>("questionSliderImage").Url;
+         }
+          listQuestionCount =  slider.Value<IEnumerable<IPublishedElement>>("questionSliderItemGroup").Count();
+          questionUrl =  slider.Value<Link>("readMoreURL").Url.ToString();
+     
+        
+   }
+    
+   
+}
+
+ <section class="top-banner" id="mad-banner" style="background-image:url('@bannerImage')">
+        <div class="content-box">
+            <h3 class="title">@Model.Value("mADTopBannerTitle")</h3>
+            <div class="description">@Model.Value("mADTopBannerContent")</div>
+            <a class="btn btn-primary" href="../../talkconsultant">Talk to a Consultant</a>
+
+        </div>
+ </section>
+ 
+ <section class="container section-content-text" >
+     <div class="section-break-title break-small">
+   	<h2 class="title">Media, Advertising & Digital</h2>	
+   </div>
+       <div class="wrap-content-page">
+           @Model.Value("mediaAdvertisingDigital")
+       </div>
+ </section>
+ 
+ <section class="image-section ">
+        <img src="@imageSection1" alt="">
+  </section>
+ 
+  <section class="container section-content-text" >
+     <div class="section-break-title break-small">
+   	<h2 class="title">Campaign Clearance</h2>	
+   </div>
+       <div class="wrap-content-page">
+           @Model.Value("campaignClearance")
+       </div>
+ </section>
+ 
+ <section class="image-section ">
+        <img src="@imageSection2" alt="">
+  </section>
+   <section class="container section-content-text" >
+     <div class="section-break-title break-small">
+   	<h2 class="title">Media Agreements</h2>	
+   </div>
+       <div class="wrap-content-page">
+           @Model.Value("mediaAgreements")
+       </div>
+ </section>
+ 
+ <section class="image-section ">
+        <img src="@imageSection3" alt="">
+  </section>
+   <section class="container section-content-text wrap-section-middle" >
+     <div class="section-break-title break-small">
+      	<h2 class="title">Brand Creation & Management</h2>	
+   </div>
+       <div class="wrap-content-page brand-creation-content">
+           <div class="content-center content-infor-center">
+               @Model.Value("brandCreationManagement")
+           </div>
+              <div class="row">
+                      <div class="col-md-6">
+                       <img  src="@digitalImage">
+                       
+                    </div>
+                     <div class="col-md-6"> 
+                         <h2>Digital / Online</h2>
+                       @Model.Value("digitalOnline")
+                    </div>
+              </div>
+                
+       </div>
+ </section>
+ 
+ <section class="image-section ">
+        <img src="@imageSection4" alt="">
+  </section>
+  
+  <section class="container section-content-text  wrap-section-middle" >
+     <div class="section-break-title break-small">
+   	<h2 class="title">Regulatory Advice</h2>	
+   </div>
+          <div class="wrap-content-page brand-creation-content">
+           <div class="content-center content-infor-center">
+               @Model.Value("regulatoryAdvice")
+           </div>
+              <div class="row">
+                      <div class="col-md-6">
+                       <img src="@digitalImage">
+                       
+                    </div>
+                     <div class="col-md-6"> 
+                         <h2 class="border-bottom-line">Brand Protection</h2>
+                         @Model.Value("brandProtection")
+                    </div>
+              </div>
+              
+               <div class="row">
+                      <div class="col-md-6">
+                       <img src="@digitalImage">
+                       
+                    </div>
+                     <div class="col-md-6"> 
+                         <h2  class="border-bottom-line">Data Privacy</h2>
+                        @Model.Value("dataPrivacy")
+                    </div>
+              </div>
+                
+       </div>
+ </section>
+ 
+
+ <!--Question Slider-->
+@if (listQuestionCount > 0 ) {
+       	 @Html.Partial("page/Question", Model)
+}
+  <!--End question slider-->
+
+
+   
+  <section class="new-from-rouse container">
+        <div class="row">
+        <div class="title-section">
+            <h4>Latest @Model.Value("servicesTitle") Insights</h4>
+            <a class="more" href="/insights">more <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+        </div>
+        </div>
+                  
+          @if (!Request.Browser.IsMobileDevice)
+         {
+          <div class="row">
+            	@foreach (var item in newsLatestIP)
+            	{
+            	
+            	 @Html.Partial("page/InsightsNews",item)
+            	}
+        
+         </div>
+         } else {
+           <div class="sliderSlickWrap">
+         	@foreach (var item in newsLatestIP)
+        	{ 
+        		 @Html.Partial("page/InsightsNews",item)
+        	}
+
+          </div>
+
+         
+         
+         }
+           
+    </section>
+@if (Model.Value<bool>("showCaseStudiesSection")) {
+@Html.Partial("page/CaseStudiesNews")
+}
+
+@Html.Partial("page/OurTeam")
+
+@Html.Partial("how-can")

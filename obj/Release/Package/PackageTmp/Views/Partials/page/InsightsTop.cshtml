@@ -1,0 +1,612 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using System.Text.RegularExpressions;
+@{
+
+		var newsInsights = Umbraco.Content(Guid.Parse("9943175f-8999-4d55-ba58-65d41fa9bedf"))
+        .Descendants().OfTypes("news")
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.Value<System.DateTime>("publishedDate")).Take(4);
+     
+  var homeModel =  Umbraco.Content(Guid.Parse("89cda73a-5d7f-485d-ba47-8cf471e1678b"));
+
+
+    var topTrending =  homeModel.Value<IEnumerable<IPublishedElement>>("topNewsSection");
+        var insightFirst = newsInsights.First();
+         var imageFirstNews= "";
+            if (insightFirst.Value<IPublishedContent>("newsImage") != null ) {
+                imageFirstNews = insightFirst.Value<IPublishedContent>("newsImage").Url;
+            } 
+        var countInsight = 0;
+            var alpha = "@";
+            
+            	 var industries =  Model.Value<IEnumerable<IPublishedElement>>("industries");
+	 var services =  Model.Value<IEnumerable<IPublishedElement>>("services");
+	 var types =  Model.Value<IEnumerable<IPublishedElement>>("types");
+	 	 var featuredTopics =  Model.Value<IEnumerable<IPublishedElement>>("featuredTopics");
+	 	 	 var regions =  Model.Value<IEnumerable<IPublishedElement>>("regions");
+	
+	 var space = ", ";
+	 IEnumerable<IPublishedElement> authorList; 
+	  var countAuthor = 0; 
+	  
+	  var publishedDate = "";
+}
+
+
+@{
+  var searchQuery = Request.QueryString["tag"];
+}
+
+
+@functions {
+  public static string StripHTML(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
+        }
+
+
+ public static int CountWord(string content)
+{
+    string pattern = "[^\\w]";
+  
+    string[] words = null;
+    int i = 0;
+    int count = 0;
+  
+    words = Regex.Split(content, pattern, RegexOptions.IgnoreCase);
+    for (i = words.GetLowerBound(0); i <= words.GetUpperBound(0); i++) {
+        if (words[i].ToString() == string.Empty) {
+         count = count - 1;
+        }
+           
+        count = count + 1;
+    }
+    
+    return count;
+    
+  
+}
+ public static string EstimateTimeToRead(int number)
+{
+    
+    int wordPerMin = 250; 
+    int result = number/wordPerMin;
+    
+    if (result == 0 ) {
+        result =  1;
+    }
+    
+    if (result > 10) {
+        result = result - 3;
+    } 
+    
+    if (result > 1) {
+        return result + " minute read";
+    
+    } else {
+         return result + " minute read";
+    }
+}
+}
+
+  <div class="title-page container">
+        <h3 class="title insight-title">Insights</h3>
+    </div>
+      @if (!Request.Browser.IsMobileDevice) {
+          <div class="filter-group container insight-filter-wrap news-filter-wrap" id="insights-filter">
+              <div id="clear-all" > <a href="javascript:void(0)">Clear All</a></div>
+        <div class="row">
+            <div class="col-md-1"><span class="filter-text">Filter By</span></div>
+            <div class="col-md-11 filer-dropdown">
+                
+                 <div class="component">
+                   <div class="dropdown filter-insight-dropdown" id="industries">
+                    <p  class="btn btn-default dropdown-toggle"  id="industries-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose an Industry" >Choose an Industry
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="industries"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="industries-menu">
+                             @if  ( industries.Count() > 0 && industries!= null ) {
+                                   foreach (IPublishedContent industryItem in industries) 
+                                    {
+                                       <li value="@industryItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@industryItem.Name</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+                
+                
+              
+                
+                 <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="services">
+                    <p  class="btn btn-default dropdown-toggle"  id="services-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose a Service" >Choose a Service
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="services"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="services-menu">
+                             @if  ( services.Count() > 0 && services!= null ) {
+                                  foreach (IPublishedContent serviceItem in services) 
+                                    {
+                                       <li value="@serviceItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@serviceItem.Name</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                
+                
+                
+                 <div class="component">
+                        <div class="dropdown filter-insight-dropdown" id="types">
+                    <p  class="btn btn-default dropdown-toggle"  id="types-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose a Type" >Choose a Type
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="types"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="types-menu">
+                              @if  (types.Count() > 0  && types!= null  ) {
+                                foreach (IPublishedContent typeItem in types) 
+                                    {
+                                       <li value="@typeItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@typeItem.Name</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+                
+                
+                <div class="component">
+                      <div class="dropdown filter-insight-dropdown" id="regions">
+                    <p  class="btn btn-default dropdown-toggle"  id="regions-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose a Region" >Choose a Region
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="regions"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="regions-menu">
+                             @if  (regions.Count() > 0  && regions!= null  ) {
+                                foreach (IPublishedContent regionItem in regions) 
+                                    {
+                                       <li value="@regionItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@regionItem.Name</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+              
+
+            </div>
+        </div>
+
+    </div>
+        } else {
+         <section class="container people-filter-controller mobile-version" id="insightsMobileFilter">
+         
+         <div class="row filter-controller">
+         
+         <h2 class="title" id="dropdownToggleButton" show-filter="false"  data-toggle="collapse" data-target="#insightMobildeSearchArea" >Filter Results</h2>
+         <div id="clear-all" class="hide"> <a href="javascript:void(0)">Clear All</a></div>
+         </div>
+         
+              <div class="row collapse"   id="insightMobildeSearchArea">
+            <div class="col-md-10 filer-dropdown">
+                <h5>Industries</h5>
+                  <div class="component">
+                   <div class="dropdown filter-insight-dropdown" id="industries">
+                    <p  class="btn btn-default dropdown-toggle"  id="industries-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose an Industry" >Choose an Industry
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="industries"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="industries-menu">
+                             @if  ( industries.Count() > 0 && industries!= null ) {
+                                   foreach (IPublishedContent industryItem in industries) 
+                                    {
+                                       <li value="@industryItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@industryItem.Name</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+                
+                
+              
+                
+                 <div class="component">
+                     <h5>Services</h5>
+                     <div class="dropdown filter-insight-dropdown" id="services">
+                    <p  class="btn btn-default dropdown-toggle"  id="services-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose a Service" >Choose a Service
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="services"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="services-menu">
+                             @if  ( services.Count() > 0 && services!= null ) {
+                                  foreach (IPublishedContent serviceItem in services) 
+                                    {
+                                       <li value="@serviceItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@serviceItem.Name</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                
+                
+                
+                 <div class="component">
+                     <h5>Types</h5>
+                        <div class="dropdown filter-insight-dropdown" id="types">
+                    <p  class="btn btn-default dropdown-toggle"  id="types-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose a Type" >Choose a Type
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="types"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="types-menu">
+                              @if  (types.Count() > 0  && types!= null  ) {
+                                foreach (IPublishedContent typeItem in types) 
+                                    {
+                                       <li value="@typeItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@typeItem.Name</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+                
+                
+                <div class="component">
+                    <h5>Region</h5>
+                      <div class="dropdown filter-insight-dropdown" id="regions">
+                    <p  class="btn btn-default dropdown-toggle"  id="regions-menu" data-toggle="dropdown" value-default="all" value="all" text-default="Choose a Region" >Choose a Region
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="regions"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="regions-menu">
+                              @if  (regions.Count() > 0  && regions!= null  ) {
+                                foreach (IPublishedContent regionItem in regions) 
+                                    {
+                                       <li value="@regionItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@regionItem.Name</a></li>
+                                   
+                                }
+                                    }
+                 
+                    </ul>
+                  </div>
+                </div>
+                
+                
+
+
+            </div>
+        </div>
+        
+        
+                    
+    </section>
+           
+        }
+        
+        
+         <section class="image-content-box-section blog-network-section ip-portfolio-blogs-section filter-insight">
+            				<div class="container">
+            				
+            					 	<div class="row filter-insight-search" current-page="0" total-page="0" is-all="false" filter-active="false" id="filterInsightResult">
+            					 	         
+            					 	</div>
+                            </div>
+        
+        </section>
+    
+
+@if (!string.IsNullOrWhiteSpace(searchQuery))
+    {   
+       
+                 @Html.Partial("page/FilterInsight")
+       
+    } else {
+       if (!Request.Browser.IsMobileDevice)
+{
+
+    		    
+    		       
+    		      var title ="";  
+    		      var newsSummary = "";
+    		         var tempString = "";
+    		       try {
+    		           title =  (insightFirst.Value("newsTitle").ToString().Length > 80) ? insightFirst.Value("newsTitle").ToString().Substring(0,80)+"..." : insightFirst.Value("newsTitle").ToString();
+    		             tempString =  StripHTML(insightFirst.Value("newsSummary").ToString());
+    		           
+    		           newsSummary =  (tempString.ToString().Length > 120) ? tempString.Substring(0,120)+"..." : tempString;
+    		       } catch (Exception e) {
+    		              
+    		       }
+    		       
+    		      
+    		    
+    <section class="news-group row">
+        <div class="col-xs-12 col-md-12 col-lg-9 news-banner item " style="background:url('@imageFirstNews')">
+            <div id="insights-top" class="item-content news-content-box">
+                
+                <div class="title"><a href="@insightFirst.Url">@title</a></div>
+                
+                    @if (insightFirst.Value("newsSummary") != "" && insightFirst.Value("newsSummary") != null && insightFirst.Value("newsSummary").ToString().Length > 0){
+                    <div class="description">
+                           @newsSummary
+                           
+                    </div>
+                    } 
+                  
+                 @if (insightFirst.Value("newsContent") != null) {
+                  <p class="time"> @EstimateTimeToRead(CountWord(insightFirst.Value("newsContent").ToString())) </p>
+                 }
+                
+                 <p class="author">
+                     @{
+                          
+                             countAuthor = 0; 
+                             
+                             authorList  = insightFirst.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(3) ) {
+                      var urlImage = ""; 
+                      try {
+                          if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                      } catch (Exception e) {
+                            urlImage = ""; 
+                      }
+                   
+                         if (author != authorList.First()) {
+                            @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                <a href="@insightFirst.Url" class="readmore">READ MORE <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+                
+                @{
+                     publishedDate = (insightFirst.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) != "01 Jan 0001") ? insightFirst.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) : insightFirst.CreateDate.ToString("dd MMM yyyy", null);
+                }
+                <p class="datetime">@publishedDate</p>
+               <ul class="tags-list">
+                     
+                        @if ( insightFirst.HasValue("newsHashtag") && insightFirst.Value<string[]>("newsHashtag") != null ) {
+                      @*  FOREACH (VAR TAGFIRST IN INSIGHTFIRST.VALUE<STRING[]>("NEWSHASHTAG").TAKE(4)) {
+                         <LI><A HREF="/INSIGHTS?TAG=@TAGFIRST">#@TAGFIRST.TOLOWER() </A></LI>
+                        }*@
+                          foreach (var tag in insightFirst.Value<string[]>("newsHashtag").Take(4))
+                        {
+                            string[] words = tag.Split(' ');
+                            int number = words.Length;
+                            List<string> wordLast = new List<string>();
+                            for (int i = 0; i < number; i++)
+                            {
+                                string a = words[i].Substring(0, 1).ToUpper() + words[i].Substring(1) + "+";
+                                wordLast.Add(a);
+                            }
+                            string combindedString = string.Join(Environment.NewLine, wordLast);
+                            <li><a href="/insights?tag=@(combindedString.Remove(combindedString.Length-1,1))">#@tag.ToLower() </a></li>
+                        }
+                        }
+                      
+                    </ul>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-3 related" id="relatedNewsWrapID">
+            @*<h3 class="related-title">Trending Insights</h3>*@
+            @foreach (var articleItem in topTrending)
+            {
+            var item = articleItem.Value<IPublishedContent>
+                ("news");
+                      
+                <!-- News item -->
+                <div class="news-item-related mb-md-3">
+                   
+                    <h4><a href="@item.Url">@item.Value("newsTitle")</a> </h4>
+                    <p class="minute">@EstimateTimeToRead(CountWord(item.Value("newsContent").ToString())) </p>
+                        
+              
+                 
+                  <p class="author">
+                     @{
+
+                             countAuthor = 0; 
+                             
+                             authorList  = item.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(2) ) {
+                      var urlImage = ""; 
+                      
+                        try {
+                          if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                      } catch (Exception e) {
+                            urlImage = ""; 
+                      } 
+                         if (author != authorList.First()) {
+                             @space   @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+                   
+                @{
+                     publishedDate = (item.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) != "01 Jan 0001") ? item.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) : item.CreateDate.ToString("dd MMM yyyy", null);
+                }
+                    <p class="date"> @publishedDate </p>
+                     <ul class="tags-list">
+                      @if (item.HasValue("newsHashtag")  &&  item.Value<string[]>("newsHashtag") != null ) {
+                        @*foreach (var tag in item.Value<string[]>("newsHashtag").Take(4)) {
+                        <li><a href="/insights?tag=@tag">#@tag.ToLower() </a></li>
+                        }*@
+                        foreach (var tag in item.Value<string[]>("newsHashtag").Take(4)) {
+                                string[] words = tag.Split(' ');
+                                int number = words.Length;
+                                List<string> wordLast = new List<string>();
+                                for (int i = 0; i < number; i++)
+                                {
+                                    string a=  words[i].Substring(0, 1).ToUpper() + words[i].Substring(1)+"+";
+                                    wordLast.Add(a);
+                                }
+                                string combindedString = string.Join(Environment.NewLine, wordLast);
+                             <li><a href="/insights?tag=@(combindedString.Remove(combindedString.Length-1,1))">#@tag.ToLower() </a></li>
+                            }
+                        }
+                        
+                                             
+                    </ul>
+                   
+                </div>
+                <!-- End news item -->
+            }
+            
+         
+           
+                
+        </div>
+
+    </section>
+} else {
+
+
+
+	<!-- A row Item -->
+    <div id="mobilde-top-insights-slider" class="sliderSlickWrap">
+        
+            @foreach (var articleItem in topTrending)
+            {
+                 var item = articleItem.Value<IPublishedContent>
+                ("news");
+	              var imageNews= "";
+	               try {
+                            if (item.Value<IPublishedContent>("newsImage") != null)
+                            {
+
+                                if (item.Value<IPublishedContent>("newsImage").GetCropUrl("InsightsItem") != null)
+                                {
+                                    imageNews = item.Value<IPublishedContent>("newsImage").GetCropUrl("InsightsItem").ToString();
+                                }
+                                else
+                                {
+                                    imageNews = item.Value<IPublishedContent>("newsImage").Url.ToString();
+                                }
+                            }
+
+                        } catch (Exception e)
+                        {
+                            imageNews = "";
+
+                        }
+                       var title ="";  
+    		      var newsSummary = "";
+    		         var tempString = "";
+    		       try {
+    		           title =  (item.Value("newsTitle").ToString().Length > 80) ? item.Value("newsTitle").ToString().Substring(0,80)+ "..." : item.Value("newsTitle").ToString();
+    		             tempString =  StripHTML(item.Value("newsSummary").ToString());
+    		           
+    		           newsSummary =  (tempString.ToString().Length > 120) ? tempString.Substring(0,120)+ "..." : tempString ;
+    		       } catch (Exception e) {
+    		              
+    		       }
+                    
+                    
+                    
+	             <div class="col-xs-12 col-md-12 col-lg-9 news-banner item item-news " style="background:url('@imageNews')">
+                <div  class="item-content news-content-box">
+                <div class="title"><a href="@item.Url">@title</a></div>
+                <div class="description">
+                    @newsSummary
+                </div>
+                  @{
+                     publishedDate = (item.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) != "01 Jan 0001") ? item.Value<System.DateTime>("publishedDate").ToString("dd MMM yyyy", null) : item.CreateDate.ToString("dd MMM yyyy", null);
+                }
+                
+                  <p class="datetime">@publishedDate</p>
+                 <p class="author">
+                     @{
+                        
+                             countAuthor = 0; 
+                             
+                             authorList  = item.Value<IEnumerable<IPublishedElement>>("newsAuthor");
+                                if (authorList != null ) {
+                                    countAuthor =  authorList.Count();
+                              }                     
+                     }
+                    @if (countAuthor > 0 ) {
+                      foreach (IPublishedContent author in authorList.Take(3) ) {
+                      var urlImage = ""; 
+                      
+                         try {
+                          if ( author.Value<IPublishedContent>("profileImage") != null)
+                         {
+                                urlImage = author.Value<IPublishedContent>("profileImage").Url;
+                                                        
+                         }
+                      } catch (Exception e) {
+                            urlImage = ""; 
+                      }
+                         if (author != authorList.First()) {
+                              @space  @author.Value("profileName")
+                         } else {
+                             @author.Value("profileName")
+                         }
+                         
+                          
+                    }
+                    }
+                </p>
+               
+                 <a href="@item.Url" class="readmore">READ MORE &nbsp; <i class="fas fa-chevron-right arrow arrow-1"></i><i class="fas fa-chevron-right arrow arrow-2"></i><i class="fas fa-chevron-right arrow arrow-3"></i></a>
+               
+
+            </div>
+
+        </div>
+	}
+	
+  	</div>
+
+}
+    
+    }
+  
+
+
+ 
+
+
+    

@@ -1,0 +1,402 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.JobsDetail>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+}
+
+
+ @{
+    Layout = "master.cshtml";
+    var bannerImage = "";
+    var CareerModel = Umbraco.Content(Guid.Parse("a2bb4f7f-8df2-47fc-bebe-8e4f25b5eb75"));
+   
+    if (CareerModel.Value<IPublishedContent>
+    ("careersBannerImage") != null ) {
+    bannerImage = CareerModel.Value<IPublishedContent>
+    ("careersBannerImage").Url;
+    }
+    var imageSection1 = "";
+    if (Model.Value<IPublishedContent>
+    ("careersImage") != null ) {
+    imageSection1 = Model.Value<IPublishedContent>
+    ("careersImage").Url;
+    }
+    var locationList = Umbraco.Content(Guid.Parse("4a087704-5c73-48a8-bd63-7a257276804b"))
+                        .Children()
+                        .Where(x => x.IsVisible());
+   	var departmentList = Umbraco.Content(Guid.Parse("9e4d5ad3-7310-4e56-b128-48a6d5ba7cba"))
+                    .Children()
+                    .Where(x => x.IsVisible());
+                    var allDepartmentCount = departmentList.Count();
+    var CTID = "a2bb4f7f-8df2-47fc-bebe-8e4f25b5eb75";
+    }
+    @Model.Value("departmentsTagsList")
+    <script>
+    window.onload=function(){
+    //For drag drop File
+  
+     var upload = document.getElementById('d374068d-8cdc-4904-8ea5-aee6027289e7');
+    
+     $(".cvupload .umbraco-forms-field-wrapper").attr('data-content','Upload files or drop them')
+    function onFile() {
+        var me = this,
+            file = upload.files[0],
+            name = file.name.replace(/\.[^/.]+$/, '');
+        if (file.type === '' ||
+            file.type === 'application/pdf' ||
+            file.type === 'image/jpeg' ||
+            file.type === 'image/png' ||
+            file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            ) {
+            if (file.size < (3000 * 1024)) {
+                // upload.parentNode.className = 'umbraco-forms-field-wrapper';
+                $(".cvupload .umbraco-forms-field-wrapper").attr('data-content','Attached File: ' + file.name);
+                
+                
+                
+            } else {
+                window.alert('File size is too large, please ensure you are uploading a file of less than 3MB');
+            }
+        } else {
+            window.alert('File type ' + file.type + ' not supported');
+        }
+    }
+
+    upload.addEventListener('dragenter', function (e) {
+        // upload.parentNode.className = 'umbraco-forms-field-wrapper';
+        console.log("dragenter")
+    }, false);
+
+    upload.addEventListener('dragleave', function (e) {
+        // upload.parentNode.className = 'umbraco-forms-field-wrapper';
+         console.log("dragleave")
+    }, false);
+
+    upload.addEventListener('dragdrop', function (e) {
+         console.log("dragdrop")
+        onFile();
+    }, false);
+
+    upload.addEventListener('change', function (e) {
+         console.log("change")
+        onFile();
+    }, false);
+
+
+
+    //End Drag drop File
+}
+              
+    </script>
+     <div id="ctid" class="ctid" ctid="@CTID"> </div>
+    <section class="people-page top-banner" id="careerBannerId" style="background-image: url('@bannerImage');">
+      <h2 > Be <strong>  Different</strong></h2>
+        <div class="find-box">
+            <h3>Job Search</h3>
+            <div class="container">
+                @if (!Request.Browser.IsMobileDevice)
+{
+                <div class="row">
+                   <div class="col-xs-12 col-md-12 col-lg-4">
+                       
+                       
+                        
+                        
+                              <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="jobCountry">
+                    <p  class="btn btn-default dropdown-toggle" location-id="1" data-flip="false" id="jobCountry-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations" >All Locations
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="jobCountry"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="jobCountry-menu">
+                                @foreach (IPublishedContent locationItem in locationList) 
+                                    {
+                                       <li location-id="@locationItem.Id" value="@locationItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@locationItem.Name.ToLower()</a></li>
+                                   
+                                }
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                    </div>
+                 
+                    <div class="col-md-12 col-lg-4">
+                      
+                        
+                          <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="jobDepartment">
+                    <p  class="btn btn-default dropdown-toggle"  data-flip="false" id="jobDepartment-menu" department-id="1" data-toggle="dropdown" value-default="all" value="all" text-default="All Departments" >All Departments
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="jobDepartment"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="jobDepartment-menu">
+                           
+                                @foreach (IPublishedContent departmentItem in departmentList) 
+                                    {
+                                       <li  value="@departmentItem.Name" department-id="@departmentItem.Id"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@departmentItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                  
+                    </div>
+                    
+            
+
+                    <div class="col-md-12 col-lg-3">
+                        <div class="component">
+                            <button class="btn btn-info btn-search-banner" id="btn-search-career">Search</button>
+                        </div>
+                    </div>
+                </div>
+                } else {
+                
+                
+                <div class="row">
+                   <div class="col-xs-12 col-md-12 col-lg-3">
+                 <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="jobCountry">
+                    <p  class="btn btn-default dropdown-toggle" data-flip="false" id="jobCountry-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations" >All Locations
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="jobCountry"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="jobCountry-menu">
+                                @foreach (IPublishedContent locationItem in locationList) 
+                                    {
+                                       <li location-id="@locationItem.Id" value="@locationItem.Id"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@locationItem.Name.ToLower()</a></li>
+                                   
+                                }
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                  
+                        
+                    </div>
+                      <div class="col-md-12 col-lg-3">
+                        
+                          <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="jobDepartment">
+                    <p  class="btn btn-default dropdown-toggle" data-flip="false" id="jobDepartment-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Departments" >All Departments
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="jobDepartment"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="jobDepartment-menu">
+                           
+                                @foreach (IPublishedContent departmentItem in departmentList) 
+                                    {
+                                       <li location-id="@departmentItem.Id" value="@departmentItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="#">@departmentItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+                  
+                    </div>
+                    
+                  
+                    <div class="col-md-12 col-lg-3">
+                        <div class="component">
+                            <button class="btn btn-info btn-search-banner" id="btn-search-career">Search</button>
+                        </div>
+                    </div>
+                </div>
+                
+                }
+                
+                
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+
+ <div class="container"  id="jobDetailWrap">
+     <div class="section-break-title break-small" id="break-section-large">
+                <h2 class="title large-text center-text">@Model.Value("jobTitle")</h2>
+            </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <div class="page-content job-detail-content">
+                     @Model.Value("jobDescription")
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                	<div class="text-box thank-you-banner hide">
+        		   <i id="closeThankyouBanner" class="close far fa-times-circle"></i>
+        		   <div class="wrap">
+                    <h3 class="title">Thank You!</h3>
+        	     	<p class="content">Someone will be contacting you shortly.</p>
+        		   </div>
+        			
+        		</div>
+                <div class="form-content">
+                   @Umbraco.RenderMacro("renderUmbracoForm", new {FormGuid="cd694e5d-6822-4760-922e-d4d1960e3043", FormTheme="apply-job", ExcludeScripts="0"})
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+<section id="jobDetailSearchWrap" class="hide">    
+
+<div class="section-break-title section-break-mobile">
+	<h2 class="title strong-title-break big-title">Available Positions </h2>	
+</div>
+<section class="section-our-office container" id="available-positions-section">
+	<h2 class="title-text">We have open positions across the world</h2>
+
+	<div class="container">
+	    <div class="location-group-control" >
+	        	<span class="strong list-title">Select Location</span>
+	
+            <div class="component">
+                     <div class="dropdown filter-insight-dropdown" id="job-location-select">
+                    <p  class="btn btn-default dropdown-toggle"  id="job-location-select-menu" data-toggle="dropdown" value-default="all" value="all" text-default="All Locations" >All Locations
+                   
+                    </p>
+                   <i class="drop-icon clear-filter" target="job-location-select"></i>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="job-location-select-menu">
+                           
+                                @foreach (IPublishedContent locationItem in locationList) 
+                                    {
+                                       <li location-id="@locationItem.Id" value="@locationItem.Name"  role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);">@locationItem.Name.ToLower()</a></li>
+                                   
+                                }
+                                  
+                 
+                    </ul>
+                  </div>
+                  </div>
+                  
+	    </div>
+	
+		<div class="row">
+		    @if (!Request.Browser.IsMobileDevice)
+{
+    	<div class="col-md-12 col-lg-4">
+				<span class="list-title">Departments</span>
+				 <div class="department-wrap">
+			        	<ul class="departments-list"  id="departmentListDesktopId"  department-current = "all">
+					<li  id="0" >
+					    	<a class="department-item strong" department-id="1" department-name="all"  department-title="All Departments"   href="javascript:void(0)">All Departments (@allDepartmentCount)</a>
+					</li>
+                    	@foreach (var item in departmentList)
+                    	{
+                    		<li id="@item.Id">
+                    			<a class="department-item" department-id="@item.Id" department-name="@item.Name"  department-title="@item.Name"  href="javascript:void(0)">@item.Name</a>
+                    		</li>
+                    	}
+				</ul>
+			    </div>
+			
+			</div>
+} else {
+        	<div class="col-md-12 col-lg-8 ">
+				<span class="list-title">Departments</span>
+				 <div class="department-wrap">
+			        	<div class="departments-list" id="departmentListId" department-title="All Departments"  department-current = "all">
+					<li  id="0" >
+					    	<a class="department-item strong" department-id="1" department-name="all"  department-title="All" href="javascript:void(0)">All (@allDepartmentCount)</a>
+					</li>
+                	@foreach (var item in departmentList)
+                	{
+                	 
+                		<li id="@item.Id">
+                			<a class="department-item" department-id="@item.Id" department-name="@item.Name" department-title="@item.Name"  href="javascript:void(0)">@item.Name</a>
+                		</li>
+                	}
+				</div>
+			    </div>
+			
+			</div>
+}
+		
+			<div class="col-md-12 col-lg-8">
+			    <span  class="list-title" >Featured</span>
+			  
+			    @if (!Request.Browser.IsMobileDevice)
+                {
+                  <div class="featured-wrap" id="jobs-result" total-page="0" current-page="1">
+			        	
+			      
+                    			
+			     </div>
+			     
+			     <div class="pagination">
+                             
+                            <ul id="paginationList" curentPage = "1" >
+                             
+                             </ul>
+                         </div>
+			    
+         
+                } else {
+                <div class="jobs-result-all-mobile" id="jobs-result" total-page="0" current-page="1">
+			        	
+			      
+                    			
+			    </div>
+			    
+			   
+                }
+
+
+			   
+			
+					
+
+			</div>	
+		</div>
+	</div>
+
+   
+      
+</section>
+    
+    </section>
+    
+    
+    
+    
+    
+    
+    
+       @Html.Partial("page/QuestionsJoiningRouse")
+       
+    <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+         $(document).ready (function () {  
+             setTimeout (function(){
+             let jobId =  "@(Model.Id.ToString())";
+             let jobCountry = "@(Model.Value<IPublishedContent>("jobCountry").Value("countryName"))";
+             let jobTitle = "@(Model.Value("jobTitle").ToString())";
+             $(".umbraco-forms-field.jobid").find ("input").val(jobId);
+             $(".umbraco-forms-field.jobcountry").find ("input").val(jobCountry);
+             $(".umbraco-forms-field.jobtitle").find ("input").val(jobTitle);
+             },1000)
+             
+             
+     
+         });
+         });
+     </script>
+     
+     

@@ -1,0 +1,182 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+     var serviceSectionList  = Model.Value<IEnumerable<IPublishedElement>>("serviceSection");
+     var sectionCount = 0;
+     
+}
+  @functions {
+     public  string GetImageDesktop(string imageName, IPublishedElement Item)
+        {
+          var sectionImageNomal = "";
+      try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Item.HasValue(imageName)) {
+                  
+                                    if (Item.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop") != null)
+                                    {
+                                        sectionImageNomal =  Item.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop").ToString();
+                                    } else
+                                    {
+                                        sectionImageNomal =  Item.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Item.HasValue(imageName)) {
+                  
+                                    if (Item.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop") != null)
+                                    {
+                                        sectionImageNomal =  Item.Value<IPublishedContent>(imageName).GetCropUrl("ServiceSectionDesktop").ToString();
+                                    } else
+                                    {
+                                        sectionImageNomal =  Item.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         sectionImageNomal ="";
+                  
+                  }
+            return sectionImageNomal;
+    
+        
+        }
+        
+         public  string GetImageLapTop(string imageName, IPublishedElement Item)
+        {
+          var sectionImageLaptop = "";
+      try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(Item.HasValue(imageName)) {
+                  
+                                    if (Item.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop") != null)
+                                    {
+                                        sectionImageLaptop =  Item.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop").ToString();
+                                    } else
+                                    {
+                                        sectionImageLaptop =  Item.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(Item.HasValue(imageName)) {
+                  
+                                    if (Item.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop") != null)
+                                    {
+                                        sectionImageLaptop =  Item.Value<IPublishedContent>(imageName).GetCropUrl("SectionImageLaptop").ToString();
+                                    } else
+                                    {
+                                        sectionImageLaptop =  Item.Value<IPublishedContent>(imageName).Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         sectionImageLaptop ="";
+                  
+                  }
+            return sectionImageLaptop;
+    
+        
+        }
+    }
+    
+
+@foreach ( var item in serviceSectionList) {
+           
+            <div class="service-section-content"  id="section-@sectionCount"> 
+             @{
+             
+                 var titleCenter = item.Value("titleCenter");
+                 var contentCenter = item.Value("contentCenter");
+            	 var contentLeft = item.Value("contentLeft");
+            	 var contentRight = item.Value("contentRight");	
+                 var sectionImage = "";
+                  try {
+                           if (!Request.Browser.IsMobileDevice)
+                            {
+                                   if(item.HasValue("sectionImage")) {
+                  
+                                    if (item.Value<IPublishedContent>("sectionImage").GetCropUrl("ServiceSectionDesktop") != null)
+                                    {
+                                        sectionImage =  item.Value<IPublishedContent>("sectionImage").GetCropUrl("ServiceSectionDesktop").ToString();
+                                    } else
+                                    {
+                                        sectionImage =  item.Value<IPublishedContent>("sectionImage").Url.ToString();
+                                    }
+                                 }
+                            
+                            } else {
+                                   if(item.HasValue("sectionImage")) {
+                  
+                                    if (item.Value<IPublishedContent>("sectionImage").GetCropUrl("ServiceSectionMobile") != null)
+                                    {
+                                        sectionImage =  item.Value<IPublishedContent>("sectionImage").GetCropUrl("ServiceSectionMobile").ToString();
+                                    } else
+                                    {
+                                        sectionImage =  item.Value<IPublishedContent>("sectionImage").Url.ToString();
+                                    }
+                           }
+                        }
+                  }
+                  catch (Exception e) {
+                         sectionImage ="";
+                  
+                  }
+          
+          
+          
+          }
+          
+          
+          @if (sectionImage != "")  {
+               <section class="image-section ">
+                 
+                     <picture>
+                          <source media="(max-width:1366px)" srcset="@GetImageLapTop("sectionImage",item)">
+                          <source media="(max-width:768)" srcset="img_white_flower.jpg">
+                          <img src="@GetImageDesktop("sectionImage",item)">
+                     </picture>
+               </section>
+          }
+          
+          
+     
+      <section class="container section-content-text  wrap-section-middle">
+        @if (contentCenter.ToString().Length > 0) {
+            
+            if (titleCenter != "") {
+            <div class="section-break-title break-small" id="about-top-title">
+                <h2 class="title"> @titleCenter  </h2>
+            </div>
+           }
+            <div class="wrap-content-page">
+                    <div class="content-center" id="page-top-content">
+                          @contentCenter
+                    </div>
+           </div>
+        }
+         @if (contentLeft.ToString().Length > 0 || contentRight.ToString().Length > 0  ) {
+         <div class="row content-bottom">
+                <div class="col-md-6 content-left" >
+                      @if (contentLeft.ToString().Length > 0) {
+                            @contentLeft
+                      }
+                  
+                </div>
+                <div class="col-md-6 content-right">
+                      @if (contentRight.ToString().Length > 0) {
+                            @contentRight
+                      }
+                </div>
+        </div>
+        }
+    </section>
+  </div>
+  
+  sectionCount++;
+}
+  

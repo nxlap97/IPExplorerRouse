@@ -1,0 +1,16 @@
+{
+  "id": "546611af-7736-4196-9bb3-e4619b29ae7d",
+  "name": "Send Email",
+  "form": "05078743-8f73-417a-a62e-e9c3e1cee441",
+  "active": true,
+  "workflowTypeId": "17c61629-d984-4e86-b43b-a8407b3efea9",
+  "executesOn": "Submitted",
+  "settings": {
+    "Email": "phulong95@gmail.com",
+    "SenderEmail": "phulong9517@gmail.com",
+    "Subject": "sssssssssssssssss",
+    "RazorViewFilePath": "Forms/Emails/demo.cshtml",
+    "Attachment": "True"
+  },
+  "sortOrder": 0
+}

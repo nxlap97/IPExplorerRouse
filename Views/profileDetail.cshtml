@@ -1,0 +1,167 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ProfileContent>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	var profileImage = "";
+	try {
+	     if (Model.Value<IPublishedContent>("profileImage") != null)
+                        {
+                            if (Model.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImageDetail") != null)
+                            {
+                                profileImage =  Model.Value<IPublishedContent>("profileImage").GetCropUrl("ProfileImageDetail").ToString();
+                            } else
+                            {
+                                profileImage =  Model.Value<IPublishedContent>("profileImage").Url.ToString();
+                            }
+                        }
+	} catch (Exception e) {
+	        profileImage = "";
+	}
+	   
+                        
+	var biography = Model.Value("biography");
+	var qualifications = Model.Value("qualifications");
+	var memberships = Model.Value("memberships");	
+	var awards = Model.Value("awards");
+	var personalInterests = Model.Value("personalInterests");
+	
+	var serviceList = Model.Value<IEnumerable<IPublishedElement>>("services");
+	
+
+}
+
+@* the fun starts here *@
+
+<div class="profile-section row">
+	<div class="profile-banner col-md-12 col-lg-4" style="background-image:url('')">
+	        <div class="profile-image">
+                          <img src="@profileImage">
+                    </div>
+		<div class="infor-profile">
+		    <div class="top"> 
+		    
+			<h3 class="name" > @Model.Value("profileName")</h3>
+			<p class="position">@Model.Value("profilePosition")</p>
+			   @{var officeLocation = "";
+                                                                try {
+                                                                    officeLocation = Model.Value<IPublishedContent>("profileLocation").Name.ToString();
+                                                                } catch (Exception e) {
+                                                                
+                                                                   officeLocation  = "";
+                                                                
+                                                                }
+                                                                }
+			 <p><a href=""><i class="fas fa-map-marker"></i> @officeLocation </a></p>
+			 </div>
+			 <div class="bottom">
+			<p class="email"> <a href = "mailto: @Model.Value("profileEmail")">@Model.Value("profileEmail")</a></p> 
+			<p class="phone">@Model.Value("profilePhone")</p>
+			 <div class="social-network">
+                                       <ul >
+                                                @if (   Model.Value("linkedinURL")  != null && Model.Value("linkedinURL") != "") {
+                                                      
+                                                               <li><a target="_blank" href=" @Model.Value("linkedinURL")"><i class="fab fa-linkedin-in"></i> </a></li>
+                                                      
+                                                    }
+                                                             
+                                                                
+                                                               
+                                    
+                                        </ul>
+            </div>
+            </div>
+            
+		</div>
+	</div>
+	<div class="profile-detail col-md-12 col-lg-6">
+	    
+		
+		@if (biography.ToString().Length > 0 ) {
+		<div class="section-content-detail" id="biography"> 
+			<h3>Biography</h3>
+			<div>
+			       @biography
+			</div>
+		 
+		 </div>
+		} 
+	
+		@if (qualifications.ToString().Length > 0 ) {
+    	 <div class="section-content-detail"> 
+	    	<h3>Qualifications</h3>
+	    	<div>
+	    	      @qualifications 
+	    	</div>
+		 
+		</div>
+		} 
+		
+		@if (memberships.ToString().Length > 0 ) {
+		 <div class="section-content-detail">
+			<h3>Memberships</h3>
+			<div>
+			       @memberships
+			</div>
+		 
+		 </div>
+		
+		} 
+		
+		
+				@if (awards.ToString().Length > 0 ) {
+		 <div class="section-content-detail">
+			<h3>Awards</h3>
+			<div>
+			       @(awards)
+			</div>
+		 
+		 </div>
+		
+		} 
+	   
+		
+		@if (personalInterests.ToString().Length > 0 ) {
+		<div class="section-content-detail">
+		    <h3>Personal Interests</h3>
+		    <div>
+		           @personalInterests 
+		    </div>
+		  
+		</div>
+		
+		} 
+		
+		
+		@if(serviceList != null ) {
+			<div class="section-content-detail">
+		    <h3>Services</h3>
+		    <div>
+		        	<ul class="group">
+		
+        		       @foreach (IPublishedContent serviceItem in serviceList) {
+        		       
+        		       	<li><a href=" @(serviceItem.Url.ToString())">@serviceItem.Name.ToString() </a></li>
+        		  
+        		       
+        		       
+        
+        		       
+        		       }
+		       </ul>
+		    </div>
+		   
+		</div>
+		}
+		
+	
+		
+		
+	
+		
+	
+		
+	</div>
+
+	
+</div>
+ @Html.Partial("how-can")
